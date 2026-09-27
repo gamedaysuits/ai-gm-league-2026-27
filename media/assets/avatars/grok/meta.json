@@ -1,0 +1,454 @@
+{
+  "started_at": "2026-09-26T23:49:50+00:00",
+  "persona_sig": "d00ac26884e2",
+  "personas_run": "energy-1",
+  "team": "grok",
+  "style": "pixel",
+  "face_type": "human",
+  "generated_at": "2026-09-26T23:50:32+00:00",
+  "gm_name": "Fuse Calder",
+  "franchise_name": "Apogee Bay Afterburners",
+  "franchise_abbrev": "ABN",
+  "display": "Grok 4.7",
+  "llm": "x-ai/grok-4.7",
+  "primary_color": "#0E1420",
+  "secondary_color": "#FF4B1F",
+  "fabric": {
+    "id": "cavani-1100-21130-2",
+    "color_name": "charcoal",
+    "pattern_desc": "burgundy pinstripe",
+    "color_hex": "#29272B",
+    "summary": "Charcoal suiting with faint burgundy pinstripes"
+  },
+  "swatch_reference": true,
+  "base_prompt": "Create a 16-bit era pixel-art character portrait, like a portrait from a cut-scene in an early-1990s console hockey video game, of a general manager in a fictional hockey league. Character: A lean, broad-shouldered man in his mid-thirties with a slightly bent nose, weather-creased skin, and messy copper-brown hair pushed back like he just walked in off the ice. One eyebrow has a small nick. Eyes are bright amber, narrowed like he is reading the board and the room at once. Strong jaw, light stubble, and a mouth built for yelling \u2014 half-open grin, one canine showing. A thin copper hoop in the left ear. No logos and no jersey, just a face that looks thrilled to be the loudest person in a loud building. This is an original, fictional character: not based on and not resembling any real person, celebrity, athlete or public figure. Face: front-facing, eyes open looking straight at the viewer, mouth fully closed (lips together, no teeth showing), relaxed natural expression. In THIS frame the mouth stays closed even if the description mentions an open mouth, a grin with teeth, fangs or a missing tooth - those show up in the talking frames made from this one. Suit - render it exactly: a three-piece suit in Charcoal suiting with faint burgundy pinstripes - base colour charcoal (#29272B), pattern: burgundy pinstripe. Jacket: six-button double-breasted jacket (6x2: two columns of three buttons), fastened, with wide peak lapels and flap hip pockets with a small ticket pocket above the right one; a single breast pocket on the chest. Waistcoat: matching cloth, six-button, a shawl lapel, pointed hem - its top edge shows in the V of the buttoned double-breasted jacket. Dress shirt: bright white spread collar. Tie: deep burgundy grenadine tie, neatly knotted. Pocket square in the breast pocket: burnt orange puff. Framing: waist-up portrait, body and head square to the camera (straight-on front view), head level and not tilted, centered horizontally, shoulders fully in frame, with comfortable empty headroom above the head (the top of the head, ears, tufts or antenna sits about 10-15% of the image height below the top edge). Square 1:1 composition. Background: a simple stylized hockey arena - plain rink boards with no advertising and a blocky pixel crowd, in the franchise colours: mostly black (#0E1420) with scarlet (#FF4B1F) accent lights and trim. Keep it simple and a little lower in contrast than the character, and add a soft scarlet rim light on the shoulders and head so the suit's silhouette separates clearly from the background. Pixel-art rules: crisp, hard-edged square pixels on one consistent grid - it should look like a roughly 192x192-pixel sprite scaled up with nearest-neighbour. Limited palette of about 32-48 colours, flat colour clusters, dark outlines, simple 2-3 step shading. No anti-aliasing, no blur, no smooth gradients, no painterly texture. Strictly no text, letters, numbers, logos, emblems, crests, team marks, jerseys, brand names, signage, advertising, UI elements, borders, frames or watermarks anywhere in the image. The attached photo is only a close-up reference of the exact suit cloth: match its colour and weave or pattern for the jacket, trousers and waistcoat. Do not show the swatch itself anywhere.",
+  "attempts": {
+    "base": [
+      {
+        "file": "pixel_base_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.141994,
+        "retry": null,
+        "elapsed_s": 19.0,
+        "generation_id": "gen-1790466590-3VKjDm9QNFYlt8piFqH5",
+        "ts": "2026-09-26T23:50:09+00:00",
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "notes": "Pixel art portrait of a man in a suit at a hockey rink.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000845,
+          "file": "pixel_base_1.png"
+        }
+      }
+    ],
+    "mid": [
+      {
+        "file": "pixel_mid_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.13874,
+        "retry": null,
+        "elapsed_s": 17.1,
+        "generation_id": "gen-1790466612-tl0CGh7jz5jK7NQvhXux",
+        "ts": "2026-09-26T23:50:28+00:00"
+      }
+    ],
+    "wide": [
+      {
+        "file": "pixel_wide_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139616,
+        "retry": null,
+        "elapsed_s": 18.2,
+        "generation_id": "gen-1790466612-ozZHirVijgkB1TXpMmjk",
+        "ts": "2026-09-26T23:50:29+00:00"
+      }
+    ],
+    "blink": [
+      {
+        "file": "pixel_blink_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.138642,
+        "retry": null,
+        "elapsed_s": 16.9,
+        "generation_id": "gen-1790466612-vJEAr5BjrDIh1YGWolQy",
+        "ts": "2026-09-26T23:50:28+00:00"
+      }
+    ]
+  },
+  "chosen": {
+    "base": 0,
+    "mid": 0,
+    "wide": 0,
+    "blink": 0
+  },
+  "cost_usd": 0.5623,
+  "metrics": {
+    "mid": {
+      "mask_pct": 3.198,
+      "strong_pct": 0.311,
+      "outside_pct": 0.469,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "wide": {
+      "mask_pct": 3.198,
+      "strong_pct": 1.831,
+      "outside_pct": 0.546,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "blink": {
+      "mask_pct": 0.531,
+      "strong_pct": 0.238,
+      "outside_pct": 0.436,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    }
+  },
+  "swapped_mid_wide": false,
+  "info": {
+    "grid": {
+      "px": 8.0,
+      "py": 8.0,
+      "ox": 0.25,
+      "oy": 0.25,
+      "score": 10.8,
+      "prominence": 32.7,
+      "ok": true
+    },
+    "logical_px": 128,
+    "scale": 6,
+    "fit": {
+      "from": 127,
+      "to": 128
+    },
+    "palette_colours": 48,
+    "eye_box": [
+      53,
+      36,
+      75,
+      39
+    ],
+    "mouth_box": [
+      50,
+      51,
+      78,
+      71
+    ]
+  },
+  "flags": [],
+  "base_check": {
+    "mouth_closed": true,
+    "mouth_open_amount": 0,
+    "eyes_open": true,
+    "text_or_logo": false,
+    "front_facing": true,
+    "notes": "Pixel art portrait of a man in a suit at a hockey rink.",
+    "model": "google/gemini-3-flash-preview",
+    "cost": 0.000845,
+    "file": "pixel_base_1.png"
+  },
+  "frame_checks": {
+    "mid": {
+      "mouth_closed": false,
+      "mouth_open_amount": 1,
+      "eyes_open": true,
+      "text_or_logo": false,
+      "front_facing": true,
+      "notes": "Pixel art man in suit at hockey rink; mouth slightly open showing teeth.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000848,
+      "file": "mid.png"
+    },
+    "wide": {
+      "mouth_closed": false,
+      "mouth_open_amount": 2,
+      "eyes_open": true,
+      "text_or_logo": false,
+      "front_facing": true,
+      "notes": "Pixel art man in suit shouting at a hockey rink.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000794,
+      "file": "wide.png"
+    },
+    "blink": {
+      "mouth_closed": true,
+      "mouth_open_amount": 0,
+      "eyes_open": false,
+      "text_or_logo": false,
+      "front_facing": true,
+      "notes": "Pixel art character with eyes closed and mouth fully shut in a hockey arena setting.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000866,
+      "file": "blink.png"
+    }
+  },
+  "frame_checks_for": "{\"base\": \"pixel_base_1.png\", \"blink\": \"pixel_blink_1.png\", \"mid\": \"pixel_mid_1.png\", \"wide\": \"pixel_wide_1.png\"}",
+  "files": {
+    "base": "base.png",
+    "mid": "mid.png",
+    "wide": "wide.png",
+    "blink": "blink.png",
+    "mid_blink": "mid_blink.png",
+    "wide_blink": "wide_blink.png"
+  },
+  "image_model": "google/gemini-3-pro-image",
+  "poses": {
+    "hype": {
+      "attempts": [
+        {
+          "file": "pixel_pose_hype_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.138754,
+          "retry": null,
+          "elapsed_s": 18.4,
+          "generation_id": "gen-1790466632-OIsETqQx9mb9LYIn4NSh",
+          "ts": "2026-09-26T23:50:50+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "notes": "Character and outfit are consistent; pose correctly shows celebration with arms raised and mouth open.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001499,
+            "file": "pixel_pose_hype_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_hype_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139252,
+            "retry": null,
+            "elapsed_s": 18.7,
+            "generation_id": "gen-1790466656-0Pl4Wj3gSo9AI5yqMQkI",
+            "ts": "2026-09-26T23:51:14+00:00",
+            "metrics": {
+              "mask_pct": 3.223,
+              "strong_pct": 1.697,
+              "outside_pct": 0.388,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": false,
+              "mouth_open_amount": 1,
+              "eyes_open": true,
+              "text_or_logo": false,
+              "front_facing": true,
+              "notes": "Pixel art man in suit with arms raised, teeth visible through slightly open mouth.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000866,
+              "file": "pixel_pose_hype_closed_1_locked.png"
+            }
+          }
+        ],
+        "chosen": 0,
+        "metrics": {
+          "mask_pct": 3.223,
+          "strong_pct": 1.697,
+          "outside_pct": 0.388,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": false,
+          "mouth_open_amount": 1,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "notes": "Pixel art man in suit with arms raised, teeth visible through slightly open mouth.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000866,
+          "file": "pixel_pose_hype_closed_1_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/hype.png",
+        "closed": "poses/hype_closed.png"
+      },
+      "desc": "a huge \"LET'S GO!\" celebration: both arms thrown up high with fists, mouth wide open yelling, eyes wide open with excitement (normal eyes - no glow, no fire effects)"
+    },
+    "point": {
+      "attempts": [
+        {
+          "file": "pixel_pose_point_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139696,
+          "retry": null,
+          "elapsed_s": 18.8,
+          "generation_id": "gen-1790466632-1yCupYKCOJbfTPWVdKP1",
+          "ts": "2026-09-26T23:50:50+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 1,
+            "text_or_logo": false,
+            "notes": "Character and outfit are consistent; pose correctly shows a smug grin and pointing gesture.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001495,
+            "file": "pixel_pose_point_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_point_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139204,
+            "retry": null,
+            "elapsed_s": 18.5,
+            "generation_id": "gen-1790466656-6HqKFc2bYpni55zzNXSI",
+            "ts": "2026-09-26T23:51:14+00:00",
+            "metrics": {
+              "mask_pct": 0.757,
+              "strong_pct": 0.378,
+              "outside_pct": 0.704,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": false,
+              "front_facing": true,
+              "notes": "Pixel art man in suit pointing at viewer in a hockey arena setting.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.00086,
+              "file": "pixel_pose_point_closed_1_locked.png"
+            }
+          }
+        ],
+        "chosen": 0,
+        "metrics": {
+          "mask_pct": 0.757,
+          "strong_pct": 0.378,
+          "outside_pct": 0.704,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "notes": "Pixel art man in suit pointing at viewer in a hockey arena setting.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.00086,
+          "file": "pixel_pose_point_closed_1_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/point.png",
+        "closed": "poses/point_closed.png"
+      },
+      "desc": "the chirp pose: one arm extended straight toward the viewer, index finger pointing right at the camera (foreshortened), a smug grin with the mouth slightly open; the other hand relaxed at the side"
+    },
+    "shock": {
+      "attempts": [
+        {
+          "file": "pixel_pose_shock_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139848,
+          "retry": null,
+          "elapsed_s": 20.5,
+          "generation_id": "gen-1790466632-Nsm8rVtw7nGbk3TBmI1Y",
+          "ts": "2026-09-26T23:50:52+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "notes": "Character consistency is excellent; pose and expression perfectly match the requested shock animation frame.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001495,
+            "file": "pixel_pose_shock_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/shock.png"
+      },
+      "desc": "an \"OH NO!\" reaction: both hands clutching the top and sides of the head in disbelief, eyes wide, mouth wide open in shock - the hands must not cover the eyes or the mouth"
+    },
+    "celebrate": {
+      "attempts": [
+        {
+          "file": "pixel_pose_celebrate_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139406,
+          "retry": null,
+          "elapsed_s": 18.7,
+          "generation_id": "gen-1790466632-V7Pn5GuUgpmbZkcErz7x",
+          "ts": "2026-09-26T23:50:50+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "notes": "Character and outfit are consistent; pose captures the arms up and orange lining flash.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.00152,
+            "file": "pixel_pose_celebrate_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/celebrate.png"
+      },
+      "desc": "the single most iconic PEAK MOMENT of their signature celebration - one frozen frame, not the whole sequence - from: \"Jacket flies open, orange lining flashing. Both arms shoot up in a V. He mouths three, two, one, then hammers the podium and grins at the whole table\". Big, excited face (mouth wide open)"
+    }
+  },
+  "poses_cost": 0.8439,
+  "poses_flags": [
+    "pose hype closed: vision check says the mouth is still open"
+  ],
+  "poses_celebration": "Jacket flies open, orange lining flashing. Both arms shoot up in a V. He mouths three, two, one, then hammers the podium and grins at the whole table."
+}

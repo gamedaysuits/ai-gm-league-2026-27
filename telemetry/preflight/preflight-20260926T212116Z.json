@@ -1,0 +1,53 @@
+{
+  "effort": "medium",
+  "results": [
+    {
+      "team": "fugu",
+      "model": "sakana/fugu-ultra-v2",
+      "providers": [
+        "sakana"
+      ],
+      "outcome": "pass",
+      "detail": "McDavid led MacKinnon 138-127 in 2025-26 (and 1.68 vs 1.59 P/GP) while playing a full 82 games. Best player available, entering his age-30 season with no declin",
+      "turns": [
+        {
+          "served_model": "sakana/fugu-ultra-v2",
+          "provider": "Sakana AI",
+          "finish_reason": "tool_calls",
+          "latency_s": 11.711,
+          "attempts": 1,
+          "prompt_tokens": 2402,
+          "completion_tokens": 133,
+          "reasoning_tokens": 0,
+          "cached_tokens": 0,
+          "cost_usd": 0.016,
+          "tool_calls": [
+            "lookup_player",
+            "lookup_player"
+          ],
+          "has_reasoning_details": false,
+          "content_chars": 67
+        },
+        {
+          "served_model": "sakana/fugu-ultra-v2",
+          "provider": "Sakana AI",
+          "finish_reason": "tool_calls",
+          "latency_s": 11.309,
+          "attempts": 1,
+          "prompt_tokens": 2745,
+          "completion_tokens": 783,
+          "reasoning_tokens": 396,
+          "cached_tokens": 0,
+          "cost_usd": 0.037215,
+          "tool_calls": [
+            "make_pick"
+          ],
+          "has_reasoning_details": true,
+          "content_chars": 405
+        }
+      ],
+      "wall_s": 23.02,
+      "cost_usd": 0.053215
+    }
+  ]
+}

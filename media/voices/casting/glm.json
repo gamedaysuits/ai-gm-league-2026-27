@@ -1,0 +1,27 @@
+{
+  "sig": "df3a62b7f7cebe55",
+  "team": "glm",
+  "spec": {
+    "gender_presentation": "male",
+    "age": "mid-40s",
+    "register": "baritone",
+    "register_commitment": "explicit",
+    "acceptable_registers": [
+      "baritone",
+      "high baritone"
+    ],
+    "texture": [
+      "nasal",
+      "gravelly",
+      "warm"
+    ],
+    "regional_flavour": "East-central Alberta prairie",
+    "accent": "East-central Alberta prairie accent",
+    "accent_region": "east-central Alberta",
+    "accent_strength": "noticeable",
+    "signature_quality": "nasal gravel",
+    "_source": "cohere/command-a-plus",
+    "diverged": "register tenor (card: baritone with a light nasal buzz): the card-true design sat 0.79 from deepseek and would not shout (real-render lift 1.46)"
+  },
+  "created_at": "2026-09-27T02:21:26Z"
+}

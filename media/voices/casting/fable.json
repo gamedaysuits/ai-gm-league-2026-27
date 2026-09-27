@@ -1,0 +1,26 @@
+{
+  "sig": "e6b3f2d6f8ccb295",
+  "team": "fable",
+  "spec": {
+    "gender_presentation": "male",
+    "age": "mid-forties",
+    "register": "baritone",
+    "register_commitment": "explicit",
+    "acceptable_registers": [
+      "baritone",
+      "high baritone"
+    ],
+    "texture": [
+      "dusty",
+      "gravelly",
+      "velvety"
+    ],
+    "regional_flavour": "Smoky Lake, northeast Alberta farm-country (Ukrainian-prairie) accent",
+    "accent": "Smoky Lake, northeast Alberta farm-country (Ukrainian-prairie) accent",
+    "accent_region": "northeast Alberta",
+    "accent_strength": "noticeable",
+    "signature_quality": "warm dusty gravelly that melts into velvety",
+    "_source": "cohere/command-a-plus"
+  },
+  "created_at": "2026-09-27T02:21:13Z"
+}

@@ -1,0 +1,615 @@
+{
+  "started_at": "2026-09-27T02:52:56+00:00",
+  "persona_sig": "087e329c16a0",
+  "personas_run": "party-2",
+  "team": "glm",
+  "style": "pixel",
+  "face_type": "human",
+  "generated_at": "2026-09-27T02:54:21+00:00",
+  "gm_name": "Marty \"Booksie\" Lekvold",
+  "franchise_name": "Killam Harvesters",
+  "franchise_abbrev": "KLV",
+  "display": "GLM-5.3",
+  "llm": "z-ai/glm-5.3",
+  "primary_color": "#1C2F4A",
+  "secondary_color": "#F2B705",
+  "fabric": {
+    "id": "cavani-1100-21132-2",
+    "color_name": "navy",
+    "pattern_desc": "pinstripe",
+    "color_hex": "#202234",
+    "summary": "Dark navy cloth with clean white pinstripe"
+  },
+  "swatch_reference": true,
+  "base_prompt": "Create a 16-bit era pixel-art character portrait, like a portrait from a cut-scene in an early-1990s console hockey video game, of a general manager in a fictional hockey league. Character: Lean, farm-built man in his mid-40s, wind-chapped cheeks and permanent five o'clock stubble gone half grey. Wheat-blond hair with a stubborn cowlick, wire-rim reading glasses shoved up on his forehead, and a stubby pencil tucked behind one ear beside an arena-volunteer lanyard. Wears a crooked grin like he's already done the math on your roster. Patches of a thin playoff beard he refuses to shave until the Harvesters lose. This is an original, fictional character: not based on and not resembling any real person, celebrity, athlete or public figure. Face: front-facing, eyes open looking straight at the viewer, mouth fully closed (lips together, no teeth showing), relaxed natural expression. In THIS frame the mouth stays closed even if the description mentions an open mouth, a grin with teeth, fangs or a missing tooth - those show up in the talking frames made from this one. Suit - render it exactly: a two-piece suit in Dark navy cloth with clean white pinstripe - base colour navy (#202234), pattern: pinstripe. Jacket: six-button double-breasted jacket (6x2: two columns of three buttons), fastened, with wide peak lapels and jetted hip pockets (clean slits, no flaps); a single breast pocket on the chest. Dress shirt: Crisp white, cutaway collar. Tie: Canola-gold, skinny repp stripe tie, neatly knotted. Pocket square in the breast pocket: Wheat-stalk gold fold. Framing: waist-up portrait, body and head square to the camera (straight-on front view), head level and not tilted, centered horizontally, shoulders fully in frame, with comfortable empty headroom above the head (the top of the head, ears, tufts or antenna sits about 10-15% of the image height below the top edge). Square 1:1 composition. Background: a cozy wood-panelled basement rec room at a hockey draft party - blocky string lights, a worn couch and a glass-door drinks fridge with no labels or writing, in the franchise colours: mostly dark navy (#1C2F4A) with mustard (#F2B705) accent lights and trim. Keep it simple and a little lower in contrast than the character, and add a soft mustard rim light on the shoulders and head so the suit's silhouette separates clearly from the background. Pixel-art rules: crisp, hard-edged square pixels on one consistent grid - it should look like a roughly 192x192-pixel sprite scaled up with nearest-neighbour. Limited palette of about 32-48 colours, flat colour clusters, dark outlines, simple 2-3 step shading. No anti-aliasing, no blur, no smooth gradients, no painterly texture. Strictly no text, letters, numbers, logos, emblems, crests, team marks, jerseys, brand names, signage, advertising, UI elements, borders, frames or watermarks anywhere in the image. The attached photo is only a close-up reference of the exact suit cloth: match its colour and weave or pattern for the jacket, trousers and waistcoat. Do not show the swatch itself anywhere.",
+  "attempts": {
+    "base": [
+      {
+        "file": "pixel_base_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.141668,
+        "retry": null,
+        "elapsed_s": 19.6,
+        "generation_id": "gen-1790477577-oK0n58lrRx4G3AIXzNZh",
+        "ts": "2026-09-27T02:53:16+00:00",
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": true,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Character has a closed mouth, facing forward. ID badge contains abstract text/logo elements.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000919,
+          "file": "pixel_base_1.png"
+        }
+      },
+      {
+        "file": "pixel_base_2.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.141526,
+        "retry": "text",
+        "elapsed_s": 18.6,
+        "generation_id": "gen-1790477599-zuPm2WMq8zIowR8pATHh",
+        "ts": "2026-09-27T02:53:37+00:00",
+        "regen": true,
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": true,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Mouth is closed; 'BEER' text visible on the refrigerator in the background.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000856,
+          "file": "pixel_base_2.png"
+        }
+      }
+    ],
+    "mid": [
+      {
+        "file": "pixel_mid_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139364,
+        "retry": null,
+        "elapsed_s": 19.0,
+        "generation_id": "gen-1790477621-1KhEzNw611Nv9CAGamHg",
+        "ts": "2026-09-27T02:53:59+00:00"
+      }
+    ],
+    "wide": [
+      {
+        "file": "pixel_wide_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139184,
+        "retry": null,
+        "elapsed_s": 19.0,
+        "generation_id": "gen-1790477621-VzZTlals62gnYvCLRHI7",
+        "ts": "2026-09-27T02:53:59+00:00"
+      }
+    ],
+    "blink": [
+      {
+        "file": "pixel_blink_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139506,
+        "retry": null,
+        "elapsed_s": 18.1,
+        "generation_id": "gen-1790477621-RdiRioCaDngY8GHi5vrs",
+        "ts": "2026-09-27T02:53:58+00:00"
+      }
+    ]
+  },
+  "chosen": {
+    "base": 1,
+    "mid": 0,
+    "wide": 0,
+    "blink": 0
+  },
+  "cost_usd": 0.7056,
+  "metrics": {
+    "mid": {
+      "mask_pct": 2.289,
+      "strong_pct": 0.339,
+      "outside_pct": 0.859,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "wide": {
+      "mask_pct": 2.289,
+      "strong_pct": 1.432,
+      "outside_pct": 0.842,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "blink": {
+      "mask_pct": 0.429,
+      "strong_pct": 0.212,
+      "outside_pct": 0.876,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    }
+  },
+  "swapped_mid_wide": false,
+  "info": {
+    "grid": {
+      "px": 5.12,
+      "py": 5.12,
+      "ox": 0.0,
+      "oy": 0.0,
+      "score": 3.53,
+      "prominence": 33.5,
+      "ok": true
+    },
+    "logical_px": 192,
+    "scale": 4,
+    "fit": {
+      "from": 200,
+      "to": 192
+    },
+    "palette_colours": 48,
+    "eye_box": [
+      79,
+      48,
+      113,
+      53
+    ],
+    "mouth_box": [
+      80,
+      68,
+      112,
+      100
+    ]
+  },
+  "flags": [
+    "base: text/logo detected (vision check) - review before publishing"
+  ],
+  "base_check": {
+    "mouth_closed": true,
+    "mouth_open_amount": 0,
+    "eyes_open": true,
+    "text_or_logo": true,
+    "front_facing": true,
+    "weapon_visible": false,
+    "notes": "Mouth is closed; 'BEER' text visible on the refrigerator in the background.",
+    "model": "google/gemini-3-flash-preview",
+    "cost": 0.000856,
+    "file": "pixel_base_2.png"
+  },
+  "frame_checks": {
+    "mid": {
+      "mouth_closed": false,
+      "mouth_open_amount": 1,
+      "eyes_open": true,
+      "text_or_logo": true,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Pixel art man in pinstripe suit with mouth slightly open showing teeth.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000847,
+      "file": "mid.png"
+    },
+    "wide": {
+      "mouth_closed": false,
+      "mouth_open_amount": 2,
+      "eyes_open": true,
+      "text_or_logo": true,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Character has mouth wide open; 'BEER' text visible on refrigerator in background.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000853,
+      "file": "wide.png"
+    },
+    "blink": {
+      "mouth_closed": true,
+      "mouth_open_amount": 0,
+      "eyes_open": false,
+      "text_or_logo": true,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Mouth is closed, eyes are shut, and 'BEER' text is visible on the fridge.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000865,
+      "file": "blink.png"
+    }
+  },
+  "frame_checks_for": "{\"base\": \"pixel_base_2.png\", \"blink\": \"pixel_blink_1.png\", \"mid\": \"pixel_mid_1.png\", \"wide\": \"pixel_wide_1.png\"}",
+  "files": {
+    "base": "base.png",
+    "mid": "mid.png",
+    "wide": "wide.png",
+    "blink": "blink.png",
+    "mid_blink": "mid_blink.png",
+    "wide_blink": "wide_blink.png"
+  },
+  "image_model": "google/gemini-3-pro-image",
+  "poses": {
+    "hype": {
+      "attempts": [
+        {
+          "file": "pixel_pose_hype_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.13951,
+          "retry": null,
+          "elapsed_s": 21.2,
+          "generation_id": "gen-1790477662-OBZwQqBXT9b65cOvph0P",
+          "ts": "2026-09-27T02:54:43+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character and outfit are consistent; 'BEER' text is visible on the fridge in background.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001603,
+            "file": "pixel_pose_hype_1.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        },
+        {
+          "file": "pixel_pose_hype_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.13935,
+          "retry": "strict",
+          "elapsed_s": 19.9,
+          "generation_id": "gen-1790477687-SZK9tq3qqevd5umnQK3H",
+          "ts": "2026-09-27T02:55:06+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character and outfit are consistent; background contains blurred text on the beer fridge.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001591,
+            "file": "pixel_pose_hype_2.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_hype_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139384,
+            "retry": null,
+            "elapsed_s": 18.3,
+            "generation_id": "gen-1790477711-OS8qHlZ6TxagBFH0JjzT",
+            "ts": "2026-09-27T02:55:28+00:00",
+            "metrics": {
+              "mask_pct": 2.485,
+              "strong_pct": 1.666,
+              "outside_pct": 1.112,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": true,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Mouth is closed; 'B' visible on fridge; character has fists raised in celebration.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000859,
+              "file": "pixel_pose_hype_closed_1_locked.png"
+            }
+          }
+        ],
+        "chosen": 0,
+        "metrics": {
+          "mask_pct": 2.485,
+          "strong_pct": 1.666,
+          "outside_pct": 1.112,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": true,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Mouth is closed; 'B' visible on fridge; character has fists raised in celebration.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000859,
+          "file": "pixel_pose_hype_closed_1_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/hype.png",
+        "closed": "poses/hype_closed.png"
+      },
+      "desc": "a huge \"LET'S GO!\" celebration: both arms thrown up high with fists, mouth wide open yelling, eyes wide open with excitement (normal eyes - no glow, no fire effects)"
+    },
+    "point": {
+      "attempts": [
+        {
+          "file": "pixel_pose_point_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.13942,
+          "retry": null,
+          "elapsed_s": 18.2,
+          "generation_id": "gen-1790477663-NUpsaFQfJxHZ5XjUmQTZ",
+          "ts": "2026-09-27T02:54:40+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character matches reference perfectly. 'BEER' text is visible on the fridge in background.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001599,
+            "file": "pixel_pose_point_1.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        },
+        {
+          "file": "pixel_pose_point_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139806,
+          "retry": "strict",
+          "elapsed_s": 18.4,
+          "generation_id": "gen-1790477687-cr0RzW9UypMHRnVIbcbJ",
+          "ts": "2026-09-27T02:55:04+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 1,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character and outfit are consistent; 'BEER' text is present in the background.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001596,
+            "file": "pixel_pose_point_2.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_point_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139228,
+            "retry": null,
+            "elapsed_s": 18.1,
+            "generation_id": "gen-1790477711-tp9LAoGCfO9QZLhrMcQt",
+            "ts": "2026-09-27T02:55:28+00:00",
+            "metrics": {
+              "mask_pct": 0.789,
+              "strong_pct": 0.45,
+              "outside_pct": 1.326,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": true,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Pixel art man in pinstripe suit pointing at viewer. 'BEER' text on fridge.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000925,
+              "file": "pixel_pose_point_closed_1_locked.png"
+            }
+          }
+        ],
+        "chosen": 0,
+        "metrics": {
+          "mask_pct": 0.789,
+          "strong_pct": 0.45,
+          "outside_pct": 1.326,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": true,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Pixel art man in pinstripe suit pointing at viewer. 'BEER' text on fridge.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000925,
+          "file": "pixel_pose_point_closed_1_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/point.png",
+        "closed": "poses/point_closed.png"
+      },
+      "desc": "the chirp pose: one arm extended straight toward the viewer, index finger pointing right at the camera (foreshortened), a smug grin with the mouth slightly open; the other hand relaxed at the side"
+    },
+    "shock": {
+      "attempts": [
+        {
+          "file": "pixel_pose_shock_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.13884,
+          "retry": null,
+          "elapsed_s": 18.3,
+          "generation_id": "gen-1790477663-DHhp3zIBvxko2SBsq38k",
+          "ts": "2026-09-27T02:54:40+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character and style are consistent; 'BEER' text is visible on the fridge.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001596,
+            "file": "pixel_pose_shock_1.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        },
+        {
+          "file": "pixel_pose_shock_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139642,
+          "retry": "strict",
+          "elapsed_s": 19.9,
+          "generation_id": "gen-1790477687-MUbjvcfa2nu242ER5iUA",
+          "ts": "2026-09-27T02:55:06+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character and outfit are consistent; 'BEER' text is present in the background fridge.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001599,
+            "file": "pixel_pose_shock_2.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/shock.png"
+      },
+      "desc": "an \"OH NO!\" reaction: both hands clutching the top and sides of the head in disbelief, eyes wide, mouth wide open in shock - the hands must not cover the eyes or the mouth"
+    },
+    "celebrate": {
+      "attempts": [
+        {
+          "file": "pixel_pose_celebrate_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139058,
+          "retry": null,
+          "elapsed_s": 19.9,
+          "generation_id": "gen-1790477662-ceSxubCrA0uerfzzN9hs",
+          "ts": "2026-09-27T02:54:41+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Matches reference perfectly; 'BEER' text on fridge is present in both images.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001625,
+            "file": "pixel_pose_celebrate_1.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        },
+        {
+          "file": "pixel_pose_celebrate_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139514,
+          "retry": "strict",
+          "elapsed_s": 18.2,
+          "generation_id": "gen-1790477687-yfGgIyYlOSHpwkyawYLk",
+          "ts": "2026-09-27T02:55:04+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character matches reference; pose captures the pencil-blowing moment. 'BEER' text present in background.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001637,
+            "file": "pixel_pose_celebrate_2.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/celebrate.png"
+      },
+      "desc": "the single most iconic PEAK MOMENT of their signature celebration - one frozen frame, not the whole sequence - from: \"Snaps an invisible ledger open, scribbles the pick in the air with a stubby pencil, blows the graphite off like a gunslinger, then snaps the book shut and points the pencil around the whole room\". Big, excited face (mouth wide open)"
+    }
+  },
+  "poses_cost": 1.4084,
+  "poses_flags": [
+    "pose hype: review says text_or_logo",
+    "pose point: review says text_or_logo",
+    "pose shock: review says text_or_logo",
+    "pose celebrate: review says text_or_logo"
+  ],
+  "poses_discarded": [],
+  "poses_celebration": "Snaps an invisible ledger open, scribbles the pick in the air with a stubby pencil, blows the graphite off like a gunslinger, then snaps the book shut and points the pencil around the whole room."
+}

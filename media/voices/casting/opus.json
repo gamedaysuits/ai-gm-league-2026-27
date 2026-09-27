@@ -1,0 +1,26 @@
+{
+  "sig": "337e49e5c7ce391e",
+  "team": "opus",
+  "spec": {
+    "gender_presentation": "male",
+    "age": "mid-fifties",
+    "register": "baritone",
+    "register_commitment": "explicit",
+    "acceptable_registers": [
+      "baritone",
+      "bass-baritone"
+    ],
+    "texture": [
+      "warm",
+      "gravelly",
+      "smooth"
+    ],
+    "regional_flavour": "Rural east-central Alberta prairie accent",
+    "accent": "Rural east-central Alberta prairie accent",
+    "accent_region": "east-central Alberta",
+    "accent_strength": "noticeable",
+    "signature_quality": "warm gravelly baritone",
+    "_source": "cohere/command-a-plus"
+  },
+  "created_at": "2026-09-27T02:21:32Z"
+}

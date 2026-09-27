@@ -1,0 +1,54 @@
+name: weekly-front-office
+# Monday: score through Sunday, take a fresh snapshot (rosters, injuries, season-to-date stats),
+# run the three sealed front-office rounds (lineups, waivers, trades), lock, and commit.
+on:
+  schedule:
+    - cron: "7 8 * * 1"   # Mondays 08:07 UTC, hours before the earliest Monday puck drop
+  workflow_dispatch:
+    inputs:
+      week_start:
+        description: "Monday of the week (YYYY-MM-DD); default this Monday ET"
+        required: false
+concurrency:
+  group: ledger
+  cancel-in-progress: false
+permissions:
+  contents: write
+  issues: write
+jobs:
+  week:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - name: Score through Sunday
+        run: uv run gmbench score --run live
+      - name: Weekly snapshot
+        id: snap
+        run: |
+          out=$(uv run python -m gmbench.data.snapshot --kind week --as-of "$(date -u +%F)")
+          echo "$out"
+          path=$(echo "$out" | sed -n 's/^saved \(.*\.json\) (.*/\1/p' | sed "s#^$GITHUB_WORKSPACE/##")
+          echo "path=$path" >> "$GITHUB_OUTPUT"
+      - name: Front office (R1 → R2 → R3 → lock)
+        run: uv run gmbench week --run live --snapshot "${{ steps.snap.outputs.path }}" ${{ inputs.week_start && format('--week-start {0}', inputs.week_start) || '' }}
+      - name: Verify ledger and export standings
+        run: |
+          uv run gmbench verify --run live
+          uv run gmbench score --run live --days 1
+      - name: Commit
+        run: |
+          git config user.name "gmbench-league"
+          git config user.email "gmbench@gamedaysuits.ca"
+          git add runs/live/ledger runs/live/exports runs/live/data data/snapshots
+          git diff --cached --quiet || git commit -m "week: front office $(date -u +%F)"
+          git push
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "Weekly front office failed $(date -u +%F)" --body "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

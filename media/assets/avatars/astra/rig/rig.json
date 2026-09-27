@@ -1,0 +1,201 @@
+{
+  "schema": "gds-rig/1",
+  "team": "astra",
+  "kind": "mock",
+  "generated_at": "2026-09-27T04:41:12+00:00",
+  "face_type": "robot",
+  "native": {
+    "w": 192,
+    "h": 192,
+    "scale": 4,
+    "out": 768
+  },
+  "background": "bg.png",
+  "body_alpha": "opaque",
+  "pointing": "screen-left",
+  "head": {
+    "box": [
+      48,
+      0,
+      144,
+      96
+    ],
+    "image": "head.png",
+    "face_mask": "face_mask.png",
+    "mouth_anchor": [
+      48,
+      66
+    ],
+    "mouth_box": [
+      31,
+      55,
+      65,
+      77
+    ],
+    "eye_line": 41,
+    "eyes_box": [
+      34,
+      38,
+      62,
+      44
+    ],
+    "eye_centres": [
+      [
+        41,
+        41
+      ],
+      [
+        55,
+        41
+      ]
+    ]
+  },
+  "visemes": {
+    "neutral": {
+      "rest": "mouth/neutral/rest.png",
+      "closed": "mouth/neutral/closed.png",
+      "smirk": "mouth/neutral/smirk.png",
+      "small_open": "mouth/neutral/small_open.png",
+      "medium_open": "mouth/neutral/medium_open.png",
+      "round": "mouth/neutral/round.png",
+      "teeth": "mouth/neutral/teeth.png",
+      "wide_open": "mouth/neutral/wide_open.png",
+      "laugh": "mouth/neutral/laugh.png"
+    }
+  },
+  "viseme_fallback": {
+    "round": "medium_open",
+    "teeth": "small_open",
+    "laugh": "wide_open",
+    "smirk": "rest",
+    "closed": "rest",
+    "small_open": "medium_open",
+    "medium_open": "wide_open"
+  },
+  "eyes": {
+    "open": "eyes/open.png",
+    "blink": "eyes/blink.png"
+  },
+  "eyes_fallback": {
+    "half": "blink",
+    "happy": "open",
+    "angry": "open",
+    "surprised": "open",
+    "skeptical": "open",
+    "look_left": "open",
+    "look_right": "open"
+  },
+  "gestures": {
+    "idle_breathe": {
+      "fps": 3,
+      "loop": true,
+      "hold": null,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/idle_breathe_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig"
+        }
+      ]
+    },
+    "fist_pump": {
+      "fps": 8,
+      "loop": false,
+      "hold": 0,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/fist_pump_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "baked"
+        }
+      ]
+    },
+    "point": {
+      "fps": 8,
+      "loop": false,
+      "hold": 0,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/point_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "baked"
+        }
+      ]
+    },
+    "shock": {
+      "fps": 8,
+      "loop": false,
+      "hold": 0,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/shock_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "baked"
+        }
+      ]
+    },
+    "celebrate": {
+      "fps": 8,
+      "loop": false,
+      "hold": 0,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/celebrate_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "baked"
+        }
+      ]
+    }
+  },
+  "gesture_fallback": {
+    "fist_pump": "point",
+    "thumbs_up": "point",
+    "open_arms": "shrug",
+    "drink_sip": "idle_breathe",
+    "talk_hands": "idle_breathe",
+    "laugh": "idle_breathe",
+    "shrug": "idle_breathe",
+    "shock": "idle_breathe",
+    "celebrate": "fist_pump"
+  },
+  "qa": {
+    "status": "mock",
+    "viseme_source": "old mid/wide/blink frames",
+    "flags": [
+      "mock rig: 3-state mouth only, poses have baked faces (no lip-sync during poses)"
+    ],
+    "cost_usd": 0.0,
+    "pixellab_generations": 0,
+    "head_identical": true,
+    "max_head_diff_px": 0,
+    "head_diff_frames": [],
+    "preview": "preview.gif",
+    "contact_sheet": "preview.png",
+    "gif_frames": 33
+  }
+}

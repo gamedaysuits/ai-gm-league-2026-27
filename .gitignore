@@ -1,0 +1,42 @@
+# secrets
+.env
+.env.*
+!.env.example
+private/
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+# node / media build output
+node_modules/
+media/cache/
+media/out/
+media/show/compositions/
+# os / editor
+.DS_Store
+.claude/settings.local.json
+
+# league runs: rehearsals stay local; only the live run is published
+runs/*
+!runs/live/
+runs/live/private/
+runs/live/transcripts/
+
+# large intermediate media (regenerable)
+media/assets/avatars/*/raw/
+media/voices/work/
+media/spikes/*/raw/
+site/dist/
+media/assets/avatars/_archive/
+media/assets/avatars/_avatar_iv_test/
+
+# regenerable media: raw generation sheets, QA previews, experiments
+media/assets/avatars/*/rig/raw/
+media/assets/avatars/*/rig/preview.gif
+media/spikes/
+media/voices/anchors/
+media/voices/energy_test/
+media/voices/logs/
+media/assets/avatars/costs.jsonl

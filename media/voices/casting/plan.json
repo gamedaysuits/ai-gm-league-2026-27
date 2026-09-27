@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-09-27T03:49:59Z",
+  "personas": "runs/party-2/exports/personas.json",
+  "plan": {
+    "gemini": {
+      "register": "bass-baritone",
+      "note": "set by --set-register (card: baritone)",
+      "spec": {
+        "gender_presentation": "male",
+        "age": "late 40s",
+        "register": "baritone",
+        "register_commitment": "explicit",
+        "acceptable_registers": [
+          "baritone",
+          "bass-baritone"
+        ],
+        "texture": [
+          "husky",
+          "smoky",
+          "raspy"
+        ],
+        "regional_flavour": "Drumheller, Alberta (Southern Alberta prairie) accent",
+        "accent": "Drumheller, Alberta (Southern Alberta prairie) accent",
+        "accent_region": "southern Alberta",
+        "accent_strength": "noticeable",
+        "signature_quality": "a smug, knowing half-smile in every line",
+        "_source": "cohere/command-a-plus",
+        "accent_plain": "rural Alberta (Canadian prairie) accent",
+        "diverged": "accent stated as 'rural Alberta (Canadian prairie)' without 'southern', and the accent sentence first even in the bass-baritone register: all six 'rural southern Alberta' designs of 2026-09-27 failed the listening accent check (scores 0.5-4.9); texture husky/smoky/raspy with a smug half-smile (card: gravelly, raspy, cocky): the gravelly accent-passing designs all sat 0.82-0.84 from deepseek, and the one distinct design failed the accent check on re-listening"
+      },
+      "accent_prompt": "rural Alberta (Canadian prairie) accent",
+      "hometown": "Drumheller, AB",
+      "prompt": "Male, late 40s. Deep, low-pitched bass-baritone speaking voice with a husky, smoky, raspy texture. Native Canadian English with a clear, natural rural Alberta (Canadian prairie) accent, never a caricature. A smug, knowing half-smile in every line. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+      "prompt_attempt2_if_accent_fails": "Male, late 40s. Deep, low-pitched bass-baritone speaking voice with a husky, smoky, raspy texture. Native Canadian English with a thick, natural rural Alberta (Canadian prairie) accent, never a caricature. A smug, knowing half-smile in every line. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+      "preview": "I'm Gord 'The Blueprint' Barnes. The math doesn't lie, boys. Outsmarting the room, one cell at a time. [shouting] THE BONECRUSHERS SELECT!"
+    }
+  }
+}

@@ -1,0 +1,457 @@
+{
+  "started_at": "2026-09-26T23:51:17+00:00",
+  "persona_sig": "90ae19952b2d",
+  "personas_run": "energy-1",
+  "team": "astra",
+  "style": "pixel",
+  "face_type": "robot",
+  "generated_at": "2026-09-26T23:52:03+00:00",
+  "gm_name": "Astra \"Big Switch\" Rivett",
+  "franchise_name": "Sudbury Overvolts",
+  "franchise_abbrev": "SOV",
+  "display": "GPT-6 Astra",
+  "llm": "openai/gpt-6-astra",
+  "primary_color": "#2450B8",
+  "secondary_color": "#E87924",
+  "fabric": {
+    "id": "cavani-1100-21106-3",
+    "color_name": "royal blue",
+    "pattern_desc": "hopsack texture",
+    "color_hex": "#1B234C",
+    "summary": "royal blue hopsack texture cloth"
+  },
+  "swatch_reference": true,
+  "base_prompt": "Create a 16-bit era pixel-art character portrait, like a portrait from a cut-scene in an early-1990s console hockey video game, of a general manager in a fictional hockey league. Character: A broad-shouldered humanoid robot with brushed copper skin and a fully expressive face. Thick, movable steel eyebrows frame bright amber eyes. Sculpted copper lips and an articulated jaw give the wide, clearly visible mouth a huge range, from crooked smirk to open roar; ivory tooth plates show when laughing. Swept-back cobalt metal fins form a jaunty pompadour. A small dent marks one cheek. Round silver cufflinks; no helmet, face covering, lettering or logos. This is an original, fictional character: not based on and not resembling any real person, celebrity, athlete or public figure. Face: front-facing, eyes open and lit, mouth fully closed (no gap). The mouth must be a clearly visible part that can open for talking animation (for example a hinged jaw plate or a mouth slot). In THIS frame the mouth stays closed even if the description mentions an open mouth, a grin with teeth, fangs or a missing tooth - those show up in the talking frames made from this one. Suit - render it exactly: a three-piece suit in royal blue hopsack texture cloth - base colour royal blue (#1B234C), pattern: hopsack texture. Jacket: classic six-button double-breasted jacket (6x2 with the top pair of buttons set wider apart), fastened, with wide peak lapels and flap hip pockets with a small ticket pocket above the right one; a single breast pocket on the chest. Waistcoat: matching cloth, five-button, no lapels, pointed hem - its top edge shows in the V of the buttoned double-breasted jacket. Dress shirt: White cotton, spread collar. Tie: Burnt-orange silk, solid tie, neatly knotted. Pocket square in the breast pocket: White linen with burnt-orange edge. Framing: waist-up portrait, body and head square to the camera (straight-on front view), head level and not tilted, centered horizontally, shoulders fully in frame, with comfortable empty headroom above the head (the top of the head, ears, tufts or antenna sits about 10-15% of the image height below the top edge). Square 1:1 composition. Background: a simple stylized hockey arena - plain rink boards with no advertising and a blocky pixel crowd, in the franchise colours: mostly cobalt blue (#2450B8) with orange (#E87924) accent lights and trim. Keep it simple and a little lower in contrast than the character, and add a soft orange rim light on the shoulders and head so the suit's silhouette separates clearly from the background. Pixel-art rules: crisp, hard-edged square pixels on one consistent grid - it should look like a roughly 192x192-pixel sprite scaled up with nearest-neighbour. Limited palette of about 32-48 colours, flat colour clusters, dark outlines, simple 2-3 step shading. No anti-aliasing, no blur, no smooth gradients, no painterly texture. Strictly no text, letters, numbers, logos, emblems, crests, team marks, jerseys, brand names, signage, advertising, UI elements, borders, frames or watermarks anywhere in the image. The attached photo is only a close-up reference of the exact suit cloth: match its colour and weave or pattern for the jacket, trousers and waistcoat. Do not show the swatch itself anywhere.",
+  "attempts": {
+    "base": [
+      {
+        "file": "pixel_base_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.143202,
+        "retry": null,
+        "elapsed_s": 20.5,
+        "generation_id": "gen-1790466677-nvCf1iysn8qaQpHK8rAg",
+        "ts": "2026-09-26T23:51:37+00:00",
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "notes": "Pixel art character in a suit, mouth is closed with a visible jawline seam.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000815,
+          "file": "pixel_base_1.png"
+        }
+      }
+    ],
+    "mid": [
+      {
+        "file": "pixel_mid_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.138722,
+        "retry": null,
+        "elapsed_s": 18.1,
+        "generation_id": "gen-1790466702-vLlRI06DL6WxU47D6eOY",
+        "ts": "2026-09-26T23:52:00+00:00"
+      }
+    ],
+    "wide": [
+      {
+        "file": "pixel_wide_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.13889,
+        "retry": null,
+        "elapsed_s": 18.5,
+        "generation_id": "gen-1790466702-V6lGotcNl0VxIJLSYTo9",
+        "ts": "2026-09-26T23:52:00+00:00"
+      }
+    ],
+    "blink": [
+      {
+        "file": "pixel_blink_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139312,
+        "retry": null,
+        "elapsed_s": 17.8,
+        "generation_id": "gen-1790466702-JbdK5MvTQ598kDW31PO3",
+        "ts": "2026-09-26T23:51:59+00:00"
+      }
+    ]
+  },
+  "chosen": {
+    "base": 0,
+    "mid": 0,
+    "wide": 0,
+    "blink": 0
+  },
+  "cost_usd": 0.5634,
+  "metrics": {
+    "mid": {
+      "mask_pct": 1.609,
+      "strong_pct": 0.803,
+      "outside_pct": 0.493,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "wide": {
+      "mask_pct": 1.609,
+      "strong_pct": 1.036,
+      "outside_pct": 0.513,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "blink": {
+      "mask_pct": 0.483,
+      "strong_pct": 0.274,
+      "outside_pct": 0.471,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    }
+  },
+  "swapped_mid_wide": false,
+  "info": {
+    "grid": {
+      "px": 5.12,
+      "py": 5.12,
+      "ox": 0.0,
+      "oy": 0.0,
+      "score": 3.23,
+      "prominence": 24.6,
+      "ok": true
+    },
+    "logical_px": 192,
+    "scale": 4,
+    "fit": {
+      "from": 200,
+      "to": 192
+    },
+    "palette_colours": 48,
+    "eye_box": [
+      82,
+      38,
+      110,
+      44
+    ],
+    "mouth_box": [
+      79,
+      55,
+      113,
+      77
+    ]
+  },
+  "flags": [],
+  "base_check": {
+    "mouth_closed": true,
+    "mouth_open_amount": 0,
+    "eyes_open": true,
+    "text_or_logo": false,
+    "front_facing": true,
+    "notes": "Pixel art character in a suit, mouth is closed with a visible jawline seam.",
+    "model": "google/gemini-3-flash-preview",
+    "cost": 0.000815,
+    "file": "pixel_base_1.png"
+  },
+  "frame_checks": {
+    "mid": {
+      "mouth_closed": false,
+      "mouth_open_amount": 1,
+      "eyes_open": true,
+      "text_or_logo": false,
+      "front_facing": true,
+      "notes": "Pixel art man in a blue suit with mouth slightly open showing teeth.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000806,
+      "file": "mid.png"
+    },
+    "wide": {
+      "mouth_closed": false,
+      "mouth_open_amount": 2,
+      "eyes_open": true,
+      "text_or_logo": false,
+      "front_facing": true,
+      "notes": "Pixel art character with mouth wide open, showing teeth and interior.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000803,
+      "file": "wide.png"
+    },
+    "blink": {
+      "mouth_closed": true,
+      "mouth_open_amount": 0,
+      "eyes_open": false,
+      "text_or_logo": false,
+      "front_facing": true,
+      "notes": "Character has eyes closed and a mechanical jaw plate that is fully shut.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000806,
+      "file": "blink.png"
+    }
+  },
+  "frame_checks_for": "{\"base\": \"pixel_base_1.png\", \"blink\": \"pixel_blink_1.png\", \"mid\": \"pixel_mid_1.png\", \"wide\": \"pixel_wide_1.png\"}",
+  "files": {
+    "base": "base.png",
+    "mid": "mid.png",
+    "wide": "wide.png",
+    "blink": "blink.png",
+    "mid_blink": "mid_blink.png",
+    "wide_blink": "wide_blink.png"
+  },
+  "image_model": "google/gemini-3-pro-image",
+  "poses": {
+    "hype": {
+      "attempts": [
+        {
+          "file": "pixel_pose_hype_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.140068,
+          "retry": null,
+          "elapsed_s": 19.0,
+          "generation_id": "gen-1790466724-MKU7KUiU43lfmUyG72t6",
+          "ts": "2026-09-26T23:52:22+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "notes": "Character consistency is excellent; pose and expression perfectly match the requested celebration criteria.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001493,
+            "file": "pixel_pose_hype_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_hype_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139054,
+            "retry": null,
+            "elapsed_s": 17.4,
+            "generation_id": "gen-1790466747-ut9ce8bm8PDk1Q6MDgV3",
+            "ts": "2026-09-26T23:52:44+00:00",
+            "metrics": {
+              "mask_pct": 1.728,
+              "strong_pct": 1.099,
+              "outside_pct": 0.695,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": false,
+              "mouth_open_amount": 1,
+              "eyes_open": true,
+              "text_or_logo": false,
+              "front_facing": true,
+              "notes": "Character has teeth visible through a slightly open mouth plate.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000797,
+              "file": "pixel_pose_hype_closed_1_locked.png"
+            }
+          }
+        ],
+        "chosen": 0,
+        "metrics": {
+          "mask_pct": 1.728,
+          "strong_pct": 1.099,
+          "outside_pct": 0.695,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": false,
+          "mouth_open_amount": 1,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "notes": "Character has teeth visible through a slightly open mouth plate.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000797,
+          "file": "pixel_pose_hype_closed_1_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/hype.png",
+        "closed": "poses/hype_closed.png"
+      },
+      "desc": "a huge \"LET'S GO!\" celebration: both metal arms thrown up high with metal fists, jaw plate wide open yelling, eyes wide open with excitement (normal eyes - no glow, no fire effects)"
+    },
+    "point": {
+      "attempts": [
+        {
+          "file": "pixel_pose_point_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.13902,
+          "retry": null,
+          "elapsed_s": 19.0,
+          "generation_id": "gen-1790466724-pgNMNfNIIiMC6mYfwDi6",
+          "ts": "2026-09-26T23:52:22+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 1,
+            "text_or_logo": false,
+            "notes": "Character consistency is excellent. Pose and expression perfectly match the requested smug, cocky grin.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001501,
+            "file": "pixel_pose_point_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_point_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139066,
+            "retry": null,
+            "elapsed_s": 17.9,
+            "generation_id": "gen-1790466747-PIKsiirnH4zZrLFcOU7o",
+            "ts": "2026-09-26T23:52:45+00:00",
+            "metrics": {
+              "mask_pct": 0.773,
+              "strong_pct": 0.418,
+              "outside_pct": 1.84,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": false,
+              "front_facing": true,
+              "notes": "Pixel art man in suit with robotic hand pointing forward.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000797,
+              "file": "pixel_pose_point_closed_1_locked.png"
+            }
+          }
+        ],
+        "chosen": 0,
+        "metrics": {
+          "mask_pct": 0.773,
+          "strong_pct": 0.418,
+          "outside_pct": 1.84,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "notes": "Pixel art man in suit with robotic hand pointing forward.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000797,
+          "file": "pixel_pose_point_closed_1_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/point.png",
+        "closed": "poses/point_closed.png"
+      },
+      "desc": "the chirp pose: one metal arm extended straight toward the viewer, metal index finger pointing right at the camera (foreshortened), a smug grin with the jaw plate slightly open; the other metal hand relaxed at the side"
+    },
+    "shock": {
+      "attempts": [
+        {
+          "file": "pixel_pose_shock_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139758,
+          "retry": null,
+          "elapsed_s": 20.2,
+          "generation_id": "gen-1790466724-4IA8KWbKTmX2ShTtAgkb",
+          "ts": "2026-09-26T23:52:23+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "notes": "Character and outfit are consistent; pose correctly depicts shock with hands on head.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001492,
+            "file": "pixel_pose_shock_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/shock.png"
+      },
+      "desc": "an \"OH NO!\" reaction: both metal hands clutching the top and sides of the head in disbelief, eyes wide, jaw plate wide open in shock - the metal hands must not cover the eyes or the mouth"
+    },
+    "celebrate": {
+      "attempts": [
+        {
+          "file": "pixel_pose_celebrate_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139194,
+          "retry": null,
+          "elapsed_s": 17.9,
+          "generation_id": "gen-1790466724-A5roaJIq24Bu5p5A8YME",
+          "ts": "2026-09-26T23:52:21+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "face_visible": true,
+            "pose_ok": false,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "notes": "Pose shows clenched fists at waist, not a deep lunge hauling a lever from overhead.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001527,
+            "file": "pixel_pose_celebrate_1.png"
+          },
+          "fails": [
+            "pose_ok"
+          ]
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/celebrate.png"
+      },
+      "desc": "the single most iconic PEAK MOMENT of their signature celebration - one frozen frame, not the whole sequence - from: \"The Switch Pull: plants both feet and hauls an imaginary arena power lever from overhead to the floor, finishing in a deep lunge with a huge, open-mouthed victory grin\". Big, excited face (jaw plate wide open)"
+    }
+  },
+  "poses_cost": 0.8438,
+  "poses_flags": [
+    "pose hype closed: vision check says the mouth is still open",
+    "pose celebrate: review says pose_ok"
+  ],
+  "poses_celebration": "The Switch Pull: plants both feet and hauls an imaginary arena power lever from overhead to the floor, finishing in a deep lunge with a huge, open-mouthed victory grin."
+}

@@ -1,0 +1,19 @@
+{
+  "_doc": "Zero-cost dev voices for the `say` engine (macOS). Production voices live in media/voices/voices.json (ElevenLabs eleven_v3, written by media/voices/design.py) and are merged in at load time.",
+  "say": {
+    "host": "Daniel",
+    "astra": "Samantha",
+    "sol": "Karen",
+    "fable": "Reed (English (US))",
+    "opus": "Eddy (English (US))",
+    "gemini": "Rocko (English (US))",
+    "grok": "Fred",
+    "kimi": "Moira",
+    "mimo": "Tessa",
+    "qwen": "Ralph",
+    "deepseek": "Albert",
+    "muse": "Rishi",
+    "glm": "Flo (English (US))",
+    "fugu": "Reed (English (UK))"
+  }
+}

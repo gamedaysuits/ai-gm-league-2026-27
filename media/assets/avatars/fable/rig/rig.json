@@ -1,0 +1,1842 @@
+{
+  "schema": "gds-rig/1",
+  "team": "fable",
+  "kind": "rig",
+  "generated_at": "2026-09-27T07:04:58+00:00",
+  "face_type": "human",
+  "native": {
+    "w": 192,
+    "h": 192,
+    "scale": 4,
+    "out": 768
+  },
+  "background": "bg.png",
+  "body_alpha": "opaque",
+  "pointing": "screen-left",
+  "head": {
+    "box": [
+      65,
+      7,
+      127,
+      91
+    ],
+    "image": "head.png",
+    "face_mask": "face_mask.png",
+    "mouth_anchor": [
+      32,
+      67
+    ],
+    "mouth_box": [
+      13,
+      55,
+      50,
+      79
+    ],
+    "eye_line": 38,
+    "eyes_box": [
+      14,
+      34,
+      48,
+      41
+    ],
+    "eye_centres": [
+      [
+        22,
+        38
+      ],
+      [
+        39,
+        38
+      ]
+    ],
+    "generation_crop": [
+      48,
+      2,
+      144,
+      98
+    ]
+  },
+  "visemes": {
+    "neutral": {
+      "rest": "mouth/neutral/rest.png",
+      "closed": "mouth/neutral/closed.png",
+      "small_open": "mouth/neutral/small_open.png",
+      "medium_open": "mouth/neutral/medium_open.png",
+      "wide_open": "mouth/neutral/wide_open.png",
+      "round": "mouth/neutral/round.png",
+      "teeth": "mouth/neutral/teeth.png",
+      "laugh": "mouth/neutral/laugh.png",
+      "smirk": "mouth/neutral/smirk.png"
+    },
+    "happy": {
+      "rest": "mouth/happy/rest.png",
+      "small_open": "mouth/happy/small_open.png",
+      "medium_open": "mouth/happy/medium_open.png",
+      "wide_open": "mouth/happy/wide_open.png",
+      "closed": "mouth/happy/rest.png",
+      "smirk": "mouth/neutral/smirk.png",
+      "round": "mouth/neutral/round.png",
+      "teeth": "mouth/neutral/teeth.png",
+      "laugh": "mouth/neutral/laugh.png"
+    },
+    "angry": {
+      "rest": "mouth/angry/rest.png",
+      "small_open": "mouth/angry/small_open.png",
+      "medium_open": "mouth/angry/medium_open.png",
+      "wide_open": "mouth/angry/wide_open.png",
+      "closed": "mouth/angry/rest.png",
+      "smirk": "mouth/angry/rest.png",
+      "round": "mouth/neutral/round.png",
+      "teeth": "mouth/neutral/teeth.png",
+      "laugh": "mouth/angry/wide_open.png"
+    }
+  },
+  "viseme_fallback": {
+    "round": "medium_open",
+    "teeth": "small_open",
+    "laugh": "wide_open",
+    "smirk": "rest",
+    "closed": "rest",
+    "small_open": "medium_open",
+    "medium_open": "wide_open"
+  },
+  "eyes": {
+    "open": "eyes/open.png",
+    "blink": "eyes/blink.png",
+    "half": "eyes/half.png",
+    "happy": "eyes/happy.png",
+    "angry": "eyes/angry.png",
+    "surprised": "eyes/surprised.png",
+    "skeptical": "eyes/skeptical.png",
+    "look_left": "eyes/look_left.png",
+    "look_right": "eyes/look_right.png"
+  },
+  "eyes_fallback": {
+    "half": "blink",
+    "happy": "open",
+    "angry": "open",
+    "surprised": "open",
+    "skeptical": "open",
+    "look_left": "open",
+    "look_right": "open"
+  },
+  "gestures": {
+    "idle_breathe": {
+      "fps": 1.2,
+      "loop": true,
+      "hold": null,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/idle_breathe_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/idle_breathe_1.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        }
+      ]
+    },
+    "talk_hands": {
+      "fps": 5,
+      "loop": true,
+      "hold": null,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/talk_hands_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/talk_hands_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/talk_hands_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/talk_hands_2_dn.png",
+          "head_offset": [
+            0,
+            1
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/talk_hands_0_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/talk_hands_3.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        }
+      ]
+    },
+    "point": {
+      "fps": 9,
+      "loop": false,
+      "hold": 1,
+      "exit": "reverse",
+      "frames": [
+        {
+          "file": "body/point_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/point_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/point_1_occ.png",
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/point_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": "body/point_1_up_occ.png",
+          "face": "rig",
+          "hand_over_face": false
+        }
+      ],
+      "phases": {
+        "in": [
+          0,
+          1
+        ],
+        "hold": [
+          1,
+          2
+        ],
+        "out": [
+          0
+        ]
+      },
+      "hold_fps": 3
+    },
+    "fist_pump": {
+      "fps": 10,
+      "loop": false,
+      "hold": 1,
+      "exit": "reverse",
+      "frames": [
+        {
+          "file": "body/fist_pump_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/fist_pump_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/fist_pump_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        }
+      ],
+      "phases": {
+        "in": [
+          0,
+          1
+        ],
+        "hold": [
+          1,
+          2
+        ],
+        "out": [
+          0
+        ]
+      },
+      "hold_fps": 3
+    },
+    "shrug": {
+      "fps": 8,
+      "loop": false,
+      "hold": 1,
+      "exit": "reverse",
+      "frames": [
+        {
+          "file": "body/shrug_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/shrug_0_occ.png",
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/shrug_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/shrug_1_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        },
+        {
+          "file": "body/shrug_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": "body/shrug_1_up_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        }
+      ],
+      "phases": {
+        "in": [
+          0,
+          1
+        ],
+        "hold": [
+          1,
+          2
+        ],
+        "out": [
+          0
+        ]
+      },
+      "hold_fps": 3
+    },
+    "laugh": {
+      "fps": 9,
+      "loop": true,
+      "hold": null,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/laugh_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/laugh_0_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/laugh_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/laugh_1_occ.png",
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/laugh_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": "body/laugh_1_up_occ.png",
+          "face": "rig",
+          "hand_over_face": false
+        }
+      ]
+    },
+    "thumbs_up": {
+      "fps": 8,
+      "loop": false,
+      "hold": 1,
+      "exit": "reverse",
+      "frames": [
+        {
+          "file": "body/thumbs_up_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/thumbs_up_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/thumbs_up_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        }
+      ],
+      "phases": {
+        "in": [
+          0,
+          1
+        ],
+        "hold": [
+          1,
+          2
+        ],
+        "out": [
+          0
+        ]
+      },
+      "hold_fps": 3
+    },
+    "open_arms": {
+      "fps": 8,
+      "loop": false,
+      "hold": 1,
+      "exit": "reverse",
+      "frames": [
+        {
+          "file": "body/open_arms_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/open_arms_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/open_arms_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        }
+      ],
+      "phases": {
+        "in": [
+          0,
+          1
+        ],
+        "hold": [
+          1,
+          2
+        ],
+        "out": [
+          0
+        ]
+      },
+      "hold_fps": 3
+    },
+    "drink_sip": {
+      "fps": 5,
+      "loop": false,
+      "hold": 1,
+      "exit": "reverse",
+      "frames": [
+        {
+          "file": "body/drink_sip_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/drink_sip_0_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        },
+        {
+          "file": "body/drink_sip_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/drink_sip_1_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        },
+        {
+          "file": "body/drink_sip_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": "body/drink_sip_1_up_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        }
+      ],
+      "phases": {
+        "in": [
+          0,
+          1
+        ],
+        "hold": [
+          1,
+          2
+        ],
+        "out": [
+          0
+        ]
+      },
+      "hold_fps": 3
+    },
+    "facepalm": {
+      "fps": 8,
+      "loop": false,
+      "hold": 1,
+      "exit": "reverse",
+      "frames": [
+        {
+          "file": "body/facepalm_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/facepalm_0_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        },
+        {
+          "file": "body/facepalm_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/facepalm_1_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        },
+        {
+          "file": "body/facepalm_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": "body/facepalm_1_up_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        }
+      ],
+      "phases": {
+        "in": [
+          0,
+          1
+        ],
+        "hold": [
+          1,
+          2
+        ],
+        "out": [
+          0
+        ]
+      },
+      "hold_fps": 3
+    },
+    "react_shock": {
+      "fps": 12,
+      "loop": false,
+      "hold": 1,
+      "exit": "reverse",
+      "frames": [
+        {
+          "file": "body/react_shock_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/react_shock_0_occ.png",
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/react_shock_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/react_shock_1_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        },
+        {
+          "file": "body/react_shock_1_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": "body/react_shock_1_up_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        }
+      ],
+      "phases": {
+        "in": [
+          0,
+          1
+        ],
+        "hold": [
+          1,
+          2
+        ],
+        "out": [
+          0
+        ]
+      },
+      "hold_fps": 3
+    },
+    "react_happy": {
+      "fps": 7,
+      "loop": true,
+      "hold": null,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/clap_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/clap_0_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        },
+        {
+          "file": "body/clap_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/clap_1_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        },
+        {
+          "file": "body/clap_0_up.png",
+          "head_offset": [
+            0,
+            -1
+          ],
+          "occluder": "body/clap_0_up_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        },
+        {
+          "file": "body/clap_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": "body/clap_1_occ.png",
+          "face": "rig",
+          "hand_over_face": true
+        }
+      ]
+    }
+  },
+  "gesture_fallback": {
+    "fist_pump": "point",
+    "thumbs_up": "point",
+    "open_arms": "shrug",
+    "drink_sip": "idle_breathe",
+    "talk_hands": "idle_breathe",
+    "laugh": "idle_breathe",
+    "shrug": "idle_breathe",
+    "facepalm": "shrug",
+    "react_shock": "shrug",
+    "react_happy": "laugh",
+    "shock": "react_shock",
+    "celebrate": "react_happy"
+  },
+  "transitions": {
+    "enter_from_base": {
+      "to": "talk_hands",
+      "fps": 12,
+      "loop": false,
+      "hold": null,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/enter_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/enter_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/enter_2.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/enter_3.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        }
+      ]
+    },
+    "exit_to_base": {
+      "from": "talk_hands",
+      "fps": 12,
+      "loop": false,
+      "hold": null,
+      "exit": "cut",
+      "frames": [
+        {
+          "file": "body/enter_3.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/enter_2.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/enter_1.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        },
+        {
+          "file": "body/enter_0.png",
+          "head_offset": [
+            0,
+            0
+          ],
+          "occluder": null,
+          "face": "rig",
+          "hand_over_face": false
+        }
+      ]
+    }
+  },
+  "qa": {
+    "status": "ok",
+    "viseme_source": "google/gemini-3-pro-image 2x2 face sheets, zone-locked",
+    "flags": [],
+    "glance_candidates": [
+      {
+        "file": "face_eyes_b_1.png",
+        "cell": "look_left",
+        "iris": [
+          0.77,
+          0.45
+        ],
+        "idir": 1
+      },
+      {
+        "file": "face_eyes_b_1.png",
+        "cell": "look_left (mirrored)",
+        "iris": [
+          -0.62,
+          -1.17
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_b_1.png",
+        "cell": "look_right",
+        "iris": [
+          0.84,
+          0.5
+        ],
+        "idir": 1
+      },
+      {
+        "file": "face_eyes_b_1.png",
+        "cell": "look_right (mirrored)",
+        "iris": [
+          -0.69,
+          -1.25
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_glance_1.png",
+        "cell": "look_left",
+        "iris": [
+          -0.48,
+          -1.11
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_glance_1.png",
+        "cell": "look_left (mirrored)",
+        "iris": [
+          0.97,
+          1.19
+        ],
+        "idir": 1
+      },
+      {
+        "file": "face_eyes_glance_1.png",
+        "cell": "look_left#2",
+        "iris": [
+          -0.31,
+          -1.11
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_glance_1.png",
+        "cell": "look_left#2 (mirrored)",
+        "iris": [
+          1.03,
+          1.19
+        ],
+        "idir": 1
+      },
+      {
+        "file": "face_eyes_glance_1.png",
+        "cell": "look_right",
+        "iris": [
+          0.55,
+          0.58
+        ],
+        "idir": 1
+      },
+      {
+        "file": "face_eyes_glance_1.png",
+        "cell": "look_right (mirrored)",
+        "iris": [
+          -0.47,
+          -1.25
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_glance_1.png",
+        "cell": "look_right#2",
+        "iris": [
+          0.62,
+          0.52
+        ],
+        "idir": 1
+      },
+      {
+        "file": "face_eyes_glance_1.png",
+        "cell": "look_right#2 (mirrored)",
+        "iris": [
+          -0.49,
+          -1.1
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_glance_2.png",
+        "cell": "look_left",
+        "iris": [
+          -0.69,
+          -0.92
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_glance_2.png",
+        "cell": "look_left (mirrored)",
+        "iris": [
+          0.65,
+          0.86
+        ],
+        "idir": 1
+      },
+      {
+        "file": "face_eyes_glance_2.png",
+        "cell": "look_left#2",
+        "iris": [
+          0.72,
+          0.58
+        ],
+        "idir": 1
+      },
+      {
+        "file": "face_eyes_glance_2.png",
+        "cell": "look_left#2 (mirrored)",
+        "iris": [
+          -0.99,
+          -0.83
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_glance_2.png",
+        "cell": "look_right",
+        "iris": [
+          0.8,
+          0.84
+        ],
+        "idir": 1
+      },
+      {
+        "file": "face_eyes_glance_2.png",
+        "cell": "look_right (mirrored)",
+        "iris": [
+          -1.21,
+          -0.79
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_glance_2.png",
+        "cell": "look_right#2",
+        "iris": [
+          -0.82,
+          -0.91
+        ],
+        "idir": -1
+      },
+      {
+        "file": "face_eyes_glance_2.png",
+        "cell": "look_right#2 (mirrored)",
+        "iris": [
+          0.74,
+          0.85
+        ],
+        "idir": 1
+      }
+    ],
+    "reach": {
+      "react_shock_1": {
+        "hand_px": 186,
+        "inside_pct": 92.5,
+        "box": [
+          23.5,
+          -7.5,
+          168.5,
+          137.5
+        ]
+      },
+      "clap_0": {
+        "hand_px": 506,
+        "inside_pct": 97.4,
+        "box": [
+          23.5,
+          -7.5,
+          168.5,
+          137.5
+        ]
+      },
+      "clap_1": {
+        "hand_px": 501,
+        "inside_pct": 73.1,
+        "box": [
+          23.5,
+          -7.5,
+          168.5,
+          137.5
+        ]
+      }
+    },
+    "react_happy": "clap",
+    "bg_text": {
+      "background_text": false,
+      "where": "Indoor lounge with couch, string lights, and beverage refrigerator.",
+      "notes": "No text visible on fridge, walls, or background objects.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000705
+    },
+    "face": {
+      "closed": {
+        "align_match": 0.997,
+        "shift": [
+          0,
+          0
+        ],
+        "drift_pct": 0.02,
+        "changed_px": 33,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_a_1.png"
+      },
+      "small_open": {
+        "align_match": 0.997,
+        "shift": [
+          0,
+          0
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 131,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_a_1.png"
+      },
+      "medium_open": {
+        "align_match": 0.997,
+        "shift": [
+          0,
+          1
+        ],
+        "drift_pct": 0.03,
+        "changed_px": 210,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_a_1.png"
+      },
+      "wide_open": {
+        "align_match": 0.98,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.23,
+        "changed_px": 375,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_a_1.png"
+      },
+      "round": {
+        "align_match": 0.998,
+        "shift": [
+          0,
+          1
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 277,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_b_1.png"
+      },
+      "teeth": {
+        "align_match": 0.998,
+        "shift": [
+          0,
+          1
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 225,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_b_1.png"
+      },
+      "laugh": {
+        "align_match": 0.998,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.03,
+        "changed_px": 647,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_b_1.png"
+      },
+      "smirk": {
+        "align_match": 0.989,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.15,
+        "changed_px": 227,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_b_1.png"
+      },
+      "blink": {
+        "align_match": 0.998,
+        "shift": [
+          0,
+          0
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 130,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_eyes_a_1.png"
+      },
+      "half": {
+        "align_match": 0.998,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.05,
+        "changed_px": 206,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_eyes_a_1.png"
+      },
+      "happy": {
+        "align_match": 0.989,
+        "shift": [
+          1,
+          0
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 287,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_eyes_a_1.png"
+      },
+      "angry": {
+        "align_match": 0.997,
+        "shift": [
+          0,
+          1
+        ],
+        "drift_pct": 0.2,
+        "changed_px": 324,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_eyes_a_1.png"
+      },
+      "surprised": {
+        "align_match": 0.974,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 1.18,
+        "changed_px": 322,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_eyes_b_1.png"
+      },
+      "skeptical": {
+        "align_match": 0.998,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 144,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_eyes_b_1.png"
+      },
+      "happy:rest": {
+        "align_match": 0.997,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.07,
+        "changed_px": 318,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_happy_1.png"
+      },
+      "happy:small_open": {
+        "align_match": 0.998,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 457,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_happy_1.png"
+      },
+      "happy:medium_open": {
+        "align_match": 0.998,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.03,
+        "changed_px": 570,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_happy_1.png"
+      },
+      "happy:wide_open": {
+        "align_match": 0.988,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 671,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_happy_1.png"
+      },
+      "angry:rest": {
+        "align_match": 0.972,
+        "shift": [
+          0,
+          1
+        ],
+        "drift_pct": 0.35,
+        "changed_px": 183,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_angry_1.png"
+      },
+      "angry:small_open": {
+        "align_match": 0.973,
+        "shift": [
+          0,
+          1
+        ],
+        "drift_pct": 0.35,
+        "changed_px": 141,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_angry_1.png"
+      },
+      "angry:medium_open": {
+        "align_match": 0.977,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 406,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_angry_1.png"
+      },
+      "angry:wide_open": {
+        "align_match": 0.985,
+        "shift": [
+          1,
+          1
+        ],
+        "drift_pct": 0.03,
+        "changed_px": 603,
+        "grid_period": 5.0,
+        "bad": [],
+        "file": "face_mouth_angry_1.png"
+      },
+      "look_left": {
+        "align_match": 0.998,
+        "shift": [
+          0,
+          0
+        ],
+        "drift_pct": 0.05,
+        "changed_px": 40,
+        "grid_period": 5.0,
+        "cell": "look_right#2",
+        "iris_dx": [
+          -0.82,
+          -0.91
+        ],
+        "renderer": [
+          -1,
+          1.38
+        ],
+        "bad": [],
+        "file": "face_eyes_glance_2.png"
+      },
+      "look_right": {
+        "align_match": 0.998,
+        "shift": [
+          0,
+          0
+        ],
+        "drift_pct": 0.04,
+        "changed_px": 40,
+        "grid_period": 5.0,
+        "cell": "look_left#2",
+        "iris_dx": [
+          0.72,
+          0.58
+        ],
+        "renderer": [
+          1,
+          -1.57
+        ],
+        "bad": [],
+        "file": "face_eyes_glance_2.png"
+      }
+    },
+    "body": {
+      "point_0": {
+        "align_match": 0.919,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 10.56,
+        "dropped_face_px": 279,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "chain_kept_pct": 19.82,
+        "bad": [],
+        "file": "body_a_1.png"
+      },
+      "point_1": {
+        "align_match": 0.868,
+        "shift": [
+          1,
+          1
+        ],
+        "motion_pct": 19.09,
+        "dropped_face_px": 384,
+        "over_head_px": 96,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "body_a_1.png"
+      },
+      "fist_pump_0": {
+        "align_match": 0.885,
+        "shift": [
+          1,
+          1
+        ],
+        "motion_pct": 14.34,
+        "dropped_face_px": 238,
+        "over_head_px": 330,
+        "hand_over_face": false,
+        "chain_kept_pct": 12.42,
+        "bad": [],
+        "file": "body_a_1.png"
+      },
+      "fist_pump_1": {
+        "align_match": 0.922,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 8.63,
+        "dropped_face_px": 245,
+        "over_head_px": 4,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "body_a_1.png"
+      },
+      "shrug_0": {
+        "align_match": 0.86,
+        "shift": [
+          1,
+          1
+        ],
+        "motion_pct": 19.17,
+        "dropped_face_px": 302,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "chain_kept_pct": 25.1,
+        "bad": [],
+        "file": "body_b_1.png"
+      },
+      "shrug_1": {
+        "align_match": 0.74,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 37.22,
+        "dropped_face_px": 814,
+        "over_head_px": 876,
+        "hand_over_face": true,
+        "bad": [],
+        "file": "body_b_1.png"
+      },
+      "thumbs_up_0": {
+        "align_match": 0.922,
+        "shift": [
+          1,
+          0
+        ],
+        "motion_pct": 8.79,
+        "dropped_face_px": 320,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "chain_kept_pct": 4.3,
+        "bad": [],
+        "file": "body_b_1.png"
+      },
+      "thumbs_up_1": {
+        "align_match": 0.925,
+        "shift": [
+          1,
+          0
+        ],
+        "motion_pct": 8.75,
+        "dropped_face_px": 321,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "body_b_1.png"
+      },
+      "open_arms_0": {
+        "align_match": 0.865,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 15.3,
+        "dropped_face_px": 383,
+        "over_head_px": 4,
+        "hand_over_face": false,
+        "chain_kept_pct": 11.43,
+        "bad": [],
+        "file": "body_c_1.png"
+      },
+      "open_arms_1": {
+        "align_match": 0.832,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 17.86,
+        "dropped_face_px": 837,
+        "over_head_px": 8,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "body_c_1.png"
+      },
+      "drink_sip_0": {
+        "align_match": 0.976,
+        "shift": [
+          0,
+          0
+        ],
+        "motion_pct": 0.79,
+        "dropped_face_px": 270,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "chain_kept_pct": 23.95,
+        "bad": [],
+        "file": "body_c_1.png"
+      },
+      "drink_sip_1": {
+        "align_match": 0.79,
+        "shift": [
+          0,
+          0
+        ],
+        "motion_pct": 30.35,
+        "dropped_face_px": 286,
+        "over_head_px": 2162,
+        "hand_over_face": true,
+        "bad": [],
+        "file": "body_c_1.png"
+      },
+      "talk_hands_0": {
+        "align_match": 0.948,
+        "shift": [
+          0,
+          0
+        ],
+        "motion_pct": 4.93,
+        "dropped_face_px": 378,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "body_d_1.png"
+      },
+      "talk_hands_1": {
+        "align_match": 0.898,
+        "shift": [
+          0,
+          0
+        ],
+        "motion_pct": 12.73,
+        "dropped_face_px": 392,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "chain_kept_pct": 8.16,
+        "bad": [],
+        "file": "body_d_1.png"
+      },
+      "talk_hands_2": {
+        "align_match": 0.93,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 6.8,
+        "dropped_face_px": 420,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "chain_kept_pct": 4.34,
+        "bad": [],
+        "file": "body_d_1.png"
+      },
+      "talk_hands_3": {
+        "align_match": 0.896,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 11.51,
+        "dropped_face_px": 396,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "chain_kept_pct": 8.83,
+        "bad": [],
+        "file": "body_d_1.png"
+      },
+      "laugh_0": {
+        "align_match": 0.793,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 29.05,
+        "dropped_face_px": 1014,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "body_e_1.png"
+      },
+      "laugh_1": {
+        "align_match": 0.823,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 20.27,
+        "dropped_face_px": 1663,
+        "over_head_px": 424,
+        "hand_over_face": false,
+        "chain_kept_pct": 21.2,
+        "bad": [],
+        "file": "body_e_1.png"
+      },
+      "facepalm_0": {
+        "align_match": 0.764,
+        "shift": [
+          1,
+          1
+        ],
+        "motion_pct": 30.72,
+        "dropped_face_px": 104,
+        "over_head_px": 3202,
+        "hand_over_face": true,
+        "chain_kept_pct": 20.47,
+        "bad": [],
+        "file": "body_e_1.png"
+      },
+      "facepalm_1": {
+        "align_match": 0.792,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 28.45,
+        "dropped_face_px": 140,
+        "over_head_px": 2810,
+        "hand_over_face": true,
+        "bad": [],
+        "file": "body_e_1.png"
+      },
+      "react_shock_0": {
+        "align_match": 0.798,
+        "shift": [
+          1,
+          1
+        ],
+        "motion_pct": 29.16,
+        "dropped_face_px": 291,
+        "over_head_px": 1316,
+        "hand_over_face": false,
+        "chain_kept_pct": 26.87,
+        "bad": [],
+        "file": "body_f_2.png"
+      },
+      "react_shock_1": {
+        "align_match": 0.776,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 36.5,
+        "dropped_face_px": 268,
+        "over_head_px": 2207,
+        "hand_over_face": true,
+        "bad": [],
+        "file": "body_f_2.png"
+      },
+      "clap_0": {
+        "align_match": 0.784,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 34.11,
+        "dropped_face_px": 273,
+        "over_head_px": 1659,
+        "hand_over_face": true,
+        "bad": [],
+        "file": "body_f_2.png"
+      },
+      "clap_1": {
+        "align_match": 0.803,
+        "shift": [
+          0,
+          1
+        ],
+        "motion_pct": 32.73,
+        "dropped_face_px": 279,
+        "over_head_px": 264,
+        "hand_over_face": true,
+        "chain_kept_pct": 28.4,
+        "bad": [],
+        "file": "body_f_2.png"
+      },
+      "enter_0": {
+        "align_match": 0.989,
+        "shift": [
+          0,
+          0
+        ],
+        "motion_pct": 1.01,
+        "dropped_face_px": 31,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "enter_1.png"
+      },
+      "enter_1": {
+        "align_match": 0.965,
+        "shift": [
+          0,
+          0
+        ],
+        "motion_pct": 4.77,
+        "dropped_face_px": 37,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "enter_1.png"
+      },
+      "enter_2": {
+        "align_match": 0.965,
+        "shift": [
+          0,
+          0
+        ],
+        "motion_pct": 4.8,
+        "dropped_face_px": 43,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "enter_1.png"
+      },
+      "enter_3": {
+        "align_match": 0.965,
+        "shift": [
+          0,
+          0
+        ],
+        "motion_pct": 4.71,
+        "dropped_face_px": 53,
+        "over_head_px": 0,
+        "hand_over_face": false,
+        "bad": [],
+        "file": "enter_1.png"
+      }
+    },
+    "face_check": {
+      "species": "human",
+      "mouth_kind": "lips",
+      "facial_hair": "thick grey handlebar mustache and stubble",
+      "notes": "Middle-aged man with glasses on head, wearing a suit and tie.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000775
+    },
+    "silhouette_px": 26901,
+    "zones": {
+      "eyes_from_sheets": [
+        31,
+        39,
+        65,
+        46
+      ],
+      "mouth_from_sheets": [
+        30,
+        60,
+        67,
+        84
+      ]
+    },
+    "head_identical": true,
+    "max_head_diff_px": 0,
+    "head_diff_frames": [],
+    "preview": "preview.gif",
+    "contact_sheet": "preview.png",
+    "gif_frames": 158,
+    "vision": {
+      "same_character": true,
+      "same_outfit": true,
+      "face_consistent": true,
+      "text_or_logo": false,
+      "weapon_visible": false,
+      "broken_frames": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "notes": "Every body frame has severe AI glitches: hands merging into the suit, extra fingers, and distorted limbs. Close-up headshots are mostly fine.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.002076
+    },
+    "cost_usd": 2.6846,
+    "pixellab_generations": 0
+  }
+}

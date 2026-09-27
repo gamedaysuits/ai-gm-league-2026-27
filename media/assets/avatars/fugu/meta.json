@@ -1,0 +1,582 @@
+{
+  "started_at": "2026-09-27T02:39:36+00:00",
+  "persona_sig": "adc438441f22",
+  "personas_run": "party-2",
+  "team": "fugu",
+  "style": "pixel",
+  "face_type": "human",
+  "generated_at": "2026-09-27T02:45:57+00:00",
+  "gm_name": "Wendell 'Flood' Kosack",
+  "franchise_name": "Hardisty Hoarfrost",
+  "franchise_abbrev": "HFR",
+  "display": "Fugu Ultra v2",
+  "llm": "sakana/fugu-ultra-v2",
+  "primary_color": "#12394F",
+  "secondary_color": "#C9E6F2",
+  "fabric": {
+    "id": "cavani-1100-21105-1",
+    "color_name": "midnight navy",
+    "pattern_desc": "birdseye",
+    "color_hex": "#17161E",
+    "summary": "Midnight navy micro birdseye weave"
+  },
+  "swatch_reference": true,
+  "base_prompt": "Create a 16-bit era pixel-art character portrait, like a portrait from a cut-scene in an early-1990s console hockey video game, of a general manager in a fictional hockey league. Character: A weathered human in his late fifties, broad and square-shouldered, with a silver brush cut and a thick grey moustache over a dry half-grin. Deep crow's feet, wind-burned cheeks, a small white scar on the chin. Heavy reading glasses pushed up onto his forehead. Eyebrows frosted pale at the tips like he just stepped in off the sheet. A stubby carpenter's pencil tucked behind one ear and a small folded notebook peeking out of his breast pocket. Calm, unbothered eyes; face and mouth clearly visible, usually caught mid-deadpan. This is an original, fictional character: not based on and not resembling any real person, celebrity, athlete or public figure. Face: front-facing, eyes open looking straight at the viewer, beak FULLY CLOSED - the upper beak rests on the lower beak with no gap and no visible inside of the mouth or tongue; any smile shows only as a slight upturn at the beak corners and in the eyes. Draw the beak clearly and a little larger than life so it can open for talking animation, and keep the beak and the chin feathers below it unobstructed. In THIS frame the mouth stays closed even if the description mentions an open mouth, a grin with teeth, fangs or a missing tooth - those show up in the talking frames made from this one. Suit - render it exactly: a three-piece suit in Midnight navy micro birdseye weave - base colour midnight navy (#17161E), pattern: birdseye. Jacket: single-breasted three-roll-two jacket (three buttons, the lapel rolls softly past the top button, fastened at the middle button), with medium-width notch lapels and flap hip pockets with a small ticket pocket above the right one; a single breast pocket on the chest. Waistcoat: matching cloth, five-button, no lapels, straight hem - visible in the V opening of the jacket. Dress shirt: Frost-blue twill, white spread collar. Tie: Deep red knit tie, flat bottom, neatly knotted. Pocket square in the breast pocket: White linen, straight fold. Framing: waist-up portrait, body and head square to the camera (straight-on front view), head level and not tilted, centered horizontally, shoulders fully in frame, with comfortable empty headroom above the head (the top of the head, ears, tufts or antenna sits about 10-15% of the image height below the top edge). Square 1:1 composition. Background: a cozy wood-panelled basement rec room at a hockey draft party - blocky string lights, a worn couch and a beer fridge, in the franchise colours: mostly charcoal (#12394F) with ice blue (#C9E6F2) accent lights and trim. Keep it simple and a little lower in contrast than the character, and add a soft ice blue rim light on the shoulders and head so the suit's silhouette separates clearly from the background. Pixel-art rules: crisp, hard-edged square pixels on one consistent grid - it should look like a roughly 192x192-pixel sprite scaled up with nearest-neighbour. Limited palette of about 32-48 colours, flat colour clusters, dark outlines, simple 2-3 step shading. No anti-aliasing, no blur, no smooth gradients, no painterly texture. Strictly no text, letters, numbers, logos, emblems, crests, team marks, jerseys, brand names, signage, advertising, UI elements, borders, frames or watermarks anywhere in the image. The attached photo is only a close-up reference of the exact suit cloth: match its colour and weave or pattern for the jacket, trousers and waistcoat. Do not show the swatch itself anywhere.",
+  "attempts": {
+    "base": [
+      {
+        "file": "pixel_base_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.141544,
+        "retry": null,
+        "elapsed_s": 19.4,
+        "generation_id": "gen-1790476776-NL1Ks6YdsdndStckQNm9",
+        "ts": "2026-09-27T02:39:55+00:00",
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Character has a mustache, not a beak. Mouth is fully closed.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000844,
+          "file": "pixel_base_1.png"
+        }
+      }
+    ],
+    "mid": [
+      {
+        "file": "pixel_mid_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139038,
+        "retry": null,
+        "elapsed_s": 18.6,
+        "generation_id": "gen-1790476799-GUNCHf1NH1smLfTAVPv8",
+        "ts": "2026-09-27T02:40:16+00:00"
+      }
+    ],
+    "wide": [
+      {
+        "file": "pixel_wide_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139304,
+        "retry": null,
+        "elapsed_s": 17.8,
+        "generation_id": "gen-1790476799-3B8VPviJQ2b5FMcq9md1",
+        "ts": "2026-09-27T02:40:15+00:00"
+      }
+    ],
+    "blink": [
+      {
+        "file": "pixel_blink_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139202,
+        "retry": null,
+        "elapsed_s": 18.3,
+        "generation_id": "gen-1790476799-dcwxwSHsswhg5MeOs3Qc",
+        "ts": "2026-09-27T02:40:16+00:00"
+      }
+    ]
+  },
+  "chosen": {
+    "base": 0,
+    "mid": 0,
+    "wide": 0,
+    "blink": 0
+  },
+  "cost_usd": 0.5625,
+  "metrics": {
+    "mid": {
+      "mask_pct": 2.433,
+      "strong_pct": 0.83,
+      "outside_pct": 0.766,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "wide": {
+      "mask_pct": 2.433,
+      "strong_pct": 1.476,
+      "outside_pct": 0.938,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "blink": {
+      "mask_pct": 0.467,
+      "strong_pct": 0.241,
+      "outside_pct": 0.743,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    }
+  },
+  "swapped_mid_wide": false,
+  "info": {
+    "grid": {
+      "px": 5.12,
+      "py": 5.121,
+      "ox": 0.0,
+      "oy": 0.0,
+      "score": 3.57,
+      "prominence": 37.0,
+      "ok": true
+    },
+    "logical_px": 192,
+    "scale": 4,
+    "fit": {
+      "from": 199,
+      "to": 192
+    },
+    "palette_colours": 48,
+    "eye_box": [
+      77,
+      58,
+      117,
+      63
+    ],
+    "mouth_box": [
+      78,
+      82,
+      116,
+      110
+    ]
+  },
+  "flags": [],
+  "base_check": {
+    "mouth_closed": true,
+    "mouth_open_amount": 0,
+    "eyes_open": true,
+    "text_or_logo": false,
+    "front_facing": true,
+    "weapon_visible": false,
+    "notes": "Character has a mustache, not a beak. Mouth is fully closed.",
+    "model": "google/gemini-3-flash-preview",
+    "cost": 0.000844,
+    "file": "pixel_base_1.png"
+  },
+  "frame_checks": {
+    "mid": {
+      "mouth_closed": false,
+      "mouth_open_amount": 1,
+      "eyes_open": true,
+      "text_or_logo": false,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Human character with mustache, not a beak. Mouth is slightly open showing teeth.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.00085,
+      "file": "mid.png"
+    },
+    "wide": {
+      "mouth_closed": false,
+      "mouth_open_amount": 2,
+      "eyes_open": true,
+      "text_or_logo": false,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Character is human, not a beak. Mouth is wide open showing teeth and tongue.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000853,
+      "file": "wide.png"
+    },
+    "blink": {
+      "mouth_closed": true,
+      "mouth_open_amount": 0,
+      "eyes_open": false,
+      "text_or_logo": false,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Character has a mustache, not a beak. Eyes are closed.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000841,
+      "file": "blink.png"
+    }
+  },
+  "frame_checks_for": "{\"base\": \"pixel_base_1.png\", \"blink\": \"pixel_blink_1.png\", \"mid\": \"pixel_mid_1.png\", \"wide\": \"pixel_wide_1.png\"}",
+  "files": {
+    "base": "base.png",
+    "mid": "mid.png",
+    "wide": "wide.png",
+    "blink": "blink.png",
+    "mid_blink": "mid_blink.png",
+    "wide_blink": "wide_blink.png"
+  },
+  "image_model": "google/gemini-3-pro-image",
+  "poses": {
+    "hype": {
+      "attempts": [
+        {
+          "file": "pixel_pose_hype_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139026,
+          "retry": null,
+          "elapsed_s": 19.8,
+          "generation_id": "gen-1790477159-yThdI66yHYu0r701vzq2",
+          "ts": "2026-09-27T02:46:17+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Character has a bird beak in image 2, but otherwise matches reference features and style.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.0016,
+            "file": "pixel_pose_hype_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_hype_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.13941,
+            "retry": null,
+            "elapsed_s": 18.4,
+            "generation_id": "gen-1790477205-qb4B7nt35ahotpyVSxUJ",
+            "ts": "2026-09-27T02:47:03+00:00",
+            "metrics": {
+              "mask_pct": 3.838,
+              "strong_pct": 2.368,
+              "outside_pct": 1.526,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": false,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Beak is fully closed. Raised fists are celebratory, not a violent gesture.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000913,
+              "file": "pixel_pose_hype_closed_1_locked.png"
+            }
+          }
+        ],
+        "chosen": 0,
+        "metrics": {
+          "mask_pct": 3.838,
+          "strong_pct": 2.368,
+          "outside_pct": 1.526,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Beak is fully closed. Raised fists are celebratory, not a violent gesture.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000913,
+          "file": "pixel_pose_hype_closed_1_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/hype.png",
+        "closed": "poses/hype_closed.png"
+      },
+      "desc": "a huge \"LET'S GO!\" celebration: both wings (used like arms) thrown up high with wing-tips curled like fists, beak wide open yelling, eyes wide open with excitement (normal eyes - no glow, no fire effects)"
+    },
+    "point": {
+      "attempts": [
+        {
+          "file": "pixel_pose_point_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139908,
+          "retry": null,
+          "elapsed_s": 20.3,
+          "generation_id": "gen-1790477159-rY63KMQmbvMyiB59MmuL",
+          "ts": "2026-09-27T02:46:18+00:00",
+          "check": {
+            "same_character": false,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 1,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Character has gained a bird beak and feathers on his hand in image 2.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001593,
+            "file": "pixel_pose_point_1.png"
+          },
+          "fails": [
+            "same_character"
+          ]
+        },
+        {
+          "file": "pixel_pose_point_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139798,
+          "retry": "strict",
+          "elapsed_s": 19.2,
+          "generation_id": "gen-1790477182-kRCNrsTcJe5z6kiXhWKS",
+          "ts": "2026-09-27T02:46:40+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 1,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Character and outfit are consistent; pose matches the smug pointing requirement perfectly.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001587,
+            "file": "pixel_pose_point_2.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 1,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_point_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139506,
+            "retry": null,
+            "elapsed_s": 18.0,
+            "generation_id": "gen-1790477205-5esdWKyGiJWurdaC2X2c",
+            "ts": "2026-09-27T02:47:02+00:00",
+            "metrics": {
+              "mask_pct": 0.713,
+              "strong_pct": 0.407,
+              "outside_pct": 1.066,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": false,
+              "mouth_open_amount": 1,
+              "eyes_open": true,
+              "text_or_logo": false,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Character has a human mouth, not a beak. Teeth are visible.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000907,
+              "file": "pixel_pose_point_closed_1_locked.png"
+            }
+          },
+          {
+            "file": "pixel_pose_point_closed_2.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.138998,
+            "retry": "weak",
+            "elapsed_s": 19.3,
+            "generation_id": "gen-1790477227-8mOgLNTnbeL1uOJtNgPK",
+            "ts": "2026-09-27T02:47:26+00:00",
+            "metrics": {
+              "mask_pct": 0.784,
+              "strong_pct": 0.458,
+              "outside_pct": 1.203,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": false,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Character has a mustache, not a beak. Pointing gesture is not considered a weapon.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000856,
+              "file": "pixel_pose_point_closed_2_locked.png"
+            }
+          }
+        ],
+        "chosen": 1,
+        "metrics": {
+          "mask_pct": 0.784,
+          "strong_pct": 0.458,
+          "outside_pct": 1.203,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Character has a mustache, not a beak. Pointing gesture is not considered a weapon.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000856,
+          "file": "pixel_pose_point_closed_2_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/point.png",
+        "closed": "poses/point_closed.png"
+      },
+      "desc": "the chirp pose: one wing (used like an arm) extended straight toward the viewer, wing-tip feather (used like a finger) pointing right at the camera (foreshortened), a smug grin with the beak slightly open; the other wing-hand relaxed at the side"
+    },
+    "shock": {
+      "attempts": [
+        {
+          "file": "pixel_pose_shock_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.138536,
+          "retry": null,
+          "elapsed_s": 17.5,
+          "generation_id": "gen-1790477158-RctYeiBTzSFZqLvke4Rs",
+          "ts": "2026-09-27T02:46:15+00:00",
+          "check": {
+            "same_character": false,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Character has transformed into a bird-human hybrid with a beak in the second image.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001596,
+            "file": "pixel_pose_shock_1.png"
+          },
+          "fails": [
+            "same_character"
+          ]
+        },
+        {
+          "file": "pixel_pose_shock_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.140054,
+          "retry": "strict",
+          "elapsed_s": 17.8,
+          "generation_id": "gen-1790477182-koYbBLZ1bZWP223ZoEpr",
+          "ts": "2026-09-27T02:46:39+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Excellent consistency in character design, outfit, and pixel art style across both images.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001593,
+            "file": "pixel_pose_shock_2.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 1,
+      "files": {
+        "open": "poses/shock.png"
+      },
+      "desc": "an \"OH NO!\" reaction: both wing-hands clutching the top and sides of the head in disbelief, eyes wide, beak wide open in shock - the wing-hands must not cover the eyes or the mouth"
+    },
+    "celebrate": {
+      "attempts": [
+        {
+          "file": "pixel_pose_celebrate_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139074,
+          "retry": null,
+          "elapsed_s": 18.6,
+          "generation_id": "gen-1790477159-tA7TDgRuC4Dt8ThAO8F9",
+          "ts": "2026-09-27T02:46:16+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": false,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Arms are detached from the body; pose does not match the specific mime sequence requested.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001623,
+            "file": "pixel_pose_celebrate_1.png"
+          },
+          "fails": [
+            "pose_ok"
+          ]
+        },
+        {
+          "file": "pixel_pose_celebrate_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139702,
+          "retry": "strict",
+          "elapsed_s": 19.6,
+          "generation_id": "gen-1790477182-GLRlM9LRETO76KWtdOoe",
+          "ts": "2026-09-27T02:46:41+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Character and style are consistent; pose correctly depicts the final 'perfect sheet' gesture.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001623,
+            "file": "pixel_pose_celebrate_2.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 1,
+      "files": {
+        "open": "poses/celebrate.png"
+      },
+      "desc": "the single most iconic PEAK MOMENT of their signature celebration - one frozen frame, not the whole sequence - from: \"Mimes a slow flood-machine lap of the rec room, one hand on the wheel, then hops down, scrapes a boot figure-eight and holds both palms flat: perfect sheet\". Big, excited face (beak wide open)"
+    }
+  },
+  "poses_cost": 1.4079,
+  "poses_flags": [],
+  "poses_discarded": [],
+  "poses_celebration": "Mimes a slow flood-machine lap of the rec room, one hand on the wheel, then hops down, scrapes a boot figure-eight and holds both palms flat: perfect sheet.",
+  "face_type_fixed_by": "rig vision check"
+}

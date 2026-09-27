@@ -1,0 +1,12 @@
+{"ts": "2026-09-26T23:47:53Z", "name": "rimshot", "status": 200, "latency_s": 1.58, "credits_header": "15", "credits_est": 60, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:07Z", "name": "crowd_roar", "status": 200, "latency_s": 1.96, "credits_header": "35", "credits_est": 140, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:09Z", "name": "crowd_cheer_burst", "status": 200, "latency_s": 1.68, "credits_header": "30", "credits_est": 120, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:11Z", "name": "crowd_ooh", "status": 200, "latency_s": 1.55, "credits_header": "25", "credits_est": 100, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:13Z", "name": "crowd_laugh", "status": 200, "latency_s": 1.79, "credits_header": "30", "credits_est": 120, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:15Z", "name": "goal_horn", "status": 200, "latency_s": 2.08, "credits_header": "40", "credits_est": 160, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:17Z", "name": "organ_stab", "status": 200, "latency_s": 1.58, "credits_header": "25", "credits_est": 100, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:19Z", "name": "air_horn", "status": 200, "latency_s": 1.8, "credits_header": "15", "credits_est": 60, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:20Z", "name": "whoosh", "status": 200, "latency_s": 1.5, "credits_header": "15", "credits_est": 60, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:22Z", "name": "record_scratch", "status": 200, "latency_s": 1.87, "credits_header": "10", "credits_est": 40, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:24Z", "name": "slapshot", "status": 200, "latency_s": 1.83, "credits_header": "15", "credits_est": 60, "request_id": null, "error": null}
+{"ts": "2026-09-26T23:48:31Z", "name": "crowd_bed_loop", "status": 200, "latency_s": 6.55, "credits_header": "300", "credits_est": 1200, "request_id": null, "error": null}

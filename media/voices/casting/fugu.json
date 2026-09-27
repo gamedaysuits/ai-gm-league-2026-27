@@ -1,0 +1,27 @@
+{
+  "sig": "8763b8b17de28290",
+  "team": "fugu",
+  "spec": {
+    "gender_presentation": "male",
+    "age": "late 60s",
+    "register": "bass-baritone",
+    "register_commitment": "explicit",
+    "acceptable_registers": [
+      "bass-baritone",
+      "bass"
+    ],
+    "texture": [
+      "creaky",
+      "weathered",
+      "warm"
+    ],
+    "regional_flavour": "East-central Alberta farm-and-oilpatch accent",
+    "accent": "East-central Alberta farm-and-oilpatch accent",
+    "accent_region": "east-central Alberta",
+    "accent_strength": "noticeable",
+    "signature_quality": "slow, weathered old-timer's voice with a low creak",
+    "_source": "cohere/command-a-plus",
+    "diverged": "age mid-to-late fifties -> late 60s; texture creaky/weathered (the card's own 'creak at the bottom of the register') instead of gravelly: the card's mid-50s gravelly low baritone collided with qwen (speaker similarity 0.82-0.84 on all six previews of 2026-09-27); register tenor (card: low baritone near bass): a thin, creaky late-60s old-timer (~160 Hz); every lower design either collided with qwen, failed the accent check, or would not shout"
+  },
+  "created_at": "2026-09-27T02:20:44Z"
+}

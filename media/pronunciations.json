@@ -1,0 +1,155 @@
+{
+ "_doc": "Player-name respellings for TTS input only (captions keep the real spelling). Only entries with confirmed=true are applied; the Whisper check confirms them. Written by gmbench_media.pronounce.",
+ "aliases": {
+  "Vasilevskiy": {
+   "say": "vah-sih-LEHV-skee",
+   "source": "seed:llm",
+   "confirmed": false
+  },
+  "Pastrnak": {
+   "say": "PAHS-ter-nock",
+   "source": "seed:llm",
+   "confirmed": true,
+   "checks": [
+    {
+     "line": "p006-gm",
+     "heard": "Light the fuse! Apogee is go for launch! Fable took a bedtime story. I took pastor knock.",
+     "heard_as": "pastor knock",
+     "score": 0.737,
+     "voice": "hGQSIoxGLiyi1waIpEDw",
+     "ts": "2026-09-27T01:29:21Z"
+    },
+    {
+     "line": "p006-gm",
+     "heard": "Light the fuse! Apogee is go for launch! Fable took a bedtime story. I took pastor knock.",
+     "score_real": 0.737,
+     "heard_as": "pastor knock",
+     "score_alias": 0.818,
+     "heard_alias": "pastor knock",
+     "before": 0.667,
+     "voice": "hGQSIoxGLiyi1waIpEDw",
+     "ts": "2026-09-27T01:30:20Z"
+    },
+    {
+     "line": "p006-gm",
+     "heard": "Light the fuse! Apogee is go for launch! Fable took a bedtime story. I took pastor knock.",
+     "score_real": 0.737,
+     "heard_as": "pastor knock",
+     "score_alias": 0.818,
+     "heard_alias": "pastor knock",
+     "before": 0.667,
+     "voice": "hGQSIoxGLiyi1waIpEDw",
+     "ts": "2026-09-27T01:30:38Z"
+    }
+   ]
+  },
+  "Draisaitl": {
+   "say": "DRY-zite-ul",
+   "source": "seed:llm",
+   "confirmed": false
+  },
+  "Necas": {
+   "say": "NEH-chahs",
+   "source": "seed:llm",
+   "confirmed": false
+  },
+  "MacKinnon": {
+   "say": "muh-KIH-nun",
+   "source": "seed:llm",
+   "confirmed": false
+  },
+  "Kaprizov": {
+   "say": "kah-PREE-zov",
+   "source": "seed:llm",
+   "confirmed": true,
+   "checks": [
+    {
+     "line": "p010-gm",
+     "heard": "Lyle, buddy, Kaprizov misses a month every single season. The only page you're turning is a medical chart. The math doesn't lie, boys. Crunching the numbers, the bone crushers select Jason Robertson. Perfect attendance, three years running? I'll take the sure thing.",
+     "score_real": 1.0,
+     "heard_as": "kaprizov",
+     "score_alias": 0.778,
+     "heard_alias": "kaprizov",
+     "before": 0.588,
+     "voice": "e4Ct3In8kzUkSkMbeH2I",
+     "ts": "2026-09-27T04:01:01Z"
+    }
+   ],
+   "scope": [
+    "gemini"
+   ]
+  },
+  "Kucherov": {
+   "say": "KOO-cheh-rov",
+   "source": "seed:llm",
+   "confirmed": false
+  },
+  "Makar": {
+   "say": "MAY-kar",
+   "source": "seed:llm-followup",
+   "confirmed": true,
+   "checks": [
+    {
+     "line": "p010-gm",
+     "heard": "Throw the switch! Sudbury takes Kale, Maycar. That's not a blue line, that's a power station.",
+     "heard_as": "maycar",
+     "score": 0.727,
+     "voice": "MTvpfuR4I4eEU71pv6Ie",
+     "ts": "2026-09-27T01:29:24Z"
+    },
+    {
+     "line": "say-63",
+     "heard": "A security system? My car's a power station, sure, but I'm the guy who strips the copper out of your walls in March.",
+     "heard_as": "march",
+     "score": 0.6,
+     "voice": "VTdzb0ZG0FaqXI6zohTM",
+     "ts": "2026-09-27T01:29:24Z"
+    },
+    {
+     "line": "p010-gm",
+     "heard": "Throw the switch! Sudbury takes Kale, Maycar. That's not a blue line, that's a power station.",
+     "score_real": 0.727,
+     "heard_as": "maycar",
+     "score_alias": 0.833,
+     "heard_alias": "maycar",
+     "before": 0.6,
+     "voice": "MTvpfuR4I4eEU71pv6Ie",
+     "ts": "2026-09-27T01:30:20Z"
+    },
+    {
+     "line": "say-63",
+     "heard": "A security system? Make cars a power station, sure, but I'm the guy who strips the copper out of your walls in March.",
+     "score_real": 0.769,
+     "heard_as": "make cars",
+     "score_alias": 0.714,
+     "heard_alias": "make cars",
+     "before": 0.6,
+     "voice": "VTdzb0ZG0FaqXI6zohTM",
+     "ts": "2026-09-27T01:30:25Z"
+    },
+    {
+     "line": "p010-gm",
+     "heard": "Throw the switch! Sudbury takes Kale, Maycar. That's not a blue line, that's a power station.",
+     "score_real": 0.727,
+     "heard_as": "maycar",
+     "score_alias": 0.833,
+     "heard_alias": "maycar",
+     "before": 0.6,
+     "voice": "MTvpfuR4I4eEU71pv6Ie",
+     "ts": "2026-09-27T01:30:38Z"
+    },
+    {
+     "line": "say-63",
+     "heard": "A security system? Make cars a power station, sure, but I'm the guy who strips the copper out of your walls in March.",
+     "score_real": 0.769,
+     "heard_as": "make cars",
+     "score_alias": 0.8,
+     "heard_alias": "make cars",
+     "before": 0.6,
+     "voice": "VTdzb0ZG0FaqXI6zohTM",
+     "ts": "2026-09-27T01:30:38Z"
+    }
+   ]
+  }
+ }
+}

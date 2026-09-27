@@ -1,0 +1,16 @@
+name: ci
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+      - name: Secret scan (no OpenRouter/ElevenLabs keys in tracked files)
+        run: |
+          if git grep -nE 'sk-or-v1-[0-9a-f]{20,}|sk_[0-9a-f]{40,}' -- . ':!*.md'; then echo "possible secret committed"; exit 1; fi

@@ -1,0 +1,725 @@
+{
+  "updated": "2026-09-27T07:09:13+00:00",
+  "teams": {
+    "astra": {
+      "style": "pixel",
+      "face_type": "robot",
+      "gm_name": "Astra \"Big Switch\" Rivett",
+      "franchise_name": "Sudbury Overvolts",
+      "display": "GPT-6 Astra",
+      "primary_color": "#2450B8",
+      "secondary_color": "#E87924",
+      "cost_usd": 0.5634,
+      "flags": [],
+      "generated_at": "2026-09-26T23:52:03+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "astra/base.png",
+        "mid": "astra/mid.png",
+        "wide": "astra/wide.png",
+        "blink": "astra/blink.png",
+        "mid_blink": "astra/mid_blink.png",
+        "wide_blink": "astra/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 0.493,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.609,
+          "strong_pct": 0.803,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 0.513,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.609,
+          "strong_pct": 1.036,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 0.471,
+          "dropped_pct": 0.0,
+          "mask_pct": 0.483,
+          "strong_pct": 0.274,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "astra/poses/hype.png",
+        "hype_closed": "astra/poses/hype_closed.png",
+        "point": "astra/poses/point.png",
+        "point_closed": "astra/poses/point_closed.png",
+        "shock": "astra/poses/shock.png",
+        "celebrate": "astra/poses/celebrate.png"
+      },
+      "poses_cost_usd": 0.8438,
+      "poses_flags": [
+        "pose hype closed: vision check says the mouth is still open",
+        "pose celebrate: review says pose_ok"
+      ],
+      "rig": "astra/rig/rig.json",
+      "rig_kind": "mock",
+      "rig_status": "mock"
+    },
+    "autodraft": {
+      "style": "pixel",
+      "face_type": "robot",
+      "gm_name": "Autodraft",
+      "franchise_name": "League control bot",
+      "display": "Autodraft (control bot)",
+      "primary_color": "#0E1B4D",
+      "secondary_color": "#E32402",
+      "cost_usd": 0.7147,
+      "flags": [],
+      "generated_at": "2026-09-26T23:39:19+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "autodraft/base.png",
+        "mid": "autodraft/mid.png",
+        "wide": "autodraft/wide.png",
+        "blink": "autodraft/blink.png",
+        "mid_blink": "autodraft/mid_blink.png",
+        "wide_blink": "autodraft/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 0.99,
+          "dropped_pct": 0.0,
+          "mask_pct": 2.654,
+          "strong_pct": 0.56,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 2.055,
+          "dropped_pct": 0.977,
+          "mask_pct": 2.654,
+          "strong_pct": 2.061,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 0.979,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.216,
+          "strong_pct": 0.961,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "autodraft/poses/hype.png",
+        "hype_closed": "autodraft/poses/hype_closed.png",
+        "point": "autodraft/poses/point.png",
+        "point_closed": "autodraft/poses/point_closed.png",
+        "shock": "autodraft/poses/shock.png",
+        "celebrate": "autodraft/poses/celebrate.png"
+      },
+      "poses_cost_usd": 0.8433,
+      "poses_flags": [],
+      "rig": "autodraft/rig/rig.json",
+      "rig_kind": "rig",
+      "rig_status": "ok"
+    },
+    "deepseek": {
+      "style": "pixel",
+      "face_type": "human",
+      "gm_name": "Randy 'Saucer' Kulyk",
+      "franchise_name": "St. Paul Saucers",
+      "display": "DeepSeek V4 Pro",
+      "primary_color": "#0E1B4D",
+      "secondary_color": "#7CFC00",
+      "cost_usd": 0.7051,
+      "flags": [
+        "base: text/logo detected (vision check) - review before publishing"
+      ],
+      "generated_at": "2026-09-27T02:47:39+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "deepseek/base.png",
+        "mid": "deepseek/mid.png",
+        "wide": "deepseek/wide.png",
+        "blink": "deepseek/blink.png",
+        "mid_blink": "deepseek/mid_blink.png",
+        "wide_blink": "deepseek/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 0.872,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.381,
+          "strong_pct": 0.146,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 0.978,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.381,
+          "strong_pct": 0.952,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 0.986,
+          "dropped_pct": 0.0,
+          "mask_pct": 0.407,
+          "strong_pct": 0.168,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "deepseek/poses/hype.png",
+        "hype_closed": "deepseek/poses/hype_closed.png",
+        "point": "deepseek/poses/point.png",
+        "point_closed": "deepseek/poses/point_closed.png",
+        "shock": "deepseek/poses/shock.png",
+        "celebrate": "deepseek/poses/celebrate.png"
+      },
+      "poses_cost_usd": 1.5485,
+      "poses_flags": [
+        "pose hype: review says text_or_logo",
+        "pose point: review says text_or_logo",
+        "pose shock: review says text_or_logo",
+        "pose celebrate: review says text_or_logo"
+      ],
+      "rig": "deepseek/rig/rig.json",
+      "rig_kind": "rig",
+      "rig_status": "ok"
+    },
+    "fable": {
+      "style": "pixel",
+      "face_type": "human",
+      "gm_name": "Lyle \"Fable\" Kryzanowski",
+      "franchise_name": "Smoky Lake Lanterns",
+      "display": "Claude Fable 5.1",
+      "primary_color": "#E8731A",
+      "secondary_color": "#12213F",
+      "cost_usd": 0.841,
+      "flags": [],
+      "generated_at": "2026-09-27T02:50:19+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "fable/base.png",
+        "mid": "fable/mid.png",
+        "wide": "fable/wide.png",
+        "blink": "fable/blink.png",
+        "mid_blink": "fable/mid_blink.png",
+        "wide_blink": "fable/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 1.64,
+          "dropped_pct": 0.081,
+          "mask_pct": 1.961,
+          "strong_pct": 0.694,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 1.421,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.961,
+          "strong_pct": 1.226,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 1.491,
+          "dropped_pct": 0.019,
+          "mask_pct": 0.45,
+          "strong_pct": 0.239,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "fable/poses/hype.png",
+        "hype_closed": "fable/poses/hype_closed.png",
+        "point": "fable/poses/point.png",
+        "point_closed": "fable/poses/point_closed.png",
+        "shock": "fable/poses/shock.png",
+        "celebrate": "fable/poses/celebrate.png"
+      },
+      "poses_cost_usd": 0.982,
+      "poses_flags": [],
+      "rig": "fable/rig/rig.json",
+      "rig_kind": "rig",
+      "rig_status": "ok"
+    },
+    "fugu": {
+      "style": "pixel",
+      "face_type": "human",
+      "gm_name": "Wendell 'Flood' Kosack",
+      "franchise_name": "Hardisty Hoarfrost",
+      "display": "Fugu Ultra v2",
+      "primary_color": "#12394F",
+      "secondary_color": "#C9E6F2",
+      "cost_usd": 0.5625,
+      "flags": [],
+      "generated_at": "2026-09-27T02:45:57+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "fugu/base.png",
+        "mid": "fugu/mid.png",
+        "wide": "fugu/wide.png",
+        "blink": "fugu/blink.png",
+        "mid_blink": "fugu/mid_blink.png",
+        "wide_blink": "fugu/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 0.766,
+          "dropped_pct": 0.0,
+          "mask_pct": 2.433,
+          "strong_pct": 0.83,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 0.938,
+          "dropped_pct": 0.0,
+          "mask_pct": 2.433,
+          "strong_pct": 1.476,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 0.743,
+          "dropped_pct": 0.0,
+          "mask_pct": 0.467,
+          "strong_pct": 0.241,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "fugu/poses/hype.png",
+        "hype_closed": "fugu/poses/hype_closed.png",
+        "point": "fugu/poses/point.png",
+        "point_closed": "fugu/poses/point_closed.png",
+        "shock": "fugu/poses/shock.png",
+        "celebrate": "fugu/poses/celebrate.png"
+      },
+      "poses_cost_usd": 1.4079,
+      "poses_flags": [],
+      "rig": "fugu/rig/rig.json",
+      "rig_kind": "rig",
+      "rig_status": "ok"
+    },
+    "gemini": {
+      "style": "pixel",
+      "face_type": "human",
+      "gm_name": "Gord 'The Blueprint' Barnes",
+      "franchise_name": "Drumheller Bonecrushers",
+      "display": "Gemini 3.1 Pro",
+      "primary_color": "#4285F4",
+      "secondary_color": "#DB4437",
+      "cost_usd": 0.7056,
+      "flags": [],
+      "generated_at": "2026-09-27T02:51:26+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "gemini/base.png",
+        "mid": "gemini/mid.png",
+        "wide": "gemini/wide.png",
+        "blink": "gemini/blink.png",
+        "mid_blink": "gemini/mid_blink.png",
+        "wide_blink": "gemini/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 1.952,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.813,
+          "strong_pct": 0.171,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 1.982,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.813,
+          "strong_pct": 1.198,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 1.944,
+          "dropped_pct": 0.0,
+          "mask_pct": 0.404,
+          "strong_pct": 0.23,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "gemini/poses/hype.png",
+        "hype_closed": "gemini/poses/hype_closed.png",
+        "point": "gemini/poses/point.png",
+        "point_closed": "gemini/poses/point_closed.png",
+        "shock": "gemini/poses/shock.png",
+        "celebrate": "gemini/poses/celebrate.png"
+      },
+      "poses_cost_usd": 1.1254,
+      "poses_flags": [
+        "pose hype closed: drift: changes outside the edit region",
+        "pose celebrate: review says text_or_logo"
+      ],
+      "rig": "gemini/rig/rig.json",
+      "rig_kind": "rig",
+      "rig_status": "ok"
+    },
+    "glm": {
+      "style": "pixel",
+      "face_type": "human",
+      "gm_name": "Marty \"Booksie\" Lekvold",
+      "franchise_name": "Killam Harvesters",
+      "display": "GLM-5.3",
+      "primary_color": "#1C2F4A",
+      "secondary_color": "#F2B705",
+      "cost_usd": 0.7056,
+      "flags": [
+        "base: text/logo detected (vision check) - review before publishing"
+      ],
+      "generated_at": "2026-09-27T02:54:21+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "glm/base.png",
+        "mid": "glm/mid.png",
+        "wide": "glm/wide.png",
+        "blink": "glm/blink.png",
+        "mid_blink": "glm/mid_blink.png",
+        "wide_blink": "glm/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 0.859,
+          "dropped_pct": 0.0,
+          "mask_pct": 2.289,
+          "strong_pct": 0.339,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 0.842,
+          "dropped_pct": 0.0,
+          "mask_pct": 2.289,
+          "strong_pct": 1.432,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 0.876,
+          "dropped_pct": 0.0,
+          "mask_pct": 0.429,
+          "strong_pct": 0.212,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "glm/poses/hype.png",
+        "hype_closed": "glm/poses/hype_closed.png",
+        "point": "glm/poses/point.png",
+        "point_closed": "glm/poses/point_closed.png",
+        "shock": "glm/poses/shock.png",
+        "celebrate": "glm/poses/celebrate.png"
+      },
+      "poses_cost_usd": 1.4084,
+      "poses_flags": [
+        "pose hype: review says text_or_logo",
+        "pose point: review says text_or_logo",
+        "pose shock: review says text_or_logo",
+        "pose celebrate: review says text_or_logo"
+      ],
+      "rig": "glm/rig/rig.json",
+      "rig_kind": "rig",
+      "rig_status": "ok"
+    },
+    "grok": {
+      "style": "pixel",
+      "face_type": "human",
+      "gm_name": "Fuse Calder",
+      "franchise_name": "Apogee Bay Afterburners",
+      "display": "Grok 4.7",
+      "primary_color": "#0E1420",
+      "secondary_color": "#FF4B1F",
+      "cost_usd": 0.5623,
+      "flags": [],
+      "generated_at": "2026-09-26T23:50:32+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "grok/base.png",
+        "mid": "grok/mid.png",
+        "wide": "grok/wide.png",
+        "blink": "grok/blink.png",
+        "mid_blink": "grok/mid_blink.png",
+        "wide_blink": "grok/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 0.469,
+          "dropped_pct": 0.0,
+          "mask_pct": 3.198,
+          "strong_pct": 0.311,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 0.546,
+          "dropped_pct": 0.0,
+          "mask_pct": 3.198,
+          "strong_pct": 1.831,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 0.436,
+          "dropped_pct": 0.0,
+          "mask_pct": 0.531,
+          "strong_pct": 0.238,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "grok/poses/hype.png",
+        "hype_closed": "grok/poses/hype_closed.png",
+        "point": "grok/poses/point.png",
+        "point_closed": "grok/poses/point_closed.png",
+        "shock": "grok/poses/shock.png",
+        "celebrate": "grok/poses/celebrate.png"
+      },
+      "poses_cost_usd": 0.8439,
+      "poses_flags": [
+        "pose hype closed: vision check says the mouth is still open"
+      ],
+      "rig": "grok/rig/rig.json",
+      "rig_kind": "mock",
+      "rig_status": "mock"
+    },
+    "host": {
+      "style": "pixel",
+      "face_type": "human",
+      "gm_name": "The Commissioner",
+      "franchise_name": "League office",
+      "display": "The Commissioner",
+      "primary_color": "#0E1B4D",
+      "secondary_color": "#4770DB",
+      "cost_usd": 0.5639,
+      "flags": [],
+      "generated_at": "2026-09-27T00:22:25+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "host/base.png",
+        "mid": "host/mid.png",
+        "wide": "host/wide.png",
+        "blink": "host/blink.png",
+        "mid_blink": "host/mid_blink.png",
+        "wide_blink": "host/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 0.299,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.669,
+          "strong_pct": 0.632,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 0.329,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.669,
+          "strong_pct": 1.062,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 0.309,
+          "dropped_pct": 0.0,
+          "mask_pct": 0.395,
+          "strong_pct": 0.243,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "host/poses/hype.png",
+        "hype_closed": "host/poses/hype_closed.png",
+        "point": "host/poses/point.png",
+        "point_closed": "host/poses/point_closed.png",
+        "shock": "host/poses/shock.png",
+        "celebrate": "host/poses/celebrate.png"
+      },
+      "poses_cost_usd": 0.9834,
+      "poses_flags": [
+        "pose hype closed: vision check says the mouth is still open"
+      ],
+      "rig": "host/rig/rig.json",
+      "rig_kind": "rig",
+      "rig_status": "ok"
+    },
+    "mimo": {
+      "style": "pixel",
+      "face_type": "human",
+      "gm_name": "Darcy \"Sparky\" Loewen",
+      "franchise_name": "Millet Hailstones",
+      "display": "MiMo-V2.6-Pro",
+      "primary_color": "#24455F",
+      "secondary_color": "#E8B33A",
+      "cost_usd": 0.564,
+      "flags": [],
+      "generated_at": "2026-09-27T02:49:12+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "mimo/base.png",
+        "mid": "mimo/mid.png",
+        "wide": "mimo/wide.png",
+        "blink": "mimo/blink.png",
+        "mid_blink": "mimo/mid_blink.png",
+        "wide_blink": "mimo/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 0.774,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.983,
+          "strong_pct": 0.722,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 0.841,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.983,
+          "strong_pct": 1.118,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 0.754,
+          "dropped_pct": 0.0,
+          "mask_pct": 0.288,
+          "strong_pct": 0.125,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "mimo/poses/hype.png",
+        "hype_closed": "mimo/poses/hype_closed.png",
+        "point": "mimo/poses/point.png",
+        "point_closed": "mimo/poses/point_closed.png",
+        "shock": "mimo/poses/shock.png",
+        "celebrate": "mimo/poses/celebrate.png"
+      },
+      "poses_cost_usd": 0.9837,
+      "poses_flags": [
+        "pose celebrate: review says text_or_logo"
+      ],
+      "rig": "mimo/rig/rig.json",
+      "rig_kind": "rig",
+      "rig_status": "ok"
+    },
+    "opus": {
+      "style": "pixel",
+      "face_type": "beak",
+      "gm_name": "Maestro Otto Kettle",
+      "franchise_name": "Halifax Foghorns",
+      "display": "Claude Opus 5.5",
+      "primary_color": "#0B1F3A",
+      "secondary_color": "#D4A017",
+      "cost_usd": 0.7019,
+      "flags": [],
+      "generated_at": "2026-09-26T23:57:57+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "opus/base.png",
+        "mid": "opus/mid.png",
+        "wide": "opus/wide.png",
+        "blink": "opus/blink.png",
+        "mid_blink": "opus/mid_blink.png",
+        "wide_blink": "opus/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 0.647,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.893,
+          "strong_pct": 0.491,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 0.729,
+          "dropped_pct": 0.008,
+          "mask_pct": 1.893,
+          "strong_pct": 1.15,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 0.65,
+          "dropped_pct": 0.0,
+          "mask_pct": 1.481,
+          "strong_pct": 0.955,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "opus/poses/hype.png",
+        "hype_closed": "opus/poses/hype_closed.png",
+        "point": "opus/poses/point.png",
+        "point_closed": "opus/poses/point_closed.png",
+        "shock": "opus/poses/shock.png",
+        "celebrate": "opus/poses/celebrate.png"
+      },
+      "poses_cost_usd": 1.2689,
+      "poses_flags": [
+        "pose hype closed: vision check says the mouth is still open"
+      ],
+      "rig": "opus/rig/rig.json",
+      "rig_kind": "mock",
+      "rig_status": "mock"
+    },
+    "qwen": {
+      "style": "pixel",
+      "face_type": "human",
+      "gm_name": "Dale 'Binders' Okanski",
+      "franchise_name": "Vegreville Threshers",
+      "display": "Qwen3.8 Max",
+      "primary_color": "#6E1420",
+      "secondary_color": "#E0B23C",
+      "cost_usd": 1.1233,
+      "flags": [
+        "base: text/logo detected (vision check) - review before publishing"
+      ],
+      "generated_at": "2026-09-27T02:44:26+00:00",
+      "image_model": "google/gemini-3-pro-image",
+      "files": {
+        "base": "qwen/base.png",
+        "mid": "qwen/mid.png",
+        "wide": "qwen/wide.png",
+        "blink": "qwen/blink.png",
+        "mid_blink": "qwen/mid_blink.png",
+        "wide_blink": "qwen/wide_blink.png"
+      },
+      "metrics": {
+        "mid": {
+          "outside_pct": 1.965,
+          "dropped_pct": 0.0,
+          "mask_pct": 2.904,
+          "strong_pct": 0.441,
+          "bad": false
+        },
+        "wide": {
+          "outside_pct": 2.269,
+          "dropped_pct": 0.169,
+          "mask_pct": 2.904,
+          "strong_pct": 1.773,
+          "bad": false
+        },
+        "blink": {
+          "outside_pct": 2.031,
+          "dropped_pct": 0.0,
+          "mask_pct": 0.38,
+          "strong_pct": 0.201,
+          "bad": false
+        }
+      },
+      "poses": {
+        "hype": "qwen/poses/hype.png",
+        "hype_closed": "qwen/poses/hype_closed.png",
+        "point": "qwen/poses/point.png",
+        "point_closed": "qwen/poses/point_closed.png",
+        "shock": "qwen/poses/shock.png",
+        "celebrate": "qwen/poses/celebrate.png"
+      },
+      "poses_cost_usd": 1.547,
+      "poses_flags": [
+        "pose hype: review says text_or_logo",
+        "pose hype closed: vision check says the mouth is still open",
+        "pose point: review says text_or_logo",
+        "pose shock: review says text_or_logo",
+        "pose celebrate: review says text_or_logo"
+      ],
+      "rig": "qwen/rig/rig.json",
+      "rig_kind": "rig",
+      "rig_status": "ok"
+    }
+  }
+}

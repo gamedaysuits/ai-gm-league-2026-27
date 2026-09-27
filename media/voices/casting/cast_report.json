@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-09-27T03:51:22Z",
+  "voices": 13,
+  "plain_f0_hz": {
+    "gemini": 81.1,
+    "host": 83.7,
+    "kimi": 90.7,
+    "opus": 96.4,
+    "qwen": 107.4,
+    "grok": 126.6,
+    "fable": 130.3,
+    "deepseek": 130.9,
+    "mimo": 131.4,
+    "sol": 134.2,
+    "glm": 152.9,
+    "fugu": 171.4,
+    "astra": 174.7
+  },
+  "f0_spread_hz": [
+    81.1,
+    174.7
+  ],
+  "max_gm_pair": [
+    [
+      "fable",
+      "glm"
+    ],
+    0.781
+  ],
+  "gm_pairs_over_limit": [],
+  "max_host_pair": [
+    [
+      "gemini",
+      "host"
+    ],
+    0.729
+  ],
+  "host_pairs_over_limit": [],
+  "median_pair": 0.655,
+  "sources": {
+    "host": "library",
+    "opus": "library",
+    "deepseek": "design",
+    "gemini": "design",
+    "kimi": "design",
+    "fable": "design",
+    "grok": "design",
+    "glm": "design",
+    "astra": "design",
+    "qwen": "library",
+    "mimo": "library",
+    "fugu": "design",
+    "sol": "design"
+  },
+  "pairs": {
+    "deepseek|fable": 0.616,
+    "deepseek|fugu": 0.725,
+    "deepseek|gemini": 0.655,
+    "deepseek|glm": 0.757,
+    "deepseek|host": 0.608,
+    "deepseek|mimo": 0.7,
+    "deepseek|qwen": 0.668,
+    "fable|fugu": 0.696,
+    "fable|gemini": 0.682,
+    "fable|glm": 0.781,
+    "fable|host": 0.641,
+    "fable|mimo": 0.655,
+    "fable|qwen": 0.608,
+    "fugu|gemini": 0.571,
+    "fugu|glm": 0.709,
+    "fugu|host": 0.506,
+    "fugu|mimo": 0.62,
+    "fugu|qwen": 0.551,
+    "gemini|glm": 0.559,
+    "gemini|host": 0.729,
+    "gemini|mimo": 0.671,
+    "gemini|qwen": 0.629,
+    "glm|host": 0.567,
+    "glm|mimo": 0.674,
+    "glm|qwen": 0.696,
+    "host|mimo": 0.703,
+    "host|qwen": 0.639,
+    "mimo|qwen": 0.589
+  }
+}

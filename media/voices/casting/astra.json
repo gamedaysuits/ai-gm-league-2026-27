@@ -1,0 +1,27 @@
+{
+  "sig": "d59006c61f21c934",
+  "team": "astra",
+  "spec": {
+    "gender_presentation": "male",
+    "age": "early forties",
+    "register": "tenor",
+    "register_commitment": "explicit",
+    "acceptable_registers": [
+      "tenor",
+      "high tenor"
+    ],
+    "texture": [
+      "reedy",
+      "papery",
+      "warm",
+      "nasal"
+    ],
+    "regional_flavour": "rural central Alberta (Canadian prairie) accent",
+    "accent": "rural central Alberta (Canadian prairie) accent",
+    "accent_region": "central Alberta",
+    "accent_strength": "noticeable",
+    "signature_quality": "reedy-warm nasal ring",
+    "_source": "cohere/command-a-plus"
+  },
+  "created_at": "2026-09-27T02:21:44Z"
+}

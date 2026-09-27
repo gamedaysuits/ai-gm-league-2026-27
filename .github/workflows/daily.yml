@@ -1,0 +1,40 @@
+name: daily-scoring
+# Rescore the last 7 NHL game dates (absorbs stat corrections), export standings, commit the ledger.
+on:
+  schedule:
+    - cron: "23 10 * * *"   # 10:23 UTC = 6:23 am ET, after every game is final
+  workflow_dispatch:
+    inputs:
+      end:
+        description: "Last game date to score (YYYY-MM-DD); default yesterday ET"
+        required: false
+concurrency:
+  group: ledger
+  cancel-in-progress: false
+permissions:
+  contents: write
+  issues: write
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - name: Score
+        run: uv run gmbench score --run live ${{ inputs.end && format('--end {0}', inputs.end) || '' }}
+      - name: Verify ledger
+        run: uv run gmbench verify --run live
+      - name: Commit
+        run: |
+          git config user.name "gmbench-scorer"
+          git config user.email "gmbench@gamedaysuits.ca"
+          git add runs/live/ledger runs/live/exports runs/live/data
+          git diff --cached --quiet || git commit -m "score: through $(date -u -d yesterday +%F)"
+          git push
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "Daily scoring failed $(date -u +%F)" --body "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

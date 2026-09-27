@@ -1,0 +1,26 @@
+{
+  "sig": "4e5304fc4558f88a",
+  "team": "kimi",
+  "spec": {
+    "gender_presentation": "male",
+    "age": "mid-40s",
+    "register": "baritone",
+    "register_commitment": "explicit",
+    "acceptable_registers": [
+      "baritone",
+      "bass-baritone"
+    ],
+    "texture": [
+      "warm",
+      "gravelly",
+      "smooth"
+    ],
+    "regional_flavour": "Red Deer county rural Alberta accent",
+    "accent": "Red Deer county rural Alberta accent",
+    "accent_region": "central Alberta",
+    "accent_strength": "noticeable",
+    "signature_quality": "warm gravelly baritone with rink echo",
+    "_source": "cohere/command-a-plus"
+  },
+  "created_at": "2026-09-27T02:21:38Z"
+}

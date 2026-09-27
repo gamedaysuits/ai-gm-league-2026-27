@@ -1,0 +1,11 @@
+# media-local ignores (root .gitignore already covers media/cache/, media/out/, media/show/compositions/)
+.venv/
+__pycache__/
+show/node_modules/
+show/index.html
+show/render/
+show/renders/
+show/snapshots/
+show/assets/gen/
+show/.hyperframes/
+show/.thumbnails/

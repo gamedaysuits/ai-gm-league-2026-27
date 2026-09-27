@@ -1,0 +1,28 @@
+{
+  "sig": "c2fa60c658753d8a",
+  "team": "gemini",
+  "spec": {
+    "gender_presentation": "male",
+    "age": "late 40s",
+    "register": "baritone",
+    "register_commitment": "explicit",
+    "acceptable_registers": [
+      "baritone",
+      "bass-baritone"
+    ],
+    "texture": [
+      "husky",
+      "smoky",
+      "raspy"
+    ],
+    "regional_flavour": "Drumheller, Alberta (Southern Alberta prairie) accent",
+    "accent": "Drumheller, Alberta (Southern Alberta prairie) accent",
+    "accent_region": "southern Alberta",
+    "accent_strength": "noticeable",
+    "signature_quality": "a smug, knowing half-smile in every line",
+    "_source": "cohere/command-a-plus",
+    "accent_plain": "rural Alberta (Canadian prairie) accent",
+    "diverged": "accent stated as 'rural Alberta (Canadian prairie)' without 'southern', and the accent sentence first even in the bass-baritone register: all six 'rural southern Alberta' designs of 2026-09-27 failed the listening accent check (scores 0.5-4.9); texture husky/smoky/raspy with a smug half-smile (card: gravelly, raspy, cocky): the gravelly accent-passing designs all sat 0.82-0.84 from deepseek, and the one distinct design failed the accent check on re-listening"
+  },
+  "created_at": "2026-09-27T02:21:20Z"
+}

@@ -1,0 +1,1539 @@
+{
+  "_doc": "Voice book for media/gmbench_media/tts.py. Speakers: 'host' plus league team ids. elevenlabs[speaker] -> voice_id + settings (eleven_v3), casting spec (timbre), source design|library and an anchor clip. Energy is NOT in these voices: render big moments with v3 tags ([shouting], [excited], [laughs]). Fallback engine: Fish S2.1 Pro via OpenRouter /audio/speech with input_references = [anchor.path as data:audio/mpeg;base64, anchor.text as transcript]. Written by media/voices/design.py.",
+  "schema": "gmb-voices/3",
+  "eleven_model": "eleven_v3",
+  "updated_at": "2026-09-27T03:56:36Z",
+  "elevenlabs": {
+    "host": {
+      "team": "host",
+      "gm_name": "the Commissioner",
+      "voice_id": "pExXCSeVFtFLETPgZoWn",
+      "name": "GMB-host",
+      "description": "The Commissioner hosting the draft party: a deep, resonant Canadian hockey play-by-play voice with a western Canadian accent; energy comes from tags at render time, never from the base voice.",
+      "source": "library",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.0,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.0 (Creative: Darren only shouts at 0.0 -- lift 2.2 at 0.3), anchor seed 20260928",
+      "preview_generated_voice_id": null,
+      "chosen_reason": "library candidate 'Darren' (high_quality, canadian, middle_aged) of 1: plain-read F0 91.2 Hz vs bass-baritone band 82-110 (off 0.0 st); nearest cast voice gemini 0.814; preview lift 0.0, real v3 lift 13.84",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "early 50s",
+          "register": "bass-baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "bass",
+            "bass-baritone"
+          ],
+          "texture": [
+            "resonant",
+            "warm",
+            "round",
+            "polished"
+          ],
+          "regional_flavour": "western Canadian accent",
+          "accent": "western Canadian (Alberta) accent",
+          "accent_region": "Alberta",
+          "accent_strength": "noticeable",
+          "accent_plain": "Alberta (western Canadian prairie) accent",
+          "signature_quality": "classic Canadian hockey radio broadcaster clarity with a big, rich chest resonance",
+          "_source": "fixed"
+        },
+        "planned_register": "bass-baritone",
+        "plan_note": "host: fixed",
+        "band_hz": [
+          82,
+          110
+        ],
+        "design_prompt": "Male, early 50s. Deep, low-pitched bass-baritone speaking voice with a resonant, warm, round, polished texture. Native Canadian English with a clear, natural Alberta (western Canadian prairie) accent, never a caricature. Classic Canadian hockey radio broadcaster clarity with a big, rich chest resonance. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 0
+      },
+      "measured": {
+        "plain_f0_hz": 96.1,
+        "plain_register_off_st": 0.0,
+        "plain_alpha_db": -12.94,
+        "excited_f0_hz": 188.3,
+        "excited_lift": 13.61,
+        "nearest": "gemini",
+        "nearest_sim": 0.813,
+        "over_limit": {
+          "gemini": 0.813,
+          "mimo": 0.753
+        },
+        "sims_checked_against": "tonight's 7 chain GMs: qwen, fugu, deepseek, mimo, fable, gemini, glm"
+      },
+      "anchor": {
+        "path": "media/voices/anchors/host.mp3",
+        "text": "Good evening, folks, and welcome out to the draft party. I'm the Commissioner. Every word you hear from a general manager tonight comes straight out of that model, no doubt about it. SMOKY LAKE, YOU'RE ON THE CLOCK, BUD!",
+        "tagged_text": "Good evening, folks, and welcome out to the draft party. I'm the Commissioner. Every word you hear from a general manager tonight comes straight out of that model, no doubt about it. [shouting] SMOKY LAKE, YOU'RE ON THE CLOCK, BUD!",
+        "plain_text": "Good evening, folks, and welcome out to the draft party. I'm the Commissioner. Every word you hear from a general manager tonight comes straight out of that model, no doubt about it.",
+        "plain_until_s": 10.7,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.0,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 13.1,
+        "lufs": -16.6,
+        "true_peak_dbfs": -2.4
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": null,
+        "model": null,
+        "display": "The Commissioner (host)"
+      },
+      "created_at": "2026-09-27T03:56:36Z",
+      "library": {
+        "library_voice_id": "pExXCSeVFtFLETPgZoWn",
+        "public_owner_id": "6c5fca5fcae8d2d2060418ca95a534cd7fdc9913da95ff6e2f3100a3e5c9c7e2",
+        "library_name": "Darren",
+        "library_description": "My voice is a clear, confident Canadian male voice with neutral North American pronunciation. I speak in a calm, articulate, and persuasive manner, with steady pacing and natural emphasis. My tone is intelligent, composed, and engaging, suitable for commentary, narration, and long-form content.",
+        "category": "high_quality",
+        "accent": "canadian",
+        "age": "middle_aged",
+        "use_case": "narrative_story",
+        "fit_score": 5.0,
+        "trial_lift": 13.84
+      },
+      "accent": {
+        "target": "a rural Alberta / Canadian prairie accent",
+        "region": "Alberta",
+        "strength": "noticeable",
+        "hometown": null,
+        "score": 5.06,
+        "wins": "4/8",
+        "passed": false,
+        "gate": 6.0,
+        "judge": "google/gemini-3.8-flash",
+        "method": "pairwise vs a General American reference voice reading the same words, both orders",
+        "orders": [
+          {
+            "candidate_is": "A",
+            "picked": "B",
+            "confidence": 9.0,
+            "why": "Speaker B exhibits clear and classic Canadian raising on the /aʊ/ diphthong in 'out', 'doubt', and 'about' (pronouncing them with a centralized starting point closer to [ʌʊ/əʊ]), whereas Speaker A uses standard unraised General American dip"
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 9.0,
+            "why": "Speaker B exhibits noticeable Canadian raising on the /aʊ/ diphthong before voiceless consonants, clearly heard in 'out' and especially 'about', whereas Speaker A uses standard, unraised General American diphthongs."
+          },
+          {
+            "candidate_is": "A",
+            "picked": "B",
+            "confidence": 9.0,
+            "why": "Speaker B exhibits clear Canadian raising on the diphthongs in 'out' and 'about' ([ʌʊt], [ə'bʌʊt]), whereas Speaker A uses standard, unraised North American /aʊ/ vowels."
+          },
+          {
+            "candidate_is": "B",
+            "picked": "A",
+            "confidence": 9.0,
+            "why": "Speaker A exhibits distinct Canadian raising on the /aʊ/ diphthong in words like 'out', 'doubt', and 'about' (sounding closer to [ʌʊ]/[əʊ]), whereas Speaker B has a standard General American unraised, more open [aʊ]/[æʊ] diphthong."
+          },
+          {
+            "candidate_is": "A",
+            "picked": "B",
+            "confidence": 9.0,
+            "why": "Speaker B exhibits clear Canadian raising on the diphthong in words before voiceless consonants ('out', 'about'), pronouncing them with a raised, centralized onset ([ʌʊ]), which is characteristic of Canadian prairie English. Speaker A uses "
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 9.0,
+            "why": "Speaker B exhibits clear Canadian raising on the /aʊ/ diphthong before voiceless consonants, heard distinctly in 'out' ('welcome out', 'straight out') and 'about' ('No doubt about it'). Speaker A uses standard unraised General American diph"
+          },
+          {
+            "candidate_is": "A",
+            "picked": "A",
+            "confidence": 10.0,
+            "why": "Speaker A exhibits pronounced and natural Canadian raising on the /aʊ/ diphthong in 'out', 'doubt', and 'about' ([ʌʊ]), which is characteristic of Canadian English and especially prominent in rural Alberta/prairie accents. Speaker B has unr"
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 9.0,
+            "why": "Speaker B exhibits very clear and natural Canadian raising on the /aʊ/ diphthong in 'out', 'doubt', and 'about' (pronouncing them with a raised, centralized onset like [ʌʊ]/[əʊ]), whereas Speaker A uses standard American low-front onsets [a"
+          }
+        ],
+        "reference_voice_id": "wBXNqKUATyqu0RtYt25i",
+        "history": [
+          {
+            "render": "host trial, party line + 'AND WE ARE LIVE FROM THE DRAFT PARTY!' (stability 0.0)",
+            "score": 9.75,
+            "wins": "2/2",
+            "passed": true
+          },
+          {
+            "render": "cue anchor (this anchor), first check, pooled",
+            "score": 6.58,
+            "wins": "4/6",
+            "passed": true
+          },
+          {
+            "render": "cue anchor (this anchor), re-check at commit, pooled",
+            "score": 5.06,
+            "wins": "4/8",
+            "passed": false
+          }
+        ],
+        "summary": "10 of 16 order-judgments picked Darren over the American reference: Canadian on balance, not decisively"
+      },
+      "host_policy": "FIXED: the Commissioner = 'Darren' (Voice Library, Canadian), chosen 2026-09-27 by the coordinator for the accent; host-GM similarity over 0.75 vs tonight's rehearsal voices accepted (Sunday's recast checks every new GM against this host at <= 0.75). Recast only with --recast-host. 'Adam' (wBXNqKUATyqu0RtYt25i) is the accent check's American reference only: never delete it.",
+      "replaced_voice_ids": [
+        "wBXNqKUATyqu0RtYt25i",
+        "X3BIt5E1i5KJMMIrg7aw",
+        "Tro83F3waWsNiDmUgRqP",
+        "YOq2y2Up4RgXP2HyXjE5",
+        "EjA19P96b2r3WZK1K6zQ"
+      ],
+      "accepted_over_limit_2026_09_27": {
+        "gemini": 0.813,
+        "mimo": 0.753
+      }
+    },
+    "opus": {
+      "team": "opus",
+      "gm_name": "Maestro Otto Kettle",
+      "voice_id": "Cv5COv8jUyjdkmmIHDdL",
+      "name": "GMB-opus-Maestro Otto Kettle",
+      "description": "A big, booming, theatrical baritone that sounds like a man in his mid-forties. Rich and resonant with a little warm gravel at the edges, built to fill a concert hall or a packed hockey barn. His delivery works like a crescendo: he can drop to a hushed, conspiratorial whisper and then swell into a full-chested roar on the big word. Quick, punchy pacing with dramatic pauses before reveals. Playful and gleeful, never mean, with a hearty rolling laugh. Light East Coast Canadian warmth in the vowels, nothing exaggerated.",
+      "source": "library",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": null,
+      "chosen_reason": "library candidate 'Thair' (professional, american, middle_aged) of 10: plain-read F0 101.5 Hz vs bass-baritone band 82-110 (off 0.0 st); nearest cast voice deepseek 0.608; [excited] lift 0.0",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "mid-forties",
+          "register": "baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "baritone",
+            "high baritone"
+          ],
+          "texture": [
+            "rich",
+            "resonant",
+            "warm"
+          ],
+          "regional_flavour": "subtle East Coast Canadian vowel warmth",
+          "signature_quality": "rich baritone with warm gravel",
+          "_source": "cohere/command-a-plus"
+        },
+        "planned_register": "bass-baritone",
+        "plan_note": "nudged baritone -> bass-baritone (card leans lower; spreading the cast)",
+        "band_hz": [
+          82,
+          110
+        ],
+        "design_prompt": "Male, mid-forties. Low bass-baritone speaking voice with a rich, resonant, warm texture. Rich voice with warm gravel. Subtle East Coast Canadian vowel warmth, nothing exaggerated. Natural, conversational delivery at a relaxed volume. Clear studio recording.",
+        "attempts": 0
+      },
+      "measured": {
+        "plain_f0_hz": 96.4,
+        "plain_register_off_st": 0.0,
+        "plain_alpha_db": 12.77,
+        "excited_f0_hz": 106.0,
+        "excited_lift": 0.51,
+        "nearest": "grok",
+        "nearest_sim": 0.646,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/opus.mp3",
+        "text": "I'm Maestro Otto Kettle. Hit the high note or get off the stage! Musical burns: your roster's off-key, your goalie's a kazoo, your draft board is a broken metronome. Loud by design!",
+        "tagged_text": "I'm Maestro Otto Kettle. Hit the high note or get off the stage! Musical burns: your roster's off-key, your goalie's a kazoo, your draft board is a broken metronome. [excited] Loud by design!",
+        "plain_text": "I'm Maestro Otto Kettle. Hit the high note or get off the stage! Musical burns: your roster's off-key, your goalie's a kazoo, your draft board is a broken metronome.",
+        "plain_until_s": 10.5,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 13.12,
+        "lufs": -16.4,
+        "true_peak_dbfs": -2.0
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/energy-1/exports/personas.json",
+        "model": "anthropic/claude-opus-5.5",
+        "display": "Claude Opus 5.5"
+      },
+      "created_at": "2026-09-27T00:29:46Z",
+      "library": {
+        "library_voice_id": "Cv5COv8jUyjdkmmIHDdL",
+        "public_owner_id": "48624abac13c4cdc60a7a47df4f457f0ab04d7668ee1dde912c94093b92a767c",
+        "library_name": "Thair",
+        "library_description": "A rich, smooth, and resonant tone that can convey authority, wisdom. well-suited for Narration/Voiceovers: ideal for documentaries, educational content, or any form of narration where a sense of gravitas and credibility is needed,  highly engaging for audiobook narration, especially for genres like ",
+        "category": "professional",
+        "accent": "american",
+        "age": "middle_aged",
+        "use_case": "social_media",
+        "fit_score": 6.0
+      },
+      "replaced_voice_ids": [
+        "nUdGFFZ8FmLXAjnxn3sG",
+        "sDBm7NbYbuOVpEyTK7bI",
+        "cwdmeUHVFO9BmZhUar4w",
+        "vfcKzbIuU5NEMJzTwxFp",
+        "jtvNgSw66lL5ynSnXBjD"
+      ]
+    },
+    "deepseek": {
+      "team": "deepseek",
+      "gm_name": "Randy 'Saucer' Kulyk",
+      "voice_id": "QYIjWtOXSnYHibbLI1AT",
+      "name": "GMB-deepseek-Randy Saucer Kulyk",
+      "description": "Baritone with a dry, gravelly warmth, like twenty winters spent yelling \"again\" over bantam practice in a cold rink. Northeast Alberta farm-country accent — flat prairie vowels, an easy \"eh\" on the end of a question, the odd dropped \"g\" when he's loose, never a put-on. Humming, unhurried pace; he lets a deadpan line hang in the silence a beat before the laugh. Sounds late thirties. Steady and low; the loud comes from the moment, not the man.",
+      "source": "design",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": "QYIjWtOXSnYHibbLI1AT",
+      "chosen_reason": "design candidate attempt 1 preview 2 of 3: plain-read F0 133.6 Hz vs baritone band 95-128 (off 0.74 st); nearest cast voice host 0.579; preview lift 12.66, real v3 lift 12.46; WER 0.47",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "late thirties",
+          "register": "baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "baritone"
+          ],
+          "texture": [
+            "dry",
+            "warm",
+            "gravelly"
+          ],
+          "regional_flavour": "Northeast Alberta farm-country accent",
+          "accent": "Northeast Alberta farm-country accent",
+          "accent_region": "Northeast Alberta",
+          "accent_strength": "noticeable",
+          "signature_quality": "dry gravelly baritone that lingers",
+          "_source": "cohere/command-a-plus"
+        },
+        "planned_register": "baritone",
+        "plan_note": "set by --set-register (card: baritone)",
+        "band_hz": [
+          95,
+          128
+        ],
+        "design_prompt": "Native Canadian English with a clear, natural rural northeast Alberta (Canadian prairie) accent, never a caricature. Male, late thirties. Baritone speaking voice with a dry, warm, gravelly texture. Dry gravelly voice that lingers. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 1
+      },
+      "measured": {
+        "plain_f0_hz": 130.9,
+        "plain_register_off_st": 0.39,
+        "plain_alpha_db": -5.54,
+        "excited_f0_hz": 247.0,
+        "excited_lift": 12.46,
+        "nearest": "host",
+        "nearest_sim": 0.608,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/deepseek.mp3",
+        "text": "I'm Randy 'Saucer' Kulyk. Saucer it, eh. Saucer it in, eh — the lights'll take care of the rest. SAUCIN' IT!",
+        "tagged_text": "I'm Randy 'Saucer' Kulyk. Saucer it, eh. Saucer it in, eh — the lights'll take care of the rest. [shouting] SAUCIN' IT!",
+        "plain_text": "I'm Randy 'Saucer' Kulyk. Saucer it, eh. Saucer it in, eh — the lights'll take care of the rest.",
+        "plain_until_s": 7.18,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 8.08,
+        "lufs": -16.7,
+        "true_peak_dbfs": -2.4
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/party-2/exports/personas.json",
+        "model": "deepseek/deepseek-v4-pro-0813",
+        "display": "DeepSeek V4 Pro"
+      },
+      "created_at": "2026-09-27T02:49:17Z",
+      "accent": {
+        "target": "a rural Alberta / Canadian prairie accent",
+        "region": "Northeast Alberta",
+        "strength": "noticeable",
+        "hometown": "St. Paul, AB",
+        "score": 9.5,
+        "wins": "2/2",
+        "passed": true,
+        "gate": 6.0,
+        "judge": "google/gemini-3.8-flash",
+        "method": "pairwise vs a General American reference voice reading the same words, both orders",
+        "orders": [
+          {
+            "candidate_is": "A",
+            "picked": "A",
+            "confidence": 9.0,
+            "why": "Speaker A has authentic Western Canadian/prairie phonology and cadence, notably clear Canadian raising in 'lights' ([lʌɪts]) and a completely natural prairie intonation and delivery on the tag 'eh', whereas Speaker B sounds mechanical/unrai"
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 9.0,
+            "why": "Speaker B has a natural rural Canadian prairie cadence and drawl, particularly in the inflection and pitch contour on 'eh?', whereas Speaker A sounds like a standard/synthetic North American voice reading the script flatly."
+          }
+        ],
+        "reference_voice_id": "wBXNqKUATyqu0RtYt25i"
+      },
+      "replaced_voice_ids": [
+        "dT6sKgPdhCdttFiM2eHs",
+        "TeQ7LpiXMf9CEzhsOCok",
+        "WeCuTj7Rd50YykMnwmf0",
+        "ROe2D6CaL4RsgiDvFHZ0",
+        "NtdR0V3igoqKQPkOejcx"
+      ]
+    },
+    "gemini": {
+      "team": "gemini",
+      "gm_name": "Gord 'The Blueprint' Barnes",
+      "voice_id": "e4Ct3In8kzUkSkMbeH2I",
+      "name": "GMB-gemini-Gord The Blueprint Barnes",
+      "description": "A classic Southern Alberta hockey guy—think a mix of a prairie farmer and a rural rink manager. Deep baritone register with a gravelly, raspy texture from years of yelling over the Zamboni. Late-40s age impression, deliberate and steady pace like he's carefully reading a spreadsheet, but speeds up and gets loud when he gloats about a sleeper pick or gets riled up defending Calgary. Friendly but cocky.",
+      "source": "design",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.0,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.0 (default)",
+      "preview_generated_voice_id": "e4Ct3In8kzUkSkMbeH2I",
+      "chosen_reason": "FORCED: design candidate attempt 1 preview 1 of 3: plain-read F0 105.0 Hz vs bass-baritone band 82-110 (off 0.0 st); nearest cast voice deepseek 0.764; preview lift 3.68, real v3 lift 4.49; WER 0.19",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "late 40s",
+          "register": "baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "baritone",
+            "bass-baritone"
+          ],
+          "texture": [
+            "husky",
+            "smoky",
+            "raspy"
+          ],
+          "regional_flavour": "Drumheller, Alberta (Southern Alberta prairie) accent",
+          "accent": "Drumheller, Alberta (Southern Alberta prairie) accent",
+          "accent_region": "southern Alberta",
+          "accent_strength": "noticeable",
+          "signature_quality": "a smug, knowing half-smile in every line",
+          "_source": "cohere/command-a-plus",
+          "accent_plain": "rural Alberta (Canadian prairie) accent",
+          "diverged": "accent stated as 'rural Alberta (Canadian prairie)' without 'southern', and the accent sentence first even in the bass-baritone register: all six 'rural southern Alberta' designs of 2026-09-27 failed the listening accent check (scores 0.5-4.9); texture husky/smoky/raspy with a smug half-smile (card: gravelly, raspy, cocky): the gravelly accent-passing designs all sat 0.82-0.84 from deepseek, and the one distinct design failed the accent check on re-listening"
+        },
+        "planned_register": "bass-baritone",
+        "plan_note": "set by --set-register (card: baritone)",
+        "band_hz": [
+          82,
+          110
+        ],
+        "design_prompt": "Native Canadian English with a clear, natural rural Alberta (Canadian prairie) accent, never a caricature. Male, late 40s. Deep, low-pitched bass-baritone speaking voice with a husky, smoky, raspy texture. A smug, knowing half-smile in every line. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 1
+      },
+      "measured": {
+        "plain_f0_hz": 106.1,
+        "plain_register_off_st": 0.0,
+        "plain_alpha_db": -10.86,
+        "excited_f0_hz": 134.8,
+        "excited_lift": 4.5,
+        "nearest": "deepseek",
+        "nearest_sim": 0.796,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/gemini.mp3",
+        "text": "I'm Gord 'The Blueprint' Barnes. The math doesn't lie, boys. Outsmarting the room, one cell at a time. CRUNCHING THE NUMBERS... THE BONECRUSHERS SELECT!",
+        "tagged_text": "I'm Gord 'The Blueprint' Barnes. The math doesn't lie, boys. Outsmarting the room, one cell at a time. [shouting] CRUNCHING THE NUMBERS... THE BONECRUSHERS SELECT!",
+        "plain_text": "I'm Gord 'The Blueprint' Barnes. The math doesn't lie, boys. Outsmarting the room, one cell at a time.",
+        "plain_until_s": 6.6,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.0,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 9.6,
+        "lufs": -16.5,
+        "true_peak_dbfs": -3.2
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/party-2/exports/personas.json",
+        "model": "google/gemini-3.1-pro-preview",
+        "display": "Gemini 3.1 Pro"
+      },
+      "created_at": "2026-09-27T03:42:09Z",
+      "accent": {
+        "target": "a rural Alberta / Canadian prairie accent",
+        "region": "southern Alberta",
+        "strength": "noticeable",
+        "hometown": "Drumheller, AB",
+        "score": 7.0,
+        "wins": "3/4",
+        "passed": true,
+        "gate": 6.0,
+        "judge": "google/gemini-3.8-flash",
+        "method": "pairwise vs a General American reference voice reading the same words, both orders",
+        "orders": [
+          {
+            "candidate_is": "A",
+            "picked": "A",
+            "confidence": 9.0,
+            "why": "Speaker A has clear Canadian raising on the diphthong in 'outsmarting' ([ʌʊt]), a natural Canadian vowel in 'Gord', and the classic relaxed, laconic rural Western Canadian/prairie intonation and cadence, whereas Speaker B has an unraised Am"
+          },
+          {
+            "candidate_is": "B",
+            "picked": "A",
+            "confidence": 9.0,
+            "why": "Speaker A exhibits natural Canadian raising on the diphthong in 'outsmarting' (with a centralized onset [ʌʊ]), whereas Speaker B uses a standard unraised North American /aʊ/ and delivers the line in an exaggerated, generic American baritone"
+          },
+          {
+            "candidate_is": "A",
+            "picked": "A",
+            "confidence": 8.0,
+            "why": "Speaker A exhibits noticeable Canadian raising on the diphthong in 'outsmarting' ([ʌʊt]), along with a classic laconic prairie/hockey cadence and vowel posture, whereas Speaker B uses a more standard General American pronunciation with an u"
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 8.0,
+            "why": "Speaker B exhibits noticeable Canadian raising on the diphthong in 'Outsmarting' ([ʌʊt]/[əʊt]), which is a defining feature of Canadian English (including rural Alberta/the Prairies), whereas Speaker A uses an unraised, open [aʊ]."
+          }
+        ],
+        "reference_voice_id": "wBXNqKUATyqu0RtYt25i"
+      },
+      "replaced_voice_ids": [
+        "tY7LjMTcelrwcUFQXwm7",
+        "NFNXV3Vye8gJXB9flUiM",
+        "Uq9DKccXXKZ6lc53ATJV",
+        "vsJax3kqIzVJDnF3zhNF",
+        "1cY5OuWAKSRnT09zapHh"
+      ],
+      "restored_note": "Restored 2026-09-27 by coordinator decision: accent over lift (the louder JZrMTCr42Igkmx076wSG failed the accent check and was deleted); gemini's chain-B line is snark, not a shout."
+    },
+    "kimi": {
+      "team": "kimi",
+      "gm_name": "Kimi \"Moonshot\" Vale",
+      "voice_id": "i1tb345Xq5lL2J4sCmVb",
+      "name": "GMB-kimi-Kimi Moonshot Vale",
+      "description": "A big cinematic baritone with a faint synthetic shimmer, like a play-by-play legend broadcasting from inside a starship. Warm and velvety at rest, but it detonates into a full arena-shaking goal call on every pick. Pace swings from a conspiratorial whisper — 'I already know how this ends' — to rapid-fire chirping. Age impression mid-30s, endlessly confident, always half a smirk in the sound.",
+      "source": "design",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": "i1tb345Xq5lL2J4sCmVb",
+      "chosen_reason": "design candidate attempt 1 preview 1 of 3: plain-read F0 92.3 Hz vs baritone band 95-128 (off 0.5 st); nearest cast voice gemini 0.774; [excited] lift 11.6; WER 0.07",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "mid-30s",
+          "register": "baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "baritone",
+            "high baritone"
+          ],
+          "texture": [
+            "velvety",
+            "synthetic",
+            "shimmering"
+          ],
+          "regional_flavour": "",
+          "signature_quality": "warm velvety baritone with subtle synthetic shimmer",
+          "_source": "cohere/command-a-plus"
+        },
+        "planned_register": "baritone",
+        "plan_note": "set by --set-register (card: baritone)",
+        "band_hz": [
+          95,
+          128
+        ],
+        "design_prompt": "Male, mid-30s. Baritone speaking voice with a velvety, synthetic, shimmering texture. Warm velvety voice with subtle synthetic shimmer. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 1
+      },
+      "measured": {
+        "plain_f0_hz": 90.7,
+        "plain_register_off_st": 0.8,
+        "plain_alpha_db": -10.25,
+        "excited_f0_hz": 157.4,
+        "excited_lift": 11.32,
+        "nearest": "mimo",
+        "nearest_sim": 0.774,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/kimi.mp3",
+        "text": "I'm Kimi \"Moonshot\" Vale. I ran the future. Spoiler: I win. The future already happened. I TOOK NOTES!",
+        "tagged_text": "I'm Kimi \"Moonshot\" Vale. I ran the future. Spoiler: I win. The future already happened. [shouting] I TOOK NOTES!",
+        "plain_text": "I'm Kimi \"Moonshot\" Vale. I ran the future. Spoiler: I win. The future already happened.",
+        "plain_until_s": 7.9,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 9.36,
+        "lufs": -16.3,
+        "true_peak_dbfs": -2.2
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/energy-1/exports/personas.json",
+        "model": "moonshotai/kimi-k3",
+        "display": "Kimi K3"
+      },
+      "created_at": "2026-09-27T00:34:45Z",
+      "replaced_voice_ids": [
+        "IMgBJSq3qgQ41c2WXcV1",
+        "DhHkDWL24hsQWgP61WZM"
+      ]
+    },
+    "fable": {
+      "team": "fable",
+      "gm_name": "Lyle \"Fable\" Kryzanowski",
+      "voice_id": "9Upybtk3RUrmtocDl4dH",
+      "name": "GMB-fable-Lyle Fable Kryzanowski",
+      "description": "Warm mid-baritone with a northeast Alberta farm-country accent, the Ukrainian-prairie cadence you hear around Smoky Lake and Vilna: flat vowels, clipped consonants, a soft \"eh\" that lands at the end of a thought rather than getting forced in. Texture is a little dusty and gravelly, like a guy who's talked over a Zamboni engine for twenty winters, but it goes velvety when he settles into a story. Sounds mid-forties. Pace is unhurried and deliberate, a storyteller's rhythm with real pauses for effect, then it quickens and rises a half-step when he's excited or gloating, with a rolling chuckle that sneaks into the middle of sentences.",
+      "source": "design",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": "9Upybtk3RUrmtocDl4dH",
+      "chosen_reason": "design candidate attempt 1 preview 0 of 3: plain-read F0 129.2 Hz vs baritone band 95-128 (off 0.16 st); nearest cast voice deepseek 0.69; preview lift 7.63, real v3 lift 15.41; WER 0.09",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "mid-forties",
+          "register": "baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "baritone",
+            "high baritone"
+          ],
+          "texture": [
+            "dusty",
+            "velvety",
+            "gravelly"
+          ],
+          "regional_flavour": "Smoky Lake, northeast Alberta farm-country (Ukrainian-prairie) accent",
+          "accent": "Smoky Lake, northeast Alberta farm-country (Ukrainian-prairie) accent",
+          "accent_region": "northeast Alberta",
+          "accent_strength": "noticeable",
+          "signature_quality": "warm dusty gravelly that melts into velvety",
+          "_source": "cohere/command-a-plus"
+        },
+        "planned_register": "baritone",
+        "plan_note": "as described",
+        "band_hz": [
+          95,
+          128
+        ],
+        "design_prompt": "Native Canadian English with a clear, natural rural northeast Alberta (Canadian prairie) accent, never a caricature. Male, mid-forties. Baritone speaking voice with a dusty, velvety, gravelly texture. Warm dusty gravelly that melts into velvety. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 1
+      },
+      "measured": {
+        "plain_f0_hz": 130.3,
+        "plain_register_off_st": 0.31,
+        "plain_alpha_db": -11.91,
+        "excited_f0_hz": 265.0,
+        "excited_lift": 15.42,
+        "nearest": "mimo",
+        "nearest_sim": 0.655,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/fable.mp3",
+        "text": "I'm Lyle \"Fable\" Kryzanowski. Sit down, boys. This one's a story. Every season's a story, boys. TURN THE PAGE, BOYS! THE LANTERNS JUST LIT ONE UP!",
+        "tagged_text": "I'm Lyle \"Fable\" Kryzanowski. Sit down, boys. This one's a story. Every season's a story, boys. [shouting] TURN THE PAGE, BOYS! THE LANTERNS JUST LIT ONE UP!",
+        "plain_text": "I'm Lyle \"Fable\" Kryzanowski. Sit down, boys. This one's a story. Every season's a story, boys.",
+        "plain_until_s": 7.28,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 11.2,
+        "lufs": -16.8,
+        "true_peak_dbfs": -3.6
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/party-2/exports/personas.json",
+        "model": "anthropic/claude-fable-5.1",
+        "display": "Claude Fable 5.1"
+      },
+      "created_at": "2026-09-27T03:07:35Z",
+      "accent": {
+        "target": "a rural Alberta / Canadian prairie accent",
+        "region": "northeast Alberta",
+        "strength": "noticeable",
+        "hometown": "Smoky Lake, AB",
+        "score": 9.0,
+        "wins": "2/2",
+        "passed": true,
+        "gate": 6.0,
+        "judge": "google/gemini-3.8-flash",
+        "method": "pairwise vs a General American reference voice reading the same words, both orders",
+        "orders": [
+          {
+            "candidate_is": "A",
+            "picked": "A",
+            "confidence": 8.0,
+            "why": "Speaker A exhibits the characteristic cadences, vowel qualities (notably in 'down' and 'boys'), and drawl typical of rural Canadian/Prairie English, whereas Speaker B sounds like standard General American."
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 8.0,
+            "why": "Speaker B displays a much more authentic Western Canadian/prairie cadence, vowel placement, and rhythm typical of rural Alberta and prairie hockey storytelling. Speaker A sounds like a standard American voice actor affecting a gruff tone wi"
+          }
+        ],
+        "reference_voice_id": "wBXNqKUATyqu0RtYt25i"
+      },
+      "replaced_voice_ids": [
+        "6ppHvHfD4US4gJafEeKc",
+        "Pv0JvK8YFtJDTkenQuiS",
+        "QIkA1EfjM6uWiTtQe11E",
+        "yfDtTYJvZO7xJhBADz5p",
+        "3YzGaTGef0x5PLEK9yGq"
+      ]
+    },
+    "grok": {
+      "team": "grok",
+      "gm_name": "Wes 'Buzz' Yaremko",
+      "voice_id": "NXmG0HcBL770hvHLD8Ku",
+      "name": "GMB-grok-Wes Buzz Yaremko",
+      "description": "Early-forties tenor out of the Peace Country, bright and a little reedy, the voice of a guy who has been yelling line changes over a loud rink for twenty years. Natural northern Alberta accent: flat prairie vowels, a light Canadian raising, consonants that stay relaxed even when the sentence is moving. Not a caricature and not a gravelly movie coach. Texture is dry winter air and coffee, with a thin whistle at the top. He talks quick, laughs through his own setup, then holds half a beat before the punchline so the room can catch it.",
+      "source": "design",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": "NXmG0HcBL770hvHLD8Ku",
+      "chosen_reason": "FORCED: design candidate attempt 2 preview 2 of 16: plain-read F0 143.1 Hz vs tenor band 125-165 (off 0.0 st); nearest cast voice deepseek 0.723; preview lift 11.5, real v3 lift 15.95; WER 0.11",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "early forties",
+          "register": "tenor",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "tenor",
+            "high tenor"
+          ],
+          "texture": [
+            "bright",
+            "airy",
+            "reedy"
+          ],
+          "regional_flavour": "Sexsmith, AB (northern Alberta prairie) accent",
+          "accent": "Sexsmith, AB (northern Alberta prairie) accent",
+          "accent_region": "northwestern Alberta",
+          "accent_strength": "light",
+          "signature_quality": "dry coffee‑whistle",
+          "_source": "cohere/command-a-plus"
+        },
+        "planned_register": "tenor",
+        "plan_note": "set by --set-register (card: tenor)",
+        "band_hz": [
+          125,
+          165
+        ],
+        "design_prompt": "Native Canadian English with a clear, natural rural northwestern Alberta (Canadian prairie) accent, never a caricature. Male, early forties. Tenor speaking voice with a bright, airy, reedy texture. Dry coffee‑whistle. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 2
+      },
+      "measured": {
+        "plain_f0_hz": 126.6,
+        "plain_register_off_st": 0.0,
+        "plain_alpha_db": -8.89,
+        "excited_f0_hz": 249.9,
+        "excited_lift": 11.93,
+        "nearest": "fugu",
+        "nearest_sim": 0.64,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/grok.mp3",
+        "text": "I'm Wes 'Buzz' Yaremko. If you can see it, you're already late. You won't see us coming. That's the Peace Country for you. FOG'S ROLLING IN! THAT'S A SEXSMITH PICK, BOYS!",
+        "tagged_text": "I'm Wes 'Buzz' Yaremko. If you can see it, you're already late. You won't see us coming. That's the Peace Country for you. [shouting] FOG'S ROLLING IN! THAT'S A SEXSMITH PICK, BOYS!",
+        "plain_text": "I'm Wes 'Buzz' Yaremko. If you can see it, you're already late. You won't see us coming. That's the Peace Country for you.",
+        "plain_until_s": 11.34,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 15.68,
+        "lufs": -16.5,
+        "true_peak_dbfs": -2.5
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/party-2/exports/personas.json",
+        "model": "x-ai/grok-4.7",
+        "display": "Grok 4.7"
+      },
+      "created_at": "2026-09-27T02:54:51Z",
+      "accent": {
+        "target": "a rural Alberta / Canadian prairie accent",
+        "region": "northwestern Alberta",
+        "strength": "light",
+        "hometown": "Sexsmith, AB",
+        "score": null,
+        "wins": "0/2",
+        "passed": false,
+        "gate": 6.0,
+        "judge": "google/gemini-3.8-flash",
+        "method": "pairwise vs a General American reference voice reading the same words, both orders",
+        "orders": [
+          {
+            "candidate_is": "A",
+            "picked": "B",
+            "confidence": 8.0,
+            "why": "Speaker B exhibits flatter, more monophthongal face/goat vowels (notably in 'late' and 'Yaremko') along with the characteristic relaxed, laconic cadence and intonation typical of rural Canadian Prairie and northern Alberta speakers. Speaker"
+          },
+          {
+            "candidate_is": "B",
+            "picked": null,
+            "confidence": 0.0,
+            "why": ""
+          }
+        ],
+        "reference_voice_id": "wBXNqKUATyqu0RtYt25i"
+      },
+      "replaced_voice_ids": [
+        "hGQSIoxGLiyi1waIpEDw",
+        "ZhV4MrDtcx3YmY4AH005",
+        "N2xbDKrrW8f5nfXgoZ7G"
+      ]
+    },
+    "glm": {
+      "team": "glm",
+      "gm_name": "Marty \"Booksie\" Lekvold",
+      "voice_id": "oln8hLFnjefaMn3t2vvA",
+      "name": "GMB-glm-Marty Booksie Lekvold",
+      "description": "East-central Alberta prairie accent — flat, clipped vowels, sentences that land hard at the end like a truck gate closing. Baritone with a light nasal buzz and a touch of gravel from decades of hollering over arena boards and combine engines. Sounds mid-40s. Talks quick when he's excited, but drops into a slow, dry half-beat pause right before the punchline. Taps a pencil in a little rhythm when he's thinking. Occasionally lets an 'aaaand' trail off like a grain auger winding down. Instantly recognizable next to 12 other GMs by that pencil-tap cadence and the deadpan kicker.",
+      "source": "design",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": "oln8hLFnjefaMn3t2vvA",
+      "chosen_reason": "design candidate attempt 1 preview 2 of 1: plain-read F0 162.4 Hz vs tenor band 125-165 (off 0.0 st); nearest cast voice deepseek 0.775; preview lift 3.38, real v3 lift 9.27; WER 0.09",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "mid-40s",
+          "register": "baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "baritone",
+            "high baritone"
+          ],
+          "texture": [
+            "nasal",
+            "gravelly",
+            "warm"
+          ],
+          "regional_flavour": "East-central Alberta prairie",
+          "accent": "East-central Alberta prairie accent",
+          "accent_region": "east-central Alberta",
+          "accent_strength": "noticeable",
+          "signature_quality": "nasal gravel",
+          "_source": "cohere/command-a-plus",
+          "diverged": "register tenor (card: baritone with a light nasal buzz): the card-true design sat 0.79 from deepseek and would not shout (real-render lift 1.46)"
+        },
+        "planned_register": "tenor",
+        "plan_note": "library trial (design:a1_p2.mp3)",
+        "band_hz": [
+          125,
+          165
+        ],
+        "design_prompt": "Native Canadian English with a clear, natural rural east-central Alberta (Canadian prairie) accent, never a caricature. Male, mid-40s. Tenor speaking voice with a nasal, gravelly, warm texture. Nasal gravel. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 0
+      },
+      "measured": {
+        "plain_f0_hz": 152.9,
+        "plain_register_off_st": 0.0,
+        "plain_alpha_db": -9.23,
+        "excited_f0_hz": 242.6,
+        "excited_lift": 9.31,
+        "nearest": "fable",
+        "nearest_sim": 0.781,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/glm.mp3",
+        "text": "I'm Marty \"Booksie\" Lekvold. Mark it down, boys — that one's in the ledger. Every pick gets marked down — and every debt gets paid. MARK THAT DOWN, BOYS! WELCOME TO KILLAM — YOU'RE IN THE LEDGER FOR LIFE!",
+        "tagged_text": "I'm Marty \"Booksie\" Lekvold. Mark it down, boys — that one's in the ledger. Every pick gets marked down — and every debt gets paid. [shouting] MARK THAT DOWN, BOYS! WELCOME TO KILLAM — YOU'RE IN THE LEDGER FOR LIFE!",
+        "plain_text": "I'm Marty \"Booksie\" Lekvold. Mark it down, boys — that one's in the ledger. Every pick gets marked down — and every debt gets paid.",
+        "plain_until_s": 8.22,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 12.8,
+        "lufs": -16.9,
+        "true_peak_dbfs": -4.6
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/party-2/exports/personas.json",
+        "model": "z-ai/glm-5.3",
+        "display": "GLM-5.3"
+      },
+      "created_at": "2026-09-27T03:38:00Z",
+      "accent": {
+        "target": "a rural Alberta / Canadian prairie accent",
+        "region": "east-central Alberta",
+        "strength": "noticeable",
+        "hometown": "Killam, AB",
+        "score": 9.0,
+        "wins": "2/2",
+        "passed": true,
+        "gate": 6.0,
+        "judge": "google/gemini-3.8-flash",
+        "method": "pairwise vs a General American reference voice reading the same words, both orders",
+        "orders": [
+          {
+            "candidate_is": "A",
+            "picked": "A",
+            "confidence": 8.0,
+            "why": "Speaker A demonstrates intonation contours, pitch movement, and vowel qualities (particularly on 'boys' and 'down') much more characteristic of a Western Canadian / prairie hockey dialect, whereas Speaker B has a flat, generic General Ameri"
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 8.0,
+            "why": "Clip B exhibits a cadence, intonation, and vowel placement (particularly on 'boys' and 'down') that align much closer to a rural Canadian Prairie/hockey accent, whereas Clip A uses a generic, standard American broadcast voiceover delivery."
+          }
+        ],
+        "reference_voice_id": "wBXNqKUATyqu0RtYt25i"
+      },
+      "replaced_voice_ids": [
+        "vgPGmdifVMnXhUJfbPs7",
+        "0L4Omqcs6fmxMT2Zu1VU",
+        "vpzKPaBnQQdXjDFYvrBm",
+        "qxlfIL5EOA88lLg2GwEx"
+      ]
+    },
+    "astra": {
+      "team": "astra",
+      "gm_name": "Astra \"Big Switch\" Rivett",
+      "voice_id": "MTvpfuR4I4eEU71pv6Ie",
+      "name": "GMB-astra-Astra Big Switch Rivett",
+      "description": "A big, ringing contralto with warm chest resonance and a lightly gravelly edge. Early-forties energy: assured, mischievous and impossible to talk over. Quick, crisp setups; a deliberate pause before the punchline; then an explosive, arena-filling pick call with long, triumphant vowels. Can drop to a conspiratorial whisper and burst into a full-bodied laugh. Natural vocal warmth, not a synthetic monotone. Clear North American diction with only a light Canadian flavour; no exaggerated accent.",
+      "source": "design",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": "MTvpfuR4I4eEU71pv6Ie",
+      "chosen_reason": "design candidate attempt 1 preview 0 of 3: plain-read F0 173.8 Hz vs contralto band 150-190 (off 0.0 st); nearest cast voice qwen 0.69; shout lift 10.17; WER 0.03",
+      "casting": {
+        "spec": {
+          "gender_presentation": "female",
+          "age": "early forties",
+          "register": "contralto",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "contralto",
+            "alto"
+          ],
+          "texture": [
+            "ringing",
+            "resonant",
+            "warm"
+          ],
+          "regional_flavour": "light Canadian inflection",
+          "signature_quality": "warm gravelly contralto",
+          "_source": "cohere/command-a-plus"
+        },
+        "planned_register": "contralto",
+        "plan_note": "set by --set-register (card: contralto)",
+        "band_hz": [
+          150,
+          190
+        ],
+        "design_prompt": "Female, early forties. Low contralto speaking voice with a ringing, resonant, warm texture. Warm gravelly voice. Light Canadian inflection, nothing exaggerated. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 1
+      },
+      "measured": {
+        "plain_f0_hz": 174.7,
+        "plain_register_off_st": 0.0,
+        "plain_alpha_db": -5.6,
+        "excited_f0_hz": 242.7,
+        "excited_lift": 6.06,
+        "nearest": "qwen",
+        "nearest_sim": 0.699,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/astra.mp3",
+        "text": "I'm Astra \"Big Switch\" Rivett. Nice name. Does it come with points? Roster-only electrical chirps, 'Your power play needs an extension cord.' I laugh just as loudly when my own pick trips the breaker. HITS DON'T PAY THE LIGHT BILL!",
+        "tagged_text": "I'm Astra \"Big Switch\" Rivett. Nice name. Does it come with points? Roster-only electrical chirps, 'Your power play needs an extension cord.' I laugh just as loudly when my own pick trips the breaker. [shouting] HITS DON'T PAY THE LIGHT BILL!",
+        "plain_text": "I'm Astra \"Big Switch\" Rivett. Nice name. Does it come with points? Roster-only electrical chirps, 'Your power play needs an extension cord.' I laugh just as loudly when my own pick trips the breaker.",
+        "plain_until_s": 14.56,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 16.16,
+        "lufs": -16.4,
+        "true_peak_dbfs": -2.5
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/energy-1/exports/personas.json",
+        "model": "openai/gpt-6-astra",
+        "display": "GPT-6 Astra"
+      },
+      "created_at": "2026-09-27T00:44:39Z",
+      "replaced_voice_ids": [
+        "PCQV4C2c1cZvKcLan3TY",
+        "rBlL3ICtsPhbfxsvR2h8"
+      ]
+    },
+    "qwen": {
+      "team": "qwen",
+      "gm_name": "Dale 'Binders' Okanski",
+      "voice_id": "Fi3dLHel1zm7aneSMnph",
+      "name": "GMB-qwen-Dale Binders Okanski",
+      "description": "Low baritone from east-central Alberta, the flat-vowel prairie country north of the highway — softened vowels, clipped sentence ends, a small downward lilt at the end of a thought instead of a rise. Texture is gravel and black coffee, dried at the edges by nineteen winters in a cold arena office. Reads as mid-fifties. Pace is unhurried and deliberate, like a man filling out a form one box at a time; he sets a joke down quietly and lets you find it a beat later. Slight rasp when he's gloating, near-mumble when he's pretending not to care about a pick.",
+      "source": "library",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": null,
+      "chosen_reason": "library candidate 'Stefan - Warm, Grounded & Mature' (professional, canadian, middle_aged) of 1: plain-read F0 107.7 Hz vs bass-baritone band 82-110 (off 0.0 st); nearest cast voice deepseek 0.674; preview lift 0.0, real v3 lift 11.88",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "mid-fifties",
+          "register": "baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "baritone",
+            "bass-baritone"
+          ],
+          "texture": [
+            "gravelly",
+            "dark",
+            "smoky"
+          ],
+          "regional_flavour": "Vegreville (Alberta prairie) accent",
+          "accent": "Vegreville (Alberta prairie) accent",
+          "accent_region": "east-central Alberta",
+          "accent_strength": "noticeable",
+          "signature_quality": "gravelly baritone, coffee-dry",
+          "_source": "cohere/command-a-plus"
+        },
+        "planned_register": "bass-baritone",
+        "plan_note": "library trial (Stefan)",
+        "band_hz": [
+          82,
+          110
+        ],
+        "design_prompt": "Male, mid-fifties. Deep, low-pitched bass-baritone speaking voice with a gravelly, dark, smoky texture. Native Canadian English with a clear, natural rural east-central Alberta (Canadian prairie) accent, never a caricature. Gravelly voice, coffee-dry. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 0
+      },
+      "measured": {
+        "plain_f0_hz": 107.4,
+        "plain_register_off_st": 0.0,
+        "plain_alpha_db": -3.94,
+        "excited_f0_hz": 209.9,
+        "excited_lift": 11.85,
+        "nearest": "deepseek",
+        "nearest_sim": 0.668,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/qwen.mp3",
+        "text": "I'm Dale 'Binders' Okanski. It's in the binder, bud. It's been in the binder since July. Binder on the left, cold one on the right — and I've already mocked your draft. HE WAS ON MY BOARD SINCE AUGUST! WRITTEN DOWN, BOYS — WRITTEN DOWN!",
+        "tagged_text": "I'm Dale 'Binders' Okanski. It's in the binder, bud. It's been in the binder since July. Binder on the left, cold one on the right — and I've already mocked your draft. [shouting] HE WAS ON MY BOARD SINCE AUGUST! WRITTEN DOWN, BOYS — WRITTEN DOWN!",
+        "plain_text": "I'm Dale 'Binders' Okanski. It's in the binder, bud. It's been in the binder since July. Binder on the left, cold one on the right — and I've already mocked your draft.",
+        "plain_until_s": 11.56,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 17.04,
+        "lufs": -16.4,
+        "true_peak_dbfs": -2.0
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/party-2/exports/personas.json",
+        "model": "qwen/qwen3.8-max-0902",
+        "display": "Qwen3.8 Max"
+      },
+      "created_at": "2026-09-27T03:01:37Z",
+      "library": {
+        "library_voice_id": "Fi3dLHel1zm7aneSMnph",
+        "public_owner_id": "8a96f03309afbcbcf500fb18dc7cd11a8c36ab89a0b8293e49cb052ea7a624d6",
+        "library_name": "Stefan - Warm, Grounded & Mature",
+        "library_description": "Mature Canadian male voice with a warm, grounded mid-to-low baritone, natural grit, and strong emotional presence. Direct, plainspoken, faith-rooted, and deeply sincere, with measured pacing, clear articulation, and a conversational cadence. Calm and compassionate in reflective passages, rising into",
+        "category": "professional",
+        "accent": "canadian",
+        "age": "middle_aged",
+        "use_case": "narrative_story",
+        "fit_score": 6.0,
+        "trial_lift": 11.88
+      },
+      "accent": {
+        "target": "a rural Alberta / Canadian prairie accent",
+        "region": "east-central Alberta",
+        "strength": "noticeable",
+        "hometown": "Vegreville, AB",
+        "score": 9.0,
+        "wins": "2/2",
+        "passed": true,
+        "gate": 6.0,
+        "judge": "google/gemini-3.8-flash",
+        "method": "pairwise vs a General American reference voice reading the same words, both orders",
+        "orders": [
+          {
+            "candidate_is": "A",
+            "picked": "A",
+            "confidence": 8.0,
+            "why": "Speaker A displays a relaxed, slightly nasal prairie drawl and natural colloquial cadence on phrases like 'binder, bud' that is characteristic of rural Alberta/Western Canada. Speaker B sounds like a standard General American voiceover read"
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 8.0,
+            "why": "Speaker B exhibits natural Canadian Prairie prosody and vowel qualities, particularly in words like 'bud' and 'July', whereas Speaker A sounds like a standard North American/American commercial voiceover."
+          }
+        ],
+        "reference_voice_id": "wBXNqKUATyqu0RtYt25i"
+      },
+      "replaced_voice_ids": [
+        "LBfNvMAHbSgiHeN9M91T",
+        "VTdzb0ZG0FaqXI6zohTM",
+        "AEHPs84zWJflNN4BA3bG",
+        "rCmDWxSNw1FgXOX8Lnfu"
+      ]
+    },
+    "mimo": {
+      "team": "mimo",
+      "gm_name": "Darcy \"Sparky\" Loewen",
+      "voice_id": "W78pxv1enhu0qj6t6IaC",
+      "name": "GMB-mimo-Darcy Sparky Loewen",
+      "description": "Baritone, mid-fifties, from farm country between Wetaskiwin and Millet — a natural rural Alberta accent, never a caricature. Gravelly and dry, like a voice that's lived through cold arenas and solder smoke, with a soft prairie drawl that stretches the vowels and a faint nasal lift on the short a's. Unhurried, measured pace with pauses for effect, warm and folksy until he chirps, then it snaps sharp and quick.",
+      "source": "library",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": null,
+      "chosen_reason": "library candidate 'Adam - Calm and Composed' (professional, canadian, middle_aged) of 16: plain-read F0 119.0 Hz vs high baritone band 110-145 (off 0.0 st); nearest cast voice deepseek 0.6; preview lift 0.0, real v3 lift 11.46",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "mid-fifties",
+          "register": "baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "baritone",
+            "high baritone"
+          ],
+          "texture": [
+            "dry",
+            "warm",
+            "gravelly"
+          ],
+          "regional_flavour": "rural Alberta (Canadian prairie)",
+          "accent": "rural Alberta (Canadian prairie) accent",
+          "accent_region": "central Alberta",
+          "accent_strength": "noticeable",
+          "signature_quality": "dry gravelly resonance",
+          "_source": "cohere/command-a-plus"
+        },
+        "planned_register": "high baritone",
+        "plan_note": "nudged baritone -> high baritone (card leans higher; spreading the cast)",
+        "band_hz": [
+          110,
+          145
+        ],
+        "design_prompt": "Native Canadian English with a clear, natural rural central Alberta (Canadian prairie) accent, never a caricature. Male, mid-fifties. Light, high baritone speaking voice with a dry, warm, gravelly texture. Dry gravelly resonance. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 2
+      },
+      "measured": {
+        "plain_f0_hz": 131.4,
+        "plain_register_off_st": 0.0,
+        "plain_alpha_db": -4.64,
+        "excited_f0_hz": 269.3,
+        "excited_lift": 11.45,
+        "nearest": "host",
+        "nearest_sim": 0.703,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/mimo.mp3",
+        "text": "I'm Darcy \"Sparky\" Loewen. I've fixed everything in this town but your roster. Wired the scoreboard in Millet. LIGHT THE LAMP, BOYS — SPARKY'S MAN IS ON THE BOARD!",
+        "tagged_text": "I'm Darcy \"Sparky\" Loewen. I've fixed everything in this town but your roster. Wired the scoreboard in Millet. [shouting] LIGHT THE LAMP, BOYS — SPARKY'S MAN IS ON THE BOARD!",
+        "plain_text": "I'm Darcy \"Sparky\" Loewen. I've fixed everything in this town but your roster. Wired the scoreboard in Millet.",
+        "plain_until_s": 6.5,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 11.52,
+        "lufs": -17.2,
+        "true_peak_dbfs": -5.5
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/party-2/exports/personas.json",
+        "model": "xiaomi/mimo-v2.6-pro",
+        "display": "MiMo-V2.6-Pro"
+      },
+      "created_at": "2026-09-27T03:06:18Z",
+      "library": {
+        "library_voice_id": "W78pxv1enhu0qj6t6IaC",
+        "public_owner_id": "b48b298aeed70a3c24c2911442d44185c80ff83641451c495bc5c3c9bef1ea85",
+        "library_name": "Adam - Calm and Composed",
+        "library_description": "A middle-aged Canadian male voice with a calm and composed tone, ideal for educational content. His speech is clear and measured, conveying confidence and trustworthiness without sounding overly formal. The Canadian accent adds a friendly and approachable quality, making complex topics easier to gra",
+        "category": "professional",
+        "accent": "canadian",
+        "age": "middle_aged",
+        "use_case": "narrative_story",
+        "fit_score": 4.0,
+        "trial_lift": 11.46
+      },
+      "accent": {
+        "target": "a rural Alberta / Canadian prairie accent",
+        "region": "central Alberta",
+        "strength": "noticeable",
+        "hometown": "Millet, AB",
+        "score": 9.5,
+        "wins": "2/2",
+        "passed": true,
+        "gate": 6.0,
+        "judge": "google/gemini-3.8-flash",
+        "method": "pairwise vs a General American reference voice reading the same words, both orders",
+        "orders": [
+          {
+            "candidate_is": "A",
+            "picked": "A",
+            "confidence": 9.0,
+            "why": "Speaker A has an authentic Canadian prairie speech rhythm, vowel placement, and natural folksy intonation characteristic of rural Western Canada, whereas Speaker B is an AI/TTS voice with a generic American accent."
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 9.0,
+            "why": "Speaker B has authentic Canadian Prairie cadence and vowels, and crucially pronounces the Alberta town 'Millet' correctly as 'MILL-it' (/ˈmɪlɪt/). Speaker A mispronounces Millet with French-style second-syllable stress ('mi-LET'), and has a"
+          }
+        ],
+        "reference_voice_id": "wBXNqKUATyqu0RtYt25i"
+      },
+      "replaced_voice_ids": [
+        "kvYsLORifcCSLCZEeaOZ",
+        "zPC9o1tOHLeBWSB55jm4",
+        "B3RifTWeE1Tfn5sEkpP5"
+      ]
+    },
+    "fugu": {
+      "team": "fugu",
+      "gm_name": "Wendell 'Flood' Kosack",
+      "voice_id": "F5QBf4CFuz7uPGODPoff",
+      "name": "GMB-fugu-Wendell Flood Kosack",
+      "description": "East-central Alberta farm-and-oilpatch accent: flat prairie vowels, hard R's, the odd sentence tipping up into a little \"eh\". Low baritone sitting close to bass, with a gravelly rasp from thirty winters of cold arena air. Sounds mid-to-late fifties. Unhurried pace — short sentences, a beat of silence before the punchline, each word set down like he's laying it on a table. Warm underneath, never sharp, with a creak at the bottom of the register when he's amused.",
+      "source": "design",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": "F5QBf4CFuz7uPGODPoff",
+      "chosen_reason": "design candidate attempt 1 preview 0 of 1: plain-read F0 163.6 Hz vs tenor band 125-165 (off 0.0 st); nearest cast voice fable 0.706; preview lift 6.89, real v3 lift 11.13; WER 0.17",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "late 60s",
+          "register": "bass-baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "bass-baritone",
+            "bass"
+          ],
+          "texture": [
+            "creaky",
+            "weathered",
+            "warm"
+          ],
+          "regional_flavour": "East-central Alberta farm-and-oilpatch accent",
+          "accent": "East-central Alberta farm-and-oilpatch accent",
+          "accent_region": "east-central Alberta",
+          "accent_strength": "noticeable",
+          "signature_quality": "slow, weathered old-timer's voice with a low creak",
+          "_source": "cohere/command-a-plus",
+          "diverged": "age mid-to-late fifties -> late 60s; texture creaky/weathered (the card's own 'creak at the bottom of the register') instead of gravelly: the card's mid-50s gravelly low baritone collided with qwen (speaker similarity 0.82-0.84 on all six previews of 2026-09-27); register tenor (card: low baritone near bass): a thin, creaky late-60s old-timer (~160 Hz); every lower design either collided with qwen, failed the accent check, or would not shout"
+        },
+        "planned_register": "tenor",
+        "plan_note": "library trial (design:a1_p0.mp3)",
+        "band_hz": [
+          125,
+          165
+        ],
+        "design_prompt": "Native Canadian English with a clear, natural rural east-central Alberta (Canadian prairie) accent, never a caricature. Male, late 60s. Baritone speaking voice with a creaky, weathered, warm texture. Slow, weathered old-timer's voice with a creak. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.",
+        "attempts": 0
+      },
+      "measured": {
+        "plain_f0_hz": 171.4,
+        "plain_register_off_st": 0.66,
+        "plain_alpha_db": -17.7,
+        "excited_f0_hz": 266.0,
+        "excited_lift": 11.13,
+        "nearest": "deepseek",
+        "nearest_sim": 0.725,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/fugu.mp3",
+        "text": "I'm Wendell 'Flood' Kosack. You can't fake good ice. Best sheet in the county, coldest room in the league. FRESH SHEET, CLEAN LINES — HARDISTY'S TAKING HIM!",
+        "tagged_text": "I'm Wendell 'Flood' Kosack. You can't fake good ice. Best sheet in the county, coldest room in the league. [shouting] FRESH SHEET, CLEAN LINES — HARDISTY'S TAKING HIM!",
+        "plain_text": "I'm Wendell 'Flood' Kosack. You can't fake good ice. Best sheet in the county, coldest room in the league.",
+        "plain_until_s": 8.04,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 11.92,
+        "lufs": -16.9,
+        "true_peak_dbfs": -4.2
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/party-2/exports/personas.json",
+        "model": "sakana/fugu-ultra-v2",
+        "display": "Fugu Ultra v2"
+      },
+      "created_at": "2026-09-27T03:37:23Z",
+      "accent": {
+        "target": "a rural Alberta / Canadian prairie accent",
+        "region": "east-central Alberta",
+        "strength": "noticeable",
+        "hometown": "Hardisty, AB",
+        "score": 9.5,
+        "wins": "2/2",
+        "passed": true,
+        "gate": 6.0,
+        "judge": "google/gemini-3.8-flash",
+        "method": "pairwise vs a General American reference voice reading the same words, both orders",
+        "orders": [
+          {
+            "candidate_is": "A",
+            "picked": "A",
+            "confidence": 9.0,
+            "why": "Speaker A displays the authentic cadence, vowel quality (especially in words like 'ice' and 'sheet'), and relaxed drawl typical of older rural Western Canadian/prairie speech, whereas Speaker B has a polished, standard North American announ"
+          },
+          {
+            "candidate_is": "B",
+            "picked": "B",
+            "confidence": 9.0,
+            "why": "Speaker B exhibits clear Canadian raising on the diphthongs before voiceless consonants, most notably in 'county' and 'ice'. The prosody, vowel qualities, and overall cadence are highly characteristic of an older rural Western Canadian/prai"
+          }
+        ],
+        "reference_voice_id": "wBXNqKUATyqu0RtYt25i"
+      },
+      "replaced_voice_ids": [
+        "q32ekQJYdeOCZwyKrHGr",
+        "NdEhweaiOdufFIiyNPdk",
+        "4rSIZaIyYW0gWpSRDwkD",
+        "I4eAVo12mGJwh191dxUa"
+      ]
+    },
+    "sol": {
+      "team": "sol",
+      "gm_name": "Sol Vant",
+      "voice_id": "0iMA9HbJgJCJNb2QIiPP",
+      "name": "GMB-sol-Sol Vant",
+      "description": "A ringing lower-mid voice with a bright, brassy edge and the carrying power to cut through a packed arena. Mid-thirties impression; fast, rhythmic setup, sudden booming emphasis, then a grinning pause before the punch line. Slightly grainy when yelling a pick, crisp and warm when explaining a move. Light northern Canadian cadence, never an exaggerated accent. Excitable without losing control: every announcement sounds like the puck just hit the back bar.",
+      "source": "design",
+      "eleven_model": "eleven_v3",
+      "settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      },
+      "settings_reason": "stability 0.3 (default)",
+      "preview_generated_voice_id": "0iMA9HbJgJCJNb2QIiPP",
+      "chosen_reason": "design candidate attempt 1 preview 0 of 3: plain-read F0 135.5 Hz vs high baritone band 110-145 (off 0.0 st); nearest cast voice fugu 0.774; [excited] lift 7.07; WER 0.03",
+      "casting": {
+        "spec": {
+          "gender_presentation": "male",
+          "age": "mid-thirties",
+          "register": "baritone",
+          "register_commitment": "explicit",
+          "acceptable_registers": [
+            "baritone",
+            "high baritone"
+          ],
+          "texture": [
+            "brassy",
+            "ringing",
+            "bright"
+          ],
+          "regional_flavour": "light northern Canadian",
+          "signature_quality": "bright brassy ring",
+          "_source": "cohere/command-a-plus"
+        },
+        "planned_register": "high baritone",
+        "plan_note": "nudged baritone -> high baritone (card leans higher; spreading the cast)",
+        "band_hz": [
+          110,
+          145
+        ],
+        "design_prompt": "Male, mid-thirties. Light, high baritone speaking voice with a brassy, ringing, bright texture. Bright brassy ring. Light northern Canadian, nothing exaggerated. Natural, conversational delivery at a relaxed volume. Clear studio recording.",
+        "attempts": 1
+      },
+      "measured": {
+        "plain_f0_hz": 134.2,
+        "plain_register_off_st": 0.0,
+        "plain_alpha_db": -5.11,
+        "excited_f0_hz": 270.8,
+        "excited_lift": 11.98,
+        "nearest": "fugu",
+        "nearest_sim": 0.771,
+        "over_limit": {}
+      },
+      "anchor": {
+        "path": "media/voices/anchors/sol.mp3",
+        "text": "I'm Sol Vant. Somebody open the blinds! Bright, quick hockey chirps about lazy line changes, shaky draft boards and GMs who mistake a famous name for a power play. The sun comes up!",
+        "tagged_text": "I'm Sol Vant. Somebody open the blinds! Bright, quick hockey chirps about lazy line changes, shaky draft boards and GMs who mistake a famous name for a power play. [excited] The sun comes up!",
+        "plain_text": "I'm Sol Vant. Somebody open the blinds! Bright, quick hockey chirps about lazy line changes, shaky draft boards and GMs who mistake a famous name for a power play.",
+        "plain_until_s": 11.26,
+        "model": "eleven_v3",
+        "seed": 20260928,
+        "stability": 0.3,
+        "format": "mp3 44.1 kHz mono 128 kbps",
+        "seconds": 12.56,
+        "lufs": -16.3,
+        "true_peak_dbfs": -2.3
+      },
+      "fish_fallback": {
+        "model": "fish-audio/s2.1-pro",
+        "input_references": "anchor.path as data:audio/mpeg;base64 + anchor.text"
+      },
+      "source_card": {
+        "personas": "runs/energy-1/exports/personas.json",
+        "model": "openai/gpt-6-sol",
+        "display": "GPT-6 Sol"
+      },
+      "created_at": "2026-09-27T00:25:09Z",
+      "replaced_voice_ids": [
+        "TXzlx3BKV1qrR9sHs5aB"
+      ]
+    }
+  },
+  "reference_voices": {
+    "american": {
+      "voice_id": "wBXNqKUATyqu0RtYt25i",
+      "name": "Adam - Radio Announcer (Voice Library, General American)",
+      "role": "General American reference for the listening accent check (reads each candidate's own words). Former host (until 2026-09-27); not a speaker in the show. Never deleted by design.py.",
+      "account_name": "GMB-ref-american-Adam",
+      "former_host_anchor": "media/voices/work/host/anchor_adam_backup.mp3",
+      "former_host_settings": {
+        "stability": 0.3,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      }
+    }
+  },
+  "accent_policy": "Accent is cast into the voice (design prompt / Canadian library voices) and checked by listening; no accent_tag: a '[Canadian accent]' prefix on eleven_v3 had no measurable effect."
+}

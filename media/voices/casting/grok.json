@@ -1,0 +1,27 @@
+{
+  "sig": "703a3c40b018f301",
+  "team": "grok",
+  "spec": {
+    "gender_presentation": "male",
+    "age": "early forties",
+    "register": "tenor",
+    "register_commitment": "explicit",
+    "acceptable_registers": [
+      "tenor",
+      "high tenor"
+    ],
+    "texture": [
+      "bright",
+      "reedy",
+      "dry",
+      "airy"
+    ],
+    "regional_flavour": "Sexsmith, AB (northern Alberta prairie) accent",
+    "accent": "Sexsmith, AB (northern Alberta prairie) accent",
+    "accent_region": "northwestern Alberta",
+    "accent_strength": "light",
+    "signature_quality": "dry coffee‑whistle",
+    "_source": "cohere/command-a-plus"
+  },
+  "created_at": "2026-09-27T02:20:55Z"
+}

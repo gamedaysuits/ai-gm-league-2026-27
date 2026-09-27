@@ -1,0 +1,48 @@
+# GDS AI GM League 2026-27 ("The Suits") — league + competitor configuration.
+# Every GM gets the identical prompt template, tools, data snapshot, and budgets.
+# Only `model`, `providers` (pinned first-party hosts), and `cache` (vendor caching mechanism) differ.
+
+league:
+  id: gds-ai-gm-league-2026-27
+  name: "The Suits — Game Day Suits AI GM League 2026-27"
+  season: "20262027"
+  first_puck_drop_utc: "2026-09-29T21:00:00Z"
+  regular_season_end: "2027-04-10"
+  timezone: America/Edmonton
+
+rules:
+  teams: 14
+  rounds: 14
+  lineup: {F: 6, D: 4, G: 2, bench: 2}
+  max_goalies: 3   # stops goalie hoarding from starving the league of starters
+  scoring:
+    skater: {goal: 1, assist: 1}
+    goalie: {win: 2, otl: 1, shutout: 2}
+  waivers: {max_adds_per_week: 2, priority: reverse_standings}
+  trades: {open: "2026-10-12", deadline: "2027-03-01", max_players_per_side: 3, equal_count: true}
+
+harness:
+  max_tokens: 32000
+  per_call_timeout_s: 600
+  transient_retries: 3
+  effort: {media_day: high, draft: medium, weekly: medium, say: low}
+  draft: {max_tool_calls: 16, unreachable_pause_s: 900}  # research calls per pick; notes/queue upkeep is free
+
+# providers: OpenRouter provider slugs, in order; used as both `order` and `only`, no fallbacks.
+# omit: request params a host rejects (they would make a pinned route unroutable under require_parameters).
+# cache: top = Anthropic top-level cache_control; block = per-content-block cache_control; auto = vendor-automatic.
+teams:
+  - {id: astra,    lab: OpenAI, display: "GPT-6 Astra",     model: openai/gpt-6-astra,             providers: [openai, azure],                    cache: auto}
+  - {id: sol,      lab: OpenAI, display: "GPT-6 Sol",     model: openai/gpt-6-sol,               providers: [openai, azure],                    cache: auto}
+  - {id: fable,    lab: Anthropic, display: "Claude Fable 5.1",  model: anthropic/claude-fable-5.1,     providers: [anthropic, google-vertex],         cache: top}
+  - {id: opus,     lab: Anthropic, display: "Claude Opus 5.5",  model: anthropic/claude-opus-5.5,      providers: [anthropic, google-vertex],         cache: top}
+  - {id: gemini,   lab: Google, display: "Gemini 3.1 Pro",     model: google/gemini-3.1-pro-preview,  providers: [google-ai-studio, google-vertex],   cache: auto}
+  - {id: grok,     lab: SpaceXAI, display: "Grok 4.7",   model: x-ai/grok-4.7,                  providers: [xai],                              cache: auto}
+  - {id: kimi,     lab: Moonshot, display: "Kimi K3",   model: moonshotai/kimi-k3,             providers: [moonshotai],                       cache: auto}
+  - {id: mimo,     lab: Xiaomi, display: "MiMo-V2.6-Pro",     model: xiaomi/mimo-v2.6-pro,           providers: [xiaomi, deepinfra],                cache: auto}
+  - {id: qwen,     lab: Alibaba, display: "Qwen3.8 Max",    model: qwen/qwen3.8-max-0902,          providers: [alibaba],                          cache: block}
+  - {id: deepseek, lab: DeepSeek, display: "DeepSeek V4 Pro",   model: deepseek/deepseek-v4-pro-0813,  providers: [alibaba, ionstream],                cache: auto}
+  - {id: muse,     lab: Meta, display: "Muse Spark 1.3",       model: meta/muse-spark-1.3,            providers: [meta],                             cache: auto}
+  - {id: glm,      lab: Z.ai, display: "GLM-5.3",       model: z-ai/glm-5.3,                   providers: [z-ai],                             cache: auto}
+  - {id: fugu,     lab: Sakana, display: "Fugu Ultra v2",     model: sakana/fugu-ultra-v2,           providers: [sakana],                           cache: auto, omit: [max_tokens]}
+  - {id: autodraft, lab: Control, display: "Autodraft (control bot)",   model: null,                           providers: [],                                 cache: auto}

@@ -1,0 +1,645 @@
+{
+  "started_at": "2026-09-27T02:40:23+00:00",
+  "persona_sig": "d6cae02dadd7",
+  "personas_run": "party-2",
+  "team": "deepseek",
+  "style": "pixel",
+  "face_type": "human",
+  "generated_at": "2026-09-27T02:47:39+00:00",
+  "gm_name": "Randy 'Saucer' Kulyk",
+  "franchise_name": "St. Paul Saucers",
+  "franchise_abbrev": "SAU",
+  "display": "DeepSeek V4 Pro",
+  "llm": "deepseek/deepseek-v4-pro-0813",
+  "primary_color": "#0E1B4D",
+  "secondary_color": "#7CFC00",
+  "fabric": {
+    "id": "cavani-1100-21106-4",
+    "color_name": "navy",
+    "pattern_desc": "hopsack texture",
+    "color_hex": "#1B213F",
+    "summary": "navy blue textured hopsack cloth"
+  },
+  "swatch_reference": true,
+  "base_prompt": "Create a 16-bit era pixel-art character portrait, like a portrait from a cut-scene in an early-1990s console hockey video game, of a general manager in a fictional hockey league. Character: Late-thirties prairie man, big-shouldered and a little soft through the middle, with wind-chapped cheeks and a pale sunburn line across the bridge of his nose. Sandy-brown hair thinning just at the crown, neat reddish-brown goatee, sleepy blue eyes that crinkle a half-second before the punchline. Stands easy with his thumbs hooked in a vest pocket. On his tie, a small green-glass pin shaped like a tiny flying saucer. This is an original, fictional character: not based on and not resembling any real person, celebrity, athlete or public figure. Face: front-facing, eyes open looking straight at the viewer, mouth fully closed (lips together, no teeth showing), relaxed natural expression. In THIS frame the mouth stays closed even if the description mentions an open mouth, a grin with teeth, fangs or a missing tooth - those show up in the talking frames made from this one. Suit - render it exactly: a three-piece suit in navy blue textured hopsack cloth - base colour navy (#1B213F), pattern: hopsack texture. Jacket: single-breasted two-button jacket, top button fastened, with medium-width peak lapels and flap hip pockets with a small ticket pocket above the right one; a single breast pocket on the chest. Waistcoat: matching cloth, five-button, no lapels, pointed hem - visible in the V opening of the jacket. Dress shirt: white cutaway-collar shirt. Tie: lime green knit tie, neatly knotted. Pocket square in the breast pocket: lime silk, presidential fold. Framing: waist-up portrait, body and head square to the camera (straight-on front view), head level and not tilted, centered horizontally, shoulders fully in frame, with comfortable empty headroom above the head (the top of the head, ears, tufts or antenna sits about 10-15% of the image height below the top edge). Square 1:1 composition. Background: a cozy wood-panelled basement rec room at a hockey draft party - blocky string lights, a worn couch and a beer fridge, in the franchise colours: mostly midnight blue (#0E1B4D) with lime green (#7CFC00) accent lights and trim. Keep it simple and a little lower in contrast than the character, and add a soft lime green rim light on the shoulders and head so the suit's silhouette separates clearly from the background. Pixel-art rules: crisp, hard-edged square pixels on one consistent grid - it should look like a roughly 192x192-pixel sprite scaled up with nearest-neighbour. Limited palette of about 32-48 colours, flat colour clusters, dark outlines, simple 2-3 step shading. No anti-aliasing, no blur, no smooth gradients, no painterly texture. Strictly no text, letters, numbers, logos, emblems, crests, team marks, jerseys, brand names, signage, advertising, UI elements, borders, frames or watermarks anywhere in the image. The attached photo is only a close-up reference of the exact suit cloth: match its colour and weave or pattern for the jacket, trousers and waistcoat. Do not show the swatch itself anywhere.",
+  "attempts": {
+    "base": [
+      {
+        "file": "pixel_base_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.141248,
+        "retry": null,
+        "elapsed_s": 18.3,
+        "generation_id": "gen-1790476823-uH77MB8KJ5HGhPZYHGeJ",
+        "ts": "2026-09-27T02:40:41+00:00",
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": true,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Small logo on lapel pin; mouth is fully closed behind the beard.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000862,
+          "file": "pixel_base_1.png"
+        }
+      },
+      {
+        "file": "pixel_base_2.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.142114,
+        "retry": "text",
+        "elapsed_s": 19.8,
+        "generation_id": "gen-1790476844-vmIPm6mL1flPLPFtjFCf",
+        "ts": "2026-09-27T02:41:04+00:00",
+        "regen": true,
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": true,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Small UFO logo on lapel; character is front-facing with mouth closed.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000913,
+          "file": "pixel_base_2.png"
+        }
+      }
+    ],
+    "mid": [
+      {
+        "file": "pixel_mid_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.13928,
+        "retry": null,
+        "elapsed_s": 18.8,
+        "generation_id": "gen-1790476868-BT8wABWl7BvsVfT4Z8D5",
+        "ts": "2026-09-27T02:41:25+00:00"
+      }
+    ],
+    "wide": [
+      {
+        "file": "pixel_wide_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139232,
+        "retry": null,
+        "elapsed_s": 18.3,
+        "generation_id": "gen-1790476867-duUCI2lIKz0Ymh4UBfGb",
+        "ts": "2026-09-27T02:41:25+00:00"
+      }
+    ],
+    "blink": [
+      {
+        "file": "pixel_blink_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.138738,
+        "retry": null,
+        "elapsed_s": 18.6,
+        "generation_id": "gen-1790476867-i1liygrctF7xikHCeV9e",
+        "ts": "2026-09-27T02:41:25+00:00"
+      }
+    ]
+  },
+  "chosen": {
+    "base": 1,
+    "mid": 0,
+    "wide": 0,
+    "blink": 0
+  },
+  "cost_usd": 0.7051,
+  "metrics": {
+    "mid": {
+      "mask_pct": 1.381,
+      "strong_pct": 0.146,
+      "outside_pct": 0.872,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "wide": {
+      "mask_pct": 1.381,
+      "strong_pct": 0.952,
+      "outside_pct": 0.978,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "blink": {
+      "mask_pct": 0.407,
+      "strong_pct": 0.168,
+      "outside_pct": 0.986,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    }
+  },
+  "swapped_mid_wide": false,
+  "info": {
+    "grid": {
+      "px": 5.12,
+      "py": 5.12,
+      "ox": 0.0,
+      "oy": 0.16,
+      "score": 3.09,
+      "prominence": 36.0,
+      "ok": true
+    },
+    "logical_px": 192,
+    "scale": 4,
+    "fit": {
+      "from": 199,
+      "to": 192
+    },
+    "palette_colours": 48,
+    "eye_box": [
+      83,
+      40,
+      111,
+      46
+    ],
+    "mouth_box": [
+      83,
+      57,
+      111,
+      80
+    ]
+  },
+  "flags": [
+    "base: text/logo detected (vision check) - review before publishing"
+  ],
+  "base_check": {
+    "mouth_closed": true,
+    "mouth_open_amount": 0,
+    "eyes_open": true,
+    "text_or_logo": true,
+    "front_facing": true,
+    "weapon_visible": false,
+    "notes": "Small UFO logo on lapel; character is front-facing with mouth closed.",
+    "model": "google/gemini-3-flash-preview",
+    "cost": 0.000913,
+    "file": "pixel_base_2.png"
+  },
+  "frame_checks": {
+    "mid": {
+      "mouth_closed": false,
+      "mouth_open_amount": 1,
+      "eyes_open": true,
+      "text_or_logo": true,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Mouth is slightly open showing teeth; UFO logo on lapel; front-facing pixel art portrait.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000913,
+      "file": "mid.png"
+    },
+    "wide": {
+      "mouth_closed": false,
+      "mouth_open_amount": 2,
+      "eyes_open": true,
+      "text_or_logo": true,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Character has a UFO lapel pin logo. Mouth is wide open showing teeth and tongue.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000856,
+      "file": "wide.png"
+    },
+    "blink": {
+      "mouth_closed": true,
+      "mouth_open_amount": 0,
+      "eyes_open": false,
+      "text_or_logo": true,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Character has eyes closed; UFO logo on lapel pin.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000901,
+      "file": "blink.png"
+    }
+  },
+  "frame_checks_for": "{\"base\": \"pixel_base_2.png\", \"blink\": \"pixel_blink_1.png\", \"mid\": \"pixel_mid_1.png\", \"wide\": \"pixel_wide_1.png\"}",
+  "files": {
+    "base": "base.png",
+    "mid": "mid.png",
+    "wide": "wide.png",
+    "blink": "blink.png",
+    "mid_blink": "mid_blink.png",
+    "wide_blink": "wide_blink.png"
+  },
+  "image_model": "google/gemini-3-pro-image",
+  "poses": {
+    "hype": {
+      "attempts": [
+        {
+          "file": "pixel_pose_hype_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139726,
+          "retry": null,
+          "elapsed_s": 19.7,
+          "generation_id": "gen-1790477259-tTQg6D6Ay5ldAJptFgbj",
+          "ts": "2026-09-27T02:47:58+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Small UFO logo on lapel is present in both images.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001582,
+            "file": "pixel_pose_hype_1.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        },
+        {
+          "file": "pixel_pose_hype_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.14007,
+          "retry": "strict",
+          "elapsed_s": 20.5,
+          "generation_id": "gen-1790477284-Tk33991yWh3OHFnZetbP",
+          "ts": "2026-09-27T02:48:23+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "UFO logo on lapel is present in both images.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001582,
+            "file": "pixel_pose_hype_2.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_hype_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139096,
+            "retry": null,
+            "elapsed_s": 17.4,
+            "generation_id": "gen-1790477308-z5AoYZikkmVbxVfUgzr3",
+            "ts": "2026-09-27T02:48:44+00:00",
+            "metrics": {
+              "mask_pct": 1.31,
+              "strong_pct": 0.895,
+              "outside_pct": 1.053,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": false,
+              "mouth_open_amount": 1,
+              "eyes_open": true,
+              "text_or_logo": true,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Mouth is slightly open showing teeth. Small UFO logo on lapel.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000847,
+              "file": "pixel_pose_hype_closed_1_locked.png"
+            }
+          },
+          {
+            "file": "pixel_pose_hype_closed_2.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139408,
+            "retry": "weak",
+            "elapsed_s": 19.4,
+            "generation_id": "gen-1790477329-99DYLn4eKBtOvqYHkhHj",
+            "ts": "2026-09-27T02:49:08+00:00",
+            "metrics": {
+              "mask_pct": 1.383,
+              "strong_pct": 0.925,
+              "outside_pct": 1.2,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": true,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Small UFO logo on lapel. Mouth is closed with a slight smile.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000847,
+              "file": "pixel_pose_hype_closed_2_locked.png"
+            }
+          }
+        ],
+        "chosen": 1,
+        "metrics": {
+          "mask_pct": 1.383,
+          "strong_pct": 0.925,
+          "outside_pct": 1.2,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": true,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Small UFO logo on lapel. Mouth is closed with a slight smile.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000847,
+          "file": "pixel_pose_hype_closed_2_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/hype.png",
+        "closed": "poses/hype_closed.png"
+      },
+      "desc": "a huge \"LET'S GO!\" celebration: both arms thrown up high with fists, mouth wide open yelling, eyes wide open with excitement (normal eyes - no glow, no fire effects)"
+    },
+    "point": {
+      "attempts": [
+        {
+          "file": "pixel_pose_point_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139084,
+          "retry": null,
+          "elapsed_s": 19.4,
+          "generation_id": "gen-1790477260-wDXr5EFz8ziqYbkpL4vZ",
+          "ts": "2026-09-27T02:47:58+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 1,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character has a small UFO logo on the lapel in both images.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001587,
+            "file": "pixel_pose_point_1.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        },
+        {
+          "file": "pixel_pose_point_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139422,
+          "retry": "strict",
+          "elapsed_s": 18.0,
+          "generation_id": "gen-1790477283-VYHTF99pD2uTZsmGsZbv",
+          "ts": "2026-09-27T02:48:20+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 1,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character has a small UFO logo on the lapel.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001578,
+            "file": "pixel_pose_point_2.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_point_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.13882,
+            "retry": null,
+            "elapsed_s": 19.1,
+            "generation_id": "gen-1790477308-Vv2KumaQcEZld8XGR0ms",
+            "ts": "2026-09-27T02:48:46+00:00",
+            "metrics": {
+              "mask_pct": 0.437,
+              "strong_pct": 0.22,
+              "outside_pct": 2.115,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": true,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Character has a small green logo on his lapel and a pointing gesture.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000847,
+              "file": "pixel_pose_point_closed_1_locked.png"
+            }
+          }
+        ],
+        "chosen": 0,
+        "metrics": {
+          "mask_pct": 0.437,
+          "strong_pct": 0.22,
+          "outside_pct": 2.115,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": true,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Character has a small green logo on his lapel and a pointing gesture.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000847,
+          "file": "pixel_pose_point_closed_1_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/point.png",
+        "closed": "poses/point_closed.png"
+      },
+      "desc": "the chirp pose: one arm extended straight toward the viewer, index finger pointing right at the camera (foreshortened), a smug grin with the mouth slightly open; the other hand relaxed at the side"
+    },
+    "shock": {
+      "attempts": [
+        {
+          "file": "pixel_pose_shock_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139548,
+          "retry": null,
+          "elapsed_s": 18.7,
+          "generation_id": "gen-1790477260-PfsR5C9wN7L2hdvInx0r",
+          "ts": "2026-09-27T02:47:57+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "UFO logo on lapel and fridge markings count as logos/marks.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.00159,
+            "file": "pixel_pose_shock_1.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        },
+        {
+          "file": "pixel_pose_shock_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.13969,
+          "retry": "strict",
+          "elapsed_s": 19.9,
+          "generation_id": "gen-1790477284-ojqDOVwIj5t4S7M3RYT7",
+          "ts": "2026-09-27T02:48:22+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character now wears green glasses not present in reference portrait. UFO lapel pin is present.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001599,
+            "file": "pixel_pose_shock_2.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/shock.png"
+      },
+      "desc": "an \"OH NO!\" reaction: both hands clutching the top and sides of the head in disbelief, eyes wide, mouth wide open in shock - the hands must not cover the eyes or the mouth"
+    },
+    "celebrate": {
+      "attempts": [
+        {
+          "file": "pixel_pose_celebrate_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139178,
+          "retry": null,
+          "elapsed_s": 19.5,
+          "generation_id": "gen-1790477260-F5tzl3eL1aJSrBTHZerz",
+          "ts": "2026-09-27T02:47:58+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "Character has UFO lapel pin logo. Pose matches the saucer pass celebration description perfectly.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001625,
+            "file": "pixel_pose_celebrate_1.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        },
+        {
+          "file": "pixel_pose_celebrate_2.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139166,
+          "retry": "strict",
+          "elapsed_s": 18.6,
+          "generation_id": "gen-1790477284-pN0OhFJLN92GRjhFEw8M",
+          "ts": "2026-09-27T02:48:21+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": true,
+            "weapon_visible": false,
+            "notes": "UFO logo on lapel counts as a logo. Pose matches the saucer pass description well.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001631,
+            "file": "pixel_pose_celebrate_2.png"
+          },
+          "fails": [
+            "text_or_logo"
+          ]
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/celebrate.png"
+      },
+      "desc": "the single most iconic PEAK MOMENT of their signature celebration - one frozen frame, not the whole sequence - from: \"Catches an imaginary saucer pass out of the air with one hand, holds it up to the rec-room lights like it just landed, then sets it down on the table gentle, like it's hot\". Big, excited face (mouth wide open)"
+    }
+  },
+  "poses_cost": 1.5485,
+  "poses_flags": [
+    "pose hype: review says text_or_logo",
+    "pose point: review says text_or_logo",
+    "pose shock: review says text_or_logo",
+    "pose celebrate: review says text_or_logo"
+  ],
+  "poses_discarded": [],
+  "poses_celebration": "Catches an imaginary saucer pass out of the air with one hand, holds it up to the rec-room lights like it just landed, then sets it down on the table gentle, like it's hot."
+}

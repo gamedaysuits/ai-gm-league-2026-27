@@ -1,0 +1,519 @@
+{
+  "started_at": "2026-09-27T02:42:13+00:00",
+  "persona_sig": "c5beb9270adf",
+  "personas_run": "party-2",
+  "team": "fable",
+  "style": "pixel",
+  "face_type": "human",
+  "generated_at": "2026-09-27T02:50:19+00:00",
+  "gm_name": "Lyle \"Fable\" Kryzanowski",
+  "franchise_name": "Smoky Lake Lanterns",
+  "franchise_abbrev": "SML",
+  "display": "Claude Fable 5.1",
+  "llm": "anthropic/claude-fable-5.1",
+  "primary_color": "#E8731A",
+  "secondary_color": "#12213F",
+  "fabric": {
+    "id": "cavani-1100-21144-3",
+    "color_name": "midnight navy",
+    "pattern_desc": "blue windowpane check",
+    "color_hex": "#1A1C25",
+    "summary": "dark navy with bright blue windowpane"
+  },
+  "swatch_reference": true,
+  "base_prompt": "Create a 16-bit era pixel-art character portrait, like a portrait from a cut-scene in an early-1990s console hockey video game, of a general manager in a fictional hockey league. Character: Stocky, barrel-chested human man in his mid-forties with a ruddy, wind-burned face and deep laugh lines. Big salt-and-pepper walrus moustache, receding dark hair combed straight back, a pair of cheap reading glasses pushed up on his forehead that he never actually uses. Warm, half-lidded eyes like he's about to tell you something, wide easy grin with one slightly chipped front tooth from a high stick in U15. Thick farmer's hands, one usually holding a can. A small brass lantern pin on his lapel. This is an original, fictional character: not based on and not resembling any real person, celebrity, athlete or public figure. Face: front-facing (muzzle pointing at the viewer, not in profile), eyes open looking at the viewer, mouth fully closed (no teeth, tongue or inside of the mouth showing) with a clearly drawn mouth line on the muzzle so it can open for talking animation. In THIS frame the mouth stays closed even if the description mentions an open mouth, a grin with teeth, fangs or a missing tooth - those show up in the talking frames made from this one. Suit - render it exactly: a three-piece suit in dark navy with bright blue windowpane - base colour midnight navy (#1A1C25), pattern: blue windowpane check. Jacket: single-breasted two-button jacket, top button fastened, with wide peak lapels and flap hip pockets with a small ticket pocket above the right one; a single breast pocket on the chest. Waistcoat: matching cloth, five-button, no lapels, pointed hem - visible in the V opening of the jacket. Dress shirt: cream spread-collar. Tie: burnt orange knit tie, neatly knotted. Pocket square in the breast pocket: navy with orange paisley. If the character holds a prop, keep it low beside the chest so it never covers the face, mouth, tie or the front of the suit. Framing: waist-up portrait, body and head square to the camera (straight-on front view), head level and not tilted, centered horizontally, shoulders fully in frame, with comfortable empty headroom above the head (the top of the head, ears, tufts or antenna sits about 10-15% of the image height below the top edge). Square 1:1 composition. Background: a cozy wood-panelled basement rec room at a hockey draft party - blocky string lights, a worn couch and a beer fridge, in the franchise colours: mostly orange (#E8731A) with dark navy (#12213F) accent lights and trim. Keep it simple and a little lower in contrast than the character, and add a soft dark navy rim light on the shoulders and head so the suit's silhouette separates clearly from the background. Pixel-art rules: crisp, hard-edged square pixels on one consistent grid - it should look like a roughly 192x192-pixel sprite scaled up with nearest-neighbour. Limited palette of about 32-48 colours, flat colour clusters, dark outlines, simple 2-3 step shading. No anti-aliasing, no blur, no smooth gradients, no painterly texture. Strictly no text, letters, numbers, logos, emblems, crests, team marks, jerseys, brand names, signage, advertising, UI elements, borders, frames or watermarks anywhere in the image. The attached photo is only a close-up reference of the exact suit cloth: match its colour and weave or pattern for the jacket, trousers and waistcoat. Do not show the swatch itself anywhere.",
+  "attempts": {
+    "base": [
+      {
+        "file": "pixel_base_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.141826,
+        "retry": null,
+        "elapsed_s": 17.1,
+        "generation_id": "gen-1790476934-oSxrXLLOogfaOPUZQ27t",
+        "ts": "2026-09-27T02:42:31+00:00",
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Pixel art character with a mustache, wearing a suit and holding a beverage can.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000913,
+          "file": "pixel_base_1.png"
+        }
+      }
+    ],
+    "mid": [
+      {
+        "file": "pixel_mid_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139604,
+        "retry": null,
+        "elapsed_s": 19.0,
+        "generation_id": "gen-1790476954-DFFc87wUFplw2hTMz6lm",
+        "ts": "2026-09-27T02:42:52+00:00"
+      },
+      {
+        "file": "pixel_mid_2.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.139188,
+        "retry": "drift",
+        "elapsed_s": 17.5,
+        "generation_id": "gen-1790476974-mY3JgYLSslBts4YFejVi",
+        "ts": "2026-09-27T02:43:11+00:00"
+      }
+    ],
+    "wide": [
+      {
+        "file": "pixel_wide_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.13899,
+        "retry": null,
+        "elapsed_s": 17.6,
+        "generation_id": "gen-1790476954-dfoZfAh4FpnPdF67SEzX",
+        "ts": "2026-09-27T02:42:51+00:00"
+      }
+    ],
+    "blink": [
+      {
+        "file": "pixel_blink_1.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.13896,
+        "retry": null,
+        "elapsed_s": 19.3,
+        "generation_id": "gen-1790476955-KO09wdWJLZpQ5V9fM6Ps",
+        "ts": "2026-09-27T02:42:53+00:00"
+      },
+      {
+        "file": "pixel_blink_2.png",
+        "model": "google/gemini-3-pro-image",
+        "cost": 0.138862,
+        "retry": "drift",
+        "elapsed_s": 17.7,
+        "generation_id": "gen-1790476974-bDWsaNaMtCGJFi5wa3Pa",
+        "ts": "2026-09-27T02:43:11+00:00"
+      }
+    ]
+  },
+  "chosen": {
+    "base": 0,
+    "mid": 1,
+    "wide": 0,
+    "blink": 1
+  },
+  "cost_usd": 0.841,
+  "metrics": {
+    "mid": {
+      "mask_pct": 1.961,
+      "strong_pct": 0.694,
+      "outside_pct": 1.64,
+      "dropped_pct": 0.081,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "wide": {
+      "mask_pct": 1.961,
+      "strong_pct": 1.226,
+      "outside_pct": 1.421,
+      "dropped_pct": 0.0,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    },
+    "blink": {
+      "mask_pct": 0.45,
+      "strong_pct": 0.239,
+      "outside_pct": 1.491,
+      "dropped_pct": 0.019,
+      "grid_delta": 0.0,
+      "bad": false,
+      "retry": null,
+      "reasons": []
+    }
+  },
+  "swapped_mid_wide": false,
+  "info": {
+    "grid": {
+      "px": 5.12,
+      "py": 5.12,
+      "ox": 4.96,
+      "oy": 0.16,
+      "score": 3.31,
+      "prominence": 34.1,
+      "ok": true
+    },
+    "logical_px": 192,
+    "scale": 4,
+    "fit": {
+      "from": 199,
+      "to": 192
+    },
+    "palette_colours": 48,
+    "eye_box": [
+      80,
+      42,
+      113,
+      49
+    ],
+    "mouth_box": [
+      78,
+      64,
+      115,
+      88
+    ]
+  },
+  "flags": [],
+  "base_check": {
+    "mouth_closed": true,
+    "mouth_open_amount": 0,
+    "eyes_open": true,
+    "text_or_logo": false,
+    "front_facing": true,
+    "weapon_visible": false,
+    "notes": "Pixel art character with a mustache, wearing a suit and holding a beverage can.",
+    "model": "google/gemini-3-flash-preview",
+    "cost": 0.000913,
+    "file": "pixel_base_1.png"
+  },
+  "frame_checks": {
+    "mid": {
+      "mouth_closed": false,
+      "mouth_open_amount": 1,
+      "eyes_open": true,
+      "text_or_logo": true,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Mouth is slightly open showing teeth; small lantern emblem on lapel.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000862,
+      "file": "mid.png"
+    },
+    "wide": {
+      "mouth_closed": false,
+      "mouth_open_amount": 2,
+      "eyes_open": true,
+      "text_or_logo": false,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Character has mouth wide open showing teeth and tongue; front-facing pixel art style.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000916,
+      "file": "wide.png"
+    },
+    "blink": {
+      "mouth_closed": true,
+      "mouth_open_amount": 0,
+      "eyes_open": false,
+      "text_or_logo": false,
+      "front_facing": true,
+      "weapon_visible": false,
+      "notes": "Character has eyes closed and is holding a beverage can.",
+      "model": "google/gemini-3-flash-preview",
+      "cost": 0.000898,
+      "file": "blink.png"
+    }
+  },
+  "frame_checks_for": "{\"base\": \"pixel_base_1.png\", \"blink\": \"pixel_blink_2.png\", \"mid\": \"pixel_mid_2.png\", \"wide\": \"pixel_wide_1.png\"}",
+  "files": {
+    "base": "base.png",
+    "mid": "mid.png",
+    "wide": "wide.png",
+    "blink": "blink.png",
+    "mid_blink": "mid_blink.png",
+    "wide_blink": "wide_blink.png"
+  },
+  "image_model": "google/gemini-3-pro-image",
+  "poses": {
+    "hype": {
+      "attempts": [
+        {
+          "file": "pixel_pose_hype_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.138976,
+          "retry": null,
+          "elapsed_s": 19.6,
+          "generation_id": "gen-1790477421-J6DCzD013aQblLviRveI",
+          "ts": "2026-09-27T02:50:38+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Character consistency is excellent; pose perfectly matches the requested celebration criteria.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001585,
+            "file": "pixel_pose_hype_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_hype_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.138322,
+            "retry": null,
+            "elapsed_s": 17.5,
+            "generation_id": "gen-1790477443-PrMbbzvDaDknFMtok6di",
+            "ts": "2026-09-27T02:51:00+00:00",
+            "metrics": {
+              "mask_pct": 1.655,
+              "strong_pct": 0.979,
+              "outside_pct": 1.016,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": false,
+              "mouth_open_amount": 1,
+              "eyes_open": true,
+              "text_or_logo": false,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Mouth is slightly open showing teeth; character has raised fists in a celebratory gesture.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000916,
+              "file": "pixel_pose_hype_closed_1_locked.png"
+            }
+          },
+          {
+            "file": "pixel_pose_hype_closed_2.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139128,
+            "retry": "weak",
+            "elapsed_s": 18.1,
+            "generation_id": "gen-1790477464-81CSTE6luXa3RkKAxymJ",
+            "ts": "2026-09-27T02:51:21+00:00",
+            "metrics": {
+              "mask_pct": 1.885,
+              "strong_pct": 1.183,
+              "outside_pct": 1.652,
+              "dropped_pct": 0.293,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": true,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Character has raised fists, but no weapon. Small lantern emblem on lapel.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000913,
+              "file": "pixel_pose_hype_closed_2_locked.png"
+            }
+          }
+        ],
+        "chosen": 1,
+        "metrics": {
+          "mask_pct": 1.885,
+          "strong_pct": 1.183,
+          "outside_pct": 1.652,
+          "dropped_pct": 0.293,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": true,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Character has raised fists, but no weapon. Small lantern emblem on lapel.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000913,
+          "file": "pixel_pose_hype_closed_2_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/hype.png",
+        "closed": "poses/hype_closed.png"
+      },
+      "desc": "a huge \"LET'S GO!\" celebration: both arms thrown up high with paws clenched like fists, mouth wide open yelling, eyes wide open with excitement (normal eyes - no glow, no fire effects)"
+    },
+    "point": {
+      "attempts": [
+        {
+          "file": "pixel_pose_point_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139232,
+          "retry": null,
+          "elapsed_s": 19.5,
+          "generation_id": "gen-1790477420-Dcd7Hvcf3uSpoUwEpAQM",
+          "ts": "2026-09-27T02:50:38+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 1,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Character and outfit are consistent; pose matches the requested smug pointing gesture perfectly.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.00159,
+            "file": "pixel_pose_point_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "closed": {
+        "attempts": [
+          {
+            "file": "pixel_pose_point_closed_1.png",
+            "model": "google/gemini-3-pro-image",
+            "cost": 0.139282,
+            "retry": null,
+            "elapsed_s": 18.0,
+            "generation_id": "gen-1790477444-bxZxFBsvo2z9FwWZr22P",
+            "ts": "2026-09-27T02:51:01+00:00",
+            "metrics": {
+              "mask_pct": 0.526,
+              "strong_pct": 0.331,
+              "outside_pct": 1.292,
+              "dropped_pct": 0.0,
+              "bad": false,
+              "retry": null,
+              "reasons": []
+            },
+            "check": {
+              "mouth_closed": true,
+              "mouth_open_amount": 0,
+              "eyes_open": true,
+              "text_or_logo": false,
+              "front_facing": true,
+              "weapon_visible": false,
+              "notes": "Pixel art man in suit pointing at viewer. Mouth is closed under mustache.",
+              "model": "google/gemini-3-flash-preview",
+              "cost": 0.000847,
+              "file": "pixel_pose_point_closed_1_locked.png"
+            }
+          }
+        ],
+        "chosen": 0,
+        "metrics": {
+          "mask_pct": 0.526,
+          "strong_pct": 0.331,
+          "outside_pct": 1.292,
+          "dropped_pct": 0.0,
+          "bad": false,
+          "retry": null,
+          "reasons": []
+        },
+        "check": {
+          "mouth_closed": true,
+          "mouth_open_amount": 0,
+          "eyes_open": true,
+          "text_or_logo": false,
+          "front_facing": true,
+          "weapon_visible": false,
+          "notes": "Pixel art man in suit pointing at viewer. Mouth is closed under mustache.",
+          "model": "google/gemini-3-flash-preview",
+          "cost": 0.000847,
+          "file": "pixel_pose_point_closed_1_locked.png"
+        }
+      },
+      "files": {
+        "open": "poses/point.png",
+        "closed": "poses/point_closed.png"
+      },
+      "desc": "the chirp pose: one arm extended straight toward the viewer, clawed index finger pointing right at the camera (foreshortened), a smug grin with the mouth slightly open; the other paw relaxed at the side"
+    },
+    "shock": {
+      "attempts": [
+        {
+          "file": "pixel_pose_shock_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.139092,
+          "retry": null,
+          "elapsed_s": 18.1,
+          "generation_id": "gen-1790477420-7d8YvxuJdjGjr9WTVxF8",
+          "ts": "2026-09-27T02:50:37+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Excellent consistency in character design, outfit details, and pixel art style across both images.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001596,
+            "file": "pixel_pose_shock_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/shock.png"
+      },
+      "desc": "an \"OH NO!\" reaction: both paws clutching the top and sides of the head in disbelief, eyes wide, mouth wide open in shock - the paws must not cover the eyes or the mouth"
+    },
+    "celebrate": {
+      "attempts": [
+        {
+          "file": "pixel_pose_celebrate_1.png",
+          "model": "google/gemini-3-pro-image",
+          "cost": 0.138904,
+          "retry": null,
+          "elapsed_s": 19.5,
+          "generation_id": "gen-1790477420-Wv3sHgY9ujkOMKWBHCyR",
+          "ts": "2026-09-27T02:50:38+00:00",
+          "check": {
+            "same_character": true,
+            "same_outfit": true,
+            "same_style": true,
+            "single_scene": true,
+            "face_visible": true,
+            "pose_ok": true,
+            "mouth_open_amount": 2,
+            "text_or_logo": false,
+            "weapon_visible": false,
+            "notes": "Character matches reference perfectly; pose accurately depicts the requested celebration sequence.",
+            "model": "google/gemini-3-flash-preview",
+            "cost": 0.001613,
+            "file": "pixel_pose_celebrate_1.png"
+          },
+          "fails": []
+        }
+      ],
+      "chosen": 0,
+      "files": {
+        "open": "poses/celebrate.png"
+      },
+      "desc": "the single most iconic PEAK MOMENT of their signature celebration - one frozen frame, not the whole sequence - from: \"Unhooks an imaginary lantern from his belt, hoists it high over his head like he's lighting up the whole basement, then slowly shuts an imaginary book with a satisfied nod and tucks it under his arm\". Big, excited face (mouth wide open)"
+    }
+  },
+  "poses_cost": 0.982,
+  "poses_flags": [],
+  "poses_discarded": [],
+  "poses_celebration": "Unhooks an imaginary lantern from his belt, hoists it high over his head like he's lighting up the whole basement, then slowly shuts an imaginary book with a satisfied nod and tucks it under his arm.",
+  "face_type_fixed_by": "rig vision check"
+}

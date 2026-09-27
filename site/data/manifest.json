@@ -1,0 +1,40 @@
+{
+ "schema": 1,
+ "generated_at": "2026-09-27T01:56:54Z",
+ "run": "party-1",
+ "files": {
+  "fabrics.json": {
+   "bytes": 55557
+  },
+  "personas.json": {
+   "bytes": 52928
+  },
+  "playoffs-2026.json": {
+   "bytes": 52864
+  },
+  "regular-2025-26.json": {
+   "bytes": 48077
+  }
+ },
+ "avatars": {},
+ "swatches": {},
+ "fragments": {
+  "regular-2025-26": "data/fragments/regular-2025-26.html",
+  "playoffs-2026": "data/fragments/playoffs-2026.html"
+ },
+ "ledger": null,
+ "ledger_head": {
+  "seq": 28,
+  "hash": "c09631d5faf7f9a0f8569e823d17b1896a6436c9fb4907ce250e9d4f963c9eea",
+  "ts": "2026-09-27T01:55:08.211Z"
+ },
+ "draft": null,
+ "managed": [
+  "fabrics.json",
+  "fragments/playoffs-2026.html",
+  "fragments/regular-2025-26.html",
+  "personas.json",
+  "playoffs-2026.json",
+  "regular-2025-26.json"
+ ]
+}
