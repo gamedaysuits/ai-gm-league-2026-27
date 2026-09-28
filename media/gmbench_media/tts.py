@@ -525,7 +525,7 @@ def derive_beats_line(ln: dict, a: "TTSAdapter", v: "Voice", dev: "TTSAdapter", 
     ad = a if (mode in ("take", "tight", "body") or free) else dev
     vv = v if ad is a else ad.voice_for(ln["speaker"])
     tempo = float((cfg.get("mix") or {}).get("tempo") or 1.0)  # beats are sized for the screen, after atempo
-    key = TM.derived_key({"v": 4, "tempo": round(tempo, 3), "mode": mode, "engine": ad.engine, "voice": vv.voice_id,
+    key = TM.derived_key({"v": 5, "tempo": round(tempo, 3), "mode": mode, "engine": ad.engine, "voice": vv.voice_id,
                           "src": src_speech,
                           "parts": [x[0] for x in prepped], "keep": keep,
                           "labels": [[x["role"], x.get("kicker"), x.get("spice")] for x in labels], "id": ln["id"]})
@@ -636,13 +636,16 @@ def derive_beats_line(ln: dict, a: "TTSAdapter", v: "Voice", dev: "TTSAdapter", 
 
 # --------------------------------------------------------------------------- batch
 
+VOICE_BY_MODEL = False  # --voice-by-model (rehearsal proofs only): each model's existing voice, whatever character
+
+
 def run_tts(rundown: dict, cfg: dict, engine: str, league=None, only: set[str] | None = None,
             max_chars: int | None = None, jobs: int | None = None, fallback: str | None = "say",
             log=print, plan: bool = False, cache_only: bool = False) -> dict:
     """Synthesize every line. Speakers without a voice on `engine` use the `fallback` engine (logged)."""
     book = load_voice_book(league)
     primary = get_adapter(engine, cfg, book)
-    if league is not None:
+    if league is not None and not VOICE_BY_MODEL:
         primary.expected_gm = {tid: t.gm_name for tid, t in league.teams.items() if t.has_persona}
     host_reads = fallback == "host"  # emergency: the host's voice reads the GM's own words (unchanged)
     fb = get_adapter(fallback, cfg, book) if fallback and fallback not in (engine, "host") else None
@@ -697,13 +700,23 @@ def run_tts(rundown: dict, cfg: dict, engine: str, league=None, only: set[str] |
                                      f"Re-run with --max-chars N (N >= {need}) to allow it.")
                 if need > max_chars:
                     raise SystemExit(f"refusing: {need} billable chars (tight edit) exceed --max-chars {max_chars}")
-        for lid in beat_ids:
+        def derive(lid: str):
             ln0 = orig[lid]
-            entry, billed = derive_beats_line(ln0, adapters[ln0["speaker"]], voices[ln0["speaker"]], dev_ad, cfg,
-                                              cache_only, plan, log, body=body_of.get(lid))
-            beat_billed += billed
-            if entry:
-                beat_results[lid] = entry
+            return lid, derive_beats_line(ln0, adapters[ln0["speaker"]], voices[ln0["speaker"]], dev_ad, cfg,
+                                          cache_only, plan, log, body=body_of.get(lid))
+
+        from concurrent.futures import ThreadPoolExecutor
+        bodies = [lid for lid in beat_ids if orig[lid].get("kind") != "hook"]
+        hooks = [lid for lid in beat_ids if orig[lid].get("kind") == "hook"]
+        paid_any = any(adapters[orig[lid]["speaker"]].paid for lid in beat_ids)
+        for group in (bodies, hooks):  # hooks after their bodies (they cut from the body's take)
+            if not group:
+                continue
+            with ThreadPoolExecutor(max_workers=1 if plan else (jobs or (3 if paid_any else 6))) as ex:
+                for lid, (entry, billed) in ex.map(derive, group):
+                    beat_billed += billed
+                    if entry:
+                        beat_results[lid] = entry
         lines = [ln for ln in lines if ln["id"] not in set(beat_ids)]
     # a cold-open hook quotes a call in this run: cut it from that take when the take is cached (no new characters)
     derived: dict[str, str] = {}

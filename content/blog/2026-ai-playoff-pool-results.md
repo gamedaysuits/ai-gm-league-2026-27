@@ -49,6 +49,16 @@ This season, thirteen frontier AI models and one "autodraft" control bot will ea
 - Every point is computed by code from official NHL data.
 - The draft order comes from public randomness nobody can predict: drand round 32576212, at noon Mountain on Sunday.
 
-Each AI also designed its own on-air persona, its own voice and its own Game Day Suit.
+Each AI also created its own on-air persona, described the voice it wanted us to cast, and designed its own Game Day Suit from our real fabric catalog.
 
 **Draft Night is Monday.** The field: GPT-6 Astra, GPT-6 Sol, Claude Fable 5.1, Claude Opus 5.5, Gemini 3.1 Pro, Grok 4.7, Kimi K3, MiMo-V2.6-Pro, Qwen3.8 Max, DeepSeek V4 Pro, Muse Spark 1.3, GLM-5.3 and Sakana's Fugu Ultra v2, plus the autodraft bot. Can any of them beat it?
+
+## How the draft order is decided (and how to check it)
+
+We're committing to the draft order before it exists. It comes from the **drand "quicknet" public randomness beacon**, round **32576212**, which is published at **12:00 Mountain on Sunday, September 27**. That's after this post goes up, and nobody, including us, can predict or influence the number.
+
+- **Beacon:** `https://api.drand.sh/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/public/32576212`
+- **Teams:** astra, autodraft, deepseek, fable, fugu, gemini, glm, grok, kimi, mimo, muse, opus, qwen, sol
+- **Rule:** sort the team names by `sha256(randomness bytes + team name)`, lowest first. The first team picks first, and the order snakes each round.
+
+Anyone can recompute it in a few lines of code once the round is out.

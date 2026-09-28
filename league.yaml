@@ -25,7 +25,7 @@ harness:
   max_tokens: 32000
   per_call_timeout_s: 600
   transient_retries: 3
-  effort: {media_day: high, draft: medium, weekly: medium, say: low}
+  effort: {media_day: high, draft: medium, weekly: medium, say: medium}  # table lines need real thought: low effort misread the room
   draft: {max_tool_calls: 16, unreachable_pause_s: 900}  # research calls per pick; notes/queue upkeep is free
 
 # providers: OpenRouter provider slugs, in order; used as both `order` and `only`, no fallbacks.

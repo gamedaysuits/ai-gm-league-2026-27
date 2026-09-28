@@ -7,6 +7,7 @@ Broadcast reactions run in a background pool so they never delay the next pick.
 from __future__ import annotations
 
 import threading
+import time
 from collections import deque
 from datetime import date
 from concurrent.futures import Future, ThreadPoolExecutor
@@ -15,7 +16,9 @@ from pathlib import Path
 from typing import Any, Callable
 
 from gmbench.agent.briefing import build_system, draft_briefing
-from gmbench.agent.factcheck import FactChecker
+from gmbench.agent.factcheck import FactChecker, draft_board, league_names
+from gmbench.agent.jokecheck import JokeCheck
+from gmbench.agent.tableread import TableRead
 from gmbench.agent.loop import Budget, ChatClient, SessionResult, run_session
 from gmbench.agent.prompts import DRAFT_TASK, SAY_TASK
 from gmbench.agent.tools import DRAFT_TOOLS, SAY_TOOLS, Action, ToolContext, dispatch
@@ -47,6 +50,8 @@ class DraftDeps:
     as_of: str
     log: Callable[[str], None] = print
     factcheck: Any = None  # FactChecker for on-air lines; created by run_draft for real models
+    tableread: Any = None  # TableRead: does a line contradict what happened tonight?
+    jokecheck: Any = None  # JokeCheck: does a line land with a viewer, and is it fresh?
     _lock: threading.Lock = field(default_factory=threading.Lock)
 
     @property
@@ -80,7 +85,9 @@ def run_draft(deps: DraftDeps, *, stop_after: int | None = None, on_failure: str
     budget = Budget(max_tool_calls=int(cfg.harness["draft"]["max_tool_calls"]), effort=cfg.harness["effort"]["draft"],
                     max_tokens=int(cfg.harness["max_tokens"]))
     if deps.factcheck is None and type(deps.client).__name__ != "FakeClient":
-        deps.factcheck = FactChecker(deps.snapshot, date.fromisoformat(deps.today))
+        deps.factcheck = FactChecker(deps.snapshot, date.fromisoformat(deps.today), league_names=league_names(state))
+        deps.tableread = TableRead()
+        deps.jokecheck = JokeCheck()
 
     try:
         for slot in slots:
@@ -92,11 +99,14 @@ def run_draft(deps: DraftDeps, *, stop_after: int | None = None, on_failure: str
             queues_before = {t.id: list(t.queue) for t in state.teams.values()}
 
             if team.is_bot:
+                started = time.perf_counter()
                 pid = bot_pick(state, deps.snapshot, rules, team.id)
+                took = time.perf_counter() - started
                 payload = _pick_payload(slot, deps.snapshot, pid, {
                     "on_air_call": "",
                     "public_rationale": "Autodraft takes the best available player by the house projection.",
-                    "projected_points": None, "range_80": None}, auto={"reason": "control_bot", "source": "baseline"})
+                    "projected_points": None, "range_80": None}, auto={"reason": "control_bot", "source": "baseline"},
+                    think={"seconds": round(took, 6), "tool_calls": 0, "lookups": 0, "reasoning_tokens": 0, "cost_usd": 0.0})
                 event = deps.append("DRAFT_PICK", f"bot:{team.id}", payload)
             else:
                 event = _llm_pick(deps, state, slot, slots, rules, budget, attempts, on_failure)
@@ -129,11 +139,13 @@ def run_draft(deps: DraftDeps, *, stop_after: int | None = None, on_failure: str
 def _llm_pick(deps: DraftDeps, state: LeagueState, slot: Slot, slots: list[Slot], rules: RosterRules,
               budget: Budget, attempts: int, on_failure: str) -> dict[str, Any]:
     spec = deps.cfg.team(slot.team_id)
+    robot_would = bot_pick(state, deps.snapshot, rules, slot.team_id)  # what the robot would take for this team now
     last: SessionResult | None = None
     for attempt in range(1, attempts + 1):
         ctx = ToolContext(team_id=slot.team_id, state=state, snapshot=deps.snapshot, rules=rules, slots=slots,
                           notebook_path=deps.notebook(slot.team_id), current_slot=slot,
-                          extra={"factcheck": deps.factcheck})
+                          extra={"factcheck": deps.factcheck, "tableread": deps.tableread, "jokecheck": deps.jokecheck,
+                                 "recent_lines": recent_lines(state)})
         system = build_system(slot.team_id, state, deps.cfg, today=deps.today, as_of=deps.as_of, task=DRAFT_TASK)
         session_id = f"draft:p{slot.pick_no:03d}:{slot.team_id}:a{attempt}"
 
@@ -152,9 +164,11 @@ def _llm_pick(deps: DraftDeps, state: LeagueState, slot: Slot, slots: list[Slot]
             deps.append("VIOLATION", "league", {"team": slot.team_id, **v}, session=session_id)
         last = result
         if result.outcome == "ok" and result.action is not None:
+            pid = int(result.action.args["player_id"])
             return deps.append("DRAFT_PICK", f"gm:{slot.team_id}",
-                               _pick_payload(slot, deps.snapshot, int(result.action.args["player_id"]), result.action.args,
-                                             session=session_id), session=session_id)
+                               _pick_payload(slot, deps.snapshot, pid, result.action.args, session=session_id,
+                                             robot={"would_take": robot_would, "same": pid == robot_would},
+                                             think=think_summary(result)), session=session_id)
         deps.log(f"   pick #{slot.pick_no} {slot.team_id}: attempt {attempt} {result.outcome} {result.error or ''}")
         if result.outcome in ("out_of_credit", "bad_request"):  # permanent: retrying won't help
             break
@@ -171,8 +185,20 @@ def _llm_pick(deps: DraftDeps, state: LeagueState, slot: Slot, slots: list[Slot]
         auto={"reason": last.outcome, "source": source}))
 
 
+RESEARCH_TOOLS = ("search_players", "get_player", "get_team_schedule", "get_news", "get_league_state", "get_my_team",
+                  "notes_read")
+
+
+def think_summary(result: SessionResult) -> dict[str, Any]:
+    """How hard the GM worked on a pick, for the broadcast: model time, research lookups, reasoning, cost."""
+    return {"seconds": round(result.model_latency_s, 1), "tool_calls": result.tool_calls,
+            "lookups": sum(n for name, n in result.tools_by_name.items() if name in RESEARCH_TOOLS),
+            "reasoning_tokens": int(result.tokens.get("reasoning") or 0), "cost_usd": round(result.cost_usd, 4)}
+
+
 def _pick_payload(slot: Slot, snapshot: Snapshot, player_id: int, args: dict[str, Any], *,
-                  auto: dict[str, Any] | None = None, session: str | None = None) -> dict[str, Any]:
+                  auto: dict[str, Any] | None = None, session: str | None = None,
+                  robot: dict[str, Any] | None = None, think: dict[str, Any] | None = None) -> dict[str, Any]:
     p = snapshot.players[player_id]
     return {
         "pick_no": slot.pick_no, "round": slot.round, "team": slot.team_id,
@@ -181,23 +207,40 @@ def _pick_payload(slot: Slot, snapshot: Snapshot, player_id: int, args: dict[str
         "public_rationale": args.get("public_rationale") or "",
         "joke_logic": args.get("joke_logic") or "",
         "fact_check": args.get("fact_check") or "off",
+        "rationale_check": args.get("rationale_check") or "off",
         "projected_points": args.get("projected_points"), "range_80": args.get("range_80"),
-        "auto": auto, "session": session,
+        "auto": auto, "session": session, "robot": robot, "think": think,
     }
+
+
+def recent_lines(state: LeagueState, n: int = 6) -> list[str]:
+    """The last few things said at the table, with speakers, for checking who said and did what."""
+    said = [(pk.get("seq") or 0, pk["team"], pk.get("on_air_call") or "") for pk in state.picks if pk.get("on_air_call")]
+    said += [(s.get("seq") or 0, s["team"], s.get("line") or "") for s in state.says]
+    out = []
+    for _, team, line in sorted(said)[-n:]:
+        out.append(f"{state.team_label(team)}: {line}")
+    return out
 
 
 def _say(deps: DraftDeps, state: LeagueState, cue: Cue, recent: list[str], on_air: deque[str]) -> None:
     spec = deps.cfg.team(cue.team_id)
     system = build_system(cue.team_id, state, deps.cfg, today=deps.today, as_of=deps.as_of, task=SAY_TASK)
     heard = "\n".join(wrap(line, "broadcast").replace("\n", " ") for line in recent[-4:])
-    user = f"{cue.prompt}\n\nWhat was just said on air:\n{heard or '(nothing yet)'}\n\nCall say with your one line."
+    board = draft_board(state, deps.snapshot, cue.team_id)
+    order = state.order
+    mine = [s.pick_no for s in snake_order(order, int(deps.cfg.rules["rounds"])) if s.team_id == cue.team_id
+            and s.pick_no > len(state.picks)] if order else []
+    user = (f"{cue.prompt}\n\nThe draft board so far:\n{board}\n\nWhat was just said on air:\n{heard or '(nothing yet)'}"
+            + (f"\n\nYour next pick: #{mine[0]}." if mine else "") + "\n\nCall say with your one line.")
     ctx = ToolContext(team_id=cue.team_id, state=state, snapshot=deps.snapshot,
                       rules=RosterRules.from_config(deps.cfg.rules), slots=[], notebook_path=deps.notebook(cue.team_id),
-                      phase="broadcast", extra={"factcheck": deps.factcheck})
+                      phase="broadcast", extra={"factcheck": deps.factcheck, "tableread": deps.tableread,
+                                 "jokecheck": deps.jokecheck, "recent_lines": recent_lines(state), "kind": cue.kind})
     session_id = f"say:r{cue.round:02d}:{cue.kind}:{cue.pick_no or 0:03d}:{cue.team_id}"
     result = run_session(deps.client, spec, session_id=session_id, system=system, user=user, tools=SAY_TOOLS,
                          ctx=ctx, dispatch=dispatch, terminal_tools={"say"},
-                         budget=Budget(max_tool_calls=0, max_nudges=1, effort=deps.cfg.harness["effort"]["say"], max_tokens=4000),
+                         budget=Budget(max_tool_calls=2, max_nudges=1, effort=deps.cfg.harness["effort"]["say"], max_tokens=4000),
                          transcript_dir=deps.root / "transcripts" / "broadcast", nudge_text="Call say with your one line now.")
     deps.append("SESSION_COMPLETED", f"gm:{cue.team_id}", {"kind": "say", **result.summary()}, session=session_id,
                 refs={"transcript": result.transcript_path, "transcript_sha256": result.transcript_sha256})

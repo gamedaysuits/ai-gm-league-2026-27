@@ -1,0 +1,53 @@
+{
+  "effort": "medium",
+  "results": [
+    {
+      "team": "muse",
+      "model": "meta/muse-spark-1.3",
+      "providers": [
+        "meta"
+      ],
+      "outcome": "pass",
+      "detail": "McDavid led with 138 pts in 2025-26. Taking the higher scorer for elite production.",
+      "turns": [
+        {
+          "served_model": "meta/muse-spark-1.3",
+          "provider": "Meta",
+          "finish_reason": "tool_calls",
+          "latency_s": 2.093,
+          "attempts": 1,
+          "prompt_tokens": 763,
+          "completion_tokens": 198,
+          "reasoning_tokens": 71,
+          "cached_tokens": 113,
+          "cost_usd": 0.00167095,
+          "tool_calls": [
+            "lookup_player",
+            "lookup_player"
+          ],
+          "has_reasoning_details": true,
+          "content_chars": 0
+        },
+        {
+          "served_model": "meta/muse-spark-1.3",
+          "provider": "Meta",
+          "finish_reason": "tool_calls",
+          "latency_s": 1.91,
+          "attempts": 1,
+          "prompt_tokens": 1131,
+          "completion_tokens": 228,
+          "reasoning_tokens": 94,
+          "cached_tokens": 113,
+          "cost_usd": 0.00225845,
+          "tool_calls": [
+            "make_pick"
+          ],
+          "has_reasoning_details": true,
+          "content_chars": 0
+        }
+      ],
+      "wall_s": 4.01,
+      "cost_usd": 0.003929
+    }
+  ]
+}

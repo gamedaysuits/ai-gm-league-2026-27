@@ -37,6 +37,58 @@ def _gm(L, tid: str | None) -> str:
     return "the robot" if t.is_bot else (t.gm_name or t.display)
 
 
+def _label(L, tid: str | None) -> str:
+    """Transcripts label every line with the MODEL: 'Qwen (Qwen3.8 Max, Alibaba)'."""
+    if tid == "host":
+        return "The Commissioner (host)"
+    t = L.teams.get(tid or "")
+    return t.model_label if t else str(tid or "?")
+
+
+def write_transcript(rd: dict, L, odir: Path) -> Path:
+    """transcript.md: every line that airs, in order, labelled model first; then the GM lines that don't air (the
+    all-green policy, cut models, vetoes, fact_check) with the reason -- their words stay on the record."""
+    segs = {x["id"]: x.get("title") or x["id"] for x in rd.get("segments", [])}
+    out = [f"# Transcript: {L.run}", "", DISCLOSURE, ""]
+    ag = rd.get("all_green")
+    if ag:
+        out += [f"All green{' + a laugh' if ag.get('require_laugh') else ''}: {ag['calls_aired']}/{ag['calls']} GM pick "
+                f"calls air ({ag.get('calls_trimmed', 0)} of them trimmed at the sentence level, "
+                f"{len(ag.get('calls_pick_only') or [])} down to the plain pick sentence; the host announces "
+                f"{len(ag['calls_to_host'])}: picks {', '.join(str(x) for x in ag['calls_to_host']) or '-'}); "
+                f"{ag['says_aired']}/{ag['says_total']} table lines air"
+                + (f"; cut models: {', '.join(L.teams[x].model_label for x in ag['cut'] if x in L.teams)}" if ag.get("cut") else "")
+                + ".", ""]
+    cur = None
+    for ln in rd["timeline"]:
+        if ln.get("segment") != cur:
+            cur = ln.get("segment")
+            out += ["", f"## {segs.get(cur, cur)}", ""]
+        who = _label(L, ln["speaker"])
+        if ln.get("addressed_to") and ln["addressed_to"] != ln["speaker"] and ln["speaker"] != "host":
+            who += f" → {_label(L, ln['addressed_to'])}"
+        out.append(f"- **{who}**: {ln.get('display_text') or T.strip(ln.get('text') or '')}")
+    says = {x.seq: x for x in L.says}
+    picks = {x.pick_no: x for x in L.picks}
+    gone = []
+    for d in rd.get("dropped", []):
+        what, why = d.get("what"), d.get("reason", "")
+        if what == "call" and d.get("pick_no") in picks:
+            p_ = picks[d["pick_no"]]
+            gone.append(f"- pick {p_.pick_no} call · **{_label(L, p_.team)}**: {T.strip(p_.on_air_call)} — *{why}*")
+        elif d.get("seq") in says and what in ("comeback", "reaction", "table_talk"):
+            x = says[d["seq"]]
+            gone.append(f"- {what} (ledger {x.seq}) · **{_label(L, x.team)}**: {T.strip(x.line)} — *{why}*")
+    for tr in rd.get("trims", []):
+        for c in tr.get("cuts") or []:
+            gone.append(f"- cut from {tr['id']} · **{_label(L, tr.get('speaker'))}**: “{c['sentence']}” — *{c['why']}*")
+    if gone:
+        out += ["", "## Not aired (the words stay on the record)", ""] + gone
+    p = odir / "transcript.md"
+    p.write_text("\n".join(out) + "\n")
+    return p
+
+
 def _surname(name: str) -> str:
     return name.split()[-1] if name else ""
 
@@ -62,9 +114,9 @@ def write_beatmap(odir: Path, rd: dict, cues: dict, plan, L) -> Path:
             continue
         pl = placed.get(ln["id"], {})
         t0 = float(pl.get("start") or 0.0)
-        head = f"## [{ln['id']}] {_gm(L, ln['speaker'])} ({_model(L, ln['speaker'])})"
+        head = f"## [{ln['id']}] {_label(L, ln['speaker'])}"
         if ln.get("addressed_to"):
-            head += f" to {_gm(L, ln['addressed_to'])} ({_model(L, ln['addressed_to'])})"
+            head += f" to {_label(L, ln['addressed_to'])}"
         out += [head, f"*{ln['kind']}, starts at {t0:.2f} s; labels: {b.get('label_source') or 'rules'}*", "",
                 "| # | role | edit | sentence | timing |", "|---|---|---|---|---|"]
         marks = ((pl.get("beats") or {}).get("marks") or [])
@@ -82,8 +134,10 @@ def write_beatmap(odir: Path, rd: dict, cues: dict, plan, L) -> Path:
             text = disp
             timing = ""
             keep_ = b["keep"]
-            with_tag = (lab["role"] == "PUNCH" and kept and (i + 1) in keep_ and (i + 1) < len(b["labels"])
-                        and b["labels"][i + 1].get("tag"))
+            nxt_ = b["labels"][i + 1] if (i + 1) < len(b["labels"]) else None
+            with_tag = (lab["role"] == "PUNCH" and kept and (i + 1) in keep_ and nxt_ is not None
+                        and nxt_["role"] in ("BUTTON", "PUNCH")
+                        and (nxt_.get("tag") or len(T.strip(b["parts"][i + 1]).split()) <= 5))
             if with_tag:
                 timing = "one unit with its tag (a breath, then ONE laugh beat) ↓"
             elif lab["role"] in ("PUNCH", "BUTTON") and kept and mi < len(marks):
@@ -97,7 +151,7 @@ def write_beatmap(odir: Path, rd: dict, cues: dict, plan, L) -> Path:
                 room = next((e for e in sfx if abs(float(e["t"]) - ke) < 0.05), None)
                 timing = (f"kicker ends {ke:.2f} s · beat {float(mk.get('beat') or 0) * 1000:.0f} ms"
                           + (" (the mix's gap)" if mk.get("at_end") else "")
-                          + (f" · cut to {_gm(L, cut['listener'])} at {float(cut['t']):.2f} s" if cut and cut.get("listener") else "")
+                          + (f" · cut to {_label(L, cut['listener'])} at {float(cut['t']):.2f} s" if cut and cut.get("listener") else "")
                           + (f" · room: {'cheer' if room.get('praise') else ('ohhh + laugh' if int(room.get('spice') or 1) >= 3 else 'laugh')}" if room else ""))
             edit = "KEEP" if kept else ("(not in the cold open)" if ln["kind"] == "hook" else
                                         f"cut ({(cut_reason.get(ln['id'], {}).get(disp) or 'edit').replace('tight edit: ', '')})")
@@ -223,7 +277,7 @@ def write_package(odir: Path, name: str, rd: dict, cues: dict, plan, L, video: P
     titles.append(f"\u201c{quote}\u201d \u2014 {A}, AI fantasy hockey draft")
     titles.append(f"{n_ai} AI models held a fantasy hockey draft party. Here's what they said about each other's picks.")
     nos = (rd.get("short") or {}).get("picks") or []
-    took = [f"#{n} {_gm(L, picks[n].team)} ({_model(L, picks[n].team)}) took {picks[n].player_name}" for n in nos if n in picks]
+    took = [f"#{n} {_label(L, picks[n].team)} took {picks[n].player_name}" for n in nos if n in picks]
     desc = (f"{n_ai} AI models run a fantasy hockey league, and this is their draft party. "
             + ("; ".join(took) + ". " if took else "")
             + DISCLOSURE + " Every GM wears a real Game Day Suit: gamedaysuits.ca")
@@ -242,7 +296,7 @@ def write_package(odir: Path, name: str, rd: dict, cues: dict, plan, L, video: P
                              else "THE ROBOT")  # noqa: E731
         top = f"{short(a)} ROASTS {short(b)}" if b else short(a)
         thumb = thumbnail(video, t_clean, kicker or quote, top, odir / f"short-{name}.thumb.png",
-                          sub=f"{n_ai} AI MODELS · 1 FANTASY HOCKEY LEAGUE")
+                          sub=f"{n_ai} AI MODELS VS. 1 ROBOT · FANTASY HOCKEY")
     pkg = {"titles": titles, "description": desc, "hashtags": tags, "thumbnail": rel(thumb) if thumb else None,
            "disclosure": DISCLOSURE, "video": rel(video)}
     (odir / f"short-{name}.package.json").write_text(json.dumps(pkg, indent=1, ensure_ascii=False))
@@ -281,10 +335,11 @@ def write_chapters(odir: Path, stem: str, cues: dict, L) -> tuple[Path, Path]:
     ch.write_text("\n".join(lines) + "\n")
     desc = odir / f"{stem}.description.txt"
     desc.write_text(
-        f"DRAFT NIGHT — {n_ai} AI models draft a real fantasy hockey league (the complete show)\n\n"
-        f"{n_ai} AI models, each running a team in a season-long fantasy hockey league, draft live — every pick, "
-        f"every comeback, the round-break table talk, then the Report Card and the Delusion Index. The robot is "
-        f"Autodraft, the control bot every AI has to beat.\n\n"
-        f"AI-generated voices and avatars. Every GM line is the model's own words.\n\n"
-        f"Chapters:\n" + "\n".join(lines) + "\n\n#AI #FantasyHockey #NHL #DraftNight #GMBench\n")
+        f"AI FANTASY DRAFT · DRAFT NIGHT — {n_ai} AI models and one robot: a real fantasy hockey draft (the complete "
+        f"show). Presented by Game Day Suits.\n\n"
+        f"{n_ai} AI models, each running a team in a season-long fantasy hockey league, draft live -- with one "
+        f"robot, the control team they all have to beat. Every pick, the comebacks that land, the round-break table "
+        f"talk, then the Report Card and the Delusion Index.\n\n"
+        f"AI-generated voices and avatars. Every line from a model is its own words.\n\n"
+        f"Chapters:\n" + "\n".join(lines) + "\n\n#AI #FantasyHockey #DraftNight #AIFantasyDraft\n")
     return ch, desc

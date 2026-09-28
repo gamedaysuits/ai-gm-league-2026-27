@@ -14,7 +14,8 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import Any, Callable
 
-from gmbench.agent.prompts import ON_AIR_CALL_MAX, delivery_problem, spoken_length, tag_problem
+from gmbench.agent.prompts import (ON_AIR_CALL_MAX, backstory_problem, catchphrase_problem, construction_problem,
+                                   delivery_problem, repeat_problem, slop_problem, spoken_length, tag_problem)
 from gmbench.data.models import Player, Snapshot
 from gmbench.rules import RosterRules, Slot, pick_problem, unmet_minimums
 from gmbench.state import LeagueState
@@ -407,6 +408,9 @@ def _update_draft_queue(args: dict[str, Any], ctx: ToolContext) -> ToolOutcome:
 def _make_pick(args: dict[str, Any], ctx: ToolContext) -> ToolOutcome:
     if ctx.current_slot is None or ctx.current_slot.team_id != ctx.team_id:
         return ToolOutcome("ERROR: you are not on the clock.", ok=False)
+    if args.get("player_id") in (None, ""):
+        return ToolOutcome("ERROR: make_pick needs player_id: the player's numeric ID from search_players or your "
+                           "briefing.", ok=False)
     pid = int(args["player_id"])
     p = ctx.snapshot.players.get(pid)
     if p is None:
@@ -417,19 +421,28 @@ def _make_pick(args: dict[str, Any], ctx: ToolContext) -> ToolOutcome:
     problem = pick_problem(team.groups, p.group, ctx.rules)
     if problem:
         return ToolOutcome(f"ERROR: illegal pick ({p.group}): {problem}.", ok=False)
+    ctx.extra["pick_id"] = pid
     call = " ".join(str(args.get("on_air_call") or "").split())
     if not call:
         return ToolOutcome("ERROR: on_air_call is required: what you say at the table, in your own voice.", ok=False)
-    problem = tag_problem(call) or delivery_problem(call)
+    problem = (tag_problem(call) or delivery_problem(call) or construction_problem(call)
+               or catchphrase_problem(call, ctx.state.teams[ctx.team_id].persona) or style_problem(ctx, call))
     if problem:
         return ToolOutcome(f"ERROR: on_air_call: {problem}.", ok=False)
     if spoken_length(call) > ON_AIR_CALL_MAX:
-        return ToolOutcome(f"ERROR: on_air_call is {spoken_length(call)} spoken characters; the limit is {ON_AIR_CALL_MAX}.",
-                           ok=False)
-    status, problems = fact_check(ctx, f"On air: {call}\nWritten rationale: {' '.join(str(args.get('public_rationale') or '').split())}",
-                                  [pid] + ([int(ctx.state.picks[-1]["player_id"])] if ctx.state.picks else []))
-    if problems:
-        return ToolOutcome(fact_error(ctx, problems, call, [pid], "on_air_call or public_rationale", "make_pick"), ok=False)
+        return ToolOutcome(f"ERROR: on_air_call is {spoken_length(call)} spoken characters; the limit is {ON_AIR_CALL_MAX}. "
+                           "Cut filler words, not the joke.", ok=False)
+    ids = [pid] + ([int(ctx.state.picks[-1]["player_id"])] if ctx.state.picks else [])
+    rationale_text = " ".join(str(args.get("public_rationale") or "").split())
+    status, problems, note, rationale_status, rationale_problems = _gates(ctx, f"On air: {call}", call, ids,
+                                                                         rationale=rationale_text)
+    if problems or rationale_problems:
+        both = problems + rationale_problems
+        return ToolOutcome(fact_error(ctx, both, call + " " + rationale_text, [pid], "on_air_call or public_rationale",
+                                      "make_pick", fields={"on_air_call": call, "public_rationale": rationale_text})
+                           + (f" Also, table read: {note}." if note else ""), ok=False)
+    if note:
+        return ToolOutcome(f"ERROR: table read: {note}. Fix that part in your own words and call make_pick again.", ok=False)
     logic = " ".join(str(args.get("joke_logic") or "").split())
     if not logic:
         return ToolOutcome("ERROR: joke_logic is required: one sentence on why your on_air_call is funny. If you can't "
@@ -447,7 +460,7 @@ def _make_pick(args: dict[str, Any], ctx: ToolContext) -> ToolOutcome:
     return ToolOutcome(
         f"Pick recorded: {p.name}.",
         action=Action("make_pick", {"player_id": pid, "on_air_call": call, "public_rationale": rationale, "joke_logic": logic,
-                                    "fact_check": status,
+                                    "fact_check": status, "rationale_check": rationale_status,
                                     "projected_points": proj, "range_80": [lo, hi]}),
         terminal=True,
     )
@@ -457,14 +470,18 @@ def _say(args: dict[str, Any], ctx: ToolContext) -> ToolOutcome:
     line = " ".join(str(args["line"]).split())
     if not line:
         return ToolOutcome("ERROR: line is empty.", ok=False)
-    problem = tag_problem(line)
+    problem = (tag_problem(line) or delivery_problem(line) or construction_problem(line, max_sentences=2)
+               or catchphrase_problem(line, ctx.state.teams[ctx.team_id].persona) or style_problem(ctx, line))
     if problem:
         return ToolOutcome(f"ERROR: {problem}.", ok=False)
     if spoken_length(line) > 200:
         return ToolOutcome(f"ERROR: line is {spoken_length(line)} spoken characters; the limit is 200. Say it shorter.", ok=False)
-    status, problems = fact_check(ctx, line, [int(ctx.state.picks[-1]["player_id"])] if ctx.state.picks else [])
+    status, problems, note, _, _ = _gates(ctx, line, line, [int(ctx.state.picks[-1]["player_id"])] if ctx.state.picks else [])
     if problems:
-        return ToolOutcome(fact_error(ctx, problems, line, [], "line", "say"), ok=False)
+        return ToolOutcome(fact_error(ctx, problems, line, [], "line", "say")
+                           + (f" Also, table read: {note}." if note else ""), ok=False)
+    if note:
+        return ToolOutcome(f"ERROR: table read: {note}. Fix that part in your own words and call say again.", ok=False)
     to = args.get("addressed_to")
     if to and to not in ctx.state.teams:
         to = None
@@ -472,22 +489,120 @@ def _say(args: dict[str, Any], ctx: ToolContext) -> ToolOutcome:
                        terminal=True)
 
 
-def fact_error(ctx: ToolContext, claims: list[str], text: str, extra_ids: list[int], what: str, tool: str) -> str:
+def _gates(ctx: ToolContext, fact_text: str, line: str, extra_ids: list[int], rationale: str = ""
+           ) -> tuple[str, list[str], str | None, str, list[str]]:
+    """The fact checks and the table read (consistency + comedy editor) run at the same time: each is a few seconds
+    of outside models, and a pick shouldn't wait for them one after the other. The spoken line and the written
+    rationale are checked separately: only the spoken line decides whether a call can air."""
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(3) as pool:
+        facts = pool.submit(fact_check, ctx, fact_text, extra_ids)
+        why = pool.submit(fact_check, ctx, f"Written rationale: {rationale}", extra_ids, "rationale") if rationale else None
+        read = pool.submit(table_read, ctx, line)
+        status, problems = facts.result()
+        rationale_status, rationale_problems = why.result() if why else ("off", [])
+        note = read.result()
+    return status, problems, note, rationale_status, rationale_problems
+
+
+def lines_so_far(state: LeagueState, n: int = 6) -> list[str]:
+    """The last few things said at the table, as of now (table talk lands while the next GM is researching)."""
+    said = [(pk.get("seq") or 0, pk["team"], pk.get("on_air_call") or "") for pk in state.picks if pk.get("on_air_call")]
+    said += [(s.get("seq") or 0, s["team"], s.get("line") or "") for s in state.says]
+    return [f"{state.team_label(team)}: {line}" for _, team, line in sorted(said)[-n:]]
+
+
+def said_tonight(state: LeagueState) -> list[str]:
+    return [pk.get("on_air_call") or "" for pk in state.picks] + [s.get("line") or "" for s in state.says]
+
+
+_NAME_WORDS: dict[int, frozenset[str]] = {}
+
+
+def name_words(ctx: ToolContext) -> frozenset[str]:
+    """Player, GM and franchise names: shared vocabulary that never makes two lines the same bit."""
+    key = id(ctx.snapshot)
+    if key not in _NAME_WORDS:
+        words = {w for p in ctx.snapshot.players.values() for w in p.name.lower().replace("-", " ").split()}
+        _NAME_WORDS[key] = frozenset(words)
+    league = {w for t in ctx.state.teams.values() for x in (ctx.state.team_label(t.id), (t.persona or {}).get("gm_name"),
+              (t.persona or {}).get("franchise_name"), (t.persona or {}).get("hometown"),
+              (t.persona or {}).get("cup_pick")) if x for w in str(x).lower().replace(",", " ").split()}
+    return _NAME_WORDS[key] | league
+
+
+def style_problem(ctx: ToolContext, text: str) -> str | None:
+    """The slop gates: invented human life, stock phrases, and a bit someone already did tonight."""
+    return (backstory_problem(text) or slop_problem(text)
+            or repeat_problem(text, said_tonight(ctx.state), ignore=name_words(ctx)))
+
+
+MAX_PRODUCER_NOTES = 2  # per line: a rewrite gets read again once; after that the GM's words stand
+
+
+def table_read(ctx: ToolContext, text: str) -> str | None:
+    """One note per line, the GM's rewrite stands. Two reads run in parallel: does the line contradict what happened
+    tonight (TableRead), and does it land with a viewer (JokeCheck, the comedy editor)?"""
+    reader, editor = ctx.extra.get("tableread"), ctx.extra.get("jokecheck")
+    if (reader is None and editor is None) or ctx.extra.get("table_noted", 0) >= MAX_PRODUCER_NOTES:
+        return None
+    from concurrent.futures import ThreadPoolExecutor
+
+    from gmbench.agent.factcheck import draft_board
+    from gmbench.agent.tableread import roster_text
+    speaker = ctx.state.team_label(ctx.team_id)
+    board = draft_board(ctx.state, ctx.snapshot, ctx.team_id, full=True)
+    recent, roster = lines_so_far(ctx.state) or ctx.extra.get("recent_lines") or [], roster_text(ctx.state)
+    checker = ctx.extra.get("factcheck")
+    if checker is not None and hasattr(checker, "facts_for"):  # current teams and stats, so nobody reads from memory
+        ids = [int(pk["player_id"]) for pk in ctx.state.picks[-2:]]
+        if ctx.current_slot is not None and ctx.extra.get("pick_id"):
+            ids.append(int(ctx.extra["pick_id"]))
+        roster += "\n\nPlayer facts (our data, current as of today; trust these over memory):\n" + checker.facts_for(text, ids)
+    with ThreadPoolExecutor(2) as pool:
+        jobs = []
+        if reader is not None:
+            jobs.append(pool.submit(reader.read, text, speaker, board, recent, roster))
+        if editor is not None:
+            jobs.append(pool.submit(editor.read, text, speaker, board, recent, roster, ctx.extra.get("kind") or "pick"))
+        notes = [n for n in (j.result() for j in jobs) if n]
+    if notes:
+        ctx.extra["table_noted"] = ctx.extra.get("table_noted", 0) + 1
+        return " Also: ".join(notes)
+    return None
+
+
+def _squash(text: str) -> str:
+    return " ".join("".join(ch.lower() if ch.isalnum() else " " for ch in text).split())
+
+
+def fact_error(ctx: ToolContext, claims: list[str], text: str, extra_ids: list[int], what: str, tool: str,
+               fields: dict[str, str] | None = None) -> str:
     facts = ctx.extra["factcheck"].facts_for(text, extra_ids)
-    return ("ERROR: fact check. These claims contradict our data: " + "; ".join(f'"{c}"' for c in claims)
+
+    def where(claim: str) -> str:  # say which text the claim is in, so the GM fixes the right one
+        hits = [name for name, body in (fields or {}).items() if _squash(claim)[:40] in _squash(body)]
+        return f'"{claim}" (in your {hits[0]})' if hits else f'"{claim}"'
+    return ("ERROR: fact check. These claims contradict our data: " + "; ".join(where(c) for c in claims)
             + f". Our data, current as of today:\n{facts}\nFix the {what} (keep the joke if you can) and call {tool} again.")
 
 
-def fact_check(ctx: ToolContext, text: str, extra_ids: list[int]) -> tuple[str, list[str]]:
-    """('ok'|'unverified'|'off', problems). Problems send the line back to the GM, at most max_rejections times."""
+def fact_check(ctx: ToolContext, text: str, extra_ids: list[int], what: str = "fact") -> tuple[str, list[str]]:
+    """('ok'|'unverified'|'off', problems). Problems send the text back to the GM, at most max_rejections times per
+    kind of text (the spoken line and the written rationale keep separate counts)."""
     checker = ctx.extra.get("factcheck")
     if checker is None:
         return "off", []
-    if ctx.extra.get("fact_rejections", 0) >= checker.max_rejections:
+    counter = f"{what}_rejections"
+    if ctx.extra.get(counter, 0) >= checker.max_rejections:
         return "unverified", []
-    problems = checker.check(text, extra_ids)
+    leaders = ""
+    if ctx.phase in ("draft", "broadcast"):  # "best left on the board" is checkable only against who's left
+        from gmbench.agent.factcheck import board_leaders
+        leaders = board_leaders(ctx.snapshot, ctx.state.owner)
+    problems = checker.check(text, extra_ids, leaders=leaders)  # NHL facts only: table context made the checker flag honest lines
     if problems:
-        ctx.extra["fact_rejections"] = ctx.extra.get("fact_rejections", 0) + 1
+        ctx.extra[counter] = ctx.extra.get(counter, 0) + 1
         return "rejected", problems
     return "ok", []
 

@@ -123,6 +123,8 @@ class ShowModel:
             return ("react", c["pick_no"])
         if t == "board":
             return ("board", c["round"])
+        if t == "round_title":
+            return ("round_title", c["round"])
         if t == "question":
             return ("question", c["round"]) if ln["speaker"] != "host" else ("question_full", c["round"])
         if t == "history":
@@ -181,6 +183,12 @@ class ShowModel:
             placeholder = {sp for sp, f in (self.fs or {}).items() if getattr(f, "style", "") == "placeholder"}
             self.plan = Plan(self.cues, self.L, no_close=placeholder)
             self.shots = self.plan.shot_list
+            if self.layout == "studio" and self.shots and self.lines:
+                # 16:9 has no end card: a reaction on the very last line holds to the last frame (no flash back)
+                last_end = max(float(x["end"]) for x in self.lines)
+                fin = max(self.shots, key=lambda x: x["t1"])
+                if fin["kind"] == "listener" and fin["t0"] >= last_end - 1.0 and fin["t1"] < self.T:
+                    fin["t1"] = round(self.T, 4)
         for x in self.shots:  # a reaction shot and the cutaway to the same face a beat earlier are one cut
             if x["kind"] != "listener":
                 continue
@@ -266,6 +274,8 @@ class ShowModel:
                 elif "team" in r:
                     self.order_reveal.setdefault(r["team"], t)
         # (no monotonic clamp: highlight cuts reveal picks out of order; the ticker orders by reveal time)
+        for k, pn in enumerate(self.rundown.get("board_before") or []):  # a segment demo: those picks are already made
+            self.pick_reveal.setdefault(int(pn), round(-10.0 + 0.001 * k, 4))
         # delusion-index row highlights
         self.delusion_hl: list[tuple[float, str | None]] = [(0.0, None)]
         for ln in self.lines:
@@ -572,6 +582,11 @@ def grade_cls(grade: str) -> str:
 
 SW, FW = 852, 972  # inner widths: side card (speaker beats), full card (board beats)
 BIG_X, BIG_Y, BIG = 92, 108, 768  # the current speaker: 768 = 256x3 = 192x4 (whole-number pixel art scale)
+# the kicker pop: over the top of the big frame, clear of the mouth
+KICK_CSS = (f".kick {{ position: absolute; z-index: 34; left: {BIG_X + 20}px; width: {BIG - 40}px; top: {BIG_Y + 26}px; "
+            "text-align: center; font-family: \"Archivo\"; font-weight: 900; font-stretch: 118%; line-height: 1; color: #fff; "
+            "white-space: nowrap; -webkit-text-stroke: 8px #E32402; paint-order: stroke fill; "
+            "text-shadow: 0 9px 0 #0a1238, 0 0 40px rgba(227,36,2,0.55); }\n")
 COL_X = 952  # right column (bench strip, strap, side card, captions)
 
 
@@ -588,36 +603,35 @@ class Builder:
 
     # ---- labels
     def who(self, sp: str) -> tuple[str, str, str]:
-        """(name, franchise line, model line) for plates."""
+        """(headline, sub line, chip) for plates: the MODEL big, its lab beneath; the character is small flavour."""
         if sp == "host":
             return "The Commissioner", "League office · reads the ledger", "HOST"
         t = self.L.teams[sp]
-        if t.has_persona:
-            return t.gm_name, t.franchise_name, f"{t.display} · {t.lab}"
         if t.is_bot:
-            return "Autodraft", "Control bot · no persona", "House projection"
-        return t.display, "No Media Day card on file", f"{t.display} · {t.lab}"
+            return "The robot", "The control team every AI has to beat", "CONTROL TEAM"
+        return t.display.upper(), t.lab, "AI MODEL"
 
     def speaker_vars(self, sp: str) -> str:
         return HOST_VARS if sp == "host" else team_vars(self.L.teams[sp])
 
     def tname(self, tid: str) -> str:
         t = self.L.teams[tid]
-        return t.franchise_name if t.has_persona else ("Autodraft" if t.is_bot else t.display)
+        return "The robot (Autodraft)" if t.is_bot else t.display
 
     # ---- persistent furniture
     def header(self, a: str) -> str:
+        from .suits import logo_html
         return (
             f'<div class="bug aibug" id="{{cid}}-aibug"><div class="dot"></div><div class="t1">AI-GENERATED</div>'
-            f'<div class="t2">voices &amp; avatars</div></div>'
+            f'<div class="t2">{"rehearsal cast" if self.cfg.get("rehearsal_cast") else "voices &amp; avatars"}</div></div>'
             f'<div class="bug sponsor" id="{{cid}}-sponsor"><div class="t1">PRESENTED BY</div>'
-            f'<div class="t2">GAME DAY <b>SUITS</b></div></div>'
+            f'<div class="t2">{logo_html(a, self.cfg, "logo", 38)}</div></div>'
         )
 
     def show_title(self) -> str:
         c = self.cfg
         return (f'<div class="showtitle"><div class="t1">{esc(c["show_title"].upper())}</div>'
-                f'<div class="t2">{esc(c["show_kicker"])}</div></div>')
+                f'<div class="t2">{esc(str(c.get("show_name") or c["show_kicker"]))}</div></div>')
 
     def order_ids(self) -> list[str]:
         return [t for t in self.L.order if t in self.L.teams] + [t for t in self.L.teams if t not in self.L.order]
@@ -630,8 +644,8 @@ class Builder:
             t = self.L.teams[tid]
             col, row = divmod(i, rows)
             x, y = col * (TILE_W + TILE_GAP_X), row * (TILE_H + TILE_GAP_Y)
-            name = t.short_gm if t.has_persona else ("Autodraft" if t.is_bot else t.display)
-            model = "Control bot" if t.is_bot else t.display
+            name = "The robot" if t.is_bot else t.display
+            model = "Control bot" if t.is_bot else t.lab
             ns = fit(name, 262, "archivo", 21, 13, 1, 700, 100)
             ms = fit(model, 200 - text_width(t.abbrev, "archivo", 14, 800, 110), "questrial", 15, 11, 1, 400, 100)
             out.append(
@@ -674,8 +688,8 @@ class Builder:
         if sp == "host" or not fset or fset.style != "placeholder":
             return ""
         t = self.L.teams[sp]
-        main = (t.gm_name if t.has_persona else t.display).upper()
-        sub = (t.franchise_name if t.has_persona else (t.lab or "")).upper()
+        main = t.display.upper()
+        sub = (t.lab or "").upper()
         ms = fit(main, width - 70, "archivo", 96, 36, 1, 900, 112)
         return (f'<div class="mcard"><div class="m1" style="font-size:{ms}px">{esc(main)}</div>'
                 f'<div class="m2">{esc(sub)}</div></div>')
@@ -693,10 +707,15 @@ class Builder:
                 f'<div class="frame" data-layout-allow-overflow><div class="bob" id="{{cid}}-bob-{sp}">'
                 f'{self.RV.html(sp, a, BIG, self.t0) if self.RV else self.A.av(sp, "X", a, initial=mouth0.get(sp, "closed"), pose=self.pose0.get(sp, "none"), poses=self.used.get(sp, set()))}'
                 f'</div>{cu}{self.model_card(sp, BIG)}</div>'
-                f'<div class="cutlab" id="{{cid}}-cut-{sp}" style="{_vis(cut0)}">REACTION CAM</div>'
+                f'<div class="cutlab" id="{{cid}}-cut-{sp}" style="{_vis(cut0)}">{esc(self.react_label(sp))}</div>'
                 f'<div class="plate"><div class="gm" style="font-size:{gs}px">{esc(name)}</div>'
                 f'<div class="row2"><div class="fr" style="font-size:{fs_}px">{esc(fr)}</div>'
                 f'<div class="mdl">{esc(mdl)}</div></div></div></div>')
+
+    def react_label(self, sp: str) -> str:
+        t = self.L.teams.get(sp)
+        return "REACTION CAM" if (not t or sp == "host") else ("THE ROBOT REACTS" if t.is_bot else
+                                                                 f"{t.display.upper()} REACTS")
 
     # ---- cards
     def card(self, key: tuple, a: str, vis: bool) -> str:
@@ -714,7 +733,7 @@ class Builder:
         return (f'<div class="lab">Live from the league ledger</div>'
                 f'<div class="big" style="font-size:118px;margin-top:22px">DRAFT</div>'
                 f'<div class="big" style="font-size:118px;color:#E32402">NIGHT</div><div class="rule"></div>'
-                f'<div class="row"><span class="pill red">{n_ai} AI GMs</span><span class="pill royal">1 CONTROL BOT</span>'
+                f'<div class="row"><span class="pill red">{n_ai} AI MODELS</span><span class="pill royal">1 ROBOT</span>'
                 f'<span class="pill ghost">{self.L.rounds} ROUNDS</span></div>')
 
     def card_disclosure(self, key):
@@ -725,8 +744,8 @@ class Builder:
                 f'<div class="rule"></div>'
                 f'<div class="txt" style="font-size:24px">Every general manager line is the model\'s own output, read from '
                 f'the league ledger. Voices and avatars are AI-generated. The Commissioner reads facts from the ledger.</div>'
-                f'<div class="row" style="margin-top:20px"><span class="pill red">{n_ai} AI GMs</span>'
-                f'<span class="pill royal">1 CONTROL BOT</span><span class="pill ghost">{self.L.rounds} ROUNDS</span></div>')
+                f'<div class="row" style="margin-top:20px"><span class="pill red">{n_ai} AI MODELS</span>'
+                f'<span class="pill royal">1 ROBOT</span><span class="pill ghost">{self.L.rounds} ROUNDS</span></div>')
 
     def card_quote(self, key):
         ln = next(x for x in self.m.lines if x["id"] == key[1])
@@ -735,8 +754,8 @@ class Builder:
             return self.card_live(key)
         pt = self.L.teams[p.team]
         rt = self.L.teams.get(ln["speaker"])
-        who = (rt.gm_name if rt and rt.has_persona else (rt.display if rt else ""))
-        picker = pt.franchise_name if pt.has_persona else pt.display
+        who = ("The robot" if rt and rt.is_bot else (rt.display if rt else ""))
+        picker = "the robot" if pt.is_bot else pt.display
         head = f"Round {p.round} · Pick {p.pick_no}"
         what = (f"{esc(who)} on taking <b>{esc(p.player_name)}</b>" if rt and rt.id == p.team else
                 f"{esc(who)} on the {esc(picker)} taking <b>{esc(p.player_name)}</b>")
@@ -748,14 +767,14 @@ class Builder:
     def card_gm(self, key):
         t = self.L.teams[key[1]]
         slot = (self.L.order.index(t.id) + 1) if t.id in self.L.order else None
-        lab = f"Meet the GM{f' · draft slot {slot}' if slot else ''}"
+        lab = f"Meet the model{f' · draft slot {slot}' if slot else ''}"
         if not t.has_persona:
-            title = "Autodraft" if t.is_bot else t.display
-            sub = "Control bot · house projection" if t.is_bot else f"{t.lab} · no Media Day card on file"
+            title = "The robot" if t.is_bot else t.display.upper()
+            sub = "The control team every AI has to beat" if t.is_bot else t.lab
             size = fit(title, SW, "archivo", 64, 30, 2)
             return (f'<div class="lab">{esc(lab)}</div><div class="big" style="font-size:{size}px;margin-top:16px">'
                     f'{esc(title)}</div><div class="rule"></div><div class="txt">{esc(sub)}</div>', team_vars(t))
-        size = fit(t.franchise_name, SW, "archivo", 56, 28, 1)
+        size = fit(t.display.upper(), SW, "archivo", 56, 28, 1)
         tag = t.p("tagline") or ""
         tsz, _ = fit_size(f"“{tag}”", SW, "questrial", 26, 17, 3)
         chips = "".join(f"<span>{esc(x)}</span>" for x in (t.p("personality") or [])[:4])
@@ -769,9 +788,11 @@ class Builder:
             suit_txt = suit_txt[:107].rsplit(" ", 1)[0] + "…"
         city = f'<span class="stat">{esc(t.city)}</span>' if t.city else ""
         return (f'<div class="lab">{esc(lab)}</div>'
-                f'<div class="big" style="font-size:{size}px;margin-top:12px">{esc(t.franchise_name)}</div>'
+                f'<div class="big" style="font-size:{size}px;margin-top:12px">{esc(t.display.upper())}</div>'
                 f'<div class="row"><span class="pill" style="background:var(--c1);color:var(--ct);'
-                f'box-shadow:inset 0 0 0 2px var(--c2)">{esc(t.abbrev)}</span>{city}</div><div class="rule"></div>'
+                f'box-shadow:inset 0 0 0 2px var(--c2)">{esc(t.lab)}</span>'
+                + (f'<span class="pill cup">CUP PICK: {esc(t.cup_pick)}</span>' if t.cup_pick else "")
+                + '</div><div class="rule"></div>'
                 f'<div class="txt" style="font-size:{tsz}px">“{esc(tag)}”</div><div class="chips">{chips}</div>'
                 + (f'<div class="suit"><b>Suit</b> · {esc(suit_txt)}</div>' if suit_txt else ""), team_vars(t))
 
@@ -798,7 +819,7 @@ class Builder:
         name = self.tname(p.team)
         auto = ""
         if p.auto:
-            auto = ('<span class="pill ghost">CONTROL BOT</span>' if t.is_bot else '<span class="pill ghost">AUTO PICK</span>')
+            auto = ('<span class="pill ghost">THE ROBOT</span>' if t.is_bot else '<span class="pill ghost">AUTO PICK</span>')
         flag = self.L.value_flags().get(p.pick_no)
         flag_pill = {"reach": '<span class="pill gold">REACH?!</span>', "steal": '<span class="pill royal">STEAL!</span>'}.get(flag or "", "")
         shown = self.m.pick_reveal.get(p.pick_no, 1e9) <= self.t0 + 1e-6
@@ -811,25 +832,42 @@ class Builder:
                 f'<span class="pill ghost">{esc(p.nhl_team)}</span>{auto}{flag_pill}{proj}</div></div>')
         by = (f'<div class="by"><span class="k">Selected by</span> <b style="font-size:'
               f'{fit(name, SW - 150, "archivo", 30, 18, 1)}px">{esc(name)}</b></div>')
-        gm = f'<div class="stat" style="margin-top:6px">GM {esc(t.gm_name)} · {esc(t.display)}</div>' if t.has_persona else ""
+        from .ledger import think_chip
+        from .suits import suit_info, swatch_url
+        tc = think_chip(p, t.is_bot)  # (the AI picks' clock; the robot is opaque: no chips of its own)
+        chips = f'<span class="pill think">{esc(tc)}</span>' if tc else ""
+        si = suit_info(self.L, p.team) if not t.is_bot else None
+        sw = swatch_url(si) if si else None
+        strip = ""
+        if si:
+            bg = f"background-image:url({self.a}{sw})" if sw else f"background:{si['color']}"
+            strip = (f'<div class="swstrip" style="{bg}"></div>'
+                     f'<div class="swlab">SUIT · {esc(si["fabric"])}</div>')
+        if chips:  # the setups for the jokes: seen for the whole pick
+            gm = (f'<div class="row pkchips" style="margin-top:6px">'
+                  + (f'<span class="stat">{esc(t.lab)}</span>' if not t.is_bot else "") + chips + '</div>')
+        else:
+            gm = f'<div class="stat" style="margin-top:6px">{esc(t.lab)}</div>' if not t.is_bot else ""
         rec = ""
-        if p.on_air_call and p.rationale and not t.is_bot:  # the rationale names the player: after the reveal only
+        if p.on_air_call and p.rationale and not t.is_bot and (p.rationale_check or "ok") == "ok":
+            # (the rationale names the player: after the reveal only; an unverified one never goes on screen)
             rsz, _ = fit_size(p.rationale, SW, "questrial", 18, 12, 3, 400, 100)
             rec = (f'<div class="rec" id="{{cid}}-pk{p.pick_no}-rec" style="font-size:{rsz}px;{_vis(shown)}">'
                    f'<b>FOR THE RECORD</b> {esc(p.rationale)}</div>')
-        return (f'<div class="lab">Round {p.round} · pick {in_round} · overall {p.pick_no}</div>'
-                f'<div class="pk">{pre}{post}</div><div class="rule"></div>{by}{gm}{rec}', team_vars(t))
+        rule = '<div class="rule" style="margin:9px 0 8px"></div>' if chips else '<div class="rule"></div>'
+        return (f'{strip}<div class="lab">Round {p.round} · pick {in_round} · overall {p.pick_no}</div>'
+                f'<div class="pk">{pre}{post}</div>{rule}{by}{gm}{rec}', team_vars(t))
 
     def card_react(self, key):
         """Beat 1 of a call: the previous pick, and the buddy it was made by (the reaction cam)."""
         p = self.m.picks[key[1]]
         t = self.L.teams[p.team]
-        who = t.short_gm if t.has_persona else ("Autodraft" if t.is_bot else t.display)
+        who = "The robot" if t.is_bot else t.display
         nsz = fit(p.player_name, SW - 330, "archivo", 54, 26, 2)
         wsz = fit(who, SW - 330, "archivo", 30, 18, 1)
         return (f'<div class="lab">On the last pick · #{p.pick_no}</div>'
                 f'<div class="rcam"><div class="ph">{self.RV.html(p.team, self.a, 290, self.t0, crop="bust") if self.RV else self.A.av(p.team, "M", self.a, initial="closed", pose=self.pose0.get(p.team, "none"), poses=self.used.get(p.team, set()))}</div>'
-                f'<div class="tg">REACTION CAM</div></div>'
+                f'<div class="tg">{esc(self.react_label(p.team))}</div></div>'
                 f'<div class="rtx"><div class="big" style="font-size:{wsz}px">{esc(who)}</div>'
                 f'<div class="stat" style="margin-top:6px">{esc(self.tname(p.team))}</div><div class="rule"></div>'
                 f'<div class="stat">took</div><div class="big" style="font-size:{nsz}px;margin-top:4px">{esc(p.player_name)}</div>'
@@ -850,8 +888,8 @@ class Builder:
             if tid not in self.L.teams:
                 continue
             t = self.L.teams[tid]
-            main = t.franchise_name if t.has_persona else ("Autodraft" if t.is_bot else t.display)
-            sub = "Control bot" if t.is_bot else f"{t.display} · {t.lab}"
+            main = "The robot" if t.is_bot else t.display
+            sub = "Control bot" if t.is_bot else t.lab
             rt = self.m.order_reveal.get(tid, 0.0)
             rows.append(self.team_row(tid, str(i + 1), main, sub, f"ord-{tid}", rt <= self.t0 + 1e-6))
         half = int(math.ceil(len(rows) / 2))
@@ -864,6 +902,19 @@ class Builder:
         return (f'<div class="lab">The draft order · round 1</div><div class="cols tbl" style="margin-top:14px">'
                 f'<div>{"".join(rows[:half])}</div><div>{"".join(rows[half:])}</div></div><div class="foot">{foot}</div>')
 
+    def card_round_title(self, key):
+        """A round's title card: the show, the round, the picks in it -- presented by Game Day Suits."""
+        from .suits import logo_html
+        rnd = key[1]
+        picks = self.L.picks_in_round(rnd)
+        n_all = self.m.n_teams * self.L.rounds
+        span = f"Picks {picks[0].pick_no}–{picks[-1].pick_no} of {n_all}" if picks else ""
+        show = str(self.cfg.get("show_name") or "AI Fantasy Draft")
+        return (f'<div class="lab">{esc(show)} · {esc(self.cfg["show_title"])}</div>'
+                f'<div class="big" style="font-size:132px;margin-top:18px">ROUND <span style="color:#E32402">{rnd}</span></div>'
+                f'<div class="rule"></div><div class="stat" style="font-size:26px">{esc(span)}</div>'
+                f'<div class="rtbrand"><div class="pb">PRESENTED BY</div>{logo_html(self.a, self.cfg, "logo", 46)}</div>')
+
     def card_board(self, key):
         rnd = key[1]
         picks = self.L.picks_in_round(rnd)
@@ -873,14 +924,16 @@ class Builder:
             rows.append(self.team_row(p.team, str(p.pick_no), p.player_name,
                                       f"{pos_display(p.position)} · {p.nhl_team}", f"brd-{p.pick_no}",
                                       rt <= self.t0 + 1e-6))
+        from .suits import logo_html
         half = int(math.ceil(len(rows) / 2))
-        return (f'<div class="lab">Round {rnd} · the board</div><div class="cols tbl" style="margin-top:14px">'
+        return (f'<div class="lab">Round {rnd} · the board</div><div class="cardlogo">{logo_html(self.a, self.cfg, "logo", 30)}</div>'
+                f'<div class="cols tbl" style="margin-top:14px">'
                 f'<div>{"".join(rows[:half])}</div><div>{"".join(rows[half:])}</div></div>')
 
     def card_history(self, key):
         h = self.m.history.get(key[1]) if key[1] else None
         if not h:
-            return '<div class="lab">Previously on GM-Bench</div>'
+            return '<div class="lab">Previously on the AI draft circuit</div>'
         hdr = {k.lower(): k for k in h["headers"]}
         pts = next((hdr[k] for k in hdr if k in ("pts", "points")), None) or next((hdr[k] for k in hdr if "unspent" in k), None)
         gm = next((hdr[k] for k in hdr if k.startswith("gm")), None)
@@ -893,7 +946,7 @@ class Builder:
                         f'<div class="sm">{esc(sub)}</div></div><div class="nm" style="margin-left:auto">'
                         f'{esc(r.get(pts, "")) if pts else ""}</div></div>')
         size = fit(h["title"], FW, "archivo", 52, 28, 2)
-        return (f'<div class="lab">Previously on GM-Bench</div><div class="big" style="font-size:{size}px;margin-top:14px">'
+        return (f'<div class="lab">Previously on the AI draft circuit</div><div class="big" style="font-size:{size}px;margin-top:14px">'
                 f'{esc(h["title"])}</div><div class="rule"></div><div class="tbl" style="width:900px">{"".join(rows)}</div>')
 
     def _question(self, key, full: bool):
@@ -918,7 +971,7 @@ class Builder:
                 f'<div class="big" style="font-size:132px;margin-top:8px">ROUND {key[1]}</div>'
                 f'<div class="big" style="font-size:{fit("HIGHLIGHTS", SW, "archivo", 124, 60, 1)}px;color:#E32402">'
                 f'HIGHLIGHTS</div><div class="rule"></div>'
-                f'<div class="row"><span class="pill red">{n_ai} AI GMs</span><span class="pill royal">1 CONTROL BOT</span>'
+                f'<div class="row"><span class="pill red">{n_ai} AI MODELS</span><span class="pill royal">1 ROBOT</span>'
                 f'<span class="pill ghost">EVERY WORD THEIR OWN</span></div>')
 
     def card_tape(self, key):
@@ -931,8 +984,8 @@ class Builder:
         n_lines = sum(1 for x in self.m.lines if x.get("own_words"))
         return (f'<div class="lab">Draft complete</div><div class="big" style="font-size:84px;margin-top:18px">'
                 f'{len(self.L.picks)} picks.</div><div class="big" style="font-size:84px">{self.L.rounds} rounds.</div>'
-                f'<div class="rule"></div><div class="txt" style="font-size:26px">{len(self.L.teams)} franchises · '
-                f'{n_lines} GM lines on air tonight, every one in the GM\'s own words.</div>')
+                f'<div class="rule"></div><div class="txt" style="font-size:26px">{len(self.L.teams)} teams · '
+                f'{n_lines} lines from the models on air tonight, every one in the model\'s own words.</div>')
 
     # ---- report card
     def card_report_intro(self, key):
@@ -957,7 +1010,7 @@ class Builder:
         name = self.tname(tid)
         nsz = fit(name, 560, "archivo", 50, 26, 2)
         _, _, mdl = self.who(tid)
-        gm = f"GM {t.gm_name} · {t.display}" if t.has_persona else mdl
+        gm = t.lab if not t.is_bot else "Control bot"
         st = self.m.stamp_t.get(tid)
         shown = st is None or st <= self.t0 + 1e-6
         stamp = (f'<div class="stamp {grade_cls(r["letter"])}" id="{{cid}}-rs-{tid}" data-layout-allow-overlap '
@@ -1004,7 +1057,7 @@ class Builder:
         out = []
         for r in rows:
             t = self.L.teams[r["team"]]
-            who = t.short_gm if t.has_persona else t.display
+            who = t.display
             xs = x0 + (r["self"] - 1) / (n - 1) * w
             xa = x0 + (r["avg"] - 1) / (n - 1) * w
             lo, hi = min(xs, xa), max(xs, xa)
@@ -1024,14 +1077,12 @@ class Builder:
 
     # ---- captions, ticker, straps, overlays
     def short_label(self, sp: str, addressed: str | None) -> str:
-        if sp == "host":
-            s = "THE COMMISSIONER"
-        else:
-            t = self.L.teams[sp]
-            s = f"{t.short_gm} · {t.nickname}" if t.has_persona else t.display
+        def nm(tid: str) -> str:
+            t = self.L.teams[tid]
+            return "the robot" if t.is_bot else t.display
+        s = "THE COMMISSIONER" if sp == "host" else nm(sp)
         if addressed and addressed in self.L.teams and addressed != sp:
-            tt = self.L.teams[addressed]
-            s += "  →  " + (tt.nickname if tt.has_persona else tt.display)
+            s += "  →  " + nm(addressed)
         return s.upper()
 
     def caption_page(self, i: int, pg: dict, vis: bool, t: float) -> str:
@@ -1085,23 +1136,25 @@ class Builder:
                 return f"Picks {picks[0].pick_no}–{picks[-1].pick_no} of {self.m.n_teams * self.L.rounds}"
             return "The panel weighs in"
         return {"cold_open": "Cold open", "previously": "Past AI drafts",
-                "meet": f"{sum(1 for t in self.L.teams.values() if not t.is_bot)} AI GMs + 1 control bot",
-                "order": "Set by published randomness", "close": "Presented by Game Day Suits",
+                "meet": f"{sum(1 for t in self.L.teams.values() if not t.is_bot)} AI models + 1 robot",
+                "order": "Set by published randomness", "close": "Build your Game Day Suit",
                 "report_card": "The GMs grade each other", "trash_tape": "GM words · unedited"}.get(k, "")
 
     def overlay_title(self, vis: bool) -> str:
         L = self.L
         n_ai = sum(1 for t in L.teams.values() if not t.is_bot)
         date = self.draft_date() if L.picks else ""
+        from .suits import logo_html
+        show = str(self.cfg.get("show_name") or "AI GM League")
         return (f'<div class="ovl" id="{{cid}}-ovl-title" style="{_vis(vis)}"><div class="bg2"></div><div class="blk">'
-                f'<div class="k1" id="{{cid}}-ot1">GM-Bench presents</div>'
+                f'<div class="k1" id="{{cid}}-ot1">{esc(show.upper())}</div>'
                 f'<div class="ttl" id="{{cid}}-ot2">{esc(self.cfg["show_title"].upper())}</div>'
                 f'<div class="bar" id="{{cid}}-ot3"></div>'
-                f'<div class="l2" id="{{cid}}-ot4">{n_ai} AI GMs · 1 CONTROL BOT · {L.rounds} ROUNDS · '
+                f'<div class="l2" id="{{cid}}-ot4">{n_ai} AI MODELS · 1 ROBOT · {L.rounds} ROUNDS · '
                 f'{self.m.n_teams * L.rounds} PICKS</div>'
-                f'<div class="l3" id="{{cid}}-ot5">{esc(date)}{" · " if date else ""}The Suits 2026–27</div></div>'
-                f'<div class="l4" id="{{cid}}-ot6">Presented by Game Day Suits · AI-generated voices and avatars · '
-                f'GM words are the models\' own</div></div>')
+                f'<div class="l3" id="{{cid}}-ot5">{esc(date)}</div>'
+                f'<div class="brand" id="{{cid}}-ot7"><div class="pb">PRESENTED BY</div>{logo_html(self.a, self.cfg, "logo", 64)}</div></div>'
+                f'<div class="l4" id="{{cid}}-ot6">AI-generated voices and avatars · every word from a model is its own</div></div>')
 
     def overlay_close(self, vis: bool) -> str:
         opener = ""
@@ -1111,11 +1164,15 @@ class Builder:
             d = dt.datetime.fromisoformat(self.L.first_puck_drop_utc.replace("Z", "+00:00"))
             d = d.astimezone(ZoneInfo(self.L.timezone or "America/Edmonton"))
             opener = f"Season opens {d.strftime('%a %b')} {d.day}"
+        from .suits import logo_html
+        show = str(self.cfg.get("show_name") or "AI GM League")
         return (f'<div class="ovl" id="{{cid}}-ovl-close" style="{_vis(vis)}"><div class="bg2"></div><div class="blk">'
-                f'<div class="k1">That\'s the draft</div><div class="ttl" style="font-size:150px">{esc(self.cfg["show_title"].upper())}</div>'
+                f'<div class="k1">{esc(show.upper())} · THAT\'S THE DRAFT</div>'
+                f'<div class="ttl" style="font-size:150px">{esc(self.cfg["show_title"].upper())}</div>'
                 f'<div class="bar"></div><div class="l2">{esc(opener.upper())}</div>'
-                f'<div class="l3">Presented by Game Day Suits · gamedaysuits.ca</div></div>'
-                f'<div class="l4">GM lines: the models\' own words from the league ledger · voices and avatars are AI-generated</div></div>')
+                f'<div class="brand end">{logo_html(self.a, self.cfg, "logo", 88)}'
+                f'<div class="cta">Build your Game Day Suit · {esc(str(self.cfg.get("brand_url") or "gamedaysuits.ca"))}</div></div></div>'
+                f'<div class="l4">Every line from a model is its own words from the league ledger · voices and avatars are AI-generated</div></div>')
 
     def draft_date(self) -> str:
         import datetime as dt
@@ -1428,6 +1485,35 @@ class Builder:
             for el in ("ot1", "ot2", "ot3", "ot4", "ot5", "ot6"):
                 title_html = title_html.replace(f'id="{{cid}}-{el}"', f'id="{{cid}}-{el}" style="opacity:0;visibility:hidden"')
         close_html = self.overlay_close(m.close_show <= t0) if close_in else ""
+        # kicker pops (the comic-timing pass): the punch's own last words, big, over the speaker as they land
+        kick_html = []
+        data.setdefault("kp", [])
+        from .captions import word_times as _wt
+        from .short import LEAD_WORDS
+        for ln in m.lines:
+            marks = (ln.get("beats") or {}).get("marks") or []
+            if not marks or not (t0 - 5.0 < float(ln["start"]) < t1):
+                continue
+            ws = _wt(ln)
+            for k_, mk in enumerate(marks):
+                ka = float(ln["start"]) + float(mk["kicker_start"])
+                kb = float(ln["start"]) + float(mk["kicker_end"])
+                if not (t0 <= ka < t1 - 0.3):
+                    continue
+                kw = [w for w in ws if ka - 0.03 <= w["start"] <= kb]
+                while len(kw) > 1 and kw[0]["w"].lower().strip(".,!?'\"") in LEAD_WORDS:
+                    kw = kw[1:]
+                if not kw:
+                    continue
+                text = " ".join(w["w"] for w in kw).upper()
+                size, _ = fit_size(text, BIG - 150, "archivo", 92, 40, 1, 900, 118)  # (the estimate runs short)
+                nxt = min([float(x.get("sw", x["start"])) for x in m.lines if float(x["start"]) > float(ln["start"]) + 0.01
+                           and x["speaker"] != ln["speaker"]] + [t1])
+                off = min(kb + float(mk.get("beat") or 0.4) + 0.35, nxt - 0.05, t1 - 0.05)
+                key = f"kk-{ln['id']}-{k_}"
+                data["kp"].append([round(ka - t0, 4), key, round(off - t0, 4)])
+                kick_html.append(f'<div class="kick" id="{{cid}}-{key}" style="font-size:{size}px;opacity:0;'
+                                 f'visibility:hidden">{esc(text)}</div>')
         studio = (
             f'<div class="studio" id="{cid}-s"><div class="bg"></div>{self.header(a)}'
             f'<div class="set" id="{cid}-set" style="{_vis(set_vis0)}"><div class="cam" id="{cid}-cam">'
@@ -1439,18 +1525,19 @@ class Builder:
             f'{self.bench(a, clock0, speak0, mouth0)}{straps_s}<div class="capbox s panel"></div></div>'
             f'{cards}{self.ticker(upto, k0 == 0)}</div></div>'
             f'{"".join(burst_html(b, self.L, BIG_X + BIG // 2, BIG_Y + 360) for b in bursts)}'
-            f'{"".join(slam_html(x, self.L, 1920, 300) for x in slams)}<div class="flash" id="{{cid}}-flash"></div>'
+            f'{"".join(slam_html(x, self.L, 1920, 300) for x in slams)}{"".join(kick_html)}'
+            f'<div class="flash" id="{{cid}}-flash"></div>'
             f'{title_html}{close_html}<div class="caps">{caps}</div></div>'
         ).replace("{cid}", cid)
         root = (f'<div id="root" data-composition-id="{cid}" data-start="0" data-width="1920" data-height="1080" '
                 f'data-duration="{ch.dur_attr}" data-fps="{m.fps}">{studio}</div>')
         js = RUNTIME_JS.replace("__CID__", cid).replace("__RIG_JS__", RIG_JS if self.RV else "").replace("__DATA__", json.dumps(
             {**data, "speakers": speakers, "x0": x0}, separators=(",", ":")))
-        css = studio_css.css(a) + (RIG_CSS if self.RV else "")
+        css = studio_css.css(a) + (RIG_CSS if self.RV else "") + KICK_CSS
         if standalone:
             doc = (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="UTF-8" />\n'
                    f'<meta name="viewport" content="width=1920, height=1080" />\n'
-                   f'<title>GM-Bench {esc(self.cfg["show_title"])} {cid}</title>\n'
+                   f'<title>{esc(str(self.cfg.get("show_name") or "AI GM League"))} {esc(self.cfg["show_title"])} {cid}</title>\n'
                    f'<script src="{a}vendor/gsap-3.14.2.min.js"></script>\n'
                    f'<style>\nhtml, body {{ margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #0E1B4D; }}\n'
                    f'{css}</style>\n</head>\n<body>\n{root}\n<script>\n{js}\n</script>\n</body>\n</html>\n')
@@ -1716,7 +1803,7 @@ def write_project(model: ShowModel, cfg: dict, minutes: float | None, mix_path: 
         f'data-start="{c.t0:.6f}" data-duration="{c.dur_attr}" data-track-index="1" data-width="1920" data-height="1080"></div>'
         for c in chunks)
     index = (f'<!doctype html>\n<html lang="en">\n<head>\n<meta charset="UTF-8" />\n'
-             f'<meta name="viewport" content="width=1920, height=1080" />\n<title>GM-Bench Draft Night (preview)</title>\n'
+             f'<meta name="viewport" content="width=1920, height=1080" />\n<title>AI GM League Draft Night (preview)</title>\n'
              f'<script src="assets/vendor/gsap-3.14.2.min.js"></script>\n<style>\n'
              f'html, body {{ margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #0E1B4D; }}\n'
              f'#root {{ position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #0E1B4D; }}\n'

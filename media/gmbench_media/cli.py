@@ -95,7 +95,36 @@ def cmd_rundown(args, cfg) -> dict:
         f"min (target {rd['target_duration_s'] / 60:.0f}); fit level {rd['fit_level']}; trims {len(rd['trims'])}; "
         f"dropped {len(rd['dropped'])} -> {rel(od / 'rundown.json')}")
     log("rundown: " + ", ".join(f"{k}={v}" for k, v in sorted(kinds.items())))
+    from .packaging import write_transcript
+    log(f"rundown: transcript (model-labelled; what doesn't air and why) -> {rel(write_transcript(rd, L, od))}")
+    ag = rd.get("all_green")
+    if ag:
+        log(f"rundown: ALL GREEN{' + a laugh' if ag.get('require_laugh') else ''}: {ag['calls_aired']}/{ag['calls']} "
+            f"GM calls air, {ag.get('calls_trimmed', 0)} trimmed, {len(ag.get('calls_pick_only') or [])} down to the "
+            f"plain pick sentence (host announces picks "
+            f"{', '.join(str(x) for x in ag['calls_to_host']) or '-'}); {ag['says_aired']}/{ag['says_total']} table "
+            f"lines air" + (f"; cut: {', '.join(ag['cut'])}" if ag.get("cut") else ""))
+    if cfg["script"].get("complete"):
+        log_projection(rd, L, cfg)
     return rd
+
+
+def log_projection(rd: dict, L, cfg: dict) -> None:
+    from .script import project_complete
+    if rd.get("segment_demo"):  # one stretch of the show: nothing to project
+        return
+    pr = project_complete(rd, L, cfg)
+    tgt = pr.get("target_chars") or 0
+    head = (f"complete show: {pr['rounds']} of {pr['of']} rounds on the ledger -> PROJECTED for the full draft"
+            if pr.get("projected") and pr["rounds"] < pr["of"] else "complete show")
+    log(f"{head}: ~{pr['min']:.0f} min, ~{pr['chars'] / 1000:.1f}k ElevenLabs characters"
+        + (f" (target ~{tgt / 1000:.0f}k)" if tgt else "")
+        + (f"; {'; '.join(pr['assumed'])}" if pr.get("assumed") else ""))
+    if pr.get("per_round"):
+        q = pr["per_round"]
+        log(f"complete show: a round with every comeback ~{q['full_min']:.1f} min / {q['full_chars']} chars "
+            f"({q['comebacks_per_round_seen']} comebacks seen per round); a capped round ~{q['capped_min']:.1f} min / "
+            f"{q['capped_chars']} chars")
 
 
 def cmd_tts(args, cfg) -> dict:
@@ -108,6 +137,8 @@ def cmd_tts(args, cfg) -> dict:
     man = run_tts(rd, cfg, args.engine, L, only=only, max_chars=args.max_chars, fallback=fallback, log=log,
                   plan=args.plan, cache_only=args.cache_only)
     if man.get("plan"):
+        if cfg["script"].get("complete"):
+            log_projection(rd, L, cfg)
         return man
     name = "tts_manifest.json" if not only else f"tts_manifest.{args.engine}.partial.json"
     (od / name).write_text(json.dumps(man, indent=1))
@@ -235,6 +266,12 @@ def cmd_short(args, cfg) -> dict:
     name = args.name or ("p" + "-".join(args.picks.split(",")) if args.picks else "chain")
     spec = {"name": name, "picks": picks, "hook": args.hook, "chain_len": args.chain_len, "reactions": 99,
             "tempo": args.tempo or cfg["mix"].get("tempo") or 1.0, "end_s": float(cfg["mix"]["postroll_s"])}
+    if args.says:  # exactly these SAY lines (a factory candidate's lines)
+        spec["says"] = [int(x) for x in args.says.split(",") if x.strip()]
+    if args.judge:  # the comedy judge's gate, as the factory applies it
+        spec.update({"judge": True, "target_s": 43.0 if len(picks) > 1 else 38.0})
+    if args.target_s:  # the edit's budget (the QA gate still fails a short over 50 s)
+        spec.update({"target_s": float(args.target_s), "max_s": min(49.5, float(args.target_s) + 1.5)})
     if args.engine == "elevenlabs":
         from .tts import take_durations
         spec["durations"] = lambda sp, text, parts: take_durations(cfg, load_league(args.run), sp, text, parts)
@@ -267,7 +304,10 @@ def cmd_factory(args) -> list[Path]:
     from .factory import approved_ids, rundown_for, run_factory
     from .judge import review_dir
     tempo = float(args.tempo or 1.12)
-    cfg = load_config("short", {"script": {"target_minutes": 1}, "mix": {"tempo": tempo}})
+    over = {"script": {"target_minutes": 1}, "mix": {"tempo": tempo}}
+    if getattr(args, "cut_models", None):  # those models never speak in a short either
+        over["script"]["cut_models"] = [x.strip() for x in args.cut_models.split(",") if x.strip()]
+    cfg = load_config("short", over)
     L = load_league(args.run)
     if args.montage and not args.render:  # just the montage, from shorts already rendered
         from .factory import montage
@@ -320,7 +360,7 @@ def cmd_factory(args) -> list[Path]:
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(prog="gmbench_media", description="GM-Bench Draft Night show pipeline")
+    ap = argparse.ArgumentParser(prog="gmbench_media", description="AI GM League · Draft Night show pipeline")
     ap.add_argument("command", choices=["rundown", "tts", "mix", "avatars", "compose", "render", "all", "short", "roast",
                                         "qa", "factory"])
     ap.add_argument("--run", default="show-dev")
@@ -351,6 +391,22 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--clip", action="append", default=None,
                     help="qa: clip directory / mp4 / out-relative name (repeatable); default = this command's output")
     ap.add_argument("--no-qa", action="store_true", help="render/all/short/roast: skip the automatic QA pass")
+    ap.add_argument("--set", action="append", default=None, metavar="KEY=VALUE",
+                    help="override a config value, e.g. --set script.comebacks_per_round=2 --set script.meet=false")
+    ap.add_argument("--says", default=None, help="short: exactly these SAY seqs (comma-separated)")
+    ap.add_argument("--voice-by-model", action="store_true",
+                    help="rehearsal proofs only: each model's existing ElevenLabs voice and avatar art even if they were "
+                         "made for an older character (the default guard is unchanged); marks the video 'rehearsal cast'")
+    ap.add_argument("--personas-from", default=None,
+                    help="proofs only: another run's Media Day cards (persona, suit, cup pick) over this run's lines")
+    ap.add_argument("--keep-own", default=None,
+                    help="with --personas-from: card fields kept from this run's own cards, e.g. cup_pick (its lines "
+                         "were written to them)")
+    ap.add_argument("--cut-models", default=None,
+                    help="rundown/all/factory/short: models whose lines never air, e.g. grok,glm (ids or table names); "
+                         "the host announces their picks")
+    ap.add_argument("--judge", action="store_true", help="short: apply the comedy judge's gate (as the factory does)")
+    ap.add_argument("--target-s", type=float, default=None, help="short: the tight edit's length budget in seconds")
     ap.add_argument("--render", action="store_true", help="factory: voice + render the approved shorts")
     ap.add_argument("--approve", default=None, help="factory --render: ids to render (default: review/<run>/approve.txt)")
     ap.add_argument("--montage", action="store_true",
@@ -370,6 +426,29 @@ def main(argv: list[str] | None = None) -> int:
     if args.chains:  # pinned chains: a clip of exactly these picks, with every reaction that belongs to them
         over.setdefault("script", {})["highlights"] = {"chains": parse_chains(args.chains), "reactions": 99,
                                                         "button": False}
+    if args.cut_models:
+        over.setdefault("script", {})["cut_models"] = [x.strip() for x in args.cut_models.split(",") if x.strip()]
+    if args.personas_from:
+        from . import ledger as _ledger
+        _ledger.PERSONA_RUN = args.personas_from
+        _ledger.PERSONA_KEEP = {x.strip() for x in (args.keep_own or "").split(",") if x.strip()}
+    if args.voice_by_model:
+        from . import avatars as _av
+        from . import tts as _tts
+        _av.BY_MODEL = True
+        _tts.VOICE_BY_MODEL = True
+        over["rehearsal_cast"] = True
+    for kv in args.set or []:  # --set script.comebacks_per_round=2
+        key, _, raw = kv.partition("=")
+        try:
+            val = json.loads(raw)
+        except json.JSONDecodeError:
+            val = raw
+        node = over
+        parts = key.strip().split(".")
+        for k in parts[:-1]:
+            node = node.setdefault(k, {})
+        node[parts[-1]] = val
     cfg = load_config(args.profile, over)
     args.engine = args.engine or cfg["tts"]["engine"]
     t0 = time.time()

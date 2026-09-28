@@ -395,7 +395,7 @@ class Plan:
                     l1 = P + max(MIN_SHOT, min(LISTENER_SHOT, float(bp.get("beat") or 0.4) + 1.0))
                     nxt_is_lis = bool(nxt_ln and nxt_ln["speaker"] == lis)
                     # the reaction may run on under the next GM's first words (a J-cut), briefly
-                    cap = nxt_sw + (MIN_SHOT + 0.2 if (nxt_host or comeback or nxt_is_lis) else 1.1)
+                    cap = nxt_sw + (MIN_SHOT + 0.2 if (nxt_host or comeback or nxt_is_lis) else 1.3)
                     if comeback:  # the buddy fires back from the reaction shot: it runs on into the comeback
                         l1 = max(l1, float(nxt_ln["start"]) + 0.6)
                     if nxt_ln is None and bp.get("at_end"):  # the final beat: the face holds under the end card
@@ -469,6 +469,15 @@ class Plan:
                     b_[0] = a_[1]
                 elif f == a_[2]:
                     a_[1] = b_[0]
+        # a reaction shot that runs on under the next speaker's close-up leaves that close-up at least MIN_SHOT on
+        # screen: the close-up runs on (or the reaction gives way), never a flash of it
+        for k in range(len(segs) - 1):
+            a_, b_ = segs[k], segs[k + 1]
+            if a_[3] == "listener" and b_[2] != a_[2] and b_[0] < a_[1] < b_[1] and b_[1] - a_[1] < MIN_SHOT:
+                nxt0 = segs[k + 2][0] if k + 2 < len(segs) else 1e9
+                b_[1] = max(b_[1], min(a_[1] + MIN_SHOT, nxt0))
+                if b_[1] - a_[1] < MIN_SHOT and (b_[1] - MIN_SHOT) - a_[0] >= MIN_SHOT:
+                    a_[1] = b_[1] - MIN_SHOT
         # a speaker's close-up squeezed under MIN_SHOT (a fast line: the name call right before the next line) is
         # dropped: the shot before it runs on over it (a reaction holds through the name, into the comeback)
         k = 0
@@ -485,6 +494,8 @@ class Plan:
                     nxt[0] = x[0]
                     segs.pop(k)
                     continue
+                segs.pop(k)  # nothing to lean on: the line plays in the medium shot, no flash of a close-up
+                continue
             k += 1
         self.shot_list = [{"t0": round(a, 3), "t1": round(b, 3), "sp": who, "kind": k, "line": lid}
                           for a, b, who, k, lid in segs]

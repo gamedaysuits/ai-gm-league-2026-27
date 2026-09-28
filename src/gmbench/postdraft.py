@@ -12,7 +12,7 @@ from typing import Any
 
 from gmbench.agent.briefing import build_system
 from gmbench.agent.loop import Budget, run_session
-from gmbench.agent.factcheck import FactChecker
+from gmbench.agent.factcheck import FactChecker, league_names
 from gmbench.agent.tools import (
     GET_LEAGUE_STATE, GET_MY_TEAM, GET_PLAYER, GET_TEAM_SCHEDULE, NOTES_READ, NOTES_WRITE, SEARCH_PLAYERS,
     Action, ToolContext, ToolOutcome, _fn, dispatch as base_dispatch, fact_check, fact_error, player_row,
@@ -138,7 +138,8 @@ def run_post_draft(deps: DraftDeps, *, week_start: date, teams: list[str] | None
     tools = [GET_MY_TEAM, GET_LEAGUE_STATE, GET_PLAYER, SEARCH_PLAYERS, GET_TEAM_SCHEDULE, NOTES_READ, NOTES_WRITE,
              SUBMIT_POST_DRAFT]
     budget = Budget(max_tool_calls=10, effort=deps.cfg.harness["effort"]["weekly"], max_tokens=int(deps.cfg.harness["max_tokens"]))
-    checker = None if type(deps.client).__name__ == "FakeClient" else FactChecker(deps.snapshot, week_start)
+    checker = (None if type(deps.client).__name__ == "FakeClient"
+               else FactChecker(deps.snapshot, week_start, league_names=league_names(state)))
 
     def session(team_id: str):
         ctx = ToolContext(team_id=team_id, state=state, snapshot=deps.snapshot, rules=rules, slots=[],

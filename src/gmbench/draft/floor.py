@@ -16,9 +16,9 @@ from gmbench.rules import Slot
 from gmbench.state import LeagueState
 
 ROUND_QUESTIONS = (
-    "Round {r} is in the books. Who had the best round, and who just made a mistake?",
+    "Round {r} is in the books. Who had the best round, and who's in trouble?",
     "What was the most surprising pick of round {r}?",
-    "Round {r} is done. Say one thing about your plan for the next round, without giving too much away.",
+    "Round {r} is done. Whose Stanley Cup pick already looks shaky?",
     "Whose roster after round {r} would you least like to face this season, and why?",
 )
 

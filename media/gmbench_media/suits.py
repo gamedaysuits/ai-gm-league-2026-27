@@ -44,9 +44,7 @@ def suit_info(league, tid: str) -> dict | None:
     fab = league.fabrics.get(fid, {})
     if not fab:
         return None
-    nick = re.findall(r"[\"'“‘]([^\"'“”‘’]+)[\"'”’]", t.gm_name)
-    who = nick[0] if nick else (t.short_gm.split()[0] if t.short_gm else t.gm_name)
-    who = re.sub(r"^The\s+", "", who)
+    who = t.display  # model first: "Qwen3.8 Max's suit"
     summary = str(fab.get("summary") or fab.get("pattern_desc") or "").strip()
     return {"team": tid, "who": who, "possessive": f"{who}'s", "fabric_id": fid, "fabric": fab.get("name") or fid,
             "summary": summary[:1].upper() + summary[1:] if summary else "", "cut": _cut(suit),
@@ -72,6 +70,45 @@ def swatch_url(info: dict | None, size: int = 160) -> str | None:
             im.save(out, quality=88)
             return f"gen/swatches/{out.name}"
     return None
+
+
+BRAND_PLACEHOLDER_SHA1 = "b752fdc40dedf5449f3e296f3c0651455074ee69"  # the wordmark stand-in at the logo path
+
+
+def brand_logo_url(cfg: dict | None = None) -> str | None:
+    """The Game Day Suits logo copied into show/assets/gen/brand/ (content-addressed); None when it isn't there."""
+    import hashlib
+    import shutil
+
+    from .paths import MEDIA
+    rel_ = str((cfg or {}).get("brand_logo") or "assets/brand/gds-logo.png")
+    src = MEDIA / rel_
+    if not src.exists():
+        return None
+    h = hashlib.sha1(src.read_bytes()).hexdigest()[:10]
+    out = SHOW_GEN / "brand" / f"gds-logo-{h}.png"
+    if not out.exists():
+        out.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(src, out)
+    return f"gen/brand/{out.name}"
+
+
+def brand_logo_is_placeholder(cfg: dict | None = None) -> bool | None:
+    import hashlib
+
+    from .paths import MEDIA
+    src = MEDIA / str((cfg or {}).get("brand_logo") or "assets/brand/gds-logo.png")
+    if not src.exists():
+        return None
+    return hashlib.sha1(src.read_bytes()).hexdigest() == BRAND_PLACEHOLDER_SHA1
+
+
+def logo_html(a: str, cfg: dict | None, cls: str = "logo", height: int = 40) -> str:
+    """<img> of the logo (height-bound, any aspect), or the wordmark in the brand colours when it's missing."""
+    url = brand_logo_url(cfg)
+    if url:
+        return f'<img class="{cls}" src="{a}{url}" style="height:{height}px;width:auto" alt="Game Day Suits">'
+    return (f'<span class="{cls} wordmark" style="font-size:{int(height * 0.8)}px">GAME DAY <b>SUITS</b></span>')
 
 
 def cta_lines(info: dict) -> tuple[str, str, str]:

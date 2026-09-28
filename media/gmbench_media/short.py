@@ -41,10 +41,15 @@ html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; backgro
   padding: 0 20px 0 16px; background: #E32402; border-radius: 14px; }
 .aibug .dot { width: 16px; height: 16px; border-radius: 8px; background: #EFF0F5; }
 .aibug .t1 { font-family: "Archivo"; font-weight: 800; font-stretch: 112%; font-size: 25px; letter-spacing: 0.06em; color: #fff; }
+.aibug .t2 { font-family: "Questrial"; font-size: 18px; color: #fff; letter-spacing: 0.04em; }
 .sponsor { position: absolute; z-index: 40; right: 40px; top: 40px; text-align: right; white-space: nowrap; }
 .sponsor .t1 { font-size: 16px; letter-spacing: 0.3em; color: #c9cfe6; }
 .sponsor .t2 { font-family: "Archivo"; font-weight: 900; font-stretch: 118%; font-size: 32px; letter-spacing: 0.04em; }
 .sponsor .t2 b { color: #E32402; }
+.sponsor .t2 { margin-top: 4px; display: flex; justify-content: flex-end; }
+.logo.wordmark { font-family: "Archivo"; font-weight: 900; font-stretch: 118%; letter-spacing: 0.04em; color: #EFF0F5; white-space: nowrap; }
+.logo.wordmark b { color: #E32402; }
+.end .elogo { display: flex; justify-content: center; }
 .cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
 .strap { position: absolute; left: 40px; top: 150px; display: flex; gap: 16px; align-items: center; }
 .strap .chip { height: 56px; padding: 0 20px; display: flex; align-items: center; background: #E32402; border-radius: 12px;
@@ -84,6 +89,11 @@ __POSE_RULES__
 .pill.gold { background: #FFC83D; color: #0E1B4D; }
 .pill.royal { background: #4770DB; color: #fff; }
 .pill.ghost { background: rgba(239,240,245,0.10); color: #EFF0F5; border: 1px solid rgba(239,240,245,0.25); }
+.pill.agree { background: #EFF0F5; color: #0E1B4D; }
+.pill.disagree { background: rgba(255,200,61,0.14); color: #FFC83D; border: 2px solid #FFC83D; }
+.pill.think { background: rgba(7,14,44,0.55); color: #EFF0F5; border: 2px solid rgba(239,240,245,0.55); }
+.pkchips { position: absolute; left: 0; top: -46px; display: flex; gap: 12px; }
+.pkchips .pill { height: 44px; padding: 0 16px; }
 .by { font-size: 26px; color: #d9def0; white-space: nowrap; }
 .by b { font-family: "Archivo"; font-weight: 800; color: #EFF0F5; }
 .pre, .post, .slip { position: absolute; left: 34px; top: 62px; width: 892px; }
@@ -186,7 +196,7 @@ def cta_for(league, tid: str | None) -> dict | None:
         return None
     suit = t.p("suit") or {}
     fab = league.fabrics.get(suit.get("fabric_id") or "", {})
-    who = t.short_gm or t.gm_name
+    who = t.display  # model first
     return {"team": tid, "line": f"Build {who}'s suit", "fabric": fab.get("name") or "",
             "summary": fab.get("summary") or fab.get("pattern_desc") or ""}
 
@@ -200,30 +210,27 @@ class VerticalShort:
         self.rc = {t["team"]: t for t in (model.report or {}).get("teams", [])}
 
     def label(self, sp: str, addressed: str | None) -> str:
-        if sp == "host":
-            s = "THE COMMISSIONER"
-        else:
-            t = self.L.teams[sp]
-            s = f"{t.short_gm} · {t.nickname}" if t.has_persona else t.display
+        """Caption speaker label, model first: 'QWEN3.8 MAX  →  GEMINI 3.1 PRO'."""
+        s = "THE COMMISSIONER" if sp == "host" else self.model_name(sp)
         if addressed and addressed in self.L.teams and addressed != sp:
-            tt = self.L.teams[addressed]
-            s += "  →  " + (tt.nickname if tt.has_persona else tt.display)
+            s += "  →  " + self.model_name(addressed)
         return s.upper()
 
     def vars(self, sp: str) -> str:
         return HOST_VARS if sp == "host" else team_vars(self.L.teams[sp])
 
     def who(self, sp: str) -> tuple[str, str]:
+        """(headline, sub line) for a plate: the MODEL, then its lab (the character is flavour)."""
         if sp == "host":
             return "The Commissioner", "Draft Night host · reads the ledger"
         t = self.L.teams[sp]
-        if t.has_persona:
-            return t.gm_name, t.franchise_name
-        return ("Autodraft", "Control bot · house projection") if t.is_bot else (t.display, f"{t.display} · {t.lab}")
+        if t.is_bot:
+            return "The robot", "The control team every AI has to beat"
+        return t.display, t.lab
 
     def nick(self, tid: str) -> str:
         t = self.L.teams[tid]
-        return t.nickname if t.has_persona else ("Autodraft" if t.is_bot else t.display)
+        return "the robot" if t.is_bot else t.display
 
     def featured(self) -> str | None:
         spec = self.rd.get("short") or {}
@@ -251,11 +258,34 @@ class VerticalShort:
         fg = max(("#FFFFFF", "#0E1B4D"), key=lambda c: contrast(bg, c))
         return f"background:{bg};color:{fg}"
 
+    def pick_chips(self, p, t, robot: bool = True) -> str:
+        """THOUGHT 2:10 · 9 LOOKUPS on an AI pick (the robot is opaque: no chips on its card)."""
+        from .captions import text_width
+        from .ledger import think_chip
+        rc, tc = None, think_chip(p, t.is_bot)
+        if not (rc or tc):
+            return ""
+        texts = [x for x in (rc, tc) if x]
+        size = 26
+        while size > 16 and sum(text_width(x, "archivo", size, 800, 110) + 34 for x in texts) + 12 > 880:
+            size -= 1
+        pills = ((f'<span class="pill think" style="font-size:{size}px">{esc(tc)}</span>' if tc else "")
+                 + (f'<span class="pill {"agree" if rc == "ROBOT AGREES" else "disagree"}" style="font-size:{size}px">'
+                    f'{esc(rc)}</span>' if rc else ""))
+        return f'<div class="pkchips">{pills}</div>'
+
+    def lab_line(self, sp: str) -> str:
+        """Under the model's name: its lab (the character is flavour, dropped from the plate)."""
+        t = self.L.teams.get(sp)
+        if not t:
+            return "HOST · READS THE LEDGER"
+        return "THE CONTROL TEAM EVERY AI HAS TO BEAT" if t.is_bot else (t.lab or "").upper()
+
     def model_name(self, sp: str) -> str:
         t = self.L.teams.get(sp)
         if not t:
             return "THE COMMISSIONER"
-        return "CONTROL BOT" if t.is_bot else t.display.upper()
+        return "THE ROBOT" if t.is_bot else t.display.upper()
 
     def tight_layer(self, cid: str, vis, data: dict, T: float) -> str:
         """Tight shorts: TikTok word cards (2-4 words, punch words coloured), the kicker pop on every punch, the
@@ -355,9 +385,9 @@ class VerticalShort:
                 if not kw:
                     continue
                 text = " ".join(w["w"] for w in kw).upper()
-                size = fit(text, 960, "archivo", 124, 60, 1, 900, 118)
-                nxt_start = min([float(x["start"]) for x in m.lines if float(x["start"]) > float(ln["start"]) + 0.01
-                                 and x["speaker"] != ln["speaker"]] + [T])
+                size = fit(text, 820, "archivo", 124, 52, 1, 900, 118)  # (the estimate runs ~15% short: margin)
+                nxt_start = min([float(x.get("sw", x["start"])) for x in m.lines
+                                 if float(x["start"]) > float(ln["start"]) + 0.01 and x["speaker"] != ln["speaker"]] + [T])
                 off = min(b + float(mk.get("beat") or 0.4) + 0.35, nxt_start - 0.05, T - 0.05)
                 key = f"kk{j}"
                 data["kp"].append([round(a, 4), key, round(off, 4)])
@@ -398,7 +428,7 @@ class VerticalShort:
                 vis("robotx", t0 + 3.4, 0, 0.25)
                 out.append('<div class="robotx" id="' + cid + '-robotx" style="opacity:0;visibility:hidden">'
                            '<div class="k">THE ROBOT</div><div class="t" style="font-size:30px">'
-                           'the dumb control bot they all have to beat</div></div>')
+                           'the control team they all have to beat</div></div>')
         return "".join(out)
 
     def html(self, cid: str) -> tuple[str, float]:  # noqa: C901
@@ -571,7 +601,8 @@ class VerticalShort:
         # end card after the last word (and its cutaway)
         last_end = max(ln["end"] for ln in lines)
         # ...and after the last reaction shot (the roasted GM's face on the final punchline)
-        tail = max([u for _, u, _ in cuts] + [last_end] + [u - 0.7 for t, u, _ in lis_cuts if t >= last_end - 1.0])
+        tail = max([u for _, u, _ in cuts] + [last_end] + [u - 0.7 for t, u, _ in lis_cuts if t >= last_end - 1.0]
+                   + [float(x["t"]) + 1.2 for x in m.motion.slams if float(x["t"]) >= last_end - 2.5])
         end_t = round(min(T - 1.8, tail + 0.25), 4)
         self.end_t = end_t  # (the montage cuts each short here)
         vis("end", end_t, 1, 0.45, 0)
@@ -600,8 +631,8 @@ class VerticalShort:
             fset = m.fs.get(sp)
             if sp != "host" and fset and fset.style == "placeholder":  # no production art: the model's name, big
                 t = L.teams[sp]
-                main = (t.gm_name if t.has_persona else t.display).upper()
-                sub = (t.franchise_name if t.has_persona else (t.lab or "")).upper()
+                main = t.display.upper()
+                sub = (t.lab or "").upper()
                 mcard = (f'<div class="mcard"><div class="m1" style="font-size:{fit(main, 700, "archivo", 100, 36, 1, 900, 112)}px">'
                          f'{esc(main)}</div><div class="m2">{esc(sub)}</div></div>')
             cu = ""
@@ -616,13 +647,13 @@ class VerticalShort:
                 f'</div>{cu}{mcard}</div>'
                 f'<div class="cutlab" id="{cid}-cut-{sp}" style="{_vis(False)}">'
                 f'{esc(self.model_name(sp) + " REACTS") if tight and sp != "host" else "REACTION CAM"}</div>'
-                + (f'<div class="gm" style="font-size:{min(gs, 58)}px">{esc(name)}</div>'
-                   f'<div class="model"><span class="chip" style="{self.chip_colors(sp)};font-size:{fit(self.model_name(sp), 860, "archivo", 40, 24, 1, 900, 112)}px">'
-                   f'{esc(self.model_name(sp))}</span></div></div>' if tight else
+                + (f'<div class="gm" style="font-size:{min(gs, 62)}px">{esc(name.upper())}</div>'
+                   f'<div class="model"><span class="chip" style="{self.chip_colors(sp)};font-size:{fit(self.lab_line(sp), 860, "archivo", 34, 20, 1, 900, 112)}px">'
+                   f'{esc(self.lab_line(sp))}</span></div></div>' if tight else
                    f'<div class="gm" style="font-size:{gs}px">{esc(name)}</div><div class="fr">{esc(fr)}</div></div>'))
         pip_html = []
         for tid in pips:
-            nm = self.model_name(tid) if tight else self.nick(tid).upper()
+            nm = self.model_name(tid)
             ns = fit(nm, 280, "archivo", 24, 14, 1, 900, 100)
             pip_html.append(f'<div class="pip" id="{cid}-pip-{tid}" style="{self.vars(tid)};{_vis(tid == pip0)}">'
                             f'<div class="ph">{self.RV.html(tid, a, 300, 0.0, crop="bust") if self.RV else self.A.av(tid, "X", a, initial=mouth0.get(tid, "closed"), pose=pose0.get(tid, "none"))}'
@@ -634,21 +665,24 @@ class VerticalShort:
                 p = m.picks[pn]
                 t = L.teams[p.team]
                 size, _ = fit_size(p.player_name, 880, "archivo", 90, 44, 1, 800, 108)
-                who = t.franchise_name if t.has_persona else ("Autodraft" if t.is_bot else t.display)
+                who = "the robot" if t.is_bot else t.display.upper()
                 flag = L.value_flags().get(pn)
                 fl = {"reach": '<span class="pill gold">REACH?!</span>', "steal": '<span class="pill royal">STEAL!</span>'}.get(flag or "", "")
                 bsz = fit(f"by {who}", 520 if not fl else 380, "archivo", 26, 16, 1)
                 first = pn == cards_by_pick[0]
                 pre_txt = "On the clock." if self.cfg["script"].get("format", "party") == "party" else "The pick is in."
+                chips_pre, chips = self.pick_chips(p, t, robot=False), self.pick_chips(p, t)
                 cards.append(
-                    f'<div class="pre" id="{cid}-pk{pn}-pre" style="{_vis(first)}"><div class="big" style="font-size:80px">'
+                    f'<div class="pre" id="{cid}-pk{pn}-pre" style="{_vis(first)}">{chips_pre}<div class="big" style="font-size:80px">'
                     f'{pre_txt}</div></div>'
-                    f'<div class="post" id="{cid}-pk{pn}-post" style="{team_vars(t)};{_vis(False)}"><div class="big" '
+                    f'<div class="post" id="{cid}-pk{pn}-post" style="{team_vars(t)};{_vis(False)}">{chips}<div class="big" '
                     f'style="font-size:{size}px">{esc(p.player_name)}</div><div class="row"><span class="pill red">'
                     f'{esc(pos_display(p.position))}</span><span class="pill ghost">{esc(p.nhl_team)}</span>{fl}'
                     f'<span class="by" style="font-size:{bsz}px">by <b>{esc(who)}</b></span></div></div>')
             lab = (f"Round {first_pick.round} · pick {picks[0]}" + (f"–{picks[-1]}" if len(picks) > 1 else "")
                    if first_pick else "")
+            if any(self.pick_chips(m.picks[pn], L.teams[m.picks[pn].team]) for pn in cards_by_pick):
+                lab = ""  # the robot / thinking chips take the top line (the strap already names the picks)
         elif delusion:
             rows = (sh.get("rows") or [])
             show = rows[:4] + [r for r in rows[4:] if r[3] <= -2.0][:1]
@@ -657,7 +691,7 @@ class VerticalShort:
             rws = []
             for k, (team, own, avg, gap) in enumerate(show):
                 t = L.teams[team]
-                nm = t.short_gm if t.has_persona else t.display
+                nm = t.display
                 rws.append(f'<div class="dr" style="top:{12 + k * 42}px">'
                            f'<div class="dh" id="{cid}-dh-{team}" style="{_vis(team == first_lit and lines[0]["sw"] <= EPS)}"></div>'
                            f'<span class="nm">{esc(nm.upper())}</span><span class="me">THINKS {own}</span>'
@@ -670,8 +704,8 @@ class VerticalShort:
                 c = ln["card"]
                 tgt, grd = c["team"], c.get("grade", "?")
                 r = self.rc.get(tgt) or {}
-                head = f"{self.nick(ln['speaker'])} grades the {self.nick(tgt)}".upper()
-                tname = L.teams[tgt].franchise_name if L.teams[tgt].has_persona else self.nick(tgt)
+                head = f"{self.model_name(ln['speaker'])} grades {self.model_name(tgt)}".upper()
+                tname = self.model_name(tgt)
                 tsz = fit(tname, 640, "archivo", 58, 30, 1)
                 cons = f"Class GPA {float(r['gpa']):.2f} · consensus {r['letter']}" if r.get("gpa") is not None else ""
                 cards.append(f'<div class="slip" id="{cid}-sl-{ln["id"]}" style="{_vis(i == 0 and ln["sw"] <= EPS)}">'
@@ -765,19 +799,22 @@ class VerticalShort:
                 d2 = min(d, max(0.0, nxt - t - 0.02))
                 data["v"].append([t, key, on, round(d2 if d2 >= 0.08 else 0.0, 3), dy])
         data["v"].sort(key=lambda r: r[0])
-        fine = ("AI-generated voices &amp; avatars · every GM line is the model's own words, edited for length"
-                if tight else "AI-generated voices &amp; avatars · every GM line is the model's own words")
+        fine = ("AI-generated voices &amp; avatars · every line from a model is its own words, edited for length"
+                if tight else "AI-generated voices &amp; avatars · every line from a model is its own words")
         t1, t2 = (("DELUSION", "INDEX") if delusion else ("REPORT", "CARD")) if roast else ("DRAFT", "NIGHT")
+        from .suits import logo_html
+        show = str(self.cfg.get("show_name") or "AI GM League").upper()
         end = (f'<div class="end" id="{cid}-end" style="{_vis(False)}"><div class="k" id="{cid}-e1" style="opacity:0;'
-               f'visibility:hidden">GM-BENCH PRESENTS</div><div class="t" id="{cid}-e2" style="opacity:0;visibility:hidden">'
+               f'visibility:hidden">{esc(show)}</div><div class="t" id="{cid}-e2" style="opacity:0;visibility:hidden">'
                f'<div>{t1}</div><div>{t2}</div></div><div class="bar" id="{cid}-e3" style="opacity:0;visibility:hidden"></div>'
-               f'<div class="l2" id="{cid}-e4" style="opacity:0;visibility:hidden">THE SUITS 2026–27</div>'
-               f'<div class="l3" id="{cid}-e5" style="opacity:0;visibility:hidden">Presented by Game Day Suits</div>'
+               f'<div class="l2" id="{cid}-e4" style="opacity:0;visibility:hidden">PRESENTED BY</div>'
+               f'<div class="l3 elogo" id="{cid}-e5" style="opacity:0;visibility:hidden">{logo_html(a, self.cfg, "logo", 58)}</div>'
                f'{cta_html}'
                f'<div class="l4">{fine}</div></div>')
         studio = (f'<div class="studio" id="{cid}-s"><div class="bg"></div>'
-                  f'<div class="aibug"><div class="dot"></div><div class="t1">AI-GENERATED</div></div>'
-                  f'<div class="sponsor"><div class="t1">PRESENTED BY</div><div class="t2">GAME DAY <b>SUITS</b></div></div>'
+                  f'<div class="aibug"><div class="dot"></div><div class="t1">AI-GENERATED</div>'
+                  + (f'<div class="t2">rehearsal cast</div>' if self.cfg.get("rehearsal_cast") else "") + '</div>'
+                  f'<div class="sponsor"><div class="t1">PRESENTED BY</div><div class="t2">{logo_html(a, self.cfg, "logo", 40)}</div></div>'
                   f'<div class="cam" id="{cid}-cam"><div class="strap" id="{cid}-strap"><div class="chip">{strap_chip}</div>'
                   f'<div class="sub">{esc(strap_sub)}</div></div>{"".join(portraits)}{"".join(suit_cards)}{"".join(pip_html)}{card}{hookchip}{extra_html}</div>'
                   f'{bursts}{slams}<div class="flash" id="{cid}-flash"></div><div class="caps">{"".join(caps)}</div>'

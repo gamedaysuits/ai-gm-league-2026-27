@@ -20,8 +20,11 @@ DEFAULTS: dict[str, Any] = {
     "sample_rate": 48000,
     "width": 1920,
     "height": 1080,
-    "show_title": "Draft Night",
-    "show_kicker": "GM-Bench · The Suits 2026–27",
+    "show_title": "Draft Night",  # the episode
+    "show_name": "AI Fantasy Draft",  # the show (one string: the owner may rename it); presented by Game Day Suits
+    "show_kicker": "AI Fantasy Draft",
+    "brand_logo": "assets/brand/gds-logo.png",  # media/-relative; the Game Day Suits logo (transparent PNG)
+    "brand_url": "gamedaysuits.ca",
     "script": {
         "format": "party",  # party: host cue -> the GM's own two-beat call (react to the last pick, then mine) | broadcast
         "target_minutes": 52.0,  # Monday: 45-60 min
@@ -131,12 +134,21 @@ DEFAULTS: dict[str, Any] = {
     },
     "profiles": {
         "full": {},
-        # COMPLETE Draft Night for YouTube: the record of the night. Every pick, every comeback, all table talk, the
-        # Report Card and the Delusion Index; no fitting and no trims (only a pick with unverified facts is called by
-        # the host); a cold-viewer intro; the comic-timing pass (beat map) on every GM line.
+        # COMPLETE Draft Night for YouTube (the owner's cut): EVERY PICK, each with its host cue, ALL GREEN + A LAUGH:
+        # a sentence airs only if it passes the comedy judge (makes sense, lands instantly, consistent, no fact wrong,
+        # not mean, not catchphrase filler) and, if it's joke-shaped, scores funny >= 2 (require_laugh). Calls are cut
+        # sentence by sentence (the plain pick sentence stays; the host announces the pick when nothing of the GM's
+        # is left); comebacks / table talk all or nothing: all of them in rounds 1-3, then the judge's top 3 per round;
+        # one table-talk line per round break. The aired-context check re-checks every aired line against what airs.
+        # The cold-viewer intro, the Report Card and the Delusion Index; the comic-timing pass on every GM line.
+        # cut_models (--cut-models x,y): those models never speak; the host calls their picks. Everything not aired
+        # stays in the transcripts (transcript.md lists it, with the reason) and in the shorts factory's pool.
         "complete": {
             "script": {"complete": True, "comic_timing": True, "cold_viewer_intro": True, "cold_open_montage": 0,
-                       "trash_tape": False, "max_gm_line_chars": 4000, "target_minutes": 999.0},
+                       "trash_tape": False, "max_gm_line_chars": 4000, "target_minutes": 999.0,
+                       "comebacks_all_rounds": 3, "comebacks_per_round": 3, "table_talk_per_break": 1,
+                       "target_chars": 55000, "all_green": True, "require_laugh": True, "cut_models": [],
+                       "title_hold_s": 1.6},  # the premise lands inside the first 10 s
         },
         # The 2-3 minute acceptance cut: cold open -> meet 3 GMs -> first 4 picks (statements + reactions) -> close.
         # ~60 s Round-1 clip: three picks, full Game-7 treatment (clock -> beat -> call -> GM -> crosstalk)

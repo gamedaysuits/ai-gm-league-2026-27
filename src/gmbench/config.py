@@ -11,6 +11,16 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parents[2]
 
 
+# At the table (and on screen) every GM goes by its model name: this is a benchmark of models, not of characters.
+CALL_NAMES = {"astra": "Astra", "sol": "Sol", "fable": "Fable", "opus": "Opus", "gemini": "Gemini", "grok": "Grok",
+              "kimi": "Kimi", "mimo": "MiMo", "qwen": "Qwen", "deepseek": "DeepSeek", "muse": "Muse", "glm": "GLM",
+              "fugu": "Fugu", "autodraft": "the robot"}
+
+
+def call_name(team_id: str) -> str:
+    return CALL_NAMES.get(team_id, team_id)
+
+
 @dataclass(frozen=True)
 class TeamSpec:
     id: str
@@ -24,6 +34,10 @@ class TeamSpec:
     @property
     def is_bot(self) -> bool:
         return self.model is None
+
+    @property
+    def name(self) -> str:
+        return call_name(self.id)
 
 
 @dataclass(frozen=True)

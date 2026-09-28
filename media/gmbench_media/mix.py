@@ -36,6 +36,9 @@ def _u(rng: np.random.Generator, lo_hi: list[float]) -> float:
     return float(rng.uniform(lo, hi)) / 1000.0
 
 
+LAUGH_SPACING_S = 1.55  # the comic-timing QA gate: no two punch beats within 1.5 s
+
+
 def gap_for(prev: dict, ln: dict, m: dict, rng) -> float:
     pb = prev.get("beats") or {}
     end_mk = next((x for x in reversed(pb.get("marks") or []) if x.get("at_end")), None)
@@ -128,6 +131,13 @@ def place_lines(rundown: dict, manifest: dict, cfg: dict) -> tuple[list[dict], l
         if prev is not None:
             t = prev["end"] + gap_for(prev, ln, m, rng)
             t = max(t, prev["start"] + 0.55 * prev["duration"])  # never talk over the first half of a line
+            # two laughs need room: this line's first punch never lands within 1.5 s of the previous line's last
+            pm = [x for x in ((prev.get("beats") or {}).get("marks") or []) if x.get("role") in ("PUNCH", "BUTTON")]
+            nm = [x for x in ((info.get("beats") or {}).get("marks") or []) if x.get("role") in ("PUNCH", "BUTTON")]
+            if pm and nm:
+                need = (prev["start"] + float(pm[-1]["kicker_end"]) + LAUGH_SPACING_S - float(nm[0]["kicker_end"])
+                        - float(ln.get("pre_hold_s") or 0.0))
+                t = max(t, need)
         t += float(ln.get("pre_hold_s") or 0.0)
         dur = float(info["duration_s"])
         row = {k: ln.get(k) for k in ("id", "speaker", "segment", "kind", "display_text", "focus", "pick_no", "round",

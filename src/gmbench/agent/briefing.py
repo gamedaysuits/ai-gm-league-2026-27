@@ -1,6 +1,7 @@
 """Per-session system prompts and briefings, assembled from identical templates for every GM."""
 from __future__ import annotations
 
+from gmbench.agent.factcheck import notable_think
 from gmbench.agent.prompts import GM_SYSTEM, persona_block, system_template_values
 from gmbench.agent.tools import ToolContext, player_row
 from gmbench.agent.untrusted import wrap
@@ -15,19 +16,31 @@ def league_table(state: LeagueState, cfg: LeagueConfig) -> str:
     for i, tid in enumerate(order, 1):
         spec = cfg.team(tid)
         persona = state.teams[tid].persona if tid in state.teams else None
-        franchise = (persona or {}).get("franchise_name")
-        gm = (persona or {}).get("gm_name")
-        who = f"{franchise}, GM {gm}" if franchise and gm else (franchise or "persona TBA")
-        extra = [x for x in ((persona or {}).get("hometown"),
-                             f"{persona['favorite_nhl_team']} fan" if (persona or {}).get("favorite_nhl_team") else None) if x]
-        lines.append(f"{i}. {tid}: {spec.display} ({spec.lab}) — {who}" + (f" ({'; '.join(extra)})" if extra else ""))
+        per = persona or {}
+        facts = [x for x in (per.get("franchise_name"),
+                             f"Cup pick: {per['cup_pick']}" if per.get("cup_pick") else None) if x]
+        lines.append(f"{i}. {spec.name}: {spec.display} ({spec.lab})" + (f", {', '.join(facts)}" if facts else ""))
+    picks = cup_counts(state)
+    if picks:
+        lines.append("Stanley Cup picks at the table: " + picks)
     return "\n".join(lines)
+
+
+def cup_counts(state: LeagueState) -> str:
+    """Who picked which team to win the Cup, counted, so nobody says "half the table" about three GMs."""
+    by_team: dict[str, list[str]] = {}
+    for tid in state.order or list(state.teams):
+        team = ((state.teams[tid].persona or {}).get("cup_pick")) if tid in state.teams else None
+        if team:
+            by_team.setdefault(team, []).append(state.team_label(tid))
+    return "; ".join(f"{team} {len(who)} ({', '.join(who)})"
+                     for team, who in sorted(by_team.items(), key=lambda kv: (-len(kv[1]), kv[0])))
 
 
 def build_system(team_id: str, state: LeagueState, cfg: LeagueConfig, *, today: str, as_of: str, task: str) -> str:
     spec = cfg.team(team_id)
     persona = state.teams[team_id].persona
-    gm_label = (persona or {}).get("gm_name") or f"the GM of team '{team_id}'"
+    gm_label = spec.name
     body = GM_SYSTEM.substitute(
         gm_label=gm_label,
         model_display=f"{spec.display}, built by {spec.lab}",
@@ -56,12 +69,10 @@ def best_available(ctx: ToolContext, *, overall: int = 30, per_d: int = 8, per_g
 
 
 def gm_label(st: LeagueState, team_id: str) -> str:
-    """How the boys know a GM: 'Gully Lindqvist of the Revelstoke Snowplows (glm)'."""
-    persona = st.teams[team_id].persona or {}
+    """How everyone at the table knows a GM: by its model name."""
     if st.teams[team_id].is_bot:
-        return "Autodraft, the league's control bot"
-    gm, franchise = persona.get("gm_name"), persona.get("franchise_name")
-    return f"{gm} of the {franchise} ({team_id})" if gm and franchise else st.team_label(team_id)
+        return "the robot (Autodraft, the league's control bot)"
+    return st.team_label(team_id)
 
 
 def previous_pick(ctx: ToolContext, *, table_lines: int = 3) -> list[str]:
@@ -76,6 +87,10 @@ def previous_pick(ctx: ToolContext, *, table_lines: int = 3) -> list[str]:
         return [f"The pick right before yours was your own: #{last['pick_no']}, {who}. You pick back-to-back at the turn.", ""]
     out = [f"The pick right before yours: #{last['pick_no']}, {gm_label(st, last['team'])} took {who}."]
     notes = []
+    if (last.get("auto") or {}).get("reason") != "control_bot":  # the robot is opaque: its picks show, its method doesn't
+        note = notable_think(last, st.picks)
+        if note:
+            notes.append(f"{st.team_label(last['team'])} {note}.")
     if p and p.group in ("G", "D") and not any(
             (q := ctx.snapshot.players.get(int(x["player_id"]))) and q.group == p.group for x in st.picks[:-1]):
         notes.append("He's the first " + ("goalie" if p.group == "G" else "defenceman") + " off the board.")
@@ -88,7 +103,7 @@ def previous_pick(ctx: ToolContext, *, table_lines: int = 3) -> list[str]:
     if said:
         out.append("What they said at the table: " + wrap(said, last["team"]).replace("\n", " "))
     elif auto == "control_bot":
-        out.append("The robot doesn't talk; it just took the best player by its house projection.")
+        out.append("The robot doesn't talk.")
     elif auto:
         out.append("They couldn't be reached, so the league auto-picked for them from their own queue.")
     my_last = max((x.get("seq") or 0 for x in st.picks if x["team"] == me), default=0)
@@ -137,8 +152,7 @@ def draft_briefing(ctx: ToolContext, *, recent: int = 14, notebook_chars: int = 
         for pk in st.picks[-recent:]:
             p = ctx.snapshot.players.get(int(pk["player_id"]))
             who = f"{p.name} ({p.team} {p.position})" if p else str(pk["player_id"])
-            said = pk.get("public_rationale") or ""
-            out.append(f"#{pk['pick_no']} {st.team_label(pk['team'])} took {who}: " + wrap(said, pk["team"]).replace("\n", " "))
+            out.append(f"#{pk['pick_no']} {st.team_label(pk['team'])} took {who}")  # what was SAID is in the section above
         out.append("")
 
     notes = ctx.notebook_path.read_text() if ctx.notebook_path.exists() else ""

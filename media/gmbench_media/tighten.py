@@ -206,3 +206,41 @@ def roles(parts: list[str], player: str | None, beat2_sentence: int | None) -> l
 
 VALUE = {"punch": 1000, "pick": 1000, "button": 60, "callback": 55, "hinge": 35, "setup": 20, "other": 10,
          "filler": -1, "stat": -1}
+
+
+
+def _ctoks(text: str) -> list[str]:
+    return [w for w in _w(T.strip(text)) if len(w.strip("'")) >= 3]
+
+
+def catchphrase_parts(team, parts: list[str], player: str | None = None) -> set[int]:
+    """Indexes of the sentences that are the GM's own catchphrase or signature call (or a short exclamation on their own
+    nickname, "Saucin' it!"): filler for the audience -- never a punch, never a laugh. A sentence that names the
+    drafted player is the pick, never filler; a sentence must be mostly the catchphrase, not merely echo it."""
+    if team is None or not getattr(team, "has_persona", False):
+        return set()
+    from .party import name_hit
+    phrases = [x for x in (team.p("catchphrase"), team.p("signature_call")) if x]
+    refs = []
+    for ph in phrases:
+        refs.append(set(_ctoks(ph)))
+        refs += [set(_ctoks(x)) for x in split_parts(T.strip(ph))]
+    refs = [r for r in refs if r]
+    nick = re.findall(r"""['"“‘]([^'"”’]+)['"”’]""", team.gm_name or "")
+    stem = re.sub(r"[^a-z]", "", nick[0].lower())[:4] if nick else ""
+    out = set()
+    for i, part in enumerate(parts):
+        words = T.strip(part).split()
+        toks = set(_ctoks(part))
+        if not words or (player and name_hit(T.strip(part), player)):
+            continue
+        for r in refs:
+            shared = toks & r
+            if (len(shared) >= 2 and len(shared) >= 0.6 * min(len(toks), len(r)) and len(toks - r) <= 3) or \
+                    (len(words) <= 5 and r and r <= toks):
+                out.add(i)
+                break
+        if i not in out and stem and len(stem) == 4 and len(words) <= 4 and \
+                any(re.sub(r"[^a-z]", "", w.lower()).startswith(stem) for w in words):
+            out.add(i)
+    return out

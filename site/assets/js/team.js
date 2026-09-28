@@ -2,7 +2,7 @@
 import './chrome.js';
 import {
   CONFIG, $, html, spoken, mount, loadManifest, loadData, buildLeague, crest, swatchAttrs, humanize, validHex,
-  POS, POS_SHORT, GROUP, groupOf, fmtWhen, ICONS, plural, buildReport, ordinal,
+  POS, POS_SHORT, GROUP, groupOf, fmtWhen, ICONS, plural, buildReport, ordinal, clubName,
 } from './lib.js';
 import { gradeBadge, spreadLine, quoteList } from './report.js';
 
@@ -174,7 +174,7 @@ function personaBody(t) {
   return html`<div class="container">
     ${p.catchphrase ? html`<blockquote class="catch">${spoken(p.catchphrase)}</blockquote>` : html`<div style="height:32px"></div>`}
     ${p.hometown ? html`<p class="sig-call"><span class="sig-label">Hometown</span> ${p.hometown}</p>` : ''}
-    ${p.favorite_nhl_team ? html`<p class="sig-call"><span class="sig-label">Homer for</span> ${p.favorite_nhl_team}</p>` : ''}
+    ${p.cup_pick ? html`<p class="sig-call"><span class="sig-label">Stanley Cup pick</span> ${clubName(p.cup_pick)} <span class="meta">(scored in June)</span></p>` : ''}
     ${p.signature_call ? html`<p class="sig-call"><span class="sig-label">Signature call</span> “${spoken(p.signature_call)}”</p>` : ''}
     ${p.celebration ? html`<p class="sig-call"><span class="sig-label">Signature celebration</span> ${spoken(p.celebration)}</p>` : ''}
     <div class="team-cols">

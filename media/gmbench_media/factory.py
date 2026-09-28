@@ -39,34 +39,37 @@ def rel(p: Path) -> str:
         return str(p)
 
 
-def gm_call(L, p) -> bool:
+def gm_call(L, p, cut: set[str] | frozenset = frozenset()) -> bool:
     t = L.teams.get(p.team)
-    return bool(t and not t.is_bot and not p.auto and (p.on_air_call or "").strip() and getattr(p, "airable", True))
+    return bool(t and not t.is_bot and not p.auto and (p.on_air_call or "").strip() and getattr(p, "airable", True)
+                and p.team not in cut)
 
 
-def says_for(L, p) -> list:
-    """The lines a call drew: comebacks, reactions and the table talk right after it (never the caller's own)."""
+def says_for(L, p, cut: set[str] | frozenset = frozenset()) -> list:
+    """The lines a call drew: comebacks, reactions and the table talk right after it (never the caller's own, never a
+    cut model's)."""
     return sorted([s for s in L.says if L.pick_for_say(s) == p.pick_no and s.team != p.team
-                   and getattr(s, "airable", True)], key=lambda s: s.seq)
+                   and getattr(s, "airable", True) and s.team not in cut], key=lambda s: s.seq)
 
 
-def candidate_specs(L) -> list[dict]:
+def candidate_specs(L, cut: set[str] | frozenset = frozenset()) -> list[dict]:
+    """Candidate windows. A cut model (--cut-models) never speaks: its picks are context only (the host calls them)."""
     picks = sorted(L.picks, key=lambda p: p.pick_no)
     by_no = {p.pick_no: p for p in picks}
     specs = []
     for p in picks:
-        if gm_call(L, p) and says_for(L, p):
+        if gm_call(L, p, cut) and says_for(L, p, cut):
             specs.append({"key": f"x{p.pick_no}", "kind": "exchange", "picks": [p.pick_no],
-                          "says": [s.seq for s in says_for(L, p)]})
+                          "says": [s.seq for s in says_for(L, p, cut)]})
     for n in (2, 3):
         for p in picks:
             win = [by_no.get(p.pick_no + k) for k in range(n)]
-            if any(w is None for w in win) or not gm_call(L, win[0]) or not gm_call(L, win[-1]):
+            if any(w is None for w in win) or not gm_call(L, win[0], cut) or not gm_call(L, win[-1], cut):
                 continue
-            if sum(1 for w in win if gm_call(L, w)) < 2:
+            if sum(1 for w in win if gm_call(L, w, cut)) < 2:
                 continue
             specs.append({"key": f"c{win[0].pick_no}-{win[-1].pick_no}", "kind": "chain",
-                          "picks": [w.pick_no for w in win], "says": [s.seq for w in win for s in says_for(L, w)]})
+                          "picks": [w.pick_no for w in win], "says": [s.seq for w in win for s in says_for(L, w, cut)]})
     return specs
 
 
@@ -103,9 +106,10 @@ def summarize(L, rd: dict) -> dict:
             jv = lab.get("judge") or {}
             sents.append({"i": i, "role": lab["role"], "text": T.strip(b["parts"][i]), "sid": jv.get("sid"),
                           "funny": jv.get("funny"), "sense": jv.get("makes_sense"), "facts": jv.get("factually_ok"),
-                          "tag": bool(lab.get("tag"))})
+                          "tone": jv.get("tone"), "tag": bool(lab.get("tag"))})
             if lab["role"] in ("PUNCH", "BUTTON") and not lab.get("tag") and ln["kind"] != "hook":
                 punches.append({"sid": jv.get("sid"), "funny": float(jv.get("funny") or 0.0), "pass": jv.get("pass", True),
+                                "tone": jv.get("tone") or "friendly",
                                 "role": lab["role"], "speaker": ln["speaker"], "text": T.strip(b["parts"][i])})
         text = " ".join(b["parts"][i] for i in b["keep"])
         if ln["kind"] == "hook":
@@ -118,7 +122,8 @@ def summarize(L, rd: dict) -> dict:
             chars += len(text)
         rows.append({"id": ln["id"], "speaker": ln["speaker"], "kind": ln["kind"], "to": ln.get("addressed_to"),
                      "refs": ln.get("refs"), "sentences": sents})
-    cut = [{"id": t["id"], "text": t.get("removed"), "reason": t.get("reason")} for t in rd.get("trims") or []
+    cut = [{"id": t["id"], "text": t.get("removed"), "reason": t.get("reason"), "sid": t.get("sid")}
+           for t in rd.get("trims") or []
            if str(t.get("reason") or "").startswith(("judge", "owner", "setup of a cut", "tag of a cut"))]
     sh = rd.get("short") or {}
     # no cold open needed when the first line lands its joke in the first few seconds
@@ -131,7 +136,22 @@ def summarize(L, rd: dict) -> dict:
             if s_["role"] in ("PUNCH", "BUTTON") and s_.get("funny") is not None and float(s_["funny"]) >= 2:
                 hot = t <= 6.0
                 break
-    return {"rows": rows, "punches": punches, "hook": hook, "opens_hot": hot,
+    # the longest stretch without a laugh (the QA gate fails a short over 13 s): estimated on the delivery
+    t, last, worst = 0.35, 0.0, 0.0  # from one laugh to the next joke's first word (a long joke is not dry)
+    for r in rows:
+        for s_ in r["sentences"]:
+            d = len(s_["text"]) / 14.0 + 0.25
+            if s_["role"] in ("PUNCH", "BUTTON") and not s_["tag"] and s_.get("funny") is not None \
+                    and float(s_["funny"]) >= 2:
+                worst = max(worst, t - last)
+                t += d
+                last = t
+                t += 0.45
+            else:
+                t += d
+        t += 0.3
+    worst = max(worst, t - last)
+    return {"rows": rows, "punches": punches, "hook": hook, "opens_hot": hot, "dry_s": round(worst, 1),
             "est_s": float(sh.get("est_s") or 0.0), "chars": chars,
             "lines_used": sh.get("lines_used") or [], "judge_cuts": cut,
             "comebacks": sum(1 for r in rows if r["kind"] in ("comeback", "table_talk"))}
@@ -139,14 +159,19 @@ def summarize(L, rd: dict) -> dict:
 
 def score(L, s: dict) -> float:
     ok = [p for p in s["punches"] if p["pass"]]
-    laughs = sum(max(0.0, p["funny"] - 1.5) for p in ok)
+    tone_adj = {"friendly": 0.25, "edgy": -0.25, "mean": -2.0}
+    laughs = sum(max(0.0, p["funny"] + tone_adj.get(p.get("tone"), 0.0) - 1.5) for p in ok)
     labs = {L.teams[r["speaker"]].lab for r in s["rows"] if r["speaker"] in L.teams}
     dens = len(ok) / max(20.0, s["est_s"]) * 30.0
-    return round(2.0 * laughs + 0.6 * len(ok) + 0.8 * s["comebacks"] + 0.6 * dens + 0.3 * (len(labs) - 1), 2)
+    dry = max(0.0, float(s.get("dry_s") or 0.0) - 10.0)  # a long stretch without a laugh costs
+    last = next((x for r in reversed(s["rows"]) if r["kind"] != "hook" for x in reversed(r["sentences"])), None)
+    ends_flat = 1.0 if last and last["role"] not in ("PUNCH", "BUTTON") else 0.0  # ends on a pick, not a laugh
+    return round(2.0 * laughs + 0.6 * len(ok) + 0.8 * s["comebacks"] + 0.6 * dens + 0.3 * (len(labs) - 1)
+                 - 0.8 * dry - ends_flat, 2)
 
 
 def select(cands: list[dict], n_max: int = 15) -> list[dict]:
-    """The best first; no two shorts open on the same punchline; a short may share at most half its lines."""
+    """The best first; no two shorts open on the same punchline; a short may share at most 60% of its lines."""
     chosen: list[dict] = []
     hooks: set = set()
     use: Counter = Counter()
@@ -155,7 +180,7 @@ def select(cands: list[dict], n_max: int = 15) -> list[dict]:
         if h in hooks:
             continue
         lines = c["lines_used"]
-        if lines and sum(1 for x in lines if use[x]) > len(lines) / 2:
+        if lines and sum(1 for x in lines if use[x]) > 0.6 * len(lines):
             continue
         chosen.append(c)
         hooks.add(h)
@@ -165,13 +190,29 @@ def select(cands: list[dict], n_max: int = 15) -> list[dict]:
     return chosen
 
 
+def stable_ids(run: str, chosen: list[dict]) -> None:
+    """A short keeps its id (S07) across re-runs -- a veto never renames the others -- so an answer given in chat
+    ("render S03 and S07") means the same shorts after the list is rebuilt. media/out/review/<run>/ids.json."""
+    p = review_dir(run) / "ids.json"
+    ids = json.loads(p.read_text()) if p.exists() else {}
+    used = {int(v[1:]) for v in ids.values() if re.fullmatch(r"S\d+", v)}
+    for c in chosen:
+        if c["key"] not in ids:
+            n = max(used, default=0) + 1
+            ids[c["key"]] = f"S{n:02d}"
+            used.add(n)
+        c["id"] = ids[c["key"]]
+    p.write_text(json.dumps(ids, indent=1))
+
+
 def _gm(L, tid: str | None) -> str:
+    """Every line is labelled with the MODEL: 'Qwen (Qwen3.8 Max, Alibaba)'."""
     if tid == "host":
-        return "The Commissioner"
+        return "The Commissioner (host)"
     t = L.teams.get(tid or "")
     if not t:
         return tid or "?"
-    return "The robot" if t.is_bot else (t.gm_name or t.display)
+    return t.model_label
 
 
 def _model(L, tid: str | None) -> str:
@@ -185,35 +226,47 @@ def write_shortlist(L, run: str, chosen: list[dict], extras: list[dict], meta: d
     d = review_dir(run)
     appr = d / "approve.txt"
     if not appr.exists():
-        appr.write_text("# Shorts to render: one id per line (S01, R1, D1 ...). Nothing is voiced until an id is here.\n")
+        appr.write_text("# Shorts to render: one id per line (S01, R1, D1 ...; 'S3, S07 r1' works too).\n"
+                        "# Nothing is voiced until an id is here.\n")
     total = sum(c["chars"] for c in chosen + extras)
+    ex_id = (chosen + extras)[0]["id"] if (chosen + extras) else "S01"
+    ex_sid = next((s_["sid"] for c in chosen for r in c.get("rows") or [] for s_ in r["sentences"] if s_.get("sid")),
+                  "72.0")
     out = [f"# Shorts shortlist — {run}", "",
+           "## How to answer (reply in chat — the files are written for you)", "",
+           "| you say | means | goes in |", "|---|---|---|",
+           f"| `{ex_id} S0x R1` | render these shorts (ids never change between re-runs) | `approve.txt`: one id per line |",
+           f"| `veto {ex_sid}` | never air that sentence (its id is printed next to it below) | `veto.txt`: `{ex_sid}` |",
+           f"| `veto {ex_sid.split('.')[0]}` | never air that whole line (the ledger line number) | "
+           f"`veto.txt`: `{ex_sid.split('.')[0]}` |",
+           "| `veto \"outhouse\"` | never air a sentence containing those words | `veto.txt`: `\"outhouse\"` |",
+           f"| `keep {ex_sid}` | air a sentence the judges cut | `veto.txt`: `+{ex_sid}` |", "",
+           f"Files: `{rel(appr)}` and `{rel(d / 'veto.txt')}` (one entry per line, `#` starts a comment). After a veto, "
+           f"re-run `factory --run {run}` to see the new list; then `factory --run {run} --render --engine elevenlabs "
+           f"--plan` (characters) and the same with `--max-chars N`. Nothing below has been voiced yet; only approved "
+           f"shorts are (~{total} characters if all are approved; 0 when the complete show's takes exist).", "",
            f"{len(chosen)} draft shorts + {len(extras)} post-draft shorts, built {time.strftime('%Y-%m-%d %H:%M')} from "
            f"{meta['lines']} GM lines. Comedy judge: {' + '.join(m.split('/')[-1] for m in meta['panel'])} "
-           f"(non-league; 86% agreement on the calibration set). Gate: makes sense (the stricter judge), funny >= 2, "
-           f"facts not off, no veto, the ledger's fact_check ok. Nothing below has been voiced yet."
+           f"(non-league). A joke airs if it makes sense, lands instantly and gets tonight right (board + who said "
+           f"what; the stricter judge), scores funny >= 2, isn't mean or catchphrase filler, has no fact wrong, isn't "
+           f"vetoed and passed the ledger's fact_check; friendly ribbing ranks first."
+           + (f" Cut models (never air; the host calls their picks): {', '.join(meta['cut'])}." if meta.get("cut") else "")
            + (f" **{meta['unjudged']} sentences are unjudged (judge outage?) and cannot air: re-run `factory`.**"
               if meta.get("unjudged") else ""), "",
-           "**Approve in two minutes:**", "",
-           f"1. Put the ids to render in `{rel(appr)}` (one per line).",
-           f"2. Veto a line: its sentence id (e.g. `72.0`) or a quoted fragment in `{rel(d / 'veto.txt')}`; re-run "
-           f"`factory` to see the shortlist without it.",
-           f"3. `python -m gmbench_media.cli factory --run {run} --render --engine elevenlabs --plan` (characters), then "
-           f"the same with `--max-chars N`. Only the approved shorts' sentences are voiced (~{total} characters if all "
-           f"are approved).", "",
-           "| id | kind | picks | length | EL chars | laughs (judge) | hook |", "|---|---|---|---|---|---|---|"]
+           "| id | kind | picks | length | EL chars | laughs (judge) | longest dry | hook |",
+           "|---|---|---|---|---|---|---|---|"]
     for c in chosen + extras:
         laughs = " ".join(f"{p['funny']:g}" for p in c.get("punches", []) if p.get("pass"))
         hook = (c.get("hook") or {}).get("text") or c.get("title", "")
         out.append(f"| **{c['id']}** | {c['kind']} | {c.get('picks_label', '')} | {c['est_s']:.0f} s | {c['chars']} | "
-                   f"{laughs} | {hook[:90].replace('|', '/')} |")
+                   f"{laughs} | {c.get('dry_s', 0):.0f} s | {hook[:90].replace('|', '/')} |")
     out.append("")
     for c in chosen + extras:
         out.append(f"## {c['id']} · {c['kind']} · {c.get('picks_label', '')} · {c['est_s']:.0f} s · ~{c['chars']} chars"
                    f" · score {c.get('score', 0):g}")
         if c.get("hook"):
             h = c["hook"]
-            out.append(f"**Cold open** — {_gm(L, h['speaker'])} ({_model(L, h['speaker'])}): “{h['text']}”"
+            out.append(f"**Cold open** — {_gm(L, h['speaker'])}: “{h['text']}”"
                        + (f" `{h['sid']}` funny {h['funny']:g}" if h.get("sid") and h.get("funny") is not None else ""))
         for k_, r in enumerate(c.get("rows", [])):
             if r["kind"] == "hook" or (k_ == 0 and c.get("hook") and r["sentences"]
@@ -221,15 +274,15 @@ def write_shortlist(L, run: str, chosen: list[dict], extras: list[dict], meta: d
                 continue
             bits = []
             for s in r["sentences"]:
-                mark = ""
-                if s["role"] in ("PUNCH", "BUTTON") and not s["tag"] and s.get("funny") is not None:
-                    mark = f" `{s['sid']}` {s['funny']:g}"
+                joke = s["role"] in ("PUNCH", "BUTTON") and not s["tag"] and s.get("funny") is not None
+                mark = (f" `{s['sid']} · funny {s['funny']:g}{' · ' + s['tone'] if s.get('tone') and s['tone'] != 'friendly' else ''}`" if joke else
+                        (f" `{s['sid']}`" if s.get("sid") else ""))
                 t_ = f"**{s['text']}**" if s["role"] in ("PUNCH", "BUTTON") else s["text"]
                 bits.append(t_ + mark)
             to = f" → {_gm(L, r['to'])}" if r.get("to") and r["to"] != r["speaker"] else ""
-            out.append(f"- {_gm(L, r['speaker'])} ({_model(L, r['speaker'])}){to}: " + " ".join(bits))
-        for x in c.get("judge_cuts", [])[:6]:
-            out.append(f"  - cut: “{(x['text'] or '')[:100]}” — {x['reason']}")
+            out.append(f"- {_gm(L, r['speaker'])}{to}: " + " ".join(bits))
+        for x in c.get("judge_cuts", [])[:8]:
+            out.append(f"  - cut: “{(x['text'] or '')[:100]}” — {x['reason']}" + (f" `{x['sid']}`" if x.get("sid") else ""))
         if c.get("lines_used"):
             out.append(f"  - ledger lines: {', '.join(str(x) for x in c['lines_used'])}")
         out.append("")
@@ -241,8 +294,12 @@ def write_shortlist(L, run: str, chosen: list[dict], extras: list[dict], meta: d
 def run_factory(L, run: str, cfg: dict, log=print, n_max: int = 15, tempo: float = 1.12, llm: bool = True) -> dict:
     from .beatmap import label_lines
     from .script import ShortBuilder
+    from .script import resolve_models
     t0 = time.time()
-    specs = candidate_specs(L)
+    cut = resolve_models(L, cfg["script"].get("cut_models"))
+    if cut:
+        log(f"factory: cut models (never air): {', '.join(sorted(L.teams[x].call_name for x in cut))}")
+    specs = candidate_specs(L, cut)
     # 1) every line once through the labeller (batched), 2) the panel judges every sentence of the draft
     items: list[dict] = []
     for c in specs:
@@ -266,6 +323,8 @@ def run_factory(L, run: str, cfg: dict, log=print, n_max: int = 15, tempo: float
         ok = [p for p in s["punches"] if p["pass"]]
         if len(ok) < 2 or not (s["hook"] or s["opens_hot"]) or not (SHORT_MIN_S - 2 <= s["est_s"] <= SHORT_MAX_S + 1):
             continue
+        if s["dry_s"] > 13.5:  # a laugh at least every ~10 s (the QA gate fails at 13; this is an estimate)
+            continue
         s.update({"key": c["key"], "kind": c["kind"], "picks": c["picks"], "says": c["says"],
                   "picks_label": (f"pick {c['picks'][0]}" if len(c["picks"]) == 1 else
                                   f"picks {c['picks'][0]}–{c['picks'][-1]}"),
@@ -273,10 +332,10 @@ def run_factory(L, run: str, cfg: dict, log=print, n_max: int = 15, tempo: float
         s["score"] = score(L, s)
         cands.append(s)
     chosen = select(cands, n_max)
-    for k, c in enumerate(chosen):
-        c["id"] = f"S{k + 1:02d}"
+    stable_ids(run, chosen)
     extras = post_draft_candidates(L, cfg, log, J)
-    meta = {"lines": len(J.items), "panel": J.models, "unjudged": J.unjudged}
+    meta = {"lines": len(J.items), "panel": J.models, "unjudged": J.unjudged,
+            "cut": [L.teams[x].model_label for x in sorted(cut)]}
     if J.unjudged:
         log(f"factory: WARNING {J.unjudged} sentences have no verdict (judge outage?): they cannot air as jokes; "
             f"re-run to retry")
@@ -316,9 +375,11 @@ def post_draft_candidates(L, cfg: dict, log=print, J=None) -> list[dict]:
         chars = 0
         est = 0.35 + float(cfg["mix"]["postroll_s"])
         for ln in rd["timeline"]:
+            gid = (f"{ln['refs'][0]}-{ln['addressed_to']}" if ln["kind"] in ("grade_comment", "hook") and ln.get("refs")
+                   and ln.get("addressed_to") and ln["speaker"] != "host" else None)
             rows.append({"id": ln["id"], "speaker": ln["speaker"], "kind": ln["kind"], "to": ln.get("addressed_to"),
                          "refs": ln.get("refs"), "sentences": [{"i": 0, "role": "LINE", "text": ln["display_text"],
-                                                               "sid": None, "funny": None, "tag": False}]})
+                                                               "sid": gid, "funny": None, "tag": False}]})
             chars += len(ln["text"])
             est += float(ln.get("est_s") or 0.0) / 1.1 + 0.4
         out.append({"id": cid, "kind": kind, "rows": rows, "chars": chars, "est_s": round(est, 1), "punches": [],
@@ -331,12 +392,20 @@ def post_draft_candidates(L, cfg: dict, log=print, J=None) -> list[dict]:
 # ------------------------------------------------------------------------------------------ render the approved set
 def approved_ids(run: str, cli_ids: str | None) -> list[str]:
     if cli_ids:
-        return [x.strip().upper() for x in cli_ids.split(",") if x.strip()]
+        out = []
+        for tok in re.findall(r"(?i)\b([SRD])\s*0*(\d{1,3})\b", cli_ids):
+            out.append(f"{tok[0].upper()}{int(tok[1]):02d}" if tok[0].upper() == "S" else f"{tok[0].upper()}{int(tok[1])}")
+        return out
     p = review_dir(run) / "approve.txt"
     if not p.exists():
         return []
-    return [re.sub(r"\s.*", "", x.strip()).upper() for x in p.read_text().splitlines()
-            if x.strip() and not x.strip().startswith("#")]
+    out: list[str] = []
+    for raw in p.read_text().splitlines():
+        for tok in re.findall(r"(?i)\b([SRD])\s*0*(\d{1,3})\b", raw.split("#", 1)[0]):
+            cid = f"{tok[0].upper()}{int(tok[1]):02d}" if tok[0].upper() == "S" else f"{tok[0].upper()}{int(tok[1])}"
+            if cid not in out:
+                out.append(cid)
+    return out
 
 
 def rundown_for(L, cfg: dict, c: dict, tempo: float, log=print) -> dict:
@@ -365,7 +434,8 @@ def montage(run: str, ids: list[str], log=print) -> Path | None:
     from .paths import out_dir
     clips = []
     for cid in ids:
-        hits = sorted(out_dir(f"{run}-shorts").glob(f"{cid}-*/short-{cid}-*.json"))
+        hits = sorted(x for x in out_dir(f"{run}-shorts").glob(f"{cid}-*/short-{cid}-*.json")
+                      if not x.name.endswith(".package.json"))
         if not hits:
             log(f"montage: {cid} is not rendered yet; skipped")
             continue

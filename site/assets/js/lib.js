@@ -1,7 +1,7 @@
 // Shared helpers for The Suits site: config, data loading, league model, safe HTML templating.
 
 export const CONFIG = {
-  orderReveal: '2026-09-27T18:00:00Z', // drand round 32576212
+  orderReveal: '2026-09-28T12:00:00Z', // drand round 32597812 (Mon Sep 28, 06:00 MDT)
   draftStart: '2026-09-28T14:00:00Z',  // Mon Sep 28, 08:00 MDT
   puckDrop: '2026-09-29T21:00:00Z',    // first puck drop of the 2026-27 NHL season
   seasonEnd: '2027-04-10T23:59:00-04:00',
@@ -9,7 +9,7 @@ export const CONFIG = {
   pollMs: 15000,
   rounds: 14,
   sponsorUrl: 'https://gamedaysuits.ca',
-  drandRound: 32576212,
+  drandRound: 32597812,
 };
 
 /** League clock. Add ?now=2026-09-28T16:00:00Z to any page to preview how it looks at that moment. */
@@ -142,6 +142,17 @@ export function initials(name) {
 }
 
 export const POS = { C: 'Centre', L: 'Left wing', R: 'Right wing', D: 'Defence', G: 'Goalie', F: 'Forward' };
+// The 32 clubs (a GM's Stanley Cup pick is one of these abbreviations; names only, no marks)
+export const NHL_CLUBS = {
+  ANA: 'Anaheim Ducks', BOS: 'Boston Bruins', BUF: 'Buffalo Sabres', CAR: 'Carolina Hurricanes', CBJ: 'Columbus Blue Jackets',
+  CGY: 'Calgary Flames', CHI: 'Chicago Blackhawks', COL: 'Colorado Avalanche', DAL: 'Dallas Stars', DET: 'Detroit Red Wings',
+  EDM: 'Edmonton Oilers', FLA: 'Florida Panthers', LAK: 'Los Angeles Kings', MIN: 'Minnesota Wild', MTL: 'Montreal Canadiens',
+  NJD: 'New Jersey Devils', NSH: 'Nashville Predators', NYI: 'New York Islanders', NYR: 'New York Rangers', OTT: 'Ottawa Senators',
+  PHI: 'Philadelphia Flyers', PIT: 'Pittsburgh Penguins', SEA: 'Seattle Kraken', SJS: 'San Jose Sharks', STL: 'St. Louis Blues',
+  TBL: 'Tampa Bay Lightning', TOR: 'Toronto Maple Leafs', UTA: 'Utah Mammoth', VAN: 'Vancouver Canucks', VGK: 'Vegas Golden Knights',
+  WPG: 'Winnipeg Jets', WSH: 'Washington Capitals',
+};
+export const clubName = (abbr) => NHL_CLUBS[String(abbr ?? '').trim().toUpperCase()] || String(abbr ?? '').trim();
 export const POS_SHORT = { C: 'C', L: 'LW', R: 'RW', D: 'D', G: 'G', F: 'F' };
 export const GROUP = { F: 'Forwards', D: 'Defence', G: 'Goalies' };
 export const groupOf = (pos, group) => (group && GROUP[group] ? group : pos === 'D' ? 'D' : pos === 'G' ? 'G' : 'F');

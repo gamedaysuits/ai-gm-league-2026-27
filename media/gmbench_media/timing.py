@@ -152,7 +152,11 @@ def assemble(segments: list[dict], sr: int, key: str, tempo: float = 1.0
     prev_spice = 1
     unit_start = None
     for k, sg in enumerate(segments):
-        is_tag = sg["role"] == "BUTTON" and bool((sg.get("label") or {}).get("tag")) and prev_role == "PUNCH"
+        n_words = len(T.strip("".join(sg["chars"])).split())
+        # a tag right on a punch -- "Bold." or a quick topper "Still stuck on four." -- rides the same laugh: one beat
+        # after it, never two laughs 1.5 s apart
+        is_tag = prev_role == "PUNCH" and sg["role"] in ("BUTTON", "PUNCH") and (
+            bool((sg.get("label") or {}).get("tag")) or n_words <= 5)
         if k > 0:
             gap = sg["gap_before"] if sg["gap_before"] is not None else \
                 float(_rng(f"{key}:{k}").uniform(*NATURAL)) * tempo

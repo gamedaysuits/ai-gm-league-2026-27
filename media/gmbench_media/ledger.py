@@ -16,6 +16,16 @@ import yaml
 
 from .paths import ROOT, run_dir
 
+# The short name each model goes by at the table (mirrors src/gmbench/config.CALL_NAMES).
+CALL_NAMES = {"astra": "Astra", "sol": "Sol", "fable": "Fable", "opus": "Opus", "gemini": "Gemini", "grok": "Grok",
+              "kimi": "Kimi", "mimo": "MiMo", "qwen": "Qwen", "deepseek": "DeepSeek", "muse": "Muse", "glm": "GLM",
+              "fugu": "Fugu", "autodraft": "the robot"}
+
+# The model's short tag on board tiles, tickers and grade chips (model first: not a franchise abbreviation).
+MODEL_ABBR = {"astra": "AST", "sol": "SOL", "fable": "FAB", "opus": "OPUS", "gemini": "GEM", "grok": "GROK",
+              "kimi": "KIMI", "mimo": "MIMO", "qwen": "QWEN", "deepseek": "DSK", "muse": "MUSE", "glm": "GLM",
+              "fugu": "FUGU", "autodraft": "BOT"}
+
 # Neutral fallback colours for franchises without a Media Day card (never third-party marks).
 FALLBACK_COLORS = {
     "autodraft": ("#2B3245", "#9AA6BF"),
@@ -37,8 +47,26 @@ class Team:
         return self.model is None or self.id == "autodraft"
 
     @property
+    def call_name(self) -> str:
+        """The model's short table name ('Qwen'); 'the robot' for the control bot."""
+        return CALL_NAMES.get(self.id) or ("the robot" if self.is_bot else self.display)
+
+    @property
+    def model_label(self) -> str:
+        """Transcripts / shortlist: 'Qwen (Qwen3.8 Max, Alibaba)'."""
+        if self.is_bot:
+            return "The robot (Autodraft, the control bot)"
+        return f"{self.call_name} ({self.display}, {self.lab})"
+
+    @property
     def has_persona(self) -> bool:
         return bool(self.persona)
+
+    @property
+    def cup_pick(self) -> str | None:
+        """The model's Stanley Cup pick (Media Day, scored in June): a club abbreviation. (Older rehearsal ledgers
+        carry favorite_nhl_team instead: not a prediction, never shown as one.)"""
+        return club_abbr(self.p("cup_pick"))
 
     def p(self, key: str, default: Any = None) -> Any:
         return (self.persona or {}).get(key, default)
@@ -71,8 +99,8 @@ class Team:
 
     @property
     def abbrev(self) -> str:
-        if self.has_persona and self.p("franchise_abbrev"):
-            return str(self.p("franchise_abbrev")).upper()[:4]
+        if self.id in MODEL_ABBR:  # model first
+            return MODEL_ABBR[self.id]
         if self.is_bot:
             return "BOT"
         letters = "".join(ch for ch in self.display.upper() if ch.isalnum())
@@ -128,11 +156,56 @@ class Pick:
     on_air_call: str = ""  # the GM's own hype podium line (inline tags); public_rationale is for the record
     joke_logic: str = ""  # the GM's own one-sentence explanation of its joke (party-5+): judge input, never aired
     fact_check: str = ""  # ok | unverified | off (checked against the snapshot at submit time; "" in older runs)
+    rationale_check: str = ""  # the written rationale's own fact-check (party-13+); airing depends on fact_check
+    robot: dict | None = None  # {"would_take": player_id, "same": bool}: the robot's pick for this team at this moment
+    think: dict | None = None  # {"seconds", "tool_calls", "reasoning_tokens", "cost_usd"} (the robot: its real time)
 
     @property
     def airable(self) -> bool:
         """A line whose facts are unverified (or off) never airs."""
         return self.fact_check in ("", "ok")
+
+
+def robot_chip(p: "Pick", is_bot: bool = False) -> str | None:
+    """'ROBOT AGREES' / 'ROBOT DISAGREES' for an AI pick (None for the robot itself or an older ledger)."""
+    r = p.robot if isinstance(p.robot, dict) else None
+    if is_bot or not r or "same" not in r:
+        return None
+    return "ROBOT AGREES" if r.get("same") else "ROBOT DISAGREES"
+
+
+def fmt_think_seconds(sec: float) -> str:
+    """0.0012 -> '0.001s'; 7.4 -> '7.4s'; 42 -> '42s'; 130 -> '2:10'; 3725 -> '1:02:05'."""
+    if sec < 0.0005:
+        return "<0.001s"
+    if sec < 1:
+        return f"{sec:.3f}s"
+    if sec < 10:
+        return f"{sec:.1f}s"
+    if round(sec) < 60:
+        return f"{sec:.0f}s"
+    n = int(round(sec))
+    h, m, x = n // 3600, (n % 3600) // 60, n % 60
+    return f"{h}:{m:02d}:{x:02d}" if h else f"{m}:{x:02d}"
+
+
+def think_chip(p: "Pick", is_bot: bool = False) -> str | None:
+    """'THOUGHT 2:10 · 9 LOOKUPS' (the robot: 'THOUGHT 0.001s'); None when the ledger has no think data."""
+    th = p.think if isinstance(p.think, dict) else None
+    if is_bot or not th or th.get("seconds") is None:
+        return None  # (the robot is opaque: no clock on its card)
+    try:
+        out = f"THOUGHT {fmt_think_seconds(float(th['seconds']))}"
+    except (TypeError, ValueError):
+        return None
+    n = th.get("lookups", th.get("tool_calls"))  # research lookups when the ledger has them (party-13+)
+    if n is not None and not isinstance(n, bool) and not is_bot:
+        try:
+            n = int(n)
+            out += f" · {n} LOOKUP{'S' if n != 1 else ''}"
+        except (TypeError, ValueError):
+            pass
+    return out
 
 
 @dataclass
@@ -315,13 +388,24 @@ class League:
         return max(before, key=lambda p: p.seq).pick_no if before else None
 
     def mentioned_team(self, text: str, exclude: set[str] | None = None) -> str | None:
-        """The GM a line names by nickname ('Moon', 'Booksie'), first mention wins."""
+        """The GM a line names -- by model ('Qwen', 'Opus'), nickname ('Moon', 'Booksie') or first name ('Dale') --
+        first mention wins."""
         best = None
         low = " " + re.sub(r"[^a-z0-9' ]+", " ", text.lower()) + " "
         for tid, t in self.teams.items():
             if exclude and tid in exclude:
                 continue
-            for nick in re.findall(r"""['"“‘]([^'"”’]+)['"”’]""", t.gm_name or ""):
+            names = re.findall(r"""['"“‘]([^'"”’]+)['"”’]""", t.gm_name or "")
+            if t.p("nickname"):
+                names.append(str(t.p("nickname")))
+            if not t.is_bot:
+                names.append(t.call_name)
+                first = (t.gm_name or "").split()[0] if (t.gm_name or "").split() else ""
+                if len(first) >= 3 and first[0].isupper() and not first.startswith(("'", '"', "“")):
+                    names.append(first)
+            else:
+                names.append("robot")
+            for nick in names:
                 i = low.find(" " + nick.lower() + " ")
                 if i >= 0 and (best is None or i < best[0]):
                     best = (i, tid)
@@ -355,6 +439,52 @@ def load_history(run: str) -> list[tuple[str, str]]:
             if f.exists() and name not in {n for n, _ in found}:
                 found.append((name, f.read_text()))
     return found
+
+
+PERSONA_RUN: str | None = None  # --personas-from RUN (proofs only): that run's Media Day cards over this run's lines
+PERSONA_KEEP: set[str] = set()  # fields of this run's OWN cards kept over the borrowed ones (--keep-own cup_pick)
+
+
+def club_abbr(value) -> str | None:
+    """'EDM' / 'Edmonton Oilers' / 'Oilers' / 'edmonton' -> 'EDM' (None when empty; unknown text passes through)."""
+    v = str(value or "").strip()
+    if not v:
+        return None
+    from .judge import NHL
+    up = v.upper()
+    if up in NHL:
+        return up
+    low = v.lower()
+    for ab, name in NHL.items():
+        if low == name.lower() or low == name.lower().split(" ", 1)[-1] or low == name.lower().rsplit(" ", 1)[-1] \
+                or low == name.lower().rsplit(" ", 1)[0]:
+            return ab
+    return up
+
+
+def _personas_of(run: str) -> dict[str, tuple[dict, int]]:
+    out: dict[str, tuple[dict, int]] = {}
+    path = run_dir(run) / "ledger" / "league.jsonl"
+    if not path.exists():
+        raise SystemExit(f"--personas-from: no ledger for run {run!r} ({path})")
+    for e in _read_events(path):
+        pl = e.get("payload") or {}
+        if e.get("type") == "PERSONA_CREATED" and pl.get("team") and pl.get("persona"):
+            out[pl["team"]] = (pl["persona"], e["seq"])
+    return out
+
+
+def robot_choice_name(L, p) -> str | None:
+    """The player the robot would have taken at this pick (robot.would_take), by name -- for the VIEWER's card, after
+    the reveal (the models only ever get yes / no)."""
+    r = p.robot if isinstance(getattr(p, "robot", None), dict) else None
+    if not r or r.get("same") or r.get("would_take") is None:
+        return None
+    try:
+        from .judge import _player_name
+        return _player_name(L, r.get("would_take"))
+    except Exception:  # noqa: BLE001
+        return None
 
 
 def load_league(run: str) -> League:
@@ -409,6 +539,9 @@ def load_league(run: str) -> League:
                 on_air_call=str(pl.get("on_air_call") or "").strip(),
                 joke_logic=str(pl.get("joke_logic") or "").strip(),
                 fact_check=str(pl.get("fact_check") or "").strip().lower(),
+                rationale_check=str(pl.get("rationale_check") or "").strip().lower(),
+                robot=pl.get("robot") if isinstance(pl.get("robot"), dict) else None,
+                think=pl.get("think") if isinstance(pl.get("think"), dict) else None,
             ))
         elif et == "SAY":
             line = str(pl.get("line") or "").strip()
@@ -421,6 +554,12 @@ def load_league(run: str) -> League:
                 fact_check=str(pl.get("fact_check") or "").strip().lower(),
             ))
     picks.sort(key=lambda p: p.pick_no)
+    if PERSONA_RUN and PERSONA_RUN != run:  # a proof: the live cast's cards over a rehearsal's lines
+        for tid, (persona, seq) in _personas_of(PERSONA_RUN).items():
+            if tid in teams:
+                own = teams[tid].persona or {}
+                persona = {**persona, **{k: own[k] for k in PERSONA_KEEP if k in own}}  # (the lines were written to these)
+                teams[tid].persona, teams[tid].persona_seq = persona, seq
     order = list(order_event.get("order") or [p.team for p in picks if p.round == 1] or list(teams))
 
     fabrics: dict[str, dict] = {}

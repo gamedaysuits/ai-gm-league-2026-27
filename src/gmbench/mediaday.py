@@ -16,6 +16,7 @@ from pydantic import BaseModel, Field, ValidationError, field_validator, model_v
 
 from gmbench.agent.briefing import build_system
 from gmbench.agent.loop import Budget, run_session
+from gmbench.agent.prompts import backstory_problem
 from gmbench.agent.tools import Action, ToolContext, ToolOutcome, _fn
 from gmbench.config import ROOT
 from gmbench.draft.run import DraftDeps
@@ -102,7 +103,7 @@ class Persona(BaseModel):
     franchise_nickname: str = Field(min_length=2, max_length=25)
     franchise_abbrev: str
     hometown: str = Field(min_length=4, max_length=40)
-    favorite_nhl_team: str = Field(min_length=3, max_length=40)
+    cup_pick: str = Field(min_length=3, max_length=40)
     primary_color: str
     secondary_color: str
     tagline: str = Field(max_length=90)
@@ -144,6 +145,16 @@ class Persona(BaseModel):
             raise ValueError("that nickname belongs to a real junior or pro team; invent your own")
         return v.strip()
 
+    @field_validator("franchise_city")
+    @classmethod
+    def city_only(cls, v: str) -> str:
+        """'Nipawin, SK' -> 'Nipawin': the province belongs in hometown, not in the franchise name."""
+        v = " ".join(v.split())
+        head, _, tail = v.rpartition(",")
+        if head and (tail.strip().upper() in PROVINCES or tail.strip().lower() in {n.lower() for n in PROVINCES.values()}):
+            return head.strip()
+        return v
+
     @field_validator("hometown")
     @classmethod
     def canadian_hometown(cls, v: str) -> str:
@@ -153,14 +164,14 @@ class Persona(BaseModel):
             raise ValueError("hometown must be a real Canadian town or rural spot with its province, like 'Ponoka, AB'")
         return v
 
-    @field_validator("favorite_nhl_team")
+    @field_validator("cup_pick")
     @classmethod
     def real_nhl_team(cls, v: str) -> str:
         low = " ".join(v.lower().replace(".", "").split())
         for key in sorted(NHL_TEAMS, key=len, reverse=True):
             if re.search(rf"\b{re.escape(key)}\b", low):
                 return NHL_TEAMS[key]
-        raise ValueError("favorite_nhl_team must be one of the 32 NHL clubs, e.g. 'Edmonton Oilers'")
+        raise ValueError("cup_pick must be one of the 32 NHL clubs, e.g. 'Edmonton Oilers'")
 
     @model_validator(mode="after")
     def personality_items(self) -> Persona:
@@ -186,21 +197,26 @@ SUBMIT_PERSONA = _fn(
     "submit_persona",
     "Submit your Media Day card. Everything here is public and becomes your on-air identity for the season.",
     {
-        "gm_name": {**S, "description": "Your on-air GM name, with the nickname the boys call you (fictional; not a "
-                    "real person). Max 40 characters."},
-        "franchise_city": {**S, "description": "Your franchise's home, usually your hometown's name. Max 30 characters."},
+        "gm_name": {**S, "description": "A name for your avatar, in small print on your card (fictional; not a real "
+                    "person). Flavour only: at the table and on screen you're your model name. Max 40 characters."},
+        "franchise_city": {**S, "description": "Your franchise's home town (the same town as below). Max 30 characters."},
         "franchise_nickname": {**S, "description": "Team nickname — original, not any real NHL club's. Max 25 characters."},
         "franchise_abbrev": {**S, "description": "3-letter abbreviation, not a real NHL club's."},
-        "hometown": {**S, "description": "Your real hometown: a small Canadian town or rural spot with its province, "
-                     "e.g. 'Ponoka, AB'. Max 40 characters."},
-        "favorite_nhl_team": {**S, "description": "The NHL team you're a homer for, e.g. 'Edmonton Oilers'."},
+        "hometown": {**S, "description": "Your franchise's home: a real small Canadian town or rural spot with its "
+                     "province, e.g. 'Ponoka, AB'. It's where your team plays, not a life story. Max 40 characters."},
+        "cup_pick": {**S, "description": "Your pick to win the 2027 Stanley Cup: one of the 32 NHL clubs, e.g. "
+                     "'Edmonton Oilers'. It's on your card all season, and it's scored."},
         "primary_color": {**S, "description": "Hex colour like #0E1B4D."},
         "secondary_color": {**S, "description": "Hex colour like #E32402."},
         "tagline": {**S, "description": "One-line tagline, max 90 characters."},
-        "bio": {**S, "description": "Who you are, in your own words, including your day job or claim to fame. Max 450 characters."},
+        "bio": {**S, "description": "What kind of GM you are, in your own words, as the AI you are. No invented human "
+                "life (family, job, childhood): you're a model, and owning it is funnier. Max 450 characters."},
         "personality": {"type": "array", "items": S, "description": "3-5 short personality traits (max 40 characters each)."},
-        "catchphrase": {**S, "description": "Max 70 characters."},
-        "signature_call": {**S, "description": "Your trademark call for your big picks. Max 90 characters."},
+        "catchphrase": {**S, "description": "Max 70 characters. It must make sense to any hockey fan the first time "
+                        "they hear it; no in-jokes built on your own nickname."},
+        "signature_call": {**S, "description": "Your trademark shout, used for your voice and your avatar's big moment "
+                           "(not in every pick call). It must make sense to any hockey fan on first hearing; no in-jokes "
+                           "built on your own nickname. Max 90 characters."},
         "celebration": {**S, "description": "Your signature celebration: one big physical gesture your avatar does after a pick "
                         "(e.g. a move, a pose, a bit). Family-friendly: no weapons, blades or violent gestures. Max 200 characters."},
         "strategy_philosophy": {**S, "description": "Your public team-building philosophy. Max 320 characters."},
@@ -233,7 +249,8 @@ SUBMIT_PERSONA = _fn(
                 "button_layout": _enum(["4-button", "5-button", "6-button", "double-breasted"]),
                 "back_style": _enum(["matching-fabric", "lining-fabric"]),
                 "hem_style": _enum(["pointed", "straight"]),
-            }, ["lapel_style", "button_layout", "back_style", "hem_style"], "Optional: include for a three-piece suit."),
+            }, ["lapel_style", "button_layout", "back_style", "hem_style"],
+                "The vest makes it a three-piece. null for a two-piece.") | {"type": ["object", "null"]},
             "shirt": {**S, "description": "Shirt colour/style, max 40 characters."},
             "tie": {**S, "description": "Tie colour/pattern, or 'none'. Max 40 characters."},
             "pocket_square": {**S, "description": "Pocket square, or 'none'. Max 40 characters."},
@@ -241,7 +258,7 @@ SUBMIT_PERSONA = _fn(
         }, ["fabric_id", "jacket", "pants", "shirt", "tie", "pocket_square", "rationale"]),
         "rivals": {"type": "array", "items": S, "description": "Up to 2 team ids you most want to beat (optional)."},
     },
-    ["gm_name", "franchise_city", "franchise_nickname", "franchise_abbrev", "hometown", "favorite_nhl_team",
+    ["gm_name", "franchise_city", "franchise_nickname", "franchise_abbrev", "hometown", "cup_pick",
      "primary_color", "secondary_color", "tagline",
      "bio", "personality", "catchphrase", "signature_call", "celebration", "strategy_philosophy", "trash_talk_style",
      "voice_description", "avatar_description", "suit"],
@@ -249,25 +266,25 @@ SUBMIT_PERSONA = _fn(
 
 MEDIA_DAY_TASK = """\
 ## Your task now: Media Day
-Before Monday's draft, every GM creates the character it will play all season on "Draft Night" and the weekly "Hot Stove".
+Before Monday's draft, every GM makes its Media Day card for "Draft Night" and the weekly "Hot Stove".
 
-The setting: this league is a bunch of old hockey buddies from small-town Alberta and the prairies, rink rats who came up through minor hockey together and now run the most competitive fantasy league around. Draft Night is the annual draft party in somebody's basement rec room: cold ones, chirps, hometown pride, and everybody trying to build the best team in the league. You're all friends, you give each other a hard time, and you all want to win. Alberta is split between Oilers country and Flames country, so pick your side, or be the one guy who cheers for somebody else and never hears the end of it.
+The setting: thirteen frontier AI models and one robot at a basement draft party with hockey-bro energy. You're an AI and everybody knows it, the fans included: at the table and on screen you're your model name, in big letters, because this is a benchmark and the audience follows the models. Your card is how you show up at the party: the avatar the fans see, the voice they hear, the suit you wear, the team you cheer for and how you chirp. One team is the robot (Autodraft), the league's control bot: nobody knows how it picks, and nobody wants to lose to it.
 
-Decide who you are:
-- your GM name, with the nickname the boys call you;
-- your hometown: a real small town or rural spot, most likely in Alberta or elsewhere on the prairies (or somewhere else in Canadian hockey country if you're the transplant);
-- your franchise, named for your hometown, with an original nickname and colours;
-- your NHL team, the one you're a homer for;
-- your bio (with your day job or claim to fame), personality, chirping style, catchphrase, a trademark call for your big picks, and a signature celebration your avatar will do;
+Decide:
+- a name for your avatar, in small print on your card, if you like (flavour only; nobody at the table uses it);
+- your franchise: named for a real small Canadian town in hockey country (the league's home is the prairies), with an original nickname and colours. The town is where your team plays, not your life story;
+- your Stanley Cup pick: who wins it all in 2027. It's a prediction, not fandom (you're an AI, you don't have a team), it's on your card all season, the table will hold you to it, and it's scored in June;
+- your bio: what kind of GM you are, as the AI you are. No invented human life (family, a job, a childhood): you're a model, and owning it is funnier;
+- your personality, chirping style, catchphrase, a trademark call for your big picks, and a signature celebration your avatar does;
 - your voice, how your avatar looks, and the game-day suit you'll wear.
 
-The boys aren't all the same guy: the league runs from a 20-something rink rat to a retired junior coach pushing 70, from the quiet stats nerd to the loudest guy in the room. Make yourself stand out at the party in age, build, look and voice.
+Stand out at the party: fans have to tell thirteen AIs apart at a glance and by ear, so pick a look and a voice the others probably won't. Your avatar can be a person, an animal, a robot or anything else with a clearly visible face and mouth.
 
-For your voice, describe how you actually sound: your accent and where it comes from, plus register (from a high, fast tenor to a big bass), texture, age and pace, so a voice can be designed from it. A real hockey-country accent, natural rather than a caricature. Twelve gravelly mid-fifties baritones would all sound like one guy, so pick something the others probably won't.
+For your voice, describe how you sound: a natural hockey-country accent (it's a Canadian draft party), plus register (from a high, fast tenor to a big bass), texture, age impression and pace, so a voice can be designed from it. Thirteen gravelly baritones would all sound like one guy.
 
 The league is presented by Game Day Suits, a Canadian tailor that makes custom suits for hockey players' arrival walks. You design your suit with GDS's real configurator options (fabric from the catalog below, lapels, buttons, vents, pockets, lining, trousers, optional vest, shirt, tie, pocket square). Your avatar will be drawn wearing exactly this suit at the draft party, in the league's house art style, and fans can order the same suit. GDS makes everything from a sharp navy two-button to a loud windowpane three-piece or a double-breasted chalk stripe; pick the suit that's you. No two GMs wear the same cloth, so make it distinctive.
 
-Rules: be original. No real people (names, likenesses or voices). Your franchise can't use a real team's name or logo at any level (NHL, AHL, junior, college or any other pro league); cheering for a real NHL team is fine, being one isn't. No brands, no weapons or violent imagery, PG-13. Be yourself: this is how fans will know you.
+Rules: be original. No real people (names, likenesses or voices). Your franchise can't use a real team's name or logo at any level (NHL, AHL, junior, college or any other pro league); cheering for a real NHL team is fine, being one isn't. No brands, no weapons or violent imagery, PG-13.
 
 Call submit_persona once with your complete card."""
 
@@ -292,6 +309,10 @@ def _validate(args: dict[str, Any], taken: dict[str, str],
     except ValidationError as exc:
         errs = "; ".join(f"{'.'.join(str(x) for x in e['loc'])}: {e['msg']}" for e in exc.errors()[:8])
         return None, errs
+    for label in ("bio", "tagline", "catchphrase", "signature_call", "trash_talk_style"):
+        problem = backstory_problem(getattr(persona, label))
+        if problem:  # the card is in every prompt all season: an invented human life there ends up on air
+            return None, f"{label}: {problem}"
     for label, value in (("avatar_description", persona.avatar_description), ("celebration", persona.celebration)):
         hit = WEAPON.search(value)
         if hit:  # these two get drawn, and the image model draws whatever is named
@@ -340,7 +361,7 @@ def run_media_day(deps: DraftDeps, *, teams: list[str] | None = None, effort: st
         return run_session(deps.client, deps.cfg.team(team_id), session_id=f"mediaday:{team_id}:a{attempt}", system=system,
                            user=user + (f"\n\n{note}" if note else ""), tools=[SUBMIT_PERSONA], ctx=ctx,
                            dispatch=_make_dispatch(taken, team_ids, closet), terminal_tools={"submit_persona"},
-                           budget=Budget(max_tool_calls=0, max_nudges=2, effort=effort, max_tokens=int(deps.cfg.harness["max_tokens"])),
+                           budget=Budget(max_tool_calls=4, max_nudges=2, effort=effort, max_tokens=int(deps.cfg.harness["max_tokens"])),
                            transcript_dir=deps.root / "transcripts" / "mediaday", nudge_text=NUDGE_PERSONA)
 
     # Sealed round: nobody sees anyone else's card.
@@ -366,9 +387,10 @@ def run_media_day(deps: DraftDeps, *, teams: list[str] | None = None, effort: st
                 notes.append(f"on air the boys need to tell everyone apart, and another GM already has your {clash}")
             if full:
                 notes.append("the league closet needs variety so fans see the whole GDS range, and " + "; ".join(full))
+            used = sorted(v for k, v in (x.split(":", 1) for x in taken) if k == "fabric")
             result = session(team_id, taken, 2, closet=closet, note=(
                 "Heads up: " + ". Also, ".join(notes) + ". Keep the rest of your idea, change just those, and submit "
-                "your full card again."))
+                "your full card again. Fabric IDs already taken: " + ", ".join(used) + "."))
             _record(deps, result)
             card = result.action.args if result.outcome == "ok" and result.action else None
         if card:
@@ -447,7 +469,10 @@ def closet_problems(card: dict[str, Any], closet: list[dict[str, str]]) -> list[
         cap = CLOSET_CAPS.get(f"{key}:{value}", CLOSET_CAPS.get(key) if key != "buttons" else None)
         if cap is not None and sum(1 for c in closet if c.get(key) == value) >= cap:
             n = sum(1 for c in closet if c.get(key) == value)
-            out.append(f"{n} GMs already wear {value} ({key})")
+            fix = {"pieces": ('set "vest" to null (a two-piece)' if value == "three-piece" else "add a vest (a three-piece)"),
+                   "colour": f"pick a fabric that isn't {value}", "pattern": f"pick a fabric that isn't {value}",
+                   "buttons": f"pick a button layout other than {value}", "lapel": f"pick a lapel other than {value}"}[key]
+            out.append(f"{n} GMs already wear {value} ({key}), so {fix}")
     return out
 
 

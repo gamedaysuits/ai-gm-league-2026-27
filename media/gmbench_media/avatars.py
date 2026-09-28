@@ -249,7 +249,7 @@ class ManifestSource:
             return fs
         prod = ((self.prod.get("teams") or {}).get(speaker) or (self.prod.get("speakers") or {}).get(speaker))
         team = self.league.teams.get(speaker) if self.league else None
-        if prod and team is not None and team.has_persona and prod.get("gm_name") and \
+        if prod and team is not None and team.has_persona and prod.get("gm_name") and not BY_MODEL and \
                 str(prod["gm_name"]).strip().lower() != team.gm_name.strip().lower():
             prod = None  # art drawn for a different persona of this model: don't put the wrong face on air
         if prod and prod.get("files"):
@@ -280,6 +280,9 @@ def production_poses(speaker: str, prod: dict) -> dict[str, dict[str, Path]]:
             got.setdefault("closed", got.get("open"))
             out[pose] = got
     return out
+
+
+BY_MODEL = False  # --voice-by-model (rehearsal proofs only): each model's existing art, whatever character it was drawn for
 
 
 def load_framesets(league, speakers: list[str]) -> dict[str, FrameSet]:

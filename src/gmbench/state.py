@@ -7,6 +7,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass, field
 from typing import Any
 
+from gmbench.config import call_name
 from gmbench.ledger import canonical
 
 
@@ -53,9 +54,7 @@ class LeagueState:
         return totals
 
     def team_label(self, team_id: str) -> str:
-        persona = self.teams[team_id].persona or {}
-        franchise = persona.get("franchise_name")
-        return f"{franchise} ({team_id})" if franchise else team_id
+        return call_name(team_id)
 
 
 def apply(state: LeagueState, event: dict[str, Any]) -> None:

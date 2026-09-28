@@ -40,3 +40,6 @@ media/voices/anchors/
 media/voices/energy_test/
 media/voices/logs/
 media/assets/avatars/costs.jsonl
+
+# data snapshots carry ESPN headlines/notes: kept local, never published (redacted copies only)
+data/snapshots/*.json

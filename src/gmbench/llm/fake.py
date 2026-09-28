@@ -85,7 +85,7 @@ def _forced_group(briefing: str) -> str | None:
 
 
 def _pick_args(pid: int) -> dict[str, Any]:
-    return {"player_id": pid, "on_air_call": "[shouting] Best player on the board, baby!",
+    return {"player_id": pid, "on_air_call": f"[shouting] Player {pid} is mine, baby!",  # unique: no repeated bits
             "public_rationale": "Best player on my board who fits the roster.",
             "joke_logic": "Scripted test line; the joke is that there is no joke.",
             "projected_points": 60, "range_low": 40, "range_high": 80}

@@ -44,6 +44,21 @@ CSS = FONT_FACES + """
 .sponsor .t1 { font-family: "Questrial"; font-size: 14px; letter-spacing: 0.3em; color: #c9cfe6; }
 .sponsor .t2 { font-family: "Archivo"; font-weight: 900; font-stretch: 118%; font-size: 30px; letter-spacing: 0.04em; color: var(--off); line-height: 1.1; }
 .sponsor .t2 b { color: var(--red); font-weight: 900; }
+.sponsor .t2 { margin-top: 2px; display: flex; justify-content: flex-end; }
+.logo.wordmark { font-family: "Archivo"; font-weight: 900; font-stretch: 118%; letter-spacing: 0.04em; color: var(--off); white-space: nowrap; }
+.logo.wordmark b { color: var(--red); }
+.ovl .brand { margin-top: 42px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.ovl .brand .pb { font-family: "Questrial"; font-size: 18px; letter-spacing: 0.42em; color: #c9cfe6; }
+.ovl .brand.end { margin-top: 36px; gap: 18px; }
+.ovl .brand .cta { font-family: "Archivo"; font-weight: 800; font-stretch: 110%; font-size: 30px; letter-spacing: 0.06em; color: var(--off); }
+.card .cardlogo { position: absolute; right: 34px; top: 20px; opacity: 0.95; }
+.card .rtbrand { position: absolute; left: 34px; bottom: 30px; display: flex; align-items: center; gap: 16px; }
+.card .rtbrand .pb { font-family: "Questrial"; font-size: 15px; letter-spacing: 0.34em; color: #c9cfe6; }
+.card .swstrip { position: absolute; left: 0; right: 0; top: 0; height: 14px; border-radius: 18px 18px 0 0;
+  background-size: 140px auto; background-repeat: repeat; box-shadow: inset 0 -2px 0 rgba(0,0,0,0.35); }
+.card .swlab { position: absolute; right: 34px; top: 26px; font-family: "Questrial"; font-size: 14px; letter-spacing: 0.2em;
+  color: #b9c3e8; text-transform: uppercase; white-space: nowrap; max-width: 420px; overflow: hidden; text-overflow: ellipsis; }
+.pill.cup { background: rgba(71,112,219,0.22); color: var(--off); border: 2px solid var(--royal); }
 
 .showtitle { position: absolute; z-index: 5; left: 468px; top: 30px; height: 56px; display: flex; align-items: baseline; gap: 18px; }
 .showtitle .t1 { font-family: "Archivo"; font-weight: 900; font-stretch: 125%; font-size: 38px; letter-spacing: 0.02em; }
@@ -75,7 +90,7 @@ CSS = FONT_FACES + """
 .bigpt .fr { font-family: "Questrial"; color: #d9def0; white-space: nowrap; }
 .bigpt .mdl { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: 8px; white-space: nowrap;
   background: rgba(71,112,219,0.26); border: 1px solid rgba(71,112,219,0.6); font-family: "Questrial"; font-size: 18px; color: var(--off); }
-.bigpt .cutlab { position: absolute; left: 26px; top: 24px; height: 44px; padding: 0 16px; display: flex; align-items: center; gap: 10px;
+.bigpt .cutlab { position: absolute; right: 26px; top: 700px; height: 44px; padding: 0 16px; display: flex; align-items: center; gap: 10px;
   border-radius: 10px; background: #E32402; font-family: "Archivo"; font-weight: 900; font-stretch: 115%; font-size: 22px;
   letter-spacing: 0.1em; color: #fff; box-shadow: 0 8px 22px rgba(0,0,0,0.45); }
 
@@ -126,6 +141,9 @@ CSS = FONT_FACES + """
 .pill.royal { background: var(--royal); color: #fff; }
 .pill.gold { background: #FFC83D; color: #0E1B4D; }
 .pill.ghost { background: rgba(239,240,245,0.10); color: var(--off); border: 1px solid rgba(239,240,245,0.25); }
+.pill.agree { background: #EFF0F5; color: #0E1B4D; }
+.pill.disagree { background: rgba(255,200,61,0.14); color: #FFC83D; border: 2px solid #FFC83D; }
+.pill.think { background: rgba(7,14,44,0.55); color: #EFF0F5; border: 2px solid rgba(239,240,245,0.55); }
 .stat { font-family: "Questrial"; font-size: 21px; color: #d9def0; white-space: nowrap; }
 .stat b { font-family: "Archivo"; font-weight: 800; color: var(--off); font-size: 24px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
@@ -288,13 +306,13 @@ __POSE_RULES__
     radial-gradient(900px 520px at 50% 45%, rgba(71,112,219,0.30), transparent 70%),
     repeating-linear-gradient(115deg, rgba(239,240,245,0.035) 0 2px, transparent 2px 24px),
     #0E1B4D; }
-.ovl .blk { position: absolute; left: 0; top: 250px; width: 1920px; text-align: center; }
+.ovl .blk { position: absolute; left: 0; top: 150px; width: 1920px; text-align: center; }
 .ovl .k1 { font-family: "Questrial"; font-size: 28px; letter-spacing: 0.42em; color: #c9cfe6; }
 .ovl .ttl { margin-top: 18px; font-family: "Archivo"; font-weight: 900; font-stretch: 125%; font-size: 172px; line-height: 1; letter-spacing: 0.01em; color: var(--off); }
 .ovl .bar { margin: 34px auto 30px; width: 180px; height: 10px; border-radius: 5px; background: var(--red); }
 .ovl .l2 { font-family: "Archivo"; font-weight: 800; font-stretch: 112%; font-size: 34px; letter-spacing: 0.08em; color: var(--off); }
 .ovl .l3 { margin-top: 18px; font-family: "Questrial"; font-size: 26px; letter-spacing: 0.2em; color: #c9cfe6; text-transform: uppercase; }
-.ovl .l4 { position: absolute; left: 0; width: 1920px; top: 704px; text-align: center; font-family: "Questrial"; font-size: 20px;
+.ovl .l4 { position: absolute; left: 0; width: 1920px; top: 1000px; text-align: center; font-family: "Questrial"; font-size: 20px;
   letter-spacing: 0.08em; color: #aeb8de; }
 """
 

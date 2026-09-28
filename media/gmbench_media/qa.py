@@ -630,7 +630,8 @@ class ClipQA:
         seq = []
         D0 = self.pages_data[0][1] if self.layout == "short" and self.pages_data else {}
         end_on = [float(r[0]) for r in D0.get("v") or [] if r[1] == "end" and r[2]]
-        stop = end_on[0] + 0.45 if end_on else self.last_end + 0.3  # shorts: until the end card is opaque
+        # shorts: until the end card is opaque; 16:9: to the last frame (a demo segment ends on its last shot)
+        stop = end_on[0] + 0.45 if end_on else (self.T if self.layout == "studio" else self.last_end + 0.3)
         for t in pts:
             if t >= stop:
                 continue
@@ -797,15 +798,19 @@ class ClipQA:
         ctx_on = [float(r[0]) for r in D.get("v") or [] if r[1] == "ctx" and r[2]]
         if not ctx_on or min(ctx_on) > 3.0:
             fails.append("no context strip by 3 s")
-        punches = sorted(float(p["t"]) for p in self.plan.punches if p.get("beat_mark"))
+        # dry time: from one laugh (the kicker) to the next joke's first word -- a long joke is not dry
+        spans = sorted((float(p["punch_start"]), float(p["kicker_end"])) for p in self.plan.punches if p.get("beat_mark"))
         last_word = max((w["said"] for ln in self.lines for w in word_times(ln)), default=0.0)
-        pts = [0.0] + punches + [last_word]
-        gaps = [(b - a, a) for a, b in zip(pts, pts[1:])]
+        gaps, prev_end = [], 0.0
+        for a_, b_ in spans:
+            gaps.append((max(0.0, a_ - prev_end), prev_end))
+            prev_end = max(prev_end, b_)
+        gaps.append((max(0.0, last_word - prev_end), prev_end))
         worst = max(gaps) if gaps else (0, 0)
         if worst[0] > 13.0:
-            fails.append(f"{worst[0]:.1f} s without a punchline (from {worst[1]:.1f} s)")
+            fails.append(f"{worst[0]:.1f} s without a joke (from {worst[1]:.1f} s)")
         elif worst[0] > 10.0:
-            warns.append(f"{worst[0]:.1f} s without a punchline (from {worst[1]:.1f} s)")
+            warns.append(f"{worst[0]:.1f} s without a joke (from {worst[1]:.1f} s)")
         if any(ln["speaker"] == "host" for ln in self.lines):
             fails.append("the host is in the short")
         beats = [(m_["ke"], m_["ke"] + float(m_.get("beat") or 0.4) + 0.1) for m_ in self._marks()]
@@ -842,7 +847,7 @@ class ClipQA:
         if warns:
             return {"status": WARN, "summary": "; ".join(warns), **data}
         return {"status": PASS, "summary": f"{self.T:.1f} s; first word {fw:.2f} s; context at {min(ctx_on):.1f} s; "
-                                           f"a punchline every <= {worst[0]:.1f} s; no host; no dead air; model names "
+                                           f"never more than {worst[0]:.1f} s without a joke; no host; no dead air; model names "
                                            f"on every plate", **data}
 
     def check_comic_gates(self) -> dict:
@@ -883,7 +888,9 @@ class ClipQA:
         for e in slams:
             st = float(e.get("slam_t") or e["t"])
             for m_ in marks:
-                if m_["ks"] - 0.05 <= st <= m_["ke"] + float(m_.get("beat") or 0.3) - 0.01 or abs(st - m_["ke"]) < 0.4:
+                # the rule: a slam within 400 ms of a kicker lands after the laugh beat -- so never from 400 ms
+                # before the kicker to the end of its beat
+                if m_["ks"] - 0.4 <= st < m_["ke"] + float(m_.get("beat") or 0.3) - 0.01:
                     coll.append(f"{e.get('player')} @ {st:.2f}")
         if coll:
             fails.append(f"slam on a punchline: {coll[:3]}")
@@ -895,7 +902,18 @@ class ClipQA:
                                            f"beats >= 1.5 s apart, no filler / stat kept, no slam on a punchline", **data}
 
     CHECKS = ("frames", "rig.face", "rig.glance", "mouth.open", "sync.render", "sync.voice", "captions", "word.cards",
-              "gestures", "listeners", "shots", "first5", "short.gates", "comic.gates", "names")
+              "gestures", "listeners", "shots", "first5", "short.gates", "comic.gates", "names", "brand")
+
+    def check_brand(self) -> dict:
+        """The Game Day Suits logo: the real file, not the wordmark stand-in."""
+        from .suits import brand_logo_is_placeholder
+        ph = brand_logo_is_placeholder()
+        if ph is None:
+            return {"status": WARN, "summary": "no logo at media/assets/brand/gds-logo.png: the wordmark stands in"}
+        if ph:
+            return {"status": WARN, "summary": "the logo is the PLACEHOLDER wordmark: put the real gds-logo.png in "
+                                               "media/assets/brand/ and re-render"}
+        return {"status": PASS, "summary": "Game Day Suits logo on screen (the real file)"}
 
     def run(self) -> dict:
         t0 = time.time()
