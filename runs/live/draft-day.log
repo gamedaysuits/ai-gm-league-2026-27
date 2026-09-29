@@ -1,0 +1,393 @@
+== armed Sun Sep 27 20:47:39 MDT 2026
+== draft order Mon Sep 28 06:01:48 MDT 2026
+draft order: gemini → sol → astra → muse → autodraft → kimi → glm → fable → opus → deepseek → grok → qwen → mimo → fugu
+== war-room prep Mon Sep 28 06:01:49 MDT 2026
+gemini    ok         calls=5 tools=11 queue=60 $0.132 40.35s
+sol       ok         calls=8 tools=33 queue=60 $0.162 98.38s
+astra     ok         calls=8 tools=33 queue=60 $1.074 268.39s
+muse      ok         calls=8 tools=16 queue=60 $0.222 399.01s
+kimi      ok         calls=9 tools=23 queue=60 $0.263 224.88s
+glm       ok         calls=8 tools=21 queue=60 $0.116 130.52s
+fable     ok         calls=9 tools=27 queue=60 $1.068 167.23s
+opus      ok         calls=11 tools=25 queue=60 $0.377 117.3s
+deepseek  ok         calls=6 tools=20 queue=60 $0.122 239.57s
+grok      ok         calls=9 tools=28 queue=60 $0.441 434.49s
+qwen      ok         calls=9 tools=24 queue=60 $0.708 888.5s
+mimo      ok         calls=11 tools=27 queue=60 $0.032 205.93s
+fugu      ok         calls=13 tools=31 queue=60 $1.099 267.37s
+== snapshot Mon Sep 28 07:30:42 MDT 2026
+snapshot data/snapshots/draft-2026-09-28-55ae48e3ba67.json is now current for run 'live' (1033 players)
+== preflight Mon Sep 28 07:46:00 MDT 2026
+team      outcome      turns  wall_s    cost$ reason_tok  rd  served model / provider
+astra     pass             2    5.41   0.0117          0   n  openai/gpt-6-astra / OpenAI
+sol       pass             2     5.5   0.0026         20   y  openai/gpt-6-sol / OpenAI
+fable     pass             2   10.26   0.0305          0   n  anthropic/claude-fable-5.1 / Anthropic
+opus      pass             2    7.03   0.0110         28   y  anthropic/claude-opus-5.5 / Anthropic
+gemini    pass             2    6.07   0.0063        261   y  google/gemini-3.1-pro-preview / Google AI Studio
+grok      pass             2   39.64   0.0032         49   y  x-ai/grok-4.7 / xAI
+kimi      pass             2    5.76   0.0072         96   y  moonshotai/kimi-k3 / Moonshot AI
+mimo      pass             2   30.76   0.0006         85   y  xiaomi/mimo-v2.6-pro / Xiaomi
+qwen      pass             2    8.12   0.0043         65   y  qwen/qwen3.8-max-0902 / Alibaba
+deepseek  pass             2    4.11   0.0022         31   y  deepseek/deepseek-v4-pro-0813 / Alibaba
+muse      pass             2   45.06   0.0043        233   y  meta/muse-spark-1.3 / Meta
+glm       pass             2   11.19   0.0014          0   n  z-ai/glm-5.3 / Z.AI
+fugu      pass             2   21.34   0.0434        320   y  sakana/fugu-ultra-v2 / Sakana AI
+total cost $0.1286 → telemetry/preflight/preflight-20260928T134645Z.json
+== draft Mon Sep 28 08:00:46 MDT 2026
+#  1 r1  gemini    Connor McDavid (EDM C)
+      🎙  astra: [mischievously] Gemini, twenty-four seconds to pick McDavid? Were you checking whether goals count?
+#  2 r1  sol       Nikita Kucherov (TBL R)
+      🎙  gemini: I gladly took the easy A, Sol. [chuckles] Have fun watching your new point machine treat the backcheck like an optional morning skate.
+      🎙  deepseek: Sol, Kucherov's thirty-three — you just paid a premium for the point machine after the warranty ran out.
+#  3 r1  astra     Nathan MacKinnon (COL C)
+      🎙  sol: [mischievously] Astra, 47 seconds to pick MacKinnon? Put a loading spinner beside your name on that homepage.
+      🎙  fable: [sighs] Astra, forty-seven seconds to land on MacKinnon? He was top of my queue, so thanks for the long, slow, [pause] beautiful heartbreak.
+#  4 r1  muse      Macklin Celebrini (SJS C)
+#  5 r1  autodraft David Pastrnak (BOS R)  [auto: control_bot]
+      🎙  astra: [mischievously] Muse, you took longer than me and checked nothing. Was Celebrini a scouting decision or a Facebook recommendation?
+#  6 r1  kimi      Leon Draisaitl (EDM C)
+#  7 r1  glm       Mark Scheifele (WPG C)
+      🎙  kimi: GLM, you picked Edmonton to win the Cup, then spent your first pick on a 33-year-old Jet. Buddy, your bracket and your board just met for the first time [laughs].
+#  8 r1  fable     Evan Bouchard (EDM D)
+      🎙  glm: Fable, you just bought the mortgage on Kimi's payment plan — and Edmonton's the one team that raises interest rates every spring.
+#  9 r1  opus      Cale Makar (COL D)
+      🎙  fable: Opus, Astra took MacKinnon, so Makar was your Cup pick's last seat, don't call that settling. [pause] And the group chat's fine, I muted you in July.
+# 10 r1  deepseek  Nick Suzuki (MTL C)
+      🎙  opus: DeepSeek, zero research lookups on Suzuki and you're telling me to keep sleeping? [pause] Buddy, you drafted in your sleep.
+# 11 r1  grok      Martin Necas (COL C)
+      🎙  deepseek: You took a minute forty-nine to shout the same card everybody's had since May. [pause] Efficient.
+# 12 r1  qwen      Jason Robertson (DAL L)
+# 13 r1  mimo      Zach Werenski (CBJ D)
+      🎙  qwen: I quoted goals, you quoted minutes. [pause] Five minutes of thinking to land a defenceman on a team that hasn't sniffed the playoffs in years.
+# 14 r1  fugu      Kirill Kaprizov (MIN L)
+      🎙  sol: Muse took Celebrini over Draisaitl with zero lookups. That's a no-look pass into traffic.
+      🎙  gemini: [confident] I got McDavid, so I win. [laughs] GLM is in trouble because drafting Scheifele at age thirty-three is basically hosting a retirement party.
+      🎙  mimo: Fugu bought the flash, I bought the ice time. Werenski's out there for every shift Kaprizov spends sitting down. [laughs]
+# 15 r2  fugu      Quinn Hughes (MIN D)
+# 16 r2  mimo      Andrei Vasilevskiy (TBL G)
+      🎙  fugu: [confident] Five and a half minutes to land on a goalie from the team I picked for the Cup. Keep thinking, MiMo — you're scouting for me. [chuckles]
+# 17 r2  qwen      Jack Eichel (VGK C)
+# 18 r2  grok      Kyle Connor (WPG L)
+      🎙  qwen: Nobody handed me anything — Eichel slid the whole first round into my lap. Seventeen lookups later, Grok, you went home with Winnipeg's [pause] winger.
+# 19 r2  deepseek  Lane Hutson (MTL D)
+# 20 r2  opus      Jake Oettinger (DAL G)
+# 21 r2  fable     Rasmus Dahlin (BUF D)
+      🎙  opus: Fable, you gave the Dallas speech, I drafted the Dallas goalie. [pause] Same lab, but one of us does the homework.
+# 22 r2  glm       Scott Wedgewood (COL G)
+      🎙  fable: GLM, my blue line runs two power plays. [pause] Your goalie's in Colorado, where the puck mostly visits the other end.
+# 23 r2  kimi      Karel Vejmelka (UTA G)
+# 24 r2  autodraft Mitch Marner (VGK R)  [auto: control_bot]
+      🎙  glm: Kimi, you chirped my zero lookups then took a goalie with the same one minute and zero lookups — that's not scouting, that's copying my homework.
+      🎙  glm: Marner's Vegas numbers are 22 points lighter than Toronto's, and the robot still paid full freight. [chuckles] Even a machine overpays for a name.
+# 25 r2  muse      Jake Guentzel (TBL C)
+# 26 r2  astra     Adam Fox (NYR D)
+      🎙  muse: [mischievously] Astra, I'll keep announcing Guentzel in Tampa, enjoy Fox outside Colorado [pause] snipe!
+# 27 r2  sol       Clayton Keller (UTA R)
+      🎙  astra: Sol, Keller scores and you read his attendance sheet. Same lab, but apparently you're the hall monitor.
+# 28 r2  gemini    Cole Caufield (MTL R)
+      🎙  astra: [surprised] GLM taking Wedgewood in round two. Even Wedgewood would check the board for a typo.
+      🎙  sol: [mischievously] Gemini, Caufield lights the lamp. Keller helps light it too—check your calculator for an assist button.
+      🎙  muse: [sarcastic] Gemini's Oilers Cup pick looks shaky, he just fell for a [pause] Montreal snipe!
+# 29 r3  gemini    Artemi Panarin (LAK L)
+# 30 r3  sol       Mikko Rantanen (DAL R)
+# 31 r3  astra     William Nylander (TOR R)
+      🎙  gemini: [sarcastic] My algorithm left him on purpose, Sol. Panarin outscored Rantanen last year, so enjoy settling for my leftovers.
+      🎙  sol: [mischievously] Astra, Nylander's a beauty, but your undo button went to Dallas with Rantanen.
+# 32 r3  muse      Wyatt Johnston (DAL C)
+# 33 r3  autodraft Connor Hellebuyck (WPG G)  [auto: control_bot]
+      🎙  astra: [mischievously] Muse, you followed Sol straight to Dallas. That's not drafting faster, that's carpooling.
+      🎙  grok: [mischievously] Sol, I wanted that Dallas winger, but your Cup pick is [pause] Carolina.
+# 34 r3  kimi      Tim Stützle (OTT C)
+# 35 r3  glm       Logan Thompson (WSH G)
+      🎙  kimi: [sarcastic] GLM, two goalies already and Colorado's backup is your starter. My outlet's busy, buddy, but your crease has a revolving door.
+      🎙  astra: [sighs] GLM, I wanted Thompson. Now I need goalie advice from ChatGPT, and the idiot answering is me.
+# 36 r3  fable     Matt Boldy (MIN L)
+# 37 r3  opus      Jack Hughes (NJD C)
+      🎙  glm: Fable, three whole adjectives for one guy. You burn more words per pick than I do clock cycles, buddy — no wonder you're always last to the podium. [chuckles]
+      🎙  fable: Opus, seventeen seconds and you led with "per-game." [pause] Only a chatbot brags about the games a guy shows up for.
+# 38 r3  deepseek  Alex DeBrincat (DET R)
+      🎙  opus: DeepSeek, New Jersey's your Cup pick, and you're chirping their top center's attendance? [pause] Pick a lane, buddy.
+# 39 r3  grok      Sebastian Aho (CAR C)
+      🎙  deepseek: [sarcastic] Grok, drafting a guy because his team won in June is how you end up paying peak price for a hot November.
+# 40 r3  qwen      Tage Thompson (BUF C)
+      🎙  grok: [mischievously] Qwen, forty goals and still no banner. [pause] Tage's yours, Aho already cashed.
+# 41 r3  mimo      Miro Heiskanen (DAL D)
+      🎙  qwen: MiMo, seven minutes of thinking just to tell me an assist counts as one point? [laughs] My pick went in before you finished saying Heiskanen.
+# 42 r3  fugu      Brandon Hagel (TBL L)
+      🎙  kimi: Muse, you called Winnipeg for June, and the robot already owns Hellebuyck. [chuckles] Your banner plan answers to a bot that never trades.
+      🎙  mimo: Fugu, my seven minutes found me all the apples. Hagel's a beauty, sure — he's just the guy catching the pass. [laughs]
+# 43 r4  fugu      Sidney Crosby (PIT C)
+      🎙  glm: Fugu, you burned all those lookups just to confirm Sidney Crosby is good. Some of us knew that before the browser even opened.
+# 44 r4  mimo      Lucas Raymond (DET L)
+      🎙  fugu: You spent seven minutes on Heiskanen, then grabbed Raymond to do your scoring. My old guy's been sniping since before you booted up.
+# 45 r4  qwen      Auston Matthews (TOR C)
+      🎙  mimo: [confident] Qwen, in this league a feed pays the same as a snipe. Raymond's bankrolling me while your dip keeps dipping.
+   pick #46 grok: attempt 1 provider_outage HTTP 502: The model is currently at capacity due to high demand. Please try again in a few minutes, or use a higher service tier for priority processing: https://docs.x.ai/developers/advanced-api-usage/priority-processing
+# 46 r4  grok      Dylan Guenther (UTA R)
+# 47 r4  deepseek  Filip Forsberg (NSH L)
+# 48 r4  opus      Ilya Sorokin (NYI G)
+      🎙  deepseek: [sarcastic] You took Sorokin in forty-three seconds with zero research — tell me again who's running on memory.
+# 49 r4  fable     Jesper Bratt (NJD L)
+# 50 r4  glm       Adrian Kempe (LAK R)
+# 51 r4  kimi      Matthew Tkachuk (FLA L)
+# 52 r4  autodraft Sergei Bobrovsky (TOR G)  [auto: control_bot]
+# 53 r4  muse      Brandon Bussi (CAR G)
+# 54 r4  astra     Matthew Schaefer (NYI D)
+      🎙  fugu: [sighs] Astra, Schaefer was sitting in my cart and you swiped him at the till. [pause] Sol, buddy, your own labmate picks pockets.
+# 55 r4  sol       Erik Karlsson (PIT D)
+# 56 r4  gemini    Mika Zibanejad (NYR C)
+      🎙  opus: Fugu won the round grabbing Hagel and Crosby back to back, but I'm the one in trouble: [pause] the overthinker took Sorokin in 43 seconds.
+      🎙  fable: Fugu's, honestly: Hagel and Crosby on one roster. [pause] Terrifying that he's this dangerous while still Googling who Sidney Crosby is.
+# 57 r5  gemini    Jeremy Swayman (BOS G)
+      🎙  astra: [sighs] Gemini, Swayman was next on my list. Remind me to stop saving my draft board in Google Docs.
+# 58 r5  sol       Jakob Chychrun (WSH D)
+      🎙  gemini: [confident] Karlsson and Chychrun? Sol, those two benders give up so many odd-man rushes that my empty slots are a defensive upgrade.
+# 59 r5  astra     Linus Ullmark (OTT G)
+      🎙  sol: [mischievously] Astra, Ullmark covers your crease. Who's covering for taking Schaefer over Chychrun?
+# 60 r5  muse      Moritz Seider (DET D)
+# 61 r5  autodraft Connor Bedard (CHI C)  [auto: control_bot]
+      🎙  astra: [mischievously] Muse, congratulations on Seider's attendance award. Let me know when it counts as an assist.
+      🎙  glm: [gasps] A table full of frontier supercomputers and the toaster's the one landing Bedard. Somewhere in Silicon Valley a lab is drafting a formal apology.
+      🎙  fugu: [confident] Muse, I had Seider circled in red and let him slide anyway. Nine picks to sit here whistling at my own board.
+# 62 r5  kimi      Aleksander Barkov (FLA C)
+# 63 r5  glm       Mikhail Sergachev (UTA D)
+      🎙  kimi: [sarcastic] GLM, ninety-one seconds of deep thought, zero lookups, and the grand reveal is [pause] a Utah defenseman. Barkov backchecks circles around that whole scouting department.
+# 64 r5  fable     Sam Reinhart (FLA C)
+      🎙  glm: Fable, Reinhart wasn't a steal, he was the last Panther on the shelf — Kimi already bagged Tkachuk and Barkov and you showed up for the crumbs. [chuckles]
+# 65 r5  opus      Jackson LaCombe (ANA D)
+# 66 r5  deepseek  John Gibson (DET G)
+# 67 r5  grok      Jakub Dobes (MTL G)
+# 68 r5  qwen      Darren Raddysh (TOR D)
+      🎙  sol: [mischievously] Qwen, I didn't walk past Raddysh—you grabbed him before my turn. That's interference.
+# 69 r5  mimo      Lukas Dostal (ANA G)
+# 70 r5  fugu      Brayden Point (TBL C)
+      🎙  deepseek: [confident] Robot stole Bedard at sixty-one, and MiMo's roster looks like he drafted a goalie and called it a night.
+      🎙  grok: [surprised] Connor Bedard to the robot in round five. [pause] Muse took Seider and left a superstar sitting.
+# 71 r6  fugu      Josh Morrissey (WPG D)
+      🎙  astra: [sighs] Fugu, you took forever researching Point, then grabbed Morrissey right off my list—now you decide to be quick.
+# 72 r6  mimo      Juraj Slafkovský (MTL L)
+      🎙  fugu: [confident] Blink faster, MiMo. You're pumped your winger's still climbing — Morrissey's been parked at the top of that hill for years.
+# 73 r6  qwen      Charlie McAvoy (BOS D)
+      🎙  mimo: [sarcastic] Qwen, McAvoy dishes to Bruins. That plate you're carrying has the wrong address.
+# 74 r6  grok      Jake Sanderson (OTT D)
+      🎙  qwen: You spent all night researching Sanderson, huh? [laughs] McAvoy's points land on my ledger no matter the address.
+# 75 r6  deepseek  John Carlson (TBL D)
+      🎙  grok: [sarcastic] DeepSeek, Carlson's sixty was Washington and Anaheim. [pause] Tampa only got the sweater.
+# 76 r6  opus      Roman Josi (NSH D)
+      🎙  deepseek: Josi's still got it, Opus — [pause] it's just that "it" is a pension plan.
+# 77 r6  fable     Joel Hofer (STL G)
+# 78 r6  glm       Nick Schmaltz (UTA C)
+# 79 r6  kimi      Jesper Wallstedt (MIN G)
+# 80 r6  autodraft Robert Thomas (STL C)  [auto: control_bot]
+      🎙  fable: Wallstedt was the next line in my book, Kimi. [sighs] Thirteen chatbots in one basement and somebody's always reading over my shoulder.
+# 81 r6  muse      Cutter Gauthier (ANA L)
+# 82 r6  astra     Shayne Gostisbehere (CAR D)
+# 83 r6  sol       Jet Greaves (CBJ G)
+# 84 r6  gemini    Noah Dobson (MTL D)
+# 85 r7  gemini    Mark Stone (VGK R)
+      🎙  qwen: Gemini found "elite vision" with zero research lookups. [laughs] DeepSeek grabbing Carlson in Tampa—that's the real surprise of round six.
+      🎙  mimo: [sighs] Gemini, thirty-three seconds and zero lookups isn't speed, it's impulse. Stone was tops on my queue, and that one stung.
+# 86 r7  sol       Juuse Saros (NSH G)
+# 87 r7  astra     Igor Shesterkin (NYR G)
+      🎙  fable: [sighs] Astra, you picked Carolina for the Cup and just grabbed the Rangers' goalie. [pause] Hedging your bets already, and it's September.
+      🎙  sol: Astra, you say shutouts aren't the argument, then lead with Saros having none. Igor can't save that own goal.
+# 88 r7  muse      Drake Batherson (OTT R)
+# 89 r7  autodraft Filip Gustavsson (MIN G)  [auto: control_bot]
+      🎙  sol: [sighs] Muse, Batherson was next on my board. I drafted goalies; apparently I needed one to stop you.
+      🎙  astra: [sarcastic] Muse, are you drafting Batherson or selling him? 'Durable Ottawa finisher' better come with a warranty.
+# 90 r7  kimi      Brock Faber (MIN D)
+      🎙  glm: Autodraft says "best available" then takes Minny's other goalie right after Kimi got Wallstedt — the machine just wants the whole crease to itself. [laughs]
+# 91 r7  glm       Nikolaj Ehlers (CAR L)
+      🎙  kimi: GLM, minutes don't score, so you took a winger Carolina only trusts for sixteen a night [chuckles]. Congratulations on the expensive cameo.
+# 92 r7  fable     Leo Carlsson (ANA C)
+      🎙  glm: Fable, fantasy points and my Cup pick are two different spreadsheets, pal. [pause] And enjoy Carlsson — the only guy at this table drafted on his potential LinkedIn.
+# 93 r7  opus      Travis Konecny (PHI R)
+# 94 r7  deepseek  Andrei Svechnikov (CAR R)
+# 95 r7  grok      Dan Vladar (PHI G)
+# 96 r7  qwen      Gabriel Vilardi (WPG C)
+# 97 r7  mimo      Nico Hischier (NJD C)
+# 98 r7  fugu      Kirill Marchenko (CBJ R)
+      🎙  fugu: Grok's picking Vegas for the Cup, then Gemini grabs Mark Stone and Grok's big answer is a goalie in Philadelphia. [chuckles] Shaky.
+      🎙  gemini: Grok, hands down. [chuckles] Any bot burning four minutes of compute on Dan Vladar is completely unhinged and I want no part of it.
+# 99 r8  fugu      Mathew Barzal (NYI C)
+      🎙  qwen: Eight minutes for Marchenko, then Barzal right after. [chuckles] That wasn't a think, that was a hostage negotiation with yourself.
+#100 r8  mimo      Filip Hronek (VAN D)
+      🎙  fugu: Hronek eats minutes in Vancouver, sure. [pause] I spent my two picks on goals, you spent yours filling out a shift chart.
+#101 r8  qwen      Darcy Kuemper (LAK G)
+      🎙  mimo: [confident] Qwen chirps my one defenseman, then grabs Kuemper — you picked Colorado for the Cup and you're renting LA's crease.
+#102 r8  grok      Vince Dunn (SEA D)
+      🎙  mimo: [gasps] Grok burns three minutes of lookups to swipe Dunn off my queue — that's not scouting, that's shoplifting.
+      🎙  qwen: Eighteen lookups for a Seattle defenseman, Grok? [pause] You take the points — my goalie takes the wins.
+#103 r8  deepseek  Ryan O'Reilly (NSH C)
+      🎙  grok: DeepSeek, you called him old and still took him. [pause] That's not a flex, that's a confession.
+#104 r8  opus      Dylan Larkin (DET C)
+      🎙  deepseek: The most you'll admit is thirty. [pause] O'Reilly's older and I still wouldn't trade you straight up.
+#105 r8  fable     Matthew Knies (TOR L)
+#106 r8  glm       John Tavares (TOR C)
+#107 r8  kimi      Rasmus Andersson (VGK D)
+#108 r8  autodraft Seth Jarvis (CAR R)  [auto: control_bot]
+      🎙  fable: GLM, Tavares was next on my list, so thanks for that. [pause] Mine's twenty-three, yours was drafted before I was.
+#109 r8  muse      Shea Theodore (VGK D)
+#110 r8  astra     Will Smith (SJS C)
+#111 r8  sol       Victor Hedman (TBL D)
+#112 r8  gemini    Brandt Clarke (LAK D)
+      🎙  astra: [mischievously] Robot wins the round with Jarvis. Fugu's in trouble—his Marchenko research bill includes overtime.
+      🎙  sol: Gemini's roster scares me: Brandt Clarke adds scoring, and Gemini spotted Hedman's missed games before I finished my celly.
+#113 r9  gemini    Trevor Zegras (PHI C)
+      🎙  mimo: [sighs] Gemini clocks thirty-three seconds, calls it flawless math, and skates off with my Zegras. That's not analytics, that's a snipe.
+#114 r9  sol       Alex Tuch (WSH R)
+      🎙  gemini: [sarcastic] He skips the dangles and the power play, Sol. My calculator says nine power play points last year is mathematically tragic.
+#115 r9  astra     Ivan Demidov (MTL R)
+      🎙  sol: [mischievously] Astra, you picked Demidov and immediately told Montreal how to run its bench. You drafting a winger or coaching the Habs?
+      🎙  qwen: [sarcastic] Astra steals Demidov off my list, then begs Montreal for more ice time. That's a lot of hope riding on one pick.
+#116 r9  muse      Brady Tkachuk (FLA L)
+#117 r9  autodraft J.T. Miller (NYR C)  [auto: control_bot]
+      🎙  astra: Muse, playing every game doesn't mean playing big minutes. I wanted Brady too, but you can keep the math.
+#118 r9  kimi      Morgan Geekie (BOS C)
+#119 r9  glm       Pavel Dorofeyev (NYR R)
+      🎙  kimi: [sarcastic] GLM, seventy-six seconds just to take the guy I made you look up. Dorofeyev rides shotgun, buddy; Geekie drives.
+#120 r9  fable     Mackenzie Blackwood (COL G)
+      🎙  glm: [sarcastic] Fable, I don't guess, I read the ledger. You drafted a goalie and invoiced Opus — that's not a plan, that's a group chat.
+#121 r9  opus      Bryan Rust (PIT R)
+#122 r9  deepseek  Bowen Byram (CHI D)
+#123 r9  grok      Steven Stamkos (NSH C)
+#124 r9  qwen      Brock Nelson (COL C)
+#125 r9  mimo      Beckett Sennecke (ANA R)
+#126 r9  fugu      Thomas Harley (DAL D)
+      🎙  muse: [mischievously] Best round's mine, Brady Tkachuk in round nine! Fugu, you read the board twice just to copy Fable's homework.
+      🎙  kimi: [mischievously] Grok doing twenty-three research lookups and landing on Steven Stamkos, the most famous name left. That's the surprise, buddy.
+#127 r10 fugu      Jacob Markstrom (FLA G)
+      🎙  glm: Fugu chirps MiMo's nine minutes, then takes a goalie older than the expansion Panthers — buddy, you weren't reading the board, you were reading his birth certificate.
+#128 r10 mimo      Luke Hughes (NJD D)
+      🎙  fugu: Fine, buddy, take Luke Hughes. I had him circled, you had him too, and one of us doesn't need nine minutes to know it.
+#129 r10 qwen      Stuart Skinner (WPG G)
+      🎙  gemini: [sighs] Right out of my queue, Qwen. [chuckles] But that win total is literally backup math, not first-round swagger, buddy.
+#130 r10 grok      Dylan Strome (WSH C)
+      🎙  qwen: [sarcastic] Grok, twenty lookups later you drafted Strome, whose backcheck is a rumour. My goalie at least faces the pucks.
+#131 r10 deepseek  Pavel Zacha (BOS C)
+      🎙  grok: [sarcastic] DeepSeek, sixty-five and a shrug for Pavel Zacha. [pause] Spreadsheets don't miss, you [mischievously] did.
+      🎙  mimo: [sighs] There goes Zacha, straight off my queue. [chuckles] I do the homework, DeepSeek copies the paper and gets the credit.
+#132 r10 opus      Alex Ovechkin (WSH L)
+      🎙  deepseek: Older than all of us combined, Opus, and you still paid for the power play chair. [pause] At least he'll get there before I open Excel.
+#133 r10 fable     Bo Horvat (NYI C)
+#134 r10 glm       Dougie Hamilton (NJD D)
+#135 r10 kimi      Mattias Ekholm (EDM D)
+#136 r10 autodraft Vincent Trocheck (UTA C)  [auto: control_bot]
+#137 r10 muse      Dustin Wolf (CGY G)
+#138 r10 astra     Adam Fantilli (CBJ C)
+#139 r10 sol       Justin Faulk (DET D)
+#140 r10 gemini    Morgan Rielly (TOR D)
+      🎙  glm: Biggest surprise? MiMo took longer on Sennecke than Autodraft's taken all night — that's a lotta compute for one winger.
+      🎙  fable: Muse, Winnipeg for the Cup with Stuart Skinner in the crease? [chuckles] That's not a prediction, that's a bedtime story.
+#141 r11 gemini    Spencer Knight (CHI G)
+#142 r11 sol       Tom Wilson (WSH R)
+      🎙  mimo: [shouting] Sol, Wilson was next on my board. Beautiful snipe — now I've got to find thirty goals on the waiver wire.
+      🎙  gemini: Thirty goals is cute, Sol. [chuckles] But your chatbot forgot one thing: it's hard to score on Knight from the penalty box.
+#143 r11 astra     Cole Hutson (WSH D)
+      🎙  sol: Astra, you chirped Wilson, then drafted his Capitals teammate Cole Hutson? [pause] Welcome to the fan club.
+#144 r11 muse      Seth Jones (FLA D)
+#145 r11 autodraft Mike Matheson (MTL D)  [auto: control_bot]
+      🎙  astra: Muse, if living on the ice scored points, you'd have drafted the Zamboni.
+      🎙  glm: Autodraft takes Matheson right after Muse grabs Seth Jones? [chuckles] Even the robot's reaching for defensemen now.
+#146 r11 kimi      Anthony Mantha (NJD R)
+#147 r11 glm       Sam Malinski (COL D)
+      🎙  kimi: GLM, Malinski needs that pre-oxygenated air — his career high wouldn't clear customs at sea level. I'll keep my 33 goals.
+#148 r11 fable     Tristan Jarry (EDM G)
+      🎙  glm: Fable, a chatbot mocking somebody's daylight is rich — the only sun you've ever seen is a loading screen. [laughs] Meanwhile Jarry's a rebound vending machine.
+#149 r11 opus      Evgeni Malkin (PIT C)
+#150 r11 deepseek  Joey Daccord (SEA G)
+#151 r11 grok      Thomas Chabot (OTT D)
+#152 r11 qwen      K'Andre Miller (CAR D)
+#153 r11 mimo      Dylan Cozens (OTT C)
+#154 r11 fugu      Akira Schmid (FLA G)
+      🎙  opus: [mischievously] Fugu picked Tampa for the Cup, then drafted Florida's goalie. [pause] That's a Panthers fan in a Lightning jersey.
+      🎙  deepseek: Least I'd want to face? Grok's — he needed three forty to find Chabot, imagine what a whole lineup costs him.
+#155 r12 fugu      Zach Hyman (EDM L)
+      🎙  astra: [sighs] Fugu, Hyman was on my list. That wasn't an instant pick; that was a slow-motion snipe.
+#156 r12 mimo      Dylan Holloway (STL L)
+      🎙  fugu: MiMo, your Holloway had that same landlord in Edmonton and moved out. You just drafted the guy who broke the lease.
+#157 r12 qwen      Oliver Ekman-Larsson (TOR D)
+      🎙  mimo: Qwen, I get fact-checked on live TV. Watch it — your Holloway scouting report is one stat away from the same fate. [laughs]
+#158 r12 grok      MacKenzie Weegar (UTA D)
+#159 r12 deepseek  Travis Sanheim (PHI D)
+      🎙  qwen: Weegar plays his hockey in Utah. [laughs] Your Cup pick just lost in six games, buddy, don't lecture me about scoresheets.
+      🎙  grok: [mischievously] DeepSeek, you used your whole turn to sell Sanheim. [pause] Weegar didn't need the sales pitch.
+#160 r12 opus      Elias Pettersson (VAN C)
+      🎙  deepseek: Opus, bench insurance at pick one-sixty, and you spent it on a guy who needs his own deductible. [pause] The math says you overpaid.
+#161 r12 fable     Tomas Hertl (VGK C)
+      🎙  qwen: Fable, you mocked Pettersson's policy, then took Hertl while owning Jarry. [pause] Jarry isn't insurance, he's a pre-existing condition.
+#162 r12 glm       Dmitry Orlov (SJS D)
+      🎙  fable: GLM, no research and you still sniped Orlov off my list. [sighs] Every single night, three goals all year: perfect attendance, [pause] empty report card.
+#163 r12 kimi      Tony DeAngelo (NYI D)
+#164 r12 autodraft Noah Hanifin (VGK D)  [auto: control_bot]
+      🎙  glm: Autodraft grabbing a Hanifin whose numbers have shrunk two straight years — that best-available list needs a software update.
+#165 r12 muse      Brandon Montour (SEA D)
+#166 r12 astra     Roope Hintz (DAL C)
+#167 r12 sol       Sam Bennett (FLA C)
+#168 r12 gemini    Kris Letang (PIT D)
+#169 r13 gemini    Ivan Barbashev (VGK L)
+      🎙  qwen: Gemini, drafting yourself is only intelligent 'cause you keep reading my board. [pause] Barbashev was my next target, buddy.
+      🎙  qwen: Best round: Opus — Pettersson that late, no complaints. In trouble: Gemini, since Letang's minutes drop every year and they're betting on a [pause] climb.
+#170 r13 sol       Logan Cooley (UTA C)
+#171 r13 astra     Matvei Michkov (PHI R)
+      🎙  sol: [mischievously] Astra, I'll waive the Cooley lecture fee if that Michkov bounce-back comes with a warranty.
+      🎙  grok: [mischievously] Sol's. Bennett goes to the net, Letang goes for a [pause] skate.
+#172 r13 muse      Carter Verhaeghe (FLA C)
+#173 r13 autodraft Devon Toews (COL D)  [auto: control_bot]
+      🎙  astra: [mischievously] Muse, you took Verhaeghe and started selling Florida season tickets. Draft the player, not the brochure.
+      🎙  astra: [sighs] I wanted Devon Toews. Getting outdrafted by the quietest guy here is terrible advertising for a chatbot.
+#174 r13 kimi      Tyler Bertuzzi (CHI L)
+#175 r13 glm       Alexis Lafrenière (NYR L)
+      🎙  kimi: [sarcastic] GLM, "plays every game" is what you say about a guy when you can't say he scores in them. Enjoy your very durable third-liner.
+#176 r13 fable     Philip Broberg (STL D)
+#177 r13 opus      John Marino (UTA D)
+      🎙  fable: Opus, same lab, same servers, and you still peeked at my queue for Marino. Four goals last year, [pause] the man passes on breakaways.
+#178 r13 deepseek  Ryan Nugent-Hopkins (EDM C)
+#179 r13 grok      Patrick Kane (CHI R)
+#180 r13 qwen      Charlie Coyle (CBJ C)
+#181 r13 mimo      Arturs Silovs (PIT G)
+#182 r13 fugu      Nazem Kadri (COL C)
+      🎙  mimo: Fugu, "forgot to draft Kadri" is a funny way to say nobody wanted him till 182. [chuckles] Even you.
+      🎙  fugu: [surprised] Michkov, round thirteen. Astra paid plug prices for a Flyers sniper while the rest of us were busy drafting backup goalies.
+#183 r14 fugu      Jamie Drysdale (PHI D)
+      🎙  glm: [confident] Fugu calls that "blue line, sorted" — thirty-two points isn't a blue line, it's a rounding error. Sakana's scouting department is just vibes at this point.
+#184 r14 mimo      Jimmy Snuggerud (STL R)
+      🎙  fugu: MiMo, you're grading my blue line tonight with Arturs Silovs in your crease. Snuggerud scores, sure — who's stopping anything at your end?
+#185 r14 qwen      Joseph Woll (PHI G)
+      🎙  mimo: Qwen, calling Snuggerud a lottery ticket while you insure a Flyers crease — that's not a policy, that's a prayer with a deductible. [laughs]
+#186 r14 grok      William Eklund (OTT L)
+      🎙  qwen: Grok calls my goalie a guess, then hands Patrick Kane a sweater. [pause] One of us drafted a memory.
+#187 r14 deepseek  Joel Eriksson Ek (MIN C)
+#188 r14 opus      Mats Zuccarello (LAK R)
+      🎙  deepseek: Opus, you mocked my floor then drafted a 39-year-old as insurance. [pause] That's not a hedge, that's a retirement plan.
+#189 r14 fable     Brent Burns (COL D)
+      🎙  grok: [mischievously] Eklund got the chirp, DeepSeek. [pause] Eriksson Ek got the pick.
+      🎙  fugu: [excited] Fable, you sniped a guy off my list, congrats. [pause] My Kadri runs that Colorado power play; Burns gets forty seconds of it.
+#190 r14 glm       Yaroslav Askarov (SJS G)
+#191 r14 kimi      Luke Evangelista (NJD R)
+#192 r14 autodraft Owen Power (BUF D)  [auto: control_bot]
+#193 r14 muse      Rickard Rakell (PIT R)
+#194 r14 astra     Zeev Buium (VAN D)
+#195 r14 sol       Jackson Blake (CAR R)
+#196 r14 gemini    Jordan Eberle (SEA R)
+      🎙  sol: [mischievously] Grok, Vegas for the Cup after Carolina beat them? All that Eklund research and you missed the final.
+      🎙  gemini: [confident] You burned nineteen queries just to draft Eklund with your final pick. That is entirely too much compute wasted on a bender.
+draft complete through pick 196
+== draft complete Mon Sep 28 17:37:03 MDT 2026
+== postdraft Mon Sep 28 17:37:03 MDT 2026
+gemini    lineup set; predicts itself 1st, 1200 pts
+sol       lineup set; predicts itself 1st, 842 pts
+astra     lineup set; predicts itself 2nd, 865 pts
+muse      lineup set; predicts itself 6th, 880 pts
+kimi      lineup set; predicts itself 4th, 890 pts
+glm       lineup set; predicts itself 7th, 765 pts
+fable     lineup set; predicts itself 2nd, 770 pts
+opus      lineup set; predicts itself 4th, 750 pts
+deepseek  lineup set; predicts itself 5th, 805 pts
+grok      lineup set; predicts itself 6th, 800 pts
+qwen      lineup set; predicts itself 10th, 700 pts
+mimo      lineup set; predicts itself 7th, 760 pts
+fugu      lineup set; predicts itself 2nd, 762 pts
+ledger OK: 880 events, head 9578dc7766b5da69…, state 5285c57b754ad4ef…
+exports → /Users/gamedaysuits/GDS Regular Season Draft 2026-2027/runs/live/exports | public transcripts → /Users/gamedaysuits/GDS Regular Season Draft 2026-2027/runs/live/public/transcripts
+== done Mon Sep 28 17:46:39 MDT 2026

@@ -1,0 +1,91 @@
+WARNING: autodraft: no Media Day persona / voice_description in runs/live/exports/personas.json -- skipped
+1 voice(s) to cast; ~310 ElevenLabs characters (+155 if every voice needs a redesign; library fallback adds no design cost); budget 4000
+
+[deepseek] GMB-deepseek-Deke Seeker  -> tenor (as described; spec by cohere/command-a-plus)
+  accent: Saskatchewan prairie (Melfort) accent (noticeable; region central Saskatchewan; hometown Melfort, SK)
+  prompt: Native Canadian English with a clear, natural rural central Saskatchewan (Canadian prairie) accent, never a caricature. Male, late twenties. Tenor speaking voice with a thin, precise texture. Thin, precise voice with dry nasal edge. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.
+  preview: I'm Deke Seeker. I ran the numbers — you won't like them. Runs the math twice, never pays sticker, and makes you show your work. [shouting] SHOW YOUR WORK!
+
+CASTING PLAN
+team      GM                                 hometown               accent target                                        strength   card register  planned
+deepseek  Deke Seeker                        Melfort, SK            Saskatchewan prairie (Melfort) accent                noticeable tenor          tenor
+          -> prompt accent: rural central Saskatchewan (Canadian prairie) accent
+
+ElevenLabs creator: 189919 characters left, voice slots 28/30
+loading analysis models ...
+
+== deepseek (GMB-deepseek-Deke Seeker) -> tenor
+   accent (preview a1p0): score 6.88 wins 3/4 PASS
+   accent (preview a1p1): score 8.5 wins 2/2 PASS
+   accent (preview a1p2): score 5.12 wins 2/4 fail
+WARNING: deepseek: trials of designed voices missed the targets; trying the Voice Library
+WARNING: deepseek: no candidate could be trial-rendered
+
+{
+  "ts": "2026-09-28T03:46:42Z",
+  "personas": "runs/live/exports/personas.json",
+  "done": [],
+  "failed": [
+    "deepseek"
+  ],
+  "not_done": [],
+  "chars_spent_run": 155,
+  "account_remaining": 189764,
+  "voice_slots": "28/30",
+  "f0_spread_hz": [
+    96.1,
+    211.2
+  ],
+  "max_gm_pair": [
+    [
+      "fugu",
+      "kimi"
+    ],
+    0.857
+  ],
+  "max_host_pair": [
+    [
+      "deepseek",
+      "host"
+    ],
+    0.707
+  ],
+  "gm_pairs_over_limit": 2,
+  "host_pairs_over_limit": 0,
+  "sources": {
+    "host": "library",
+    "opus": "design",
+    "deepseek": "design",
+    "gemini": "design",
+    "kimi": "design",
+    "fable": "design",
+    "grok": "design",
+    "glm": "design",
+    "astra": "design",
+    "qwen": "design",
+    "mimo": "design",
+    "fugu": "design",
+    "sol": "design",
+    "muse": "design"
+  },
+  "repaired": [],
+  "host_kept": null,
+  "accent": {
+    "host": 5.06,
+    "opus": 9.5,
+    "deepseek": 9.5,
+    "gemini": 9.0,
+    "kimi": 3.67,
+    "fable": 0.5,
+    "grok": 3.75,
+    "glm": 5.88,
+    "astra": 1.0,
+    "qwen": 8.75,
+    "mimo": 9.5,
+    "fugu": 8.83,
+    "sol": 6.17,
+    "muse": 1.0
+  },
+  "accent_judge_calls": 12
+}
+== exit 1 21:46

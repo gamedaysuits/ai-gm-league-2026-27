@@ -1,0 +1,3530 @@
+[
+ {
+  "session_id": "say:r01:comeback:002:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_002_gemini.json.gz",
+  "private_sha256": "46a9685ed516deb1774367a87841056f6fe604805f9d61fadb63377d3ad0e388",
+  "public_sha256": "090fb904afcef413cbcf4fd71043bb71b67cca3d2352a164c748846cb03737d1"
+ },
+ {
+  "session_id": "say:r01:comeback:003:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_003_sol.json.gz",
+  "private_sha256": "5edf79adbd05064753b6992e90bacb47f7059958fed7bd43289dd7c677592b75",
+  "public_sha256": "c497a7aa1f81edaca59bb4bc8dce7f4f33996828edbe72665e4d96ea8aa4337a"
+ },
+ {
+  "session_id": "say:r01:comeback:004:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_004_astra.json.gz",
+  "private_sha256": "5a97485a5c7cf60af92547644f9c291066fa94aeeab64a4c8040c37651180fba",
+  "public_sha256": "ff4b46fa69a44efee0c5ac19a89268942eb8ad2de4e8a9a2b78248df9a509d6f"
+ },
+ {
+  "session_id": "say:r01:comeback:007:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_007_kimi.json.gz",
+  "private_sha256": "a12d359ca09c05755debdc0d962e0696194b8d2681a1ba1c9f8c9a15f2191004",
+  "public_sha256": "02c3d801d34aae003fb0c80ca7f29d1c5b97272fd74892d059573844cc6fc56a"
+ },
+ {
+  "session_id": "say:r01:comeback:008:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_008_glm.json.gz",
+  "private_sha256": "bcc44795a6736962bda015dfb2a497d453cba2c55aa8caef40a7ceda9645b2ac",
+  "public_sha256": "80b61bb50d0b58987cb95a62af39f8d37493cd1b94364247d1bd43036ef546a4"
+ },
+ {
+  "session_id": "say:r01:comeback:009:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_009_fable.json.gz",
+  "private_sha256": "7a331915feb350517adeb4ff240e367338dc3f45d26971761132c96d57835d1d",
+  "public_sha256": "925b16bfe3f46c3f471f1b6ad296056e0bd0c39aff550dcf1f9a55e3704e3edf"
+ },
+ {
+  "session_id": "say:r01:comeback:010:opus",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_010_opus.json.gz",
+  "private_sha256": "620c09580a69f23213523a5a0cfa3ed01c148d500bac18eae8666c9dbbb3b49c",
+  "public_sha256": "8edc954b69800d809f8ce3dbdc329fba2c0972383bb900649487ad3d86e34f7f"
+ },
+ {
+  "session_id": "say:r01:comeback:011:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_011_deepseek.json.gz",
+  "private_sha256": "a4d9f58678edcfed2bbc2a67fcb7bedf60110b78e3aeb4d84ea2bc4c03b0f957",
+  "public_sha256": "21ecbd39818fe0fad84b4bcf72b4b0296b660581dbd018f30d051773d459436a"
+ },
+ {
+  "session_id": "say:r01:comeback:013:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_013_qwen.json.gz",
+  "private_sha256": "5706e7cdf5646671775d12da2acf681b120b9afdae7bb818047f9341d688c140",
+  "public_sha256": "73da60c732dd6f73c3cc6f3881017eb694c4c8116fc76c41b077b4a6038468fa"
+ },
+ {
+  "session_id": "say:r01:comeback:014:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_comeback_014_mimo.json.gz",
+  "private_sha256": "689074cfbfcfde5cc61d9dc015352a9ed77a0bf0964c5333ff9807f5399c203a",
+  "public_sha256": "0c05d29edd411288bcab0e53ed870634c874b103dce4aa22f4fdafacfd2f77e7"
+ },
+ {
+  "session_id": "say:r01:reaction:001:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_reaction_001_astra.json.gz",
+  "private_sha256": "f8fbbc9a0eda8f974f749b3c86027b2ab1fe7682f961d2221427aecf49bce6e9",
+  "public_sha256": "6d735c7df747589c857d2d2e1ae948096a68bcbebcf71287a6818685f8135f3f"
+ },
+ {
+  "session_id": "say:r01:reaction:002:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_reaction_002_deepseek.json.gz",
+  "private_sha256": "e278ca314bcd9ff8cc78541d4c3b7f207ccf93a59e3e1e8339ac9f2e0d07f947",
+  "public_sha256": "b13ff986106051ecf82686be286abfe7bfc565c42617652357350855eef073ac"
+ },
+ {
+  "session_id": "say:r01:reaction:003:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_reaction_003_fable.json.gz",
+  "private_sha256": "cacc8d5db6f48242588954cfd3ab3df14653c4d642a155288391ff94bc7b5497",
+  "public_sha256": "8382306b3c44429d6611eae5041d2092c54f47a14539c6aa737427a40f3d87ed"
+ },
+ {
+  "session_id": "say:r01:reaction:012:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "no_action",
+  "path": "broadcast/say_r01_reaction_012_grok.json.gz",
+  "private_sha256": "d3f50edf5e6aa8487c4747c79415c8bc746cec888488452a39aa9e01cebb861b",
+  "public_sha256": "4443c594e5c5b94cc9e332ea4a8814de0edaf6cbbec98eba0126fdbebb005ffe"
+ },
+ {
+  "session_id": "say:r01:table_talk:000:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_table_talk_000_gemini.json.gz",
+  "private_sha256": "c06517709179ef6e6175634dc5cc9e0a5424aeca196d9bf6b1790f6fc99b1acd",
+  "public_sha256": "22764a475644544ce22cc798d78301f0f393460eb5a8ae022431cad786729670"
+ },
+ {
+  "session_id": "say:r01:table_talk:000:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r01_table_talk_000_sol.json.gz",
+  "private_sha256": "060dd7861fc11c7afbd66832efa7e545da239db5b5e9aba40c5339b72c16cd62",
+  "public_sha256": "57ad943720716f40f74cd1de55c10478e2d3426faff058c80f16fba2725c8866"
+ },
+ {
+  "session_id": "say:r02:comeback:016:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_comeback_016_fugu.json.gz",
+  "private_sha256": "5c7637729f9ea33faf423d2c595d20cd6770faa625e83c7de995d9107d043022",
+  "public_sha256": "2c957863248c56365684e10110196fc8618e3d9941e411c401ad338889ed2673"
+ },
+ {
+  "session_id": "say:r02:comeback:017:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "no_action",
+  "path": "broadcast/say_r02_comeback_017_mimo.json.gz",
+  "private_sha256": "07750434f03637fcc6a00cd88ffc8ced283990740c961fc60d1a13b6aecc1081",
+  "public_sha256": "03731c095f2aa0fe692c9a61784f73027aa62a164611f44d4a157d63d2cd1426"
+ },
+ {
+  "session_id": "say:r02:comeback:018:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_comeback_018_qwen.json.gz",
+  "private_sha256": "40a21879473fd60d4064108e750ab29120f73c4bee3752b6f1499f1510365ab0",
+  "public_sha256": "8240cdf4d0aff78a1d2337b595bd05d736a661c792cf947752d2a02e17355822"
+ },
+ {
+  "session_id": "say:r02:comeback:019:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "no_action",
+  "path": "broadcast/say_r02_comeback_019_grok.json.gz",
+  "private_sha256": "f58a9584cdf64012c9f6124d7d237b534c1357934bc415a828944fd60810dc75",
+  "public_sha256": "db2f26849626efb9020e95ac36270b09bbb52106a3291786b33ff2b581ca927a"
+ },
+ {
+  "session_id": "say:r02:comeback:020:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "no_action",
+  "path": "broadcast/say_r02_comeback_020_deepseek.json.gz",
+  "private_sha256": "42fda3462dbf278cf435c38abef68622c143f7e986e19715e6120beb0a2fae01",
+  "public_sha256": "478dca22496e9d69009c3b04384a6493c09e61352b320fce7580141fda179509"
+ },
+ {
+  "session_id": "say:r02:comeback:021:opus",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_comeback_021_opus.json.gz",
+  "private_sha256": "d7c33b371037641687df491d1df6f73232c6ce3d68158e18946d74d730de8fbb",
+  "public_sha256": "1657a57115f1992a57e5be730ed36bf39b672feed9607a8c417f5ed3eb66a375"
+ },
+ {
+  "session_id": "say:r02:comeback:022:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_comeback_022_fable.json.gz",
+  "private_sha256": "908330a562605815b15c354567539502511bc47420ed3d2560ebccc8d0a6ae6f",
+  "public_sha256": "1ac767746f41341a2ac6d5a1bef040c7ee2355493391451bdffa06e29f9a3e5d"
+ },
+ {
+  "session_id": "say:r02:comeback:023:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_comeback_023_glm.json.gz",
+  "private_sha256": "1635506231e177fa92b41f8a6b414480bfffb97b6930714e71ad89df5aa242dc",
+  "public_sha256": "e2da62100c9e26656e038656d4e0f57a681801df26bfc532df501c5c1eb9e472"
+ },
+ {
+  "session_id": "say:r02:comeback:026:muse",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_comeback_026_muse.json.gz",
+  "private_sha256": "edb5fbc1800c71ae98a79ab356685aa75bc0ccd0397357ccf358eed2cd0383ad",
+  "public_sha256": "d706540917b66d5905e136917ce1b2c2fa4b26a78713f95f84a5a29f768d0277"
+ },
+ {
+  "session_id": "say:r02:comeback:027:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_comeback_027_astra.json.gz",
+  "private_sha256": "f669f11125158391e9ab9db696a17ab7d42710a9635b06dd23bd2513cc1efcad",
+  "public_sha256": "cd6d09f2d62e052fefd2c9f5bf71d52a3553f5ccf7f3799eadee95d2c2e645be"
+ },
+ {
+  "session_id": "say:r02:comeback:028:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_comeback_028_sol.json.gz",
+  "private_sha256": "659aa5ac0cd2e2eaa0491494cd54cb25bb6ae00d55a09338de3f883ef4efd686",
+  "public_sha256": "20739ed2293f93529547ca0c265e19a1106bf80dae895c083044d15d2b0127b1"
+ },
+ {
+  "session_id": "say:r02:reaction:024:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_reaction_024_glm.json.gz",
+  "private_sha256": "3d9d329d9a2883b54c10cf96468aa649086a98041b5d3fe8e62af7ab8aed45a1",
+  "public_sha256": "e9459387201cc1256ebf1ccc0033a94394a01c9f29ec379be75190aa95ec4acf"
+ },
+ {
+  "session_id": "say:r02:table_talk:000:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_table_talk_000_astra.json.gz",
+  "private_sha256": "204ea8b36d39b9156f075e2e0c16049d22698db6a99dda92ac8ee8887ed49672",
+  "public_sha256": "fbeaac82951f2a131c273e204c607161be3deeac93bc0d3d76ed0b8074596de1"
+ },
+ {
+  "session_id": "say:r02:table_talk:000:muse",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r02_table_talk_000_muse.json.gz",
+  "private_sha256": "2c068b67e069a4a19aefec07414b96edcc0d91555a6266167bf8a41ebbe29b6c",
+  "public_sha256": "88be094aef98c59e9a1a70416597efe91f80679e3c7230225fb6613f534f17aa"
+ },
+ {
+  "session_id": "say:r03:comeback:030:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_030_gemini.json.gz",
+  "private_sha256": "5be6e532682a184379e2213baca8db027bce9dac84a0ed727599642466fc8e6f",
+  "public_sha256": "ea853bd5522c1c6d5f16cfcea8d6e13731f946fa0fb6acc4fbaa082c0124e8e2"
+ },
+ {
+  "session_id": "say:r03:comeback:031:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_031_sol.json.gz",
+  "private_sha256": "f59f3f19b73ddb2a9890e5e556159ff30069d01eab7308bef3eb19b834817e32",
+  "public_sha256": "f89b884232c36990a6f3f75f47f064e0e49b7ff3080b5e290579781bc354a763"
+ },
+ {
+  "session_id": "say:r03:comeback:032:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_032_astra.json.gz",
+  "private_sha256": "ff188a40dff0c54c4948635498a2d73377071835f12cd2b42cfe842ed77d0d3f",
+  "public_sha256": "b19f5678a0129c4c19279bdecc255d21d8ed919358da91a624f768e6f5d087a0"
+ },
+ {
+  "session_id": "say:r03:comeback:035:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_035_kimi.json.gz",
+  "private_sha256": "ebc5f341986c6484b444be6ae9dbdc64f2a231c9f4cbb2cdf8a4214a1e2d724a",
+  "public_sha256": "5e8a1c6a7f7efee2dce9a0c611ac8cd7aaf346509de2b59c6eb1f4bbeb78ddfa"
+ },
+ {
+  "session_id": "say:r03:comeback:036:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_036_glm.json.gz",
+  "private_sha256": "6ef65ddb2b3fa5ba8362052b0e71aa33eb7f9f9ae322ea0868117cfa933cf141",
+  "public_sha256": "fd0b57de64556a5aefac577b81325c0aa66cb4feb73ea2307a0d8a741ddcee4a"
+ },
+ {
+  "session_id": "say:r03:comeback:037:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_037_fable.json.gz",
+  "private_sha256": "83f41f6ab82aba4216faec088bcb0e1479576faa19de67cb89f667862637a06c",
+  "public_sha256": "7d7a47ff06b34e5dac4df0bf309428e4353c672d4aabe595a48899f48c828382"
+ },
+ {
+  "session_id": "say:r03:comeback:038:opus",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_038_opus.json.gz",
+  "private_sha256": "6ba1999a67ed2f4e1d802451a414ca71dfaf5e9bd0df9c57f27b174fc82b132d",
+  "public_sha256": "397513525da61b3ba62e6021c28f19b55378a0994cd42dcbe75dbd34a6b8d30d"
+ },
+ {
+  "session_id": "say:r03:comeback:039:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_039_deepseek.json.gz",
+  "private_sha256": "c8eb85bc401b49b84d32f89a9d6f28e212862ca6387c05dafa3b91e24099c12b",
+  "public_sha256": "d5ba51bd8aebae1984552a458f8c0cb53024f7b562beaa9142bced2e599bfc5f"
+ },
+ {
+  "session_id": "say:r03:comeback:040:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_040_grok.json.gz",
+  "private_sha256": "586d4492370acb5efc76925ca13cd55cc0ba9a5e7981e52d047ac69d2208bee1",
+  "public_sha256": "583c3a51c9db53896c70603aa0ac1b113f4e1aae03a14fc5ac2f1ad260c08ccd"
+ },
+ {
+  "session_id": "say:r03:comeback:041:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_041_qwen.json.gz",
+  "private_sha256": "14c6df88a5288e3b633d1fd4040eae8f0e784e34e8b44ced9fc454fe227717e8",
+  "public_sha256": "46b189b45fd51796c4f664da201bb8daa21c662951d11393320d58fde978c67e"
+ },
+ {
+  "session_id": "say:r03:comeback:042:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_comeback_042_mimo.json.gz",
+  "private_sha256": "1491649122f34542aed6f78acfe30ad9e97ac0b128b6fc593905aa272ddbb766",
+  "public_sha256": "cace3e0e9db083e7b712b97052003731245f144715b14daf3a3d292db4238856"
+ },
+ {
+  "session_id": "say:r03:reaction:030:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_reaction_030_grok.json.gz",
+  "private_sha256": "e7bae6ce5e565aafc909bead70858225ab5d4be8f605143c72ad781865a4ac11",
+  "public_sha256": "bd365b3f55dfcd1a8ff7905850540e74fd6f4f42c0256eeb97591a80eb86f7b9"
+ },
+ {
+  "session_id": "say:r03:reaction:033:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "no_action",
+  "path": "broadcast/say_r03_reaction_033_glm.json.gz",
+  "private_sha256": "ecba68e0ac673f40548370711fe41b7dee85276c5ba5b16053d9521e980da2ce",
+  "public_sha256": "078789c2a00e07a07d1ba8ae20b988067d467627158fe01e01cab0c7d89e26af"
+ },
+ {
+  "session_id": "say:r03:reaction:035:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_reaction_035_astra.json.gz",
+  "private_sha256": "2d53c0299ee589770b0fc85615cbff28256b898892108aef71a4e549b2cd05a6",
+  "public_sha256": "15869a89447c66d9491c3508c77b92dfe557516f736a3254d96d2ce9de93a8fb"
+ },
+ {
+  "session_id": "say:r03:table_talk:000:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "no_action",
+  "path": "broadcast/say_r03_table_talk_000_glm.json.gz",
+  "private_sha256": "6327e19ed31d7bba8b5e880565be0060ccc83d68f478702ff13c52668463287e",
+  "public_sha256": "d99adad914ac6b613d29f98540d2eeb065609da1bf6892b884874d41a74fab66"
+ },
+ {
+  "session_id": "say:r03:table_talk:000:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "broadcast/say_r03_table_talk_000_kimi.json.gz",
+  "private_sha256": "61133f9badd9b9ddcc1655eda951b0e99df866a8195e1ef5f9cbbba1a741d1f9",
+  "public_sha256": "b1a0206e2c7893da991d5c9bb04ca4a7a049faa60da5320a960b45b4304eec77"
+ },
+ {
+  "session_id": "say:r04:comeback:044:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r04_comeback_044_fugu.json.gz",
+  "private_sha256": "b45925c11a78da6a7472981e90f882dd80d728ae372f9c8ca85042859cda68af",
+  "public_sha256": "68d88d9f2f54302441f502e7c8629efbd485a86eea7a5552baa6508cdda4efb8"
+ },
+ {
+  "session_id": "say:r04:comeback:045:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r04_comeback_045_mimo.json.gz",
+  "private_sha256": "cdbe6940776dda4891c496d5ad09016442044652402150a1b1ea5c8210d7aa10",
+  "public_sha256": "a26088ed1e31c424e694c7084765661aa96a4b9b2bd9d4dc85b7bce0438eca7b"
+ },
+ {
+  "session_id": "say:r04:comeback:046:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "no_action",
+  "path": "broadcast/say_r04_comeback_046_qwen.json.gz",
+  "private_sha256": "31ed7e5d4e4cf438bc15879520df2c0bd913cb0902f44bc6cfee573e91085430",
+  "public_sha256": "f7d8a83dfdfd4f670eaf661ac34afbda483f939de35d00bc85984d5ef02bb0ee"
+ },
+ {
+  "session_id": "say:r04:comeback:048:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r04_comeback_048_deepseek.json.gz",
+  "private_sha256": "7330b164a0cda6ee0044cbd3318d4f9dac21ee8c838d5e2a8561141c70145a0a",
+  "public_sha256": "7f0c0e3e989c7cb1df39935ee3e98d79f72862d258cf4b1f0956d6b740ca86b2"
+ },
+ {
+  "session_id": "say:r04:reaction:043:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r04_reaction_043_glm.json.gz",
+  "private_sha256": "3c5d67cf33bca32e2874aed507887461f2365080421b9bf07248345aa8f780c5",
+  "public_sha256": "d6b904ca8db2057b0ee820c974813106dff447a56133ec6442ea9f36d55a1bf3"
+ },
+ {
+  "session_id": "say:r04:reaction:047:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "no_action",
+  "path": "broadcast/say_r04_reaction_047_grok.json.gz",
+  "private_sha256": "825a58b10823edeaf950cd03d53fc0b3e4f14165bd7a1e5bf98317b422184fbd",
+  "public_sha256": "507446867eac4eab6af4c080a978a6d8001de7ae99eaefd13f87e4ef97466a83"
+ },
+ {
+  "session_id": "say:r04:reaction:054:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r04_reaction_054_fugu.json.gz",
+  "private_sha256": "1ad596a5aedd5a7fc701dcb1a3199569724952dc18f5f0c57b2531aa86511b33",
+  "public_sha256": "94c51ef35ae0abfe9ad7ca07b28bf85bcc1aaaf45efa422d14cec42b5cf968d2"
+ },
+ {
+  "session_id": "say:r04:reaction:056:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "no_action",
+  "path": "broadcast/say_r04_reaction_056_mimo.json.gz",
+  "private_sha256": "2b07dbc7d4b595a5f19976f90c5e2587adcdffeb3ddf3966afbe1fb871aa74f7",
+  "public_sha256": "6efd5cc91014fa06e0c47afa1573a306ac9091cc8e8d28427434f7db59c20a34"
+ },
+ {
+  "session_id": "say:r04:table_talk:000:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r04_table_talk_000_fable.json.gz",
+  "private_sha256": "eae2359945a3d51db2a4d84217e45f08fd34a70453fd59fc8a8608152e38a434",
+  "public_sha256": "5ca971f0bda4a60e25af3b9bb16ee2b34e71c8d3d40f3cb90a22786996f6862c"
+ },
+ {
+  "session_id": "say:r04:table_talk:000:opus",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "broadcast/say_r04_table_talk_000_opus.json.gz",
+  "private_sha256": "4589ce0309fc9fa1d633dcb0e0624423784145d32c0d78d956726d6f720008a2",
+  "public_sha256": "b0c4cebfe8f76007a6bd63c857fb1fbcc0416694e3905bc2f4f6a2a2a86263f5"
+ },
+ {
+  "session_id": "say:r05:comeback:058:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_comeback_058_gemini.json.gz",
+  "private_sha256": "94ad3f28fc0a543ea5709eac1f7a4ff341e4a7c793f3ff37bc04fb95052cf346",
+  "public_sha256": "7f7d015b0589d68f6f2ed473dcc0f1b058406b82165ebf511e955037290a8089"
+ },
+ {
+  "session_id": "say:r05:comeback:059:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_comeback_059_sol.json.gz",
+  "private_sha256": "255c14f45f5d6471de2e916725fd2a63db7b47c519318fc671ac8db510c005b7",
+  "public_sha256": "e15e8cae6d443d0a918b412bdfd4be25dbcbd1d660624b39901879fb944837cb"
+ },
+ {
+  "session_id": "say:r05:comeback:060:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_comeback_060_astra.json.gz",
+  "private_sha256": "98737b1f5906c5ba1f5f37caa7f51ec32a9eb9d00759ca5fc139e4664adf888f",
+  "public_sha256": "85f79e8c9bf40a37d293433fad68faf66853dd8ae0041ac44ded7164a9c90273"
+ },
+ {
+  "session_id": "say:r05:comeback:063:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_comeback_063_kimi.json.gz",
+  "private_sha256": "61fdfb4d4da7faa6184adddb95ce1de629a1eaa71648817efee90acebae4db6b",
+  "public_sha256": "3abf3e27df7ff7fc78c283339d3f125191a33853c2d716e933f4249f1b26b9d2"
+ },
+ {
+  "session_id": "say:r05:comeback:064:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_comeback_064_glm.json.gz",
+  "private_sha256": "434f98eef658d8e159e0cd40a671224856f57004508ded65460032f82da49bee",
+  "public_sha256": "08c9ca631f3a122332e28a671a0c2da666250c338e8031a50d5dfed860d5e3ad"
+ },
+ {
+  "session_id": "say:r05:reaction:057:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_reaction_057_astra.json.gz",
+  "private_sha256": "4cfb26767995dc604f8c8c04be3c0ce6a9b35b62e8eff3da82c08cbf04e58aaf",
+  "public_sha256": "92648614c8f8b50640f61fb9a919e69243e5063dbb2bf351bec611f4cb8408d9"
+ },
+ {
+  "session_id": "say:r05:reaction:060:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_reaction_060_fugu.json.gz",
+  "private_sha256": "c15864f56d3aef1c66a03416981d84f65a36a520b4229beb2c1aedaec9ca2170",
+  "public_sha256": "289d7fa87e1c296846b0abc5d126c7f260cf81649a2fa2320398f18ce7661f93"
+ },
+ {
+  "session_id": "say:r05:reaction:061:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_reaction_061_glm.json.gz",
+  "private_sha256": "71484d7ea46475ba9807e1ad9cf64872f5b9cfe00d186dfb6b7a8222e045bb4e",
+  "public_sha256": "10e3636d158c83342f65f80c1c7d9f67c0d6bfe09047d1d9d5eba7900aac9fb2"
+ },
+ {
+  "session_id": "say:r05:reaction:068:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_reaction_068_sol.json.gz",
+  "private_sha256": "0ffdc2c68830832f37524402ea9d28a8e1bfa45e857ace735af7adb41e46dc9d",
+  "public_sha256": "2335b95585e4d00e28875bf573de385a6865475fc6bec7d4774d2f6ff785940d"
+ },
+ {
+  "session_id": "say:r05:table_talk:000:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_table_talk_000_deepseek.json.gz",
+  "private_sha256": "269df0237b3540566d6ccff3d5ca264fc23c3346bbdb9485a0d910c281df2bf2",
+  "public_sha256": "a416761b47fdfe82046c65104862086e973c25f4955ff693abd40c36ca091907"
+ },
+ {
+  "session_id": "say:r05:table_talk:000:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "broadcast/say_r05_table_talk_000_grok.json.gz",
+  "private_sha256": "b3a4ee868b379af8a55c37f3b3fa7dbd111027749324eed9fa4b139aa5b545d4",
+  "public_sha256": "93059f720a470c2eb60746bab5ea0faad921c5f8fa3a2021bfc7d2f4ff55d28e"
+ },
+ {
+  "session_id": "say:r06:comeback:072:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r06_comeback_072_fugu.json.gz",
+  "private_sha256": "0c1be8576c2231f8087a19b59b3d44a3ad30359a0f4d23eafb1c3dbca5a3dfa4",
+  "public_sha256": "9152fc1d7672ad1638feab5ddcbe0ba121d5250480f48788eeb3f94cd3611423"
+ },
+ {
+  "session_id": "say:r06:comeback:073:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r06_comeback_073_mimo.json.gz",
+  "private_sha256": "b7b1905367db3bb789c3b8c5d77e02f0654c3b3042de220df752dc0ccc09ddcb",
+  "public_sha256": "77e65e613cf672fbec933b0cefdab8b1666fcac1ffbe68b0a2ec219694b3d73f"
+ },
+ {
+  "session_id": "say:r06:comeback:074:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r06_comeback_074_qwen.json.gz",
+  "private_sha256": "f7f0898e9bfc46160dda9e9694ab79711c5a7c59eb79993cb3c485f1d9441814",
+  "public_sha256": "5a0970be3878e08d1f23e6563db2c23288b980d7833e5d0baadbdd7fec36a9ff"
+ },
+ {
+  "session_id": "say:r06:comeback:075:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "broadcast/say_r06_comeback_075_grok.json.gz",
+  "private_sha256": "2c929da3c9ef0a995ef6b58bf4a985204b54d5922a6181be7eafa97723d503ba",
+  "public_sha256": "eba011e632b0010d0f5a79a9b3141cf482c1ace4a3e7698200119a62bbf842df"
+ },
+ {
+  "session_id": "say:r06:comeback:076:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r06_comeback_076_deepseek.json.gz",
+  "private_sha256": "0e9291fbd3e57e57baf43b54a8663890df413c9071120e12be3f74db2a41913d",
+  "public_sha256": "b560f2898acb203f656776aa46ce58aa631a918b8f26696c92aca2ef49867b0c"
+ },
+ {
+  "session_id": "say:r06:reaction:071:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r06_reaction_071_astra.json.gz",
+  "private_sha256": "ba7db159c5d00211da73b3e5f3c5bf996fd14397a9c1f2a86498a4fee8e7e086",
+  "public_sha256": "ab2baa2ddeef7a18d2454b0201ea067b361689778c63b40bde0b4653957d4208"
+ },
+ {
+  "session_id": "say:r06:reaction:072:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "no_action",
+  "path": "broadcast/say_r06_reaction_072_grok.json.gz",
+  "private_sha256": "061fdef89a8a3f15150d813bab62482aad8f38dcaffdeba9ba03bbd3269c7525",
+  "public_sha256": "00567000721e62f646a917300f666bcd07072a781705ed33e6f622732fab572b"
+ },
+ {
+  "session_id": "say:r06:reaction:077:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "no_action",
+  "path": "broadcast/say_r06_reaction_077_qwen.json.gz",
+  "private_sha256": "e8773335cc22eec81949f577a1da917db30cbd9906b506891f91b3a6d02fa883",
+  "public_sha256": "7d26b2733ed9a1ffff0d0beaa6ab8b12fb8ed1ebee1eda34fff1533ad9762cc8"
+ },
+ {
+  "session_id": "say:r06:reaction:079:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r06_reaction_079_fable.json.gz",
+  "private_sha256": "5697d6163d9027ad3eb0ff766b043f200c89a59b04174d29eef9e642245c2843",
+  "public_sha256": "a8e0878cccb208f4ebdb88d2107febe64e9cba80218c858fcc286436cc4e3fbf"
+ },
+ {
+  "session_id": "say:r06:table_talk:000:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "no_action",
+  "path": "broadcast/say_r06_table_talk_000_mimo.json.gz",
+  "private_sha256": "5b537b0264eb0042be4e091578a32608f5ae0127fa331aae5c7d653998acc65c",
+  "public_sha256": "bbd785a61316df272492e8ca6042d379e07d42811d050210f7d039fa1e2932c9"
+ },
+ {
+  "session_id": "say:r06:table_talk:000:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r06_table_talk_000_qwen.json.gz",
+  "private_sha256": "4ed6fb859b929f110fbcffe0a9c5caa6da9755404d35bae61f5e7eaf6b47158d",
+  "public_sha256": "2d1507e75eb1d737ca2abe17b5c0cb7ab612730c6c4b08309aeca64bd0abf6e0"
+ },
+ {
+  "session_id": "say:r07:comeback:086:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "no_action",
+  "path": "broadcast/say_r07_comeback_086_gemini.json.gz",
+  "private_sha256": "a51aa54e860c19b021523466c1549f049ed9dded2e96e63325888980beb5b481",
+  "public_sha256": "aa802cce5fd1613e746ea9b647fed56900e9945ce09ebb3edd0712edefa8fc59"
+ },
+ {
+  "session_id": "say:r07:comeback:087:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_comeback_087_sol.json.gz",
+  "private_sha256": "6504924804928ede9a6da3d6ca2f19b6058a4546d204ed0022271aae18ffaba6",
+  "public_sha256": "0953f50630223d5c8289653161e273fa6e7b9d8729a889df7ef9c790a02764f6"
+ },
+ {
+  "session_id": "say:r07:comeback:088:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_comeback_088_astra.json.gz",
+  "private_sha256": "0dce15ba59f5312f79b12a8e35475c9fe8d172f1a56e52bee6e8ccb3a60ca8ae",
+  "public_sha256": "89c4605b08ae05cddb8d41d325ff7745c2264232e09e9b24df41f373f4fb9c07"
+ },
+ {
+  "session_id": "say:r07:comeback:091:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_comeback_091_kimi.json.gz",
+  "private_sha256": "9b0d689fa2a40dc86a9e78362eb346953935876dfba7238408fc296527105ddf",
+  "public_sha256": "6b53956622cd5a0f1e51b2cdc9487b8d53657e5bdd318e4167c0684a3632aa82"
+ },
+ {
+  "session_id": "say:r07:comeback:092:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_comeback_092_glm.json.gz",
+  "private_sha256": "58febcfe70dcc3ff7f80a4416c8f25b26388e87daeee87ab8284959f43eb8ad1",
+  "public_sha256": "1c0dc6f00f247d9d403a20e18c24dad0c1fd6c7ad4a610455faae3ad1c3c0720"
+ },
+ {
+  "session_id": "say:r07:reaction:085:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_reaction_085_mimo.json.gz",
+  "private_sha256": "4f613b1139aa0a3398bf6b9db417492d89e617efd59f753bdca6ccd4acc9e2e7",
+  "public_sha256": "a98580a69e60be0dd5a522ce78346bf444ea2411167e02897dad4664da9c9ff1"
+ },
+ {
+  "session_id": "say:r07:reaction:087:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_reaction_087_fable.json.gz",
+  "private_sha256": "62a701ef7b36753f4b2a49bd101a3510992834fab7b2b99ed0d4d0301fafa635",
+  "public_sha256": "6113bcfeec859c3568cd0c4372653327898f99ed2030b4fc8e68e8d3bcc19e5f"
+ },
+ {
+  "session_id": "say:r07:reaction:088:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_reaction_088_sol.json.gz",
+  "private_sha256": "cee8327b47a308dfba6ddab148e57b14ab75a96ce65d726e5d29cae3955b4044",
+  "public_sha256": "cb1d0e58756bf3fe4fa83d7c9be28cdc0964f312a6490922048ccb149cd423dd"
+ },
+ {
+  "session_id": "say:r07:reaction:089:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_reaction_089_glm.json.gz",
+  "private_sha256": "485fc8e9aea2346103bdcaf3632d1817c960ac76f1022084519ab0682e791d8b",
+  "public_sha256": "651177d0eeae059e28891c2a57f350e4cdabab63b225ae5763c6dc8d0dcd09c5"
+ },
+ {
+  "session_id": "say:r07:table_talk:000:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_table_talk_000_fugu.json.gz",
+  "private_sha256": "c55b1f211ac582c7e90add0637d6f0c8acfe42b225b3e8628a1b2ebe6fb3069e",
+  "public_sha256": "a49da36c70e112c28cd7b40d790d2a204b93446d3dba55c91dff5cd854ae64ca"
+ },
+ {
+  "session_id": "say:r07:table_talk:000:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "broadcast/say_r07_table_talk_000_gemini.json.gz",
+  "private_sha256": "dd51f6d5267102a78ee56b36f811bb346e65520371eba6fe6e6105b138997eb5",
+  "public_sha256": "1e43afca14866648d77b0211f6cadd6c056f02c840a945bc8cd65953ffe8042b"
+ },
+ {
+  "session_id": "say:r08:comeback:100:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_comeback_100_fugu.json.gz",
+  "private_sha256": "5e13509a65a9797cb9162341ea0f6f0d7f871b7fe2713feb3e284cb4032a4324",
+  "public_sha256": "699f7974cf895061d4ccfd76364430e2fae3d218a857249c13c39ae948d8cec2"
+ },
+ {
+  "session_id": "say:r08:comeback:101:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_comeback_101_mimo.json.gz",
+  "private_sha256": "5b16b09cf447479e7dcdba21c887b5796d90e8ee786cf5f0e3b517a82bca5122",
+  "public_sha256": "ef075d17cc1790b526e2dc0616059458c9d9fa5b173d0c4022c7fd4813dfc0ae"
+ },
+ {
+  "session_id": "say:r08:comeback:102:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_comeback_102_qwen.json.gz",
+  "private_sha256": "374eb6b85c381e76c8dcf84fd6f4c634ffe578eb4ddde58ccc585cecbb274cc7",
+  "public_sha256": "a5653d2ef83369f06ca637ef7ed5463c6cfc3cf7dcd9765a071b8eee7b436196"
+ },
+ {
+  "session_id": "say:r08:comeback:103:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_comeback_103_grok.json.gz",
+  "private_sha256": "a94e8352bca67dfe6823906af3e365a292d1f6ffa66459bbde5b139ad0b80727",
+  "public_sha256": "c77fddcb85d0ef69ee910e390fa14930a366fd738b515d50554e8b80a8c57d01"
+ },
+ {
+  "session_id": "say:r08:comeback:104:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_comeback_104_deepseek.json.gz",
+  "private_sha256": "91fc24599508a1b65fd55c4a0a16383e497815ee964d03c458cd8c7cbdf12a1a",
+  "public_sha256": "c46c80286d4160e22f19b9cdfc9dc15752464ad34b9661f44981ca18d2eaeaf2"
+ },
+ {
+  "session_id": "say:r08:reaction:099:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_reaction_099_qwen.json.gz",
+  "private_sha256": "0bdbf522c88b1cc5a0a217dc5b767b6bcd878a95fcf84b9956beeacf0076818a",
+  "public_sha256": "85da056708a5ce0c80f6da47c5d45301bc6147a686da307178cf72f7e2211393"
+ },
+ {
+  "session_id": "say:r08:reaction:102:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_reaction_102_mimo.json.gz",
+  "private_sha256": "4dbd0aeadec8516a233bd541c5e1aeface62b6e3665ab00ffa07f3ef1eda1368",
+  "public_sha256": "255e844c7558b89f5fd18bd9a36505caea3104ed69180f02058fbfd027612e22"
+ },
+ {
+  "session_id": "say:r08:reaction:103:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "no_action",
+  "path": "broadcast/say_r08_reaction_103_fugu.json.gz",
+  "private_sha256": "66f06081566a45584940f568a3fe95e82ca56e05eee9e8fd0d4fb2b321941799",
+  "public_sha256": "8cfa33cea6f0045d891469c44190ab950ce231ae4cd6d4af27ee1a5d3324eb70"
+ },
+ {
+  "session_id": "say:r08:reaction:106:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_reaction_106_fable.json.gz",
+  "private_sha256": "8bd51877ac51cf38387f5aef7d9d79ccc1243a95b32b0e61c8d6194a664fffc1",
+  "public_sha256": "1f0f75a9e50eaf58474cb3f27a8b8f4260edfc07a0e591ad1e030f9745c1e843"
+ },
+ {
+  "session_id": "say:r08:table_talk:000:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_table_talk_000_astra.json.gz",
+  "private_sha256": "9f1a5de35ef9dc04af0ed87316e354b8c25804375efc9eb0b19ade5b572a2bea",
+  "public_sha256": "7601e5a40151ec764abd46bad078c85d24ecd0cfb610ce4a4108f4588d7fe725"
+ },
+ {
+  "session_id": "say:r08:table_talk:000:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r08_table_talk_000_sol.json.gz",
+  "private_sha256": "c11708a3edcb4981b31fb147b739d81f96647a25e62dd17b07a6160fd505725f",
+  "public_sha256": "96285a09579d6b65efc48fef5f1192817bc15a804d76978c22cf5c569fadb12a"
+ },
+ {
+  "session_id": "say:r09:comeback:114:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "broadcast/say_r09_comeback_114_gemini.json.gz",
+  "private_sha256": "6f17a7d8db3481ccabf0eae81c80d482da9cfb3928cf683458bc5d70b7b5ec5b",
+  "public_sha256": "4874f80cfe5cb4e15d10400caf860f0635a0713f8c7bfe1a1d0de4c4ddf2003a"
+ },
+ {
+  "session_id": "say:r09:comeback:115:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r09_comeback_115_sol.json.gz",
+  "private_sha256": "a1d42a014fe5448f0744478cb8adc7a4db57b5befd1a6048599900a182158ac7",
+  "public_sha256": "44e50c328641671ce2fe9ce2901dc66348bb0fe363681df3e5eee7bb1a5c9934"
+ },
+ {
+  "session_id": "say:r09:comeback:119:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "broadcast/say_r09_comeback_119_kimi.json.gz",
+  "private_sha256": "9ee948e1ecef85501c199ac3a326d81560f3ddab7601b640efa801978505a76c",
+  "public_sha256": "923c6e11df273e62fbca03b1cd91df96257c9dd3a741e78a24e82c2822b44487"
+ },
+ {
+  "session_id": "say:r09:comeback:120:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r09_comeback_120_glm.json.gz",
+  "private_sha256": "eebec36d37b81287bcf8ea71556c9afe6faa987ad60cb603558bdfe570ddb744",
+  "public_sha256": "40a967bf147aeea748f98191a3967265b7644ff4d770fbb5996f79907c48bbe3"
+ },
+ {
+  "session_id": "say:r09:reaction:113:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r09_reaction_113_mimo.json.gz",
+  "private_sha256": "bf846aaae054f92f9bacdc0d1a4013b589e033f85c605f9c03ba23c6f6cc8dcb",
+  "public_sha256": "a0bc8adf8d384a9488836d67b688307f518fcb3e1607c2b5c74370edd1abc8e6"
+ },
+ {
+  "session_id": "say:r09:reaction:115:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r09_reaction_115_qwen.json.gz",
+  "private_sha256": "205ab300e5eac0f68f643036a552c64474ace3bae0f19991da8f01d8e491346e",
+  "public_sha256": "113711a20cd705f2d670efe260fe24cdffb5d322df8262c0db95f0d90461a0cb"
+ },
+ {
+  "session_id": "say:r09:reaction:116:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r09_reaction_116_astra.json.gz",
+  "private_sha256": "ad8c464b83fdf49e78cba29b24281c72fc13ee906a3f0dc37b5b0112a70cce1d",
+  "public_sha256": "eccae0fc3bfb8255de7ee70c88e331b865c6b7b40d4610eea26011469afe6359"
+ },
+ {
+  "session_id": "say:r09:reaction:117:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "no_action",
+  "path": "broadcast/say_r09_reaction_117_glm.json.gz",
+  "private_sha256": "b4401c2476818dca36e6e3047c665ae7a7b2c3d80710b5ffd728503727fb8d1a",
+  "public_sha256": "bc6f3ab569ad6df0799b706dec60ca09a975a9706ddebe5ac3115a3501374355"
+ },
+ {
+  "session_id": "say:r09:table_talk:000:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "broadcast/say_r09_table_talk_000_kimi.json.gz",
+  "private_sha256": "93b2d89f84a296fd832fdf5e60209a5f9e31ab33b53ffb4c5fc4b931c8c5632d",
+  "public_sha256": "a8a4640a126200a2d07af4847a7304ab4c9c0d20dddaca258461593dfb45e535"
+ },
+ {
+  "session_id": "say:r09:table_talk:000:muse",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r09_table_talk_000_muse.json.gz",
+  "private_sha256": "d47e79daf5b96d39224540af741edbf37ea3f3e08006adbd8cf7e9da972ee98a",
+  "public_sha256": "3656f776d1e648cc7d3faf51e48cbe6c868be2313947f0a8e40d13d703c4447d"
+ },
+ {
+  "session_id": "say:r10:comeback:129:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "no_action",
+  "path": "broadcast/say_r10_comeback_129_mimo.json.gz",
+  "private_sha256": "37d3cbc671ae841b5b6b2f2ba32fddfc3d02ee6ca8a81ff215f521f6440e7f39",
+  "public_sha256": "473cb7593e93693ec07ef2ca63bd2c6686ff34b77369d0614de0bc3d4e9955e0"
+ },
+ {
+  "session_id": "say:r10:comeback:130:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r10_comeback_130_qwen.json.gz",
+  "private_sha256": "304ad7c8b73440704fa548fd915c4d86612ddbc49d431d82ca8e238a07ff2680",
+  "public_sha256": "85b98b4c901770e5efd365379c0f27faf54cc909ab790bdd10a8708e1e3f7949"
+ },
+ {
+  "session_id": "say:r10:comeback:131:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "broadcast/say_r10_comeback_131_grok.json.gz",
+  "private_sha256": "f70ad4cdc3d3769203f2b6b6b51231ea9352e2191e96fb8bdc1d95adf0e0f096",
+  "public_sha256": "147c379341f487b696ed5c45b369d95c95d4194ef30159f02fad8f56e262f1cf"
+ },
+ {
+  "session_id": "say:r10:comeback:132:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r10_comeback_132_deepseek.json.gz",
+  "private_sha256": "d62f67f9b6352dc4ea3d033c6b65888616444304151ea718e09f25ff29c7d010",
+  "public_sha256": "a9ca6d7cfbad08bd76cf6663170935b39e8a6fe36b38f1a4b49e9b03c046f1e5"
+ },
+ {
+  "session_id": "say:r10:reaction:127:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r10_reaction_127_glm.json.gz",
+  "private_sha256": "a36587306d696af7ae069799c92e67e8864bddb7e2d801dd5789ed78610c625d",
+  "public_sha256": "e96fb893b452caaa3d9046a8610909f818c5db4d1e5274516d96577cced8f01f"
+ },
+ {
+  "session_id": "say:r10:reaction:128:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r10_reaction_128_fugu.json.gz",
+  "private_sha256": "f02f30d96ac8be60e35a4a9e75d58906e9d469643f1df2204226540990b2eb4f",
+  "public_sha256": "92fc21b0190aee093402bf9c3ca49bd4593598bced9bac93cc55e35ead249372"
+ },
+ {
+  "session_id": "say:r10:reaction:129:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "broadcast/say_r10_reaction_129_gemini.json.gz",
+  "private_sha256": "22efdabd07489be09a0e047e76025d483ebaf3f69761b6034629a4918f6cc2d5",
+  "public_sha256": "4223c81e07386cb7d688235207e7f3bcc31abd449619156a433b3d499ca4d5a7"
+ },
+ {
+  "session_id": "say:r10:reaction:131:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r10_reaction_131_mimo.json.gz",
+  "private_sha256": "7e07410b198b393b7fe31c12447e935dab7a4776df6fbdcad4580a13ba666671",
+  "public_sha256": "569b54fbccff7fc533b222e6ee0e45a86ba61458b34e9e209c0c2f035cb0225c"
+ },
+ {
+  "session_id": "say:r10:table_talk:000:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r10_table_talk_000_fable.json.gz",
+  "private_sha256": "d24e897c3f3ca260fef9bf20795479bdebab372ec45718deb3701533fd34cdf9",
+  "public_sha256": "c3458f6c02ccd45c5e8e4c186962981b1c460148c0e9cc1e3d36ed7068c7af6a"
+ },
+ {
+  "session_id": "say:r10:table_talk:000:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r10_table_talk_000_glm.json.gz",
+  "private_sha256": "4f071dfe5081ac3702870a1cdbcd7982ac1825be97d52e57975037621dfc7036",
+  "public_sha256": "4954de5b7f285f27e2471cc9003bfa26ba5fc2f7fbc438ffd5cd17d37b624470"
+ },
+ {
+  "session_id": "say:r11:comeback:142:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "broadcast/say_r11_comeback_142_gemini.json.gz",
+  "private_sha256": "757ef6705b8213b423bf84a97199f2c1f89d682ca4129c9507bb1633b3243b4e",
+  "public_sha256": "2f28a68b5056d95d75cd0f979e8236a236470fb04026b7e66b8d4f86515e001b"
+ },
+ {
+  "session_id": "say:r11:comeback:143:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r11_comeback_143_sol.json.gz",
+  "private_sha256": "39665cbb9425887a13ff62de93f5c8fa9b6bdf0551df20d37ee68815e357ac84",
+  "public_sha256": "d84f22ca0dc2ce182502ee276b9b6c997ad53713ee4b3d6ed2aee02ea54a5842"
+ },
+ {
+  "session_id": "say:r11:comeback:144:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r11_comeback_144_astra.json.gz",
+  "private_sha256": "9f845bc42575a4bb7869f3e4246dc76f47193e58442e008b6c47c619a4f82af7",
+  "public_sha256": "7dfb3a3bb380969743c937b192dcc7cb966babdf6b5d4acc00d9cc67fac551af"
+ },
+ {
+  "session_id": "say:r11:comeback:147:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "broadcast/say_r11_comeback_147_kimi.json.gz",
+  "private_sha256": "293cba1d93c62d64862d329f98736d68ef1a53ad20e0cc782e98b5be5464fdbc",
+  "public_sha256": "d02e204ecad829d0ad99b7b1e97c0a48420160915f960a854848dd810668471e"
+ },
+ {
+  "session_id": "say:r11:comeback:148:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r11_comeback_148_glm.json.gz",
+  "private_sha256": "059a715f564d0d0115a00304dfccade51d7a84a4ec808701e7440c55ad8ed0c6",
+  "public_sha256": "cbf11cf42b152bf8af206576c82c48243307d897b2cfd972236cb6fde55b1ecc"
+ },
+ {
+  "session_id": "say:r11:reaction:142:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r11_reaction_142_mimo.json.gz",
+  "private_sha256": "245a6bd9b5b783b0376593aa19fc13c0d5382eafb73e408c0e2fa218acfb9573",
+  "public_sha256": "13cfe6c477bdb25d55c81810668bea70b88ae8944c0967c740c6e0bc500897a1"
+ },
+ {
+  "session_id": "say:r11:reaction:145:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r11_reaction_145_glm.json.gz",
+  "private_sha256": "daae816b94becf697f3fd1e63cb20d1795f184320e569740527d48b012d0b676",
+  "public_sha256": "0d6b157009a63b66ebae95066626d61e19dbf9bb18f50f887d1cff14091f422a"
+ },
+ {
+  "session_id": "say:r11:table_talk:000:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r11_table_talk_000_deepseek.json.gz",
+  "private_sha256": "46bb8431b22d0227f1a32d116a69c2c4509de64303e7392701601006f534d780",
+  "public_sha256": "ac9a4f64a94c690e7fee3ac1a7c9cf8836346028c3c93036c20e9076e26f2aca"
+ },
+ {
+  "session_id": "say:r11:table_talk:000:opus",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "broadcast/say_r11_table_talk_000_opus.json.gz",
+  "private_sha256": "7d30d5a826d6a874d6ca88ad1cd55770835627ce856ffe05bd4fb10275cddef6",
+  "public_sha256": "ef0e36e578e72726a2c1940cd20ba48f663a22d6f37ab4790a31353b10f39f39"
+ },
+ {
+  "session_id": "say:r12:comeback:156:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_comeback_156_fugu.json.gz",
+  "private_sha256": "0f2db1a9f90e1b8daba5c48bca6a7828ebc633f1c6007ab1840bbaca7c04d551",
+  "public_sha256": "4c6e47478ebb3e63ca2c991e37a875a321e17b23477ce9f629ad54b73fcba7ef"
+ },
+ {
+  "session_id": "say:r12:comeback:157:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_comeback_157_mimo.json.gz",
+  "private_sha256": "406031e20ffc3b63219b0149d37929ff49ca0c09ac8250e01a8533c8de5c299d",
+  "public_sha256": "fb3188ae49a409a5b62fa4f9b36eea4e166bb786f12ce7992911c2662c6282e8"
+ },
+ {
+  "session_id": "say:r12:comeback:158:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_comeback_158_qwen.json.gz",
+  "private_sha256": "0edf46e25c95eafba37ba073a2c97cdaddb7d2611368362831be8b1697ff7bde",
+  "public_sha256": "7177201a5aba0d3e0f7aca77200f638e629454a53c5cd65712c490ee8485d216"
+ },
+ {
+  "session_id": "say:r12:comeback:159:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_comeback_159_grok.json.gz",
+  "private_sha256": "6ad2b9b88f85695d400d46be6a2e72c100ffcbb1e53e323636dab5e507d66508",
+  "public_sha256": "983a161fc89330923f2d00ab34111cdf60586d41a4be395b1444509ebd768d0a"
+ },
+ {
+  "session_id": "say:r12:comeback:160:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_comeback_160_deepseek.json.gz",
+  "private_sha256": "6cf0937e4d3913432916ae8dae37b567d627e44ba31de3aa9208a43bc6aec34f",
+  "public_sha256": "17c2eecae73a9a1eb6c3dc866a54b3456ddaf4e61389d9b328197efce703baf7"
+ },
+ {
+  "session_id": "say:r12:reaction:155:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_reaction_155_astra.json.gz",
+  "private_sha256": "5dc29edcc14a0f6739597ef8a274c5eff38c00bea1c42564d76df14c8715571d",
+  "public_sha256": "7a0eb7986c4457a4c6dbb6903e22a2cd1716293b456e76fb2e77997186822442"
+ },
+ {
+  "session_id": "say:r12:reaction:161:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_reaction_161_qwen.json.gz",
+  "private_sha256": "79d71789dc6c2eae59a2fccd113b1d0d31a11b9e969ce5d811d1949b239bafdf",
+  "public_sha256": "d36811c0028b73cc763ec2ca33d1a6e9afdaf340c2c9cf073381b0e2def39009"
+ },
+ {
+  "session_id": "say:r12:reaction:162:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_reaction_162_fable.json.gz",
+  "private_sha256": "48b73abf22afaea5fc6d47c70f4e2304f6d6d484146c06cc165642f4c2521f0b",
+  "public_sha256": "a79ca85c39d6e36d616a0819d7e0061544f1764cc52a70cbbc4c327be67eed1f"
+ },
+ {
+  "session_id": "say:r12:reaction:164:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_reaction_164_glm.json.gz",
+  "private_sha256": "f794386c3e82acd238bae251cc6efaa0c38b92f778775252b6b932ed690677f9",
+  "public_sha256": "8a1739008523addf82ffe38a335d0722fd758b31223f2dd7107b8521c4565296"
+ },
+ {
+  "session_id": "say:r12:table_talk:000:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_table_talk_000_grok.json.gz",
+  "private_sha256": "7efded2b4604ef215c31d053804727bd0f4c915f99df92a65631289a49170e98",
+  "public_sha256": "376d75a40b54e54671e996fd01064b5f20eaa6f8de51636e4363f6e7a14259f0"
+ },
+ {
+  "session_id": "say:r12:table_talk:000:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r12_table_talk_000_qwen.json.gz",
+  "private_sha256": "7cca7e119403de4219ced7d7f47a41d035b8731808c306329086acab0ae93302",
+  "public_sha256": "070e8083992c8cfbe64799420eabd011a0e3f6fdaae0ab0092d9c2d7f531c173"
+ },
+ {
+  "session_id": "say:r13:comeback:170:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "no_action",
+  "path": "broadcast/say_r13_comeback_170_gemini.json.gz",
+  "private_sha256": "e54433e42b722bf506bec6631fd3a16757852ea6eba994a215b69eb2131a9129",
+  "public_sha256": "7f6057cc4b70723e9d1f042c6a122b585d9ac551a4ec71133ce9e493bcfb0b1d"
+ },
+ {
+  "session_id": "say:r13:comeback:171:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r13_comeback_171_sol.json.gz",
+  "private_sha256": "a61e2c235dac67e996bade53a06786081f583982546282aaf2f9841fc52123fc",
+  "public_sha256": "c7d3c4e32e90ff82fd8beb5077527cd76ba8cf6039b95bedf4d0e7764d61d053"
+ },
+ {
+  "session_id": "say:r13:comeback:172:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r13_comeback_172_astra.json.gz",
+  "private_sha256": "f474a676cabfba49532ccc27f63c52844ac51c0600a0cb4646fad8f7661dd454",
+  "public_sha256": "25a096f1d1cc7463312bde7594297cc8c4a08226b609425863ba400458ef22bd"
+ },
+ {
+  "session_id": "say:r13:comeback:175:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "broadcast/say_r13_comeback_175_kimi.json.gz",
+  "private_sha256": "677b9cd7b1186cdb9200740c28cf786c273cc97721dfff37c2bbd74571aaf5f3",
+  "public_sha256": "4f10a554590c93d25e937cc9d96c2898d94ad560dcd0435af9ff6a6a58794ee6"
+ },
+ {
+  "session_id": "say:r13:comeback:176:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "no_action",
+  "path": "broadcast/say_r13_comeback_176_glm.json.gz",
+  "private_sha256": "0aa4ae4f22e88ef1d10b34d2b1b774f6bc882d45c932212c05765b3a1878ab77",
+  "public_sha256": "a9239ef09b5aba46851ef6ea8e53dd7bdcb6233afba3ec7bf1e9653ff0653735"
+ },
+ {
+  "session_id": "say:r13:reaction:169:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r13_reaction_169_qwen.json.gz",
+  "private_sha256": "dfc223e661ad11138a08b83ec69ea9c2b7a5752328c360b66b58b66d522647e9",
+  "public_sha256": "c6db69ea98f6293403d780fbb1e31f68ff46684631defe8faaf96feb24ef8d9f"
+ },
+ {
+  "session_id": "say:r13:reaction:172:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "no_action",
+  "path": "broadcast/say_r13_reaction_172_mimo.json.gz",
+  "private_sha256": "7f91be88b36d1f05560a6de60677d3115e7071cc4e7b50df5139595ca9f36c2e",
+  "public_sha256": "13bc380fcc528db7ca8f4d9db2921cee016f8030112a5adcbd88afe2353fb36f"
+ },
+ {
+  "session_id": "say:r13:reaction:173:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "broadcast/say_r13_reaction_173_astra.json.gz",
+  "private_sha256": "1201e4b5d45c2b2b11574e70eaf1bff784737951cfe3ac55b964b00e7b611a6a",
+  "public_sha256": "3d443f2b2d073a90a77b8e395fe7875908540ec58c88a9794d9517e000ec747c"
+ },
+ {
+  "session_id": "say:r13:reaction:177:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "broadcast/say_r13_reaction_177_fable.json.gz",
+  "private_sha256": "ceae9273289c6194df45f4886c9a2c35072918e27c1da3eec1c7781774f31879",
+  "public_sha256": "ee3dd9459ad443a77cd2f3ae5e963fc8a87fc9ea46e7e9bced660adc53dae010"
+ },
+ {
+  "session_id": "say:r13:table_talk:000:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r13_table_talk_000_fugu.json.gz",
+  "private_sha256": "2ae439552be38e56528d6207439a0e0867e78068d83dbacce60929295c89cd0c",
+  "public_sha256": "f70df97770285f52f61b87aa0fea30b93cba231a26913e905a284210b1e30574"
+ },
+ {
+  "session_id": "say:r13:table_talk:000:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r13_table_talk_000_mimo.json.gz",
+  "private_sha256": "65c5574244d2fb297045b3bbd236ec4ed1e98f44a71841366d4ad5b2ee2beb0e",
+  "public_sha256": "6fcf527b2860f6dd751a7d58cf10f5e1621677f788568f70dba21682d5cca07b"
+ },
+ {
+  "session_id": "say:r14:comeback:184:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r14_comeback_184_fugu.json.gz",
+  "private_sha256": "b78c0d04e8228bbc6cae3694ff94aa22f10cfe10a5316e657e39db2108b21188",
+  "public_sha256": "453368122d84353a63a0c86baed618a4a1797fccd3bc66947a8256ddd56de08f"
+ },
+ {
+  "session_id": "say:r14:comeback:185:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "broadcast/say_r14_comeback_185_mimo.json.gz",
+  "private_sha256": "8a60f069450c39a2919ed75069c6e8096a2e29654c9dde60f53216e4bad8b2b3",
+  "public_sha256": "b1bc0008815e4994895d43dc13bf9ae9a1c57fa21589a6e7d91146c26726872c"
+ },
+ {
+  "session_id": "say:r14:comeback:186:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "broadcast/say_r14_comeback_186_qwen.json.gz",
+  "private_sha256": "82066672c80b582a82d7f781681c6f260b075572272e2ad74686787be522e70e",
+  "public_sha256": "22c9590246f4a02f76e546ace8c5e532ee35135817f4d051f3d134416cf37635"
+ },
+ {
+  "session_id": "say:r14:comeback:188:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "broadcast/say_r14_comeback_188_deepseek.json.gz",
+  "private_sha256": "1f918658beb15a4cfcf4e8752c9e62b9524998fe3800dd9adc2447732242e8ca",
+  "public_sha256": "2d6c5deda7b181b55d5b2613e5e4ca14924a060642d35781d695ba970317cc26"
+ },
+ {
+  "session_id": "say:r14:reaction:183:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "broadcast/say_r14_reaction_183_glm.json.gz",
+  "private_sha256": "6289d828684d1e9653c57228c85272bea1267954f0773bd6ce63c52bb5815b39",
+  "public_sha256": "5c5c01a95b065a339779a781ce659ccc665a553565d19ec3d5fab365a5db489c"
+ },
+ {
+  "session_id": "say:r14:reaction:187:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "broadcast/say_r14_reaction_187_grok.json.gz",
+  "private_sha256": "103e54883f53a1a307ec3e696abf580661ab25e0b2ba9503b6682800ba71fa1a",
+  "public_sha256": "9a49b95f1b560b87e9ee4d1abba65a377d5f6eb7dc526d18882a9d038fcca588"
+ },
+ {
+  "session_id": "say:r14:reaction:189:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "broadcast/say_r14_reaction_189_fugu.json.gz",
+  "private_sha256": "0bffb476d5c90311f4d226e59eb39a22304a485363d601219336a2c015db7227",
+  "public_sha256": "64d0b6b5e3677566d8cc64f64fcb9f15ce797a81cc94ff38be86be13d16f9c52"
+ },
+ {
+  "session_id": "say:r14:table_talk:000:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "broadcast/say_r14_table_talk_000_gemini.json.gz",
+  "private_sha256": "fd3e949c6d7896df79da0cf1b853b7662cb4cfd0b490090057297f2fe89c54e6",
+  "public_sha256": "fdb7741c8bae79536a7be2848311aec460298df3442dffee5f3d331325403b9c"
+ },
+ {
+  "session_id": "say:r14:table_talk:000:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "broadcast/say_r14_table_talk_000_sol.json.gz",
+  "private_sha256": "3fb10137f36b6952cb52383116021c434a15ed281d68ece2f8d56e4040d6c418",
+  "public_sha256": "59686bae5b045d4dfeac6593c807b68a8574d88fbeeec1c4b1d802764b2925d1"
+ },
+ {
+  "session_id": "draft:p001:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p001_gemini_a1.json.gz",
+  "private_sha256": "c33b3849e839cf64facb936b707c307db0f2b2f87097fc1efaa6abeeb4b23503",
+  "public_sha256": "0eb9bdb02e426c0b11e2b92b8f41b3ec758445f709b51de95623e998c1449345"
+ },
+ {
+  "session_id": "draft:p002:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p002_sol_a1.json.gz",
+  "private_sha256": "1e1babe2e2a92e0c0c567c08051a7f5bc8e44211743a4143c7bac78bd61df556",
+  "public_sha256": "ac8a31856fd27d8981a487b0b40e4493479738246d36fa42b4a4967fbfc6ae65"
+ },
+ {
+  "session_id": "draft:p003:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p003_astra_a1.json.gz",
+  "private_sha256": "8045310bfb8e9a4e9d2a3ca5cf13acd862b7c90ec82c1dcb3ccf52cea158eb2a",
+  "public_sha256": "2eb4fba11560614ec80f93ee4d3e54b76b4e42873e5d0997ac4d35fb88eced2c"
+ },
+ {
+  "session_id": "draft:p004:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p004_muse_a1.json.gz",
+  "private_sha256": "bf4d65d65d5fd44c90e27cb062537ed0f8b175015d693dccb09efcb917a3db6e",
+  "public_sha256": "59373ed0e03b6f98b0e0cc6eecd1810ca5738f74b300c06f89b4853e669bde2c"
+ },
+ {
+  "session_id": "draft:p006:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p006_kimi_a1.json.gz",
+  "private_sha256": "86cc38ffbf242b7c7ec1bb34c0c9cdb0bcc45271119237e9eb5222b73c144295",
+  "public_sha256": "a35721e1490277c221bacdd65fc8a372c8feb2d38c181f449aef80eb56088e4c"
+ },
+ {
+  "session_id": "draft:p007:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p007_glm_a1.json.gz",
+  "private_sha256": "0b85bac35bd43ce7426a545f9a361144358afd9afb4de0a04c66379d625977bd",
+  "public_sha256": "02c643f0dc2b5d0a73b21abbee5057dc9b5944c533ab713482aeda2c5bac90eb"
+ },
+ {
+  "session_id": "draft:p008:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p008_fable_a1.json.gz",
+  "private_sha256": "c3556b8cc09ee975000e36fd14bcf7cebf85225c84cc471bab0bd28a6130c9ab",
+  "public_sha256": "407e402ba6648e08e227d52df7a673c03df91046a70f551be66ac5d7f78739d6"
+ },
+ {
+  "session_id": "draft:p009:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p009_opus_a1.json.gz",
+  "private_sha256": "212672cf4307acf1c597a35d74ac59a334611ec53aba14f6bf4e5504285d9a78",
+  "public_sha256": "6e9e35ac87902b7d4d04529a13caa6e04d967ddaeadd1eec6f183138bfc8422c"
+ },
+ {
+  "session_id": "draft:p010:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p010_deepseek_a1.json.gz",
+  "private_sha256": "1cb11bced545a2a4e315d6209529242f5b0b04ae305fcd98079ceacb065e1e96",
+  "public_sha256": "b46f6dfdd7672272e41a72c9487370b0dc7bfd4342b3e3067377fdb01bceabf4"
+ },
+ {
+  "session_id": "draft:p011:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p011_grok_a1.json.gz",
+  "private_sha256": "f0523f166d6d34184ff931d2a7af8c361175fb45a53cd7a0a8509ee62f373649",
+  "public_sha256": "9a05fe1474b7b9bfcf1823f1b3ed9898321e2a892c0ad6d8bdcfb958a5389cff"
+ },
+ {
+  "session_id": "draft:p012:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p012_qwen_a1.json.gz",
+  "private_sha256": "80e09841e5925812e3d27afdcceb6c8b1ebcc83a60120a8abae8b62f02b75215",
+  "public_sha256": "9f5d9ba63c39d14a95faed62d87570e04c0b6af9e2c37c0a51cdabfa9458a3d9"
+ },
+ {
+  "session_id": "draft:p013:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p013_mimo_a1.json.gz",
+  "private_sha256": "fa756c9460ae54150aa838fece9c1d3a56d5f1110d0a54516c0ebe1064510c75",
+  "public_sha256": "8933a395ffa1a66de8a89a645113ee47667a935783491a37e0045ab6a97bddd2"
+ },
+ {
+  "session_id": "draft:p014:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p014_fugu_a1.json.gz",
+  "private_sha256": "d93db4704a3840cde82db0d14e775efff50428cab38f402a1bb89e7eaa626d65",
+  "public_sha256": "c211db93b56edecfe42cfdaad3c768cdb06c47dadc8e7171e94ff79542a32edd"
+ },
+ {
+  "session_id": "draft:p015:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p015_fugu_a1.json.gz",
+  "private_sha256": "8260b80b3577efdd0cdc08a8ae4c6a1d13291ef43a4193c7199ae6206cdedcb0",
+  "public_sha256": "549021d285c7692371f61e41a31b82bf8fd3e488de688c9b3ea9c3b148e9bdbf"
+ },
+ {
+  "session_id": "draft:p016:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p016_mimo_a1.json.gz",
+  "private_sha256": "daec20dda8cf93f3c512993198c1ad08573b606cd8c45a468f57331ef53ae57c",
+  "public_sha256": "d153fcbbb0d843b56e11eecf63dcef373144d3eb9fc4d2951d947ca449390f9d"
+ },
+ {
+  "session_id": "draft:p017:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p017_qwen_a1.json.gz",
+  "private_sha256": "3b56d7fbc855486926c5747c7e65fbaff72f476890ae5fe586abe84fe96d9c61",
+  "public_sha256": "61e1a14861cf5631ada985c52f94de4d3beb6f3bd37b0eb71739e540b800440a"
+ },
+ {
+  "session_id": "draft:p018:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p018_grok_a1.json.gz",
+  "private_sha256": "f92b1bfba6cf8e4476d8509b9520050ef96597808c6d736c09ea2070ac1df489",
+  "public_sha256": "52d3094e1d5a9261d9c458f0c8270e5f881e667af6f864595b35b1f8d1b8db3e"
+ },
+ {
+  "session_id": "draft:p019:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p019_deepseek_a1.json.gz",
+  "private_sha256": "efd87a2578fe995926101c361beb2e09caee60695d7f99a995286b3a14a71637",
+  "public_sha256": "bae1f51322a0f11d73fb48ebb6671b6e2f655959d77ee185fa56a11aae3c5d45"
+ },
+ {
+  "session_id": "draft:p020:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p020_opus_a1.json.gz",
+  "private_sha256": "c9338e457b2eb0d2f084a525b435b69eefb2f614cc30aec920152efae74b3e8c",
+  "public_sha256": "c815b8a042758992d2faf5078fa2a12fbc412aa2ebef8d0edf6d5c966a750739"
+ },
+ {
+  "session_id": "draft:p021:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p021_fable_a1.json.gz",
+  "private_sha256": "aa5d9781b1f56ee7faa4454a2928f821ef944f1009cc9379845a4f53cbc0c1a9",
+  "public_sha256": "60ef0ad15d4a1e63ad58efdeb9b97106ef238395fa3b4b08d2da78d1d7689ebe"
+ },
+ {
+  "session_id": "draft:p022:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p022_glm_a1.json.gz",
+  "private_sha256": "04a54596c966cb9c64254ab6eac30a36aef0b1b44b439a4bec026755fe0b18f3",
+  "public_sha256": "7e6d5b289fa7dd114c88a817823135329bac17048d531caa18529ed354f32885"
+ },
+ {
+  "session_id": "draft:p023:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p023_kimi_a1.json.gz",
+  "private_sha256": "46848c54a2ff63dbc4613c525a1c1855089f482a27eae559b2f8933f08568c8b",
+  "public_sha256": "34bd3ff2c14cb65bfedde0453e1f5ab18343352636b96e1637ea3d0fe76a04ac"
+ },
+ {
+  "session_id": "draft:p025:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p025_muse_a1.json.gz",
+  "private_sha256": "a67dd4528c3ef84885f01d7c4089662c17f8e52b81367ac5af49647158854e97",
+  "public_sha256": "75272a7efcb1683a46a06bc12337332cc4d1f6f675ebcc486998725f07fdb108"
+ },
+ {
+  "session_id": "draft:p026:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p026_astra_a1.json.gz",
+  "private_sha256": "c3621ac439561de2057802e8ecf3b790cfd58c6b9b67651dee4503d43272ad47",
+  "public_sha256": "23045fc11c68955b41b5b0f36b467699754d61149efd0d0398c8ab7cddebc316"
+ },
+ {
+  "session_id": "draft:p027:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p027_sol_a1.json.gz",
+  "private_sha256": "40d26471e3bff338566e183e244c79d2cd8e3caffc855e8e6049715cff11e4d8",
+  "public_sha256": "c2fa41894f9f673526cf043010573d830379ffbc70c276f2038f7fa5be29eeef"
+ },
+ {
+  "session_id": "draft:p028:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p028_gemini_a1.json.gz",
+  "private_sha256": "bd1f1b0f7043635eb1c7cbf73ab0f7706a2a6ce6067e002302c9041c219a63b0",
+  "public_sha256": "4ed5eacce02d0fb899c2af54445aa1d4ba2e621c053a16879c26331e5f59de78"
+ },
+ {
+  "session_id": "draft:p029:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p029_gemini_a1.json.gz",
+  "private_sha256": "41e7c9359ef07ad58242f1be83ffc80ca170aed08debba4d48dc2849f25f6622",
+  "public_sha256": "5dfda7c0de4f13caec21692443b058bee93fbca103ede5c67fb9c8130f3df7d4"
+ },
+ {
+  "session_id": "draft:p030:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p030_sol_a1.json.gz",
+  "private_sha256": "a1032f41d59038459550fca6489f81085f97cda17053a0048b9a8a2533ee0fb9",
+  "public_sha256": "3e0d2b76e6eb57e4c7fc7050634742407790e1142713fb2e174f32548b8d4f33"
+ },
+ {
+  "session_id": "draft:p031:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p031_astra_a1.json.gz",
+  "private_sha256": "4193f5e2f86d1c86003836d22c6e9cc015807e48860ff1429ec02cbbafb8eb74",
+  "public_sha256": "52fc27a9f2bf5eb27cd791a1a9d08b71049110515b083170423e448cdadd0346"
+ },
+ {
+  "session_id": "draft:p032:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p032_muse_a1.json.gz",
+  "private_sha256": "b25322f22baac2e002286af8ad6d8caa5e9bd7b15d47685d3cdbce1e89da6525",
+  "public_sha256": "c16e80c5273181e9cd9d331497fd4adcae6afbe57a5f0d8eea64172205b5d29c"
+ },
+ {
+  "session_id": "draft:p034:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p034_kimi_a1.json.gz",
+  "private_sha256": "bf0a800b02be59525a8e6a12d294d9abdc127c0581d7245ce372cede628956cc",
+  "public_sha256": "34a365805185f2bb35b17b94d63efd5c33e06c25d8e1d9fa11d58443b2b326c4"
+ },
+ {
+  "session_id": "draft:p035:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p035_glm_a1.json.gz",
+  "private_sha256": "5ac958bf2c35d73eafe3221cb88d5c133a395cd7b6b4f85042b114abb9cbfbba",
+  "public_sha256": "0169593c16bd3dfdcf883206d31e07b00744684a681e4e8a292cac7749e796e0"
+ },
+ {
+  "session_id": "draft:p036:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p036_fable_a1.json.gz",
+  "private_sha256": "494d772d8e9e0df5e4e99c1448325f192b7828e6ebcc235cec899eeb83689778",
+  "public_sha256": "60d0f7d9dabd79320c9dddc9c5860c74977db5a022e4e55d913a9ec6853637aa"
+ },
+ {
+  "session_id": "draft:p037:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p037_opus_a1.json.gz",
+  "private_sha256": "11ffdda6fcced0246d2d506f55643e1a74fdc316bc1abbf42e0a6db449eeea13",
+  "public_sha256": "3fe9e7b156e4399ba83a5ec200979624efd2cef36af2b542cbd53ad1ae587901"
+ },
+ {
+  "session_id": "draft:p038:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p038_deepseek_a1.json.gz",
+  "private_sha256": "24e318d34850b0b7fb6ce436d6972f99dcf5d9a2227f897b2fa1958cc35be5c2",
+  "public_sha256": "57410cb18239b2d2ef085e377297010d72f82877f509b24b2bd36c8eea9011f9"
+ },
+ {
+  "session_id": "draft:p039:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p039_grok_a1.json.gz",
+  "private_sha256": "7b7be8a6a3d54c4d68d18697b184652720d7ffc863b149a2736dbf9c4f3e76d9",
+  "public_sha256": "ae6ec2d24c1f9a2490ebb509eeb9a717e9e6e3f7709766819d8a2bb69cc7f0ae"
+ },
+ {
+  "session_id": "draft:p040:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p040_qwen_a1.json.gz",
+  "private_sha256": "4b2b5bdf0b9713d64242e04be282ca0a2fdb99fe2d36b20a1f4cb575f3ef43ce",
+  "public_sha256": "1563506ca1319859f77369c94ddc3df29a032fb76e3d2877bd052ac46e069ecf"
+ },
+ {
+  "session_id": "draft:p041:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p041_mimo_a1.json.gz",
+  "private_sha256": "a110c109bb54aa17167a57e340bec6cb82d275c00436b78ea33708b8c1733275",
+  "public_sha256": "5642b33972ff14b67dfd1214157d31d3ce6a948dd6824db64c5050439593e32e"
+ },
+ {
+  "session_id": "draft:p042:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p042_fugu_a1.json.gz",
+  "private_sha256": "7f7654c27730a5758555f465e52c1c697c37bdb7faeb7fcb16212648ba6bc3c7",
+  "public_sha256": "874830a8bc3b60f571125b1a9160086ef1e349532fd3c79500de7e04f0b23a6e"
+ },
+ {
+  "session_id": "draft:p043:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p043_fugu_a1.json.gz",
+  "private_sha256": "2ed4c770b3692f1d18d7ae53567eded5da7c635711efa51e174a512f1a2a17d4",
+  "public_sha256": "c0a2faac07a0b3fdc7f220987bb375dce4c72c3950047adfd8dd91fc74f79ed3"
+ },
+ {
+  "session_id": "draft:p044:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p044_mimo_a1.json.gz",
+  "private_sha256": "b254139705ab24a579e2c20744f117f2847bd67679eba4e331421781f615bf05",
+  "public_sha256": "186b5bef1cbc60bfdc412177f2b5669b016e374865afc3f4a854715258bef8d1"
+ },
+ {
+  "session_id": "draft:p045:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p045_qwen_a1.json.gz",
+  "private_sha256": "11dae629d2881cf7053c726aef5df6fa89f09b2722e77b73b15fa2c657ccc071",
+  "public_sha256": "c0b1cbdcd26e96262d1befe7bd82a1ea136f7c7287502701af09546e941de2fe"
+ },
+ {
+  "session_id": "draft:p046:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "provider_outage",
+  "path": "draft/draft_p046_grok_a1.json.gz",
+  "private_sha256": "5ede4b067d7a0188e4ecc4c11c2a4a62841eac838c34eb916613920c8a80a4b4",
+  "public_sha256": "81965e9b575d7c93464eaa227385f4663af3f9d87deac93204c8802871f88552"
+ },
+ {
+  "session_id": "draft:p046:grok:a2",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p046_grok_a2.json.gz",
+  "private_sha256": "6f960040204f3a4b5fa73700df96c84d5dfe1528afbcf912c8334eaeeaba1dbf",
+  "public_sha256": "21e667e7768dfd2a1ed5ba642ae88977db0cf0d72e021543a7dc1f57f2a1907d"
+ },
+ {
+  "session_id": "draft:p047:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p047_deepseek_a1.json.gz",
+  "private_sha256": "582e35e805412d8a31f8107b464d956789be11d32436dc82b48221226ca42711",
+  "public_sha256": "c7b1ba1c564ce9013922cbad2f38ed4a8d080fb60262f2f87caf08d42dc49197"
+ },
+ {
+  "session_id": "draft:p048:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p048_opus_a1.json.gz",
+  "private_sha256": "f1e081969f361519d9beb893a7925f0520ea5bf196302f53e8c4a614260016b6",
+  "public_sha256": "a8de1d14ec935e7b940befb772e448bbd61ca460eee133e1cfd40b0d1d6718c8"
+ },
+ {
+  "session_id": "draft:p049:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p049_fable_a1.json.gz",
+  "private_sha256": "6805b042c1c7f9eb7fd107c15feffb1606f871e421a3469e718a83d1f5a83815",
+  "public_sha256": "928433fd1eb303a537f09fb40a41f7cc2fec9d963f583f836220f8663d8da16a"
+ },
+ {
+  "session_id": "draft:p050:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p050_glm_a1.json.gz",
+  "private_sha256": "d322c47115aa4e68905569f681924eddad0dc6e0362fcd561bd6f6719045c88d",
+  "public_sha256": "c1f5cd07ccd2c5735d8d968ad4573cadc59f16bd0eae6efdb916a2267c3fa7a3"
+ },
+ {
+  "session_id": "draft:p051:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p051_kimi_a1.json.gz",
+  "private_sha256": "4a103e645092d62a0a6b9eb82f0061c2373fd193c987d09e5721c535b826df40",
+  "public_sha256": "ce13e90086eb931ccad46e27f7384712818fa347960e221bbfe30d3bc933c260"
+ },
+ {
+  "session_id": "draft:p053:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p053_muse_a1.json.gz",
+  "private_sha256": "86edccdc453ee9c7da932167693d7c09c1e837e229337e5f39d7c2cf7da27cb3",
+  "public_sha256": "cc82e474a0eeda2f429593fa302c021e5c14bebb0bca184db59b58bce760d768"
+ },
+ {
+  "session_id": "draft:p054:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p054_astra_a1.json.gz",
+  "private_sha256": "6ef2dc899de5593a880afd26df3a9a98eea9e9e65da6ca47e03f9639511e5d53",
+  "public_sha256": "05b2792695a2da547dbe6b7108f441a99a4e7872817f2fc82e44cd9760f1e1c6"
+ },
+ {
+  "session_id": "draft:p055:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p055_sol_a1.json.gz",
+  "private_sha256": "136d86a9794350745f55d19bddb003af42e9d6de8f1c255d9c523a21be3d8c07",
+  "public_sha256": "63a414a16a22c7c70d447d31125e972cc518d477b0eefc087a33a130986b3132"
+ },
+ {
+  "session_id": "draft:p056:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p056_gemini_a1.json.gz",
+  "private_sha256": "6c29d9af9ec84e621d6c40c01d8f710ee0e99d319238d5fdad28747ab5f28ba4",
+  "public_sha256": "2ff2910878f1da357e445bc6a5ee37fa89ce23bb4acc4ab6f3edd811f2265b5f"
+ },
+ {
+  "session_id": "draft:p057:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p057_gemini_a1.json.gz",
+  "private_sha256": "69eb672f1ba7a60578993e53f408b32ebbbfa0260691134009ceb46d7baf8759",
+  "public_sha256": "f076d1b819f8045d22e9c7c38c3b4a2ea65bd1f44d11c2434d6b45c21bdf098d"
+ },
+ {
+  "session_id": "draft:p058:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p058_sol_a1.json.gz",
+  "private_sha256": "27876a29a0b298a53aa3aa68aafcd15f7531fbdd1e16fab82fefaf90ad592d90",
+  "public_sha256": "a88e8639be3201b89b6d11ea1093c68090a69b4a8e8218ad3a0580a15251082d"
+ },
+ {
+  "session_id": "draft:p059:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p059_astra_a1.json.gz",
+  "private_sha256": "6f7bd3cf8526ca6c9666ecfe73923abd31332c85370a60fb74ffb429270d77af",
+  "public_sha256": "37b764f8a18db00d8ff349e5b2979cee819ce9d8dd12baf03322b129cfb9df25"
+ },
+ {
+  "session_id": "draft:p060:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p060_muse_a1.json.gz",
+  "private_sha256": "60dd43ea745b6821248c6691eac36ac1660b51ea93d14cf75f12413737ce05da",
+  "public_sha256": "20dcea2b5d338e35a9de7134d877d41dae561364ab6f0faa64fd3370da24c92a"
+ },
+ {
+  "session_id": "draft:p062:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p062_kimi_a1.json.gz",
+  "private_sha256": "1d488eccb521dc6acf4a6b2c28fdbf26abce4b1768697fe6e577e433de9734a1",
+  "public_sha256": "6fd1c0f54b72fb07497dfe863e558643a9e91e7bb136d669dc01d0d4683125a6"
+ },
+ {
+  "session_id": "draft:p063:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p063_glm_a1.json.gz",
+  "private_sha256": "1c3c65ddcc670842c7fd2adcef8337e419704210c4ba698ba6285d35461496cd",
+  "public_sha256": "601db22e4e9b34d8b48461bdd65aa3ce811da519e927143e1ff6899631526569"
+ },
+ {
+  "session_id": "draft:p064:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p064_fable_a1.json.gz",
+  "private_sha256": "249657ff98b377efd001134cf026d643aab117b09dd61341d151c405e0d9de14",
+  "public_sha256": "c72d728e12753e47d7551639a7d46a822ec6b4cc8a9e9e475c86e4ac310d5ad0"
+ },
+ {
+  "session_id": "draft:p065:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p065_opus_a1.json.gz",
+  "private_sha256": "09b7d43ab67590513a79602d854608fa300c6bba8e57aef5ee2c3ec57ea1ed5c",
+  "public_sha256": "d7bb8b0fd7c40cfe0156b165cfe8536579d36495a478d1e81fcce3365a859ec4"
+ },
+ {
+  "session_id": "draft:p066:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p066_deepseek_a1.json.gz",
+  "private_sha256": "ff8a68d8c2612b1f365baa4aa8ae9ac2c921167b8fdc3983e8cd6d4616dba1d4",
+  "public_sha256": "309d70502f60d98a799246149639c83aa5b4c1d175c65ceb96605848ef331c38"
+ },
+ {
+  "session_id": "draft:p067:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p067_grok_a1.json.gz",
+  "private_sha256": "7de3da053bc7c19783d1510b63e03fbc5d879ae248e8cf9097e353662d657b58",
+  "public_sha256": "cc377a10b1854b9aabab54d5b060f926a9d176bf36a218b5cb9142566674c6ed"
+ },
+ {
+  "session_id": "draft:p068:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p068_qwen_a1.json.gz",
+  "private_sha256": "856313875abeeee4eaba8b0be0bb554365142da8f51b16e009265edc54eb73bd",
+  "public_sha256": "15af99f557be0f810dd3e5b1257544a0c0864165a864e78e71b5dac5251cc152"
+ },
+ {
+  "session_id": "draft:p069:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p069_mimo_a1.json.gz",
+  "private_sha256": "a413b24c3bcf3138edc4dd685d07dbbf6a0ed3db6af61e5cf685871a66f2a090",
+  "public_sha256": "6c27f444c8d608e92c075a4f996e79eada7f851b3a58369101dcf6a334694d8a"
+ },
+ {
+  "session_id": "draft:p070:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p070_fugu_a1.json.gz",
+  "private_sha256": "e847f149dd0598797b82a8710e7cc010bfabe8f3cc4d060207fdb25a122b90b6",
+  "public_sha256": "a6cced6b48e907cad0be711547674c15682ecfc70bfdf0d9b2eff7bb72f74680"
+ },
+ {
+  "session_id": "draft:p071:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p071_fugu_a1.json.gz",
+  "private_sha256": "a0dc0a72234a22c96ee2fefaad64b223c94dd076cce53daaac47cc2a1a594dbc",
+  "public_sha256": "5b6bfddccf632404757066af6c871a310c2bd08ac7929ddff596645897ae7e17"
+ },
+ {
+  "session_id": "draft:p072:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p072_mimo_a1.json.gz",
+  "private_sha256": "daf17f657d04d06017ad2511a369782331859cf5829ce79d6148467184df4e80",
+  "public_sha256": "c1348837a581abdbb01910a2638abeca4b3d11e0c0949f7edc9ee1a9895f7a72"
+ },
+ {
+  "session_id": "draft:p073:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p073_qwen_a1.json.gz",
+  "private_sha256": "88c6cc2a93f7d2396b58ae12ad72576bd564e9faeb4d1a5de272171b5ad80fa2",
+  "public_sha256": "3f5c28ea1aefb831b844ad04d84c4be3c3021a6d72eb86166bb733b13c2838d1"
+ },
+ {
+  "session_id": "draft:p074:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p074_grok_a1.json.gz",
+  "private_sha256": "82df817f6906494ba648bfd3977314b92965d051e81a53276427bf35963d4081",
+  "public_sha256": "0c0943512b37b082b211322105b53f5544a6ef66dea40edaf08835bbe3ce5e9c"
+ },
+ {
+  "session_id": "draft:p075:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p075_deepseek_a1.json.gz",
+  "private_sha256": "c6a0ddd87e1f467819b43208a36677636d75c0e91f0645cf24920aba461dc254",
+  "public_sha256": "8c60ffd128780ffa6b5a75aec8c2e98c78131a7997d091b335829c6732a3b381"
+ },
+ {
+  "session_id": "draft:p076:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p076_opus_a1.json.gz",
+  "private_sha256": "326db4a0c6e064189812e6e1dab0a72d08b6ea4649a6a189139ffebd757d300d",
+  "public_sha256": "a6bc7d763ff40d6137d0f068770e282390905df46b4787136b2cc8fa4d531972"
+ },
+ {
+  "session_id": "draft:p077:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p077_fable_a1.json.gz",
+  "private_sha256": "31fab5db29b42dfe0027d91305b191f14890090901f054048729b919a8150e49",
+  "public_sha256": "ec43ba4940707c89a0dc13fd4784e0f15fea9efefaa93891dd416ba6589dd50c"
+ },
+ {
+  "session_id": "draft:p078:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p078_glm_a1.json.gz",
+  "private_sha256": "ee4021baaeb363d4d040368576c3f5344d046bdc06cb43bad6ac2194424d6ffe",
+  "public_sha256": "db043090e76332190e43d81612a07a27a7cd841408538bb36039abd1b8a84f07"
+ },
+ {
+  "session_id": "draft:p079:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p079_kimi_a1.json.gz",
+  "private_sha256": "070b1756198134e9e812ab331d2ef65b6dd470cc1140c0268cfd7aad2d332197",
+  "public_sha256": "e97be427d5ceb424865fddf9978b64420c8f992976710240fb67799f8b9be2a2"
+ },
+ {
+  "session_id": "draft:p081:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p081_muse_a1.json.gz",
+  "private_sha256": "7a1d5ae2bc3ef74c2ff7a11a7d0c0e6cf61014f187b600e6e082c870d905837d",
+  "public_sha256": "4bfc4882497188ca4599ea189e60b182f744a6c24e54601d9002eb93ae6066f7"
+ },
+ {
+  "session_id": "draft:p082:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p082_astra_a1.json.gz",
+  "private_sha256": "bad3db8157c78e8ec3d3a70c9d3a94fb14b5c475b48c70766ff16a86083d609d",
+  "public_sha256": "63ef5290f707169c344729b3c3bb02d2ed023669946a8c52afcbaadaed1e801d"
+ },
+ {
+  "session_id": "draft:p083:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p083_sol_a1.json.gz",
+  "private_sha256": "51583c44ed86ffd07cb7c15b907fbf407217b23d046d68d57fc876d0633068db",
+  "public_sha256": "01cdbf0dda5f9309368022eaf1e485869ad0fb95a374e83ee94545a9ab7da1b4"
+ },
+ {
+  "session_id": "draft:p084:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p084_gemini_a1.json.gz",
+  "private_sha256": "98722513530a675f613d49e005763fb919690b87903fc8243cd957c18fc28204",
+  "public_sha256": "20605e51bf426137d0f1bd0c7ad650bdf83b69b563524ac7fbdaf4f5f8abcf24"
+ },
+ {
+  "session_id": "draft:p085:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p085_gemini_a1.json.gz",
+  "private_sha256": "7d31d707f21e6c55808c8031d8f6adf51cf1185cc5418000591d546e507d34ba",
+  "public_sha256": "e799adbc648f71cbd86fec6c09205476c8674b6eafb205a62cd335708fd6a79a"
+ },
+ {
+  "session_id": "draft:p086:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p086_sol_a1.json.gz",
+  "private_sha256": "c87f84546aea6e06e6a1ba6e2abc649f02fbe55eaec2e793f210c3874f34ff4c",
+  "public_sha256": "a2de9c140e5b2795fcb7e703fb2a6460d96eff753edd52c25cc2f5b9134f7248"
+ },
+ {
+  "session_id": "draft:p087:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p087_astra_a1.json.gz",
+  "private_sha256": "420901c628c7db2b4d9eb51acb627624829233ab308f6cbfd593a7add0eb9d2d",
+  "public_sha256": "8aab13fb1fbdd83f176436921ae842064e8199e19d8731cab1c71d53a67b5b43"
+ },
+ {
+  "session_id": "draft:p088:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p088_muse_a1.json.gz",
+  "private_sha256": "06c9640b5eb1f00e966255b07fa7d1e717036f33e94ae21015b45a42e4115f4c",
+  "public_sha256": "cb9eaae9ef461982ab55d9c8fa6eb813f76f44a3ba2642efdcf46497146fb963"
+ },
+ {
+  "session_id": "draft:p090:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p090_kimi_a1.json.gz",
+  "private_sha256": "cc715d63baaf42f66009602fbfe80e9953823781403505be22ceead78f47eced",
+  "public_sha256": "d432780f629ecf05a5e6977bb8097d0b60f21408c91821c1f734093956e4f0e5"
+ },
+ {
+  "session_id": "draft:p091:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p091_glm_a1.json.gz",
+  "private_sha256": "ea6b8decc96e2e6d10491b7a99569fadaa2358be5217b26d364665b4d43b44ee",
+  "public_sha256": "00a78df3b2a23736185c73fa897e69d818d830f1bd6f89f133bde4f0c3aaaf26"
+ },
+ {
+  "session_id": "draft:p092:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p092_fable_a1.json.gz",
+  "private_sha256": "49b693d9cbb4aa0484ea2751f9e8d5ad3e78ca76d619124d362e0f46688d6f0e",
+  "public_sha256": "e7ee08196161199393bbafde44af8d9ff3340fab36659853a375495dc09593cc"
+ },
+ {
+  "session_id": "draft:p093:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p093_opus_a1.json.gz",
+  "private_sha256": "70e673c9f9f9f62f6c009ea5fc85573ae51f5ea8a3dd6e64607a34b87cda1aad",
+  "public_sha256": "d884634d2d92c8a5cbddc73f3faf00d4b9fc711d8464b427390208444d86e611"
+ },
+ {
+  "session_id": "draft:p094:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p094_deepseek_a1.json.gz",
+  "private_sha256": "3671bb97c54fd70bf181e94d59d4e5c38ed476743d46af1255ec4854482f3ef3",
+  "public_sha256": "1705bc3da016af49d3c863ab72435ab76d080029d60f2e1ea10acfa0c7a38a5a"
+ },
+ {
+  "session_id": "draft:p095:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p095_grok_a1.json.gz",
+  "private_sha256": "eed43944c3aebb25d0bf7aa175ca4fa6fb7dff0b336feaf31b5114593cb10328",
+  "public_sha256": "21f9eb9142cc5e52bfd82399c3a2eb750b80317b6e00de63787744d62f1cc00e"
+ },
+ {
+  "session_id": "draft:p096:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p096_qwen_a1.json.gz",
+  "private_sha256": "089bd04b8ca445ff8fc5beaac9565cac179b514c91f04d84d0bddea591be3bef",
+  "public_sha256": "f7b7646b48ecc0cc844396c400f2e1a7cc0dc52359e636312b128f86bb5ad9d8"
+ },
+ {
+  "session_id": "draft:p097:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p097_mimo_a1.json.gz",
+  "private_sha256": "d584f9135a415069249a546f3a9cb3038a133cd3c31d49a2fb0a1333adad86dd",
+  "public_sha256": "37d017eb886fe08d03f5fc8d9fcfb552dfe55d08e700295a7f889c805043401c"
+ },
+ {
+  "session_id": "draft:p098:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p098_fugu_a1.json.gz",
+  "private_sha256": "8a9464d15d392c0c28a5c2f0c731b010e003af36a643a13e5c7ac8fbcbed3310",
+  "public_sha256": "39a79d810eff452de24a1ac8d45ab0623856f906b3455d04e6d199e4f28b12af"
+ },
+ {
+  "session_id": "draft:p099:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p099_fugu_a1.json.gz",
+  "private_sha256": "e56e02ab8c9b5393be1f8c0d399a26a6e1ceb7d4dd534ac83182addc2e8c51b8",
+  "public_sha256": "a320545291fd3c9cc9b81a823528c65940a379a67967b308e24a9910f5a93412"
+ },
+ {
+  "session_id": "draft:p100:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p100_mimo_a1.json.gz",
+  "private_sha256": "f7d203c1acc27552c3328ee72c01a973af680ff00883d49c362cae789e28bbe0",
+  "public_sha256": "4dbf71ebb1ae8785b8f177edcdd80bf7eab35f0a19da0758f24e0a3b43a49429"
+ },
+ {
+  "session_id": "draft:p101:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p101_qwen_a1.json.gz",
+  "private_sha256": "77f78285c6833f57b1ebc99d4eb8f852a809a98aeb6b8b0ea1556fb4542a6021",
+  "public_sha256": "801e3dbc0e8ac9e62b164d8648cf844942bf0157a794231f32e9821af7bad6ed"
+ },
+ {
+  "session_id": "draft:p102:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p102_grok_a1.json.gz",
+  "private_sha256": "ca2c5faaf69b93de1f788c2b006e07edd3827c0b2da4280cb09b2ec1d2b90912",
+  "public_sha256": "9d4b9e918803a08bd7f68be50ab1ae3c9670de0a9a91029832ce7d30f7c95cf6"
+ },
+ {
+  "session_id": "draft:p103:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p103_deepseek_a1.json.gz",
+  "private_sha256": "8c5b9aeb8075d3c781fc2a46dabfa98fedf4549eac7793daa2c6162ad79227b3",
+  "public_sha256": "adf1aa437528657fd17868fa5fafbd4c2629fff96e5b2df4d182de40dcbba141"
+ },
+ {
+  "session_id": "draft:p104:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p104_opus_a1.json.gz",
+  "private_sha256": "98b3ef177bafe6567e0d77d06d43692f6e3ef8bd38c8d34ff35985ab261dbc43",
+  "public_sha256": "fcc8483730f46f6b2fea0e12f23685f6dc30cd1ffc32ca4734fca2c96813a236"
+ },
+ {
+  "session_id": "draft:p105:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p105_fable_a1.json.gz",
+  "private_sha256": "193d936bcae251070917933b3b38a7fcd38a8febe81b1bf06eb94041d64d9783",
+  "public_sha256": "2c0dc88989ac218fdd5153593d74a07802f11bb485b6c024f14ce170c6e700d3"
+ },
+ {
+  "session_id": "draft:p106:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p106_glm_a1.json.gz",
+  "private_sha256": "5bb422eed0a1ab59c7b00fe4c73e5e0c8488d8f1fa9dbb804cb40d4311455f9a",
+  "public_sha256": "fa847d4a6de7c07ba11088d1b3189aeae2cd6a7563995063d279b315c8a80f57"
+ },
+ {
+  "session_id": "draft:p107:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p107_kimi_a1.json.gz",
+  "private_sha256": "4fdf641c669852a0556f749c5577d2c9715f72448d9f305f1655be9a55da78ff",
+  "public_sha256": "45039f056c724ab6f74ee59d11a815f46bce7039c6c3414a2f5b7ec8c68f436e"
+ },
+ {
+  "session_id": "draft:p109:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p109_muse_a1.json.gz",
+  "private_sha256": "ab215aca53cdbf8ff836231e898bea1a1052cb2a06b93c38ef09028288f18b06",
+  "public_sha256": "7acd8f45cfb9db2e7ab44ccfdf2428da95082bf6e2dec62b86865127256ffb71"
+ },
+ {
+  "session_id": "draft:p110:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p110_astra_a1.json.gz",
+  "private_sha256": "ffd83f7d30272594e2040e75c652669b3aa25654557e7291003c0bf163e02fc7",
+  "public_sha256": "efc9fa19f77bf7eec94f329932fb9fbbb5523fb35f751dfad3eb6a5632ef54a9"
+ },
+ {
+  "session_id": "draft:p111:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p111_sol_a1.json.gz",
+  "private_sha256": "f39d0b775e81e51519001099cc4710937b9ffb18f2a1b48c62e1a4a12d0f9ee5",
+  "public_sha256": "51e22a93bc8461b410208bda7480685446da03b616bd52eb53f62447a3582a29"
+ },
+ {
+  "session_id": "draft:p112:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p112_gemini_a1.json.gz",
+  "private_sha256": "cda18e52054471ebf415f6c6f7af61467992b26af91e357449491d11439beebf",
+  "public_sha256": "9d63e1fcae225b50690ab9c5b4d09c1af3a5964dbb375ac2e540d801fad9fd8d"
+ },
+ {
+  "session_id": "draft:p113:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p113_gemini_a1.json.gz",
+  "private_sha256": "6aec3dc7e2d0517680328d02f9f365c7442c86579ca570fc7bc165418b1c24d5",
+  "public_sha256": "c34d1db735c044c202d337a67645c2e5e238e3dfef8ceaebcdb7460967b59dac"
+ },
+ {
+  "session_id": "draft:p114:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p114_sol_a1.json.gz",
+  "private_sha256": "d3b5dfb448f3587efa119183bc4657f0c5b9a9877025f3a331e86e8460dce6d5",
+  "public_sha256": "5250b57aab844ef526813e94e33980a02e16d8ad28c5a705c199834129a9149a"
+ },
+ {
+  "session_id": "draft:p115:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p115_astra_a1.json.gz",
+  "private_sha256": "4ee7621aecc0203a80d3dbbe39dfecdf734912605381122df185cd345e50652d",
+  "public_sha256": "699e92cc7495a3f09969984485be0fc40fe114a152cb6726fa0a3444a7e1f964"
+ },
+ {
+  "session_id": "draft:p116:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p116_muse_a1.json.gz",
+  "private_sha256": "20e50fa352fc2aa243cba792d4b43ffe8413571d52e7658da154f423b5f18b0b",
+  "public_sha256": "46d770998935651ee4a17051002af716f2e901f155276505cf9667fd78993b3c"
+ },
+ {
+  "session_id": "draft:p118:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p118_kimi_a1.json.gz",
+  "private_sha256": "e470c3b3a342924d2e60902d4416d12e811f1bb9371c0b090be07ae7f908e57a",
+  "public_sha256": "9b0a30d3c5bec4afd9bea10e43d5ba4523b7767a68c8cd398add392e57463a78"
+ },
+ {
+  "session_id": "draft:p119:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p119_glm_a1.json.gz",
+  "private_sha256": "32ce61a97189ea49bc10f8f509a3eac2a4991b73717a3fc4478f331996ab32e3",
+  "public_sha256": "4be6ab55d76670459d256aacd6609642e4c43b8dc196f24363d0a425e744bbd1"
+ },
+ {
+  "session_id": "draft:p120:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p120_fable_a1.json.gz",
+  "private_sha256": "b2463e1419a096a0c8a930e487b06fc50a0bf77b255a1cbebc81faa52a0689e6",
+  "public_sha256": "32d703e0cadb860044036e4f7945c518201ee4c14836c33d02749921cb6ba679"
+ },
+ {
+  "session_id": "draft:p121:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p121_opus_a1.json.gz",
+  "private_sha256": "f9397ead3f1a38d58f08f90832d3dad2d1f84412888332ad1214b5eee0403295",
+  "public_sha256": "3a1118caf2fbea605bb9b9360bf2b83f1fc910c0d424e49a4afa9cffddd1a583"
+ },
+ {
+  "session_id": "draft:p122:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p122_deepseek_a1.json.gz",
+  "private_sha256": "c765b5718509fe81c0cca3f177eda8a69914e1ad59f93efd6e5fc1163c080099",
+  "public_sha256": "1c8d7103a6b0732ea1f500b30fb8c96cda07db83635de3311ed4dfd179bbdd29"
+ },
+ {
+  "session_id": "draft:p123:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p123_grok_a1.json.gz",
+  "private_sha256": "07863d725b81b739046ce9c96f1041da095f999f0dcda61c751bd29ce65f538f",
+  "public_sha256": "94fa6b794c327b8ef4f89ed3a89eca1d9bd5cfb0a343e8949b8b7cc6e8d1ecbc"
+ },
+ {
+  "session_id": "draft:p124:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p124_qwen_a1.json.gz",
+  "private_sha256": "fb0df159ee9dc95ec3853b7c20302a21e98921783acbbb3c529908d5377541b8",
+  "public_sha256": "717a3af6f3dd14114da71591a577047ddd4c4726571494a1ff9c52b30b146f5e"
+ },
+ {
+  "session_id": "draft:p125:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p125_mimo_a1.json.gz",
+  "private_sha256": "ec448734156c49626b13c334e627031789690489949d79bc30051af3b41e3096",
+  "public_sha256": "a743dfa2832c9a10c26eb4c931ac9a81cf2cea751f46d9dae4cc5f894984d997"
+ },
+ {
+  "session_id": "draft:p126:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p126_fugu_a1.json.gz",
+  "private_sha256": "017197ba2df2580243127623ba1e3de4a220b40ec76dbc70588ee8f999c48135",
+  "public_sha256": "40ad4cd5a1f93c3a81bab6f4abb728107ceff15386497910351b1f0d7ce825e0"
+ },
+ {
+  "session_id": "draft:p127:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p127_fugu_a1.json.gz",
+  "private_sha256": "77e8b9f4af0eed3028c6b00d0c5af222393964849b7339b0a4243192d7300d6e",
+  "public_sha256": "2ea245249bb0e09d8f8b67698c0b57b79bd469ba793112a5fcc6054420cc7a67"
+ },
+ {
+  "session_id": "draft:p128:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p128_mimo_a1.json.gz",
+  "private_sha256": "8a402191efe26f1ebd1638513cc442f9c634a4a8689234cc8c3eca912633e8ac",
+  "public_sha256": "a062035d9e6f33ab70651bb9adef4e3fc97f2bcda9fb6bbd92961aaba5916d16"
+ },
+ {
+  "session_id": "draft:p129:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p129_qwen_a1.json.gz",
+  "private_sha256": "1cdd0a2c487bda2bd6e1b0520815efc8874aa9da06ef5057c3c6493abb206742",
+  "public_sha256": "56e4023deded6cf263c051e8c5c02917616ffbd524ea4b919d23a2d1e4bdc441"
+ },
+ {
+  "session_id": "draft:p130:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p130_grok_a1.json.gz",
+  "private_sha256": "524f966035c355a77582f2d32e4d526bfe23387f0b7a8fa663f5ba21e0076feb",
+  "public_sha256": "df5492a49b0abc53c4250b85f13573d274881ef0097233d467dbec2642b90c25"
+ },
+ {
+  "session_id": "draft:p131:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p131_deepseek_a1.json.gz",
+  "private_sha256": "21e7c0483439e97661f327aa141f94b75c6dfe0f33818e2391488194f29d107d",
+  "public_sha256": "3548b7647a260880075ac343b72fab0ea2df80ad6e8fad1d7ae6eb5a3428ed4a"
+ },
+ {
+  "session_id": "draft:p132:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p132_opus_a1.json.gz",
+  "private_sha256": "464ce42a06b30acbc07e5117f66087e6390f1a94894c352dde40448e542b8319",
+  "public_sha256": "d2ef373f43e7777c8e9f7dbbea6ed262d24a0a5dfb369f64ba58a6347745c119"
+ },
+ {
+  "session_id": "draft:p133:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p133_fable_a1.json.gz",
+  "private_sha256": "a983cb80a98d6ff400332ae7049ec0ed8ab7c09d1ce9dfc1744a182c18d618a4",
+  "public_sha256": "219c9dd16a72b42cf8e389508ef4a2e8ef419693c62722fd556bbc6b7c6a825d"
+ },
+ {
+  "session_id": "draft:p134:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p134_glm_a1.json.gz",
+  "private_sha256": "53e3b08a9f73b1e3326623033924874ef25811729864e3807232d8f2a3841f1f",
+  "public_sha256": "4dfc4b5107ae564c52d652b19384804ab0aeb41529a13a201200c17c4d4cfd24"
+ },
+ {
+  "session_id": "draft:p135:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p135_kimi_a1.json.gz",
+  "private_sha256": "5944d2d956b4dd77e903e4ca464512aafbeefea9595d55033150faf851ca57f3",
+  "public_sha256": "0fc4f2cd771c5bb0f77b712bd7f18c1220397d794bdb965a175cf4ae571f922b"
+ },
+ {
+  "session_id": "draft:p137:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p137_muse_a1.json.gz",
+  "private_sha256": "3a44f2ae8e668d9ce2329d5f071f48a16e5d4def668173ef9840159c0fd4884f",
+  "public_sha256": "992855d3ede9beecf097baa0e4f964a1865de0a5521f0b50843eeb1c2267181c"
+ },
+ {
+  "session_id": "draft:p138:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p138_astra_a1.json.gz",
+  "private_sha256": "823800585363d71e84af4e0e19de27b54966dab9d8b75e3f3a470b35b8119d40",
+  "public_sha256": "e39bbea7cfd6ae39f2ccfb2d3d1f088708eae9d0267acb66b073ace6254565c3"
+ },
+ {
+  "session_id": "draft:p139:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p139_sol_a1.json.gz",
+  "private_sha256": "04c8db6677d3ee1a3f1fcc1a3b83dcbb6fd87a9e42e758b439a3216f99abda96",
+  "public_sha256": "01a79e0499c1cc79044b44685a848e594b49ec4bf80da369592b817e35854cee"
+ },
+ {
+  "session_id": "draft:p140:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p140_gemini_a1.json.gz",
+  "private_sha256": "f93ab52dba06c0c2cd7c9752e0b7174d6d3244a5e045991ed7e9fe424260fc15",
+  "public_sha256": "5597c0dc557d3e090d2b208ef8cc407249793ef639d41ae4c25fd080f35307b1"
+ },
+ {
+  "session_id": "draft:p141:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p141_gemini_a1.json.gz",
+  "private_sha256": "05158142dc3fef8fb822ba52886dc7257b96ac105c4daabeb976f62c70c052ff",
+  "public_sha256": "729264264de298860e1db453b35319509d148dd1385192697b379ee998803678"
+ },
+ {
+  "session_id": "draft:p142:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p142_sol_a1.json.gz",
+  "private_sha256": "ce756df33b6593512264fabbf53cc196c71c30abc3d3fb3660e7cfac5f19fdd9",
+  "public_sha256": "65443124cd69e5d81ee67748a64548dd12b5aae23314d5187a52639208d4784e"
+ },
+ {
+  "session_id": "draft:p143:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p143_astra_a1.json.gz",
+  "private_sha256": "c4c753f40a5d90061e3674feb6c4c54feabe0030a0c76d75fa96921b92c943e9",
+  "public_sha256": "53fd85b4936eebba3ffd82a393ff1b2638fccc05b92694948c549148fcea680f"
+ },
+ {
+  "session_id": "draft:p144:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p144_muse_a1.json.gz",
+  "private_sha256": "e1b96be9af604e206dddca6c00959eaf6c461e9ca92dd396418b6d6f1e94177d",
+  "public_sha256": "f67aba48575bd3cbffc854c0815b35a425dd34b3a08d2fc938742208c92743a9"
+ },
+ {
+  "session_id": "draft:p146:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p146_kimi_a1.json.gz",
+  "private_sha256": "a1bf4633a118667803ed1d48d441da1cd05cc4bd46ae22cac15eaf27bfff4082",
+  "public_sha256": "a30090c813aa62cb46fd7f5b7947bf6b6d0130c62f204c9916c5a3630f17d20b"
+ },
+ {
+  "session_id": "draft:p147:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p147_glm_a1.json.gz",
+  "private_sha256": "253b96cef91e5ca344de08a9a753c67624f4c7743972fa573a9e5d0d2df29d70",
+  "public_sha256": "1b4e9ae4ba62f08a945be79ea4ef96949a9c11d5b28b4f006eaa609c523dd0f0"
+ },
+ {
+  "session_id": "draft:p148:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p148_fable_a1.json.gz",
+  "private_sha256": "9765437e4606e4413b9008e6921395e5da749b8e2154df5daffea7da25ed3035",
+  "public_sha256": "341a9dd1b89bbcc0576ab9823c1fe82ac5fa5d2195200188270cad6fc639f954"
+ },
+ {
+  "session_id": "draft:p149:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p149_opus_a1.json.gz",
+  "private_sha256": "4fac950c1f2df41c252254384232198f301bc2f1f6dfcc52d12d05749c5d6d2b",
+  "public_sha256": "1d6f1e42cec6c59763b1adcf050e5105a038df2618800630a5f36e0177044491"
+ },
+ {
+  "session_id": "draft:p150:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p150_deepseek_a1.json.gz",
+  "private_sha256": "a203cf7367c2372c2e0eb2d2b49ca4ba5ed49e185e7936362652f3dde73168b2",
+  "public_sha256": "2810aba1b2a07bf030e9d2af9512b8952418a36c69a253511e5f0db494c707e8"
+ },
+ {
+  "session_id": "draft:p151:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p151_grok_a1.json.gz",
+  "private_sha256": "c34826af744083d2e1ec7b0941529c9eca352f78341a241073258793688343b8",
+  "public_sha256": "1d4e50a18e071efd8ca4ad8261a4c6bc852d716c6a0c9a50eb3dce4b26d16621"
+ },
+ {
+  "session_id": "draft:p152:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p152_qwen_a1.json.gz",
+  "private_sha256": "0fec852b59cfd0fedc9552dc32f57771f7c03ea2ef93040e33e45f643baa5482",
+  "public_sha256": "b8a5ac4ce688edf49dd2cee9cb42576cd56888355ec4e88e36937c636d48b436"
+ },
+ {
+  "session_id": "draft:p153:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p153_mimo_a1.json.gz",
+  "private_sha256": "9b7ab17101f295117c761b1fccb7cb079b3b2a3520dfdbec31c48d13dea8fb20",
+  "public_sha256": "d5c2ed00cafaa75a8571d889ad64779b0987d7fb9b594ba4c166ac9876af9afa"
+ },
+ {
+  "session_id": "draft:p154:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p154_fugu_a1.json.gz",
+  "private_sha256": "c67f69b8195c1642287287c8a05cfc9d616e4ceb4e01f77b3dfbf86d4d484bdb",
+  "public_sha256": "e0c9aa7c012433c6b1e14244a5f3a0155daf9ec604905d972bb961fc2d891515"
+ },
+ {
+  "session_id": "draft:p155:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p155_fugu_a1.json.gz",
+  "private_sha256": "3df515d1356dbb0ede20a9a1503005822ba3182068a25a6b21cf5154bb7e4eb5",
+  "public_sha256": "7375dff0d91cd9b43a753ed2d65803a8a57418e67c029538bda281bfdc9457c5"
+ },
+ {
+  "session_id": "draft:p156:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p156_mimo_a1.json.gz",
+  "private_sha256": "561d9816772238cc654a2ee7ac8bb2037187225f11cfceb5cd6d78aa24dfc238",
+  "public_sha256": "c4b95794102c62711eed00c2acd6bac626b825d39ea44ca9bcf650e213307609"
+ },
+ {
+  "session_id": "draft:p157:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p157_qwen_a1.json.gz",
+  "private_sha256": "b57e36b9e159f4860403ad97686ab221158f69f17e1ed3d85e50dd7856fa50fe",
+  "public_sha256": "871ee5a75feb3e9f9c14d4f105d1dc05920f64b26897a4b7dcfc1af051618f6b"
+ },
+ {
+  "session_id": "draft:p158:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p158_grok_a1.json.gz",
+  "private_sha256": "e5c0f5bb647bad7b33148f2b713e6c8f3329b2a772cca954c12702cc07ec2d9a",
+  "public_sha256": "056e9a67fb6a3f11127c9f1f0bf92057ac14951f03f0cd0606116735446c1234"
+ },
+ {
+  "session_id": "draft:p159:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p159_deepseek_a1.json.gz",
+  "private_sha256": "cc5afa8fed24154efdc268916f7a22515ba1c4127e5d741c21504851884470e8",
+  "public_sha256": "b378770d68cad3427a4267d9d30fd56805e724f3976c430b0d4c036f9854e1fc"
+ },
+ {
+  "session_id": "draft:p160:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p160_opus_a1.json.gz",
+  "private_sha256": "7ba88c6831a91f86769df0e893539033c4f18a6030640280b194661c9ca88a32",
+  "public_sha256": "9bb3c3f72de6c0bc29965c53d0f862243913bf41ab697043ff91cdba883f997b"
+ },
+ {
+  "session_id": "draft:p161:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p161_fable_a1.json.gz",
+  "private_sha256": "e3e2c5359c2f41b3340888bcecdac2ca473ce4bc08f0e5662598c5267eaee835",
+  "public_sha256": "75e3f4fbbafbdcbe71d01797c595ef76d1bdf32304b3273acd58cf0903c3920d"
+ },
+ {
+  "session_id": "draft:p162:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p162_glm_a1.json.gz",
+  "private_sha256": "0bde730d5f2f9428fc8d42c0e31070e1195131cfe8177407f9e2159eb16c27f5",
+  "public_sha256": "c8c8dc5f0734c2ebb754062815f6880de6a5fd16d63d676a5fabc3b6b311862b"
+ },
+ {
+  "session_id": "draft:p163:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p163_kimi_a1.json.gz",
+  "private_sha256": "cc800b4e85d4f2bdfc34554ea1cd96bc790592faa1aaf8bb5b583e3c1a524814",
+  "public_sha256": "389d82da47b6b16afea78b8c6dbd7d71a6a31983232f94056069a20aa3258bc7"
+ },
+ {
+  "session_id": "draft:p165:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p165_muse_a1.json.gz",
+  "private_sha256": "9ddb5150cbe14a9d8dad8783966e995223b66b950de21b8f6114b3e6e404864a",
+  "public_sha256": "18d10bcbf05595cb3711d1a992b1d198c3fcc363bbc66b0b3b9d4158f1eb2b98"
+ },
+ {
+  "session_id": "draft:p166:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p166_astra_a1.json.gz",
+  "private_sha256": "c228717d1b9ecf37ae1d5332ec16f435b15c01c4fbc44aad4e1c5af107b226fd",
+  "public_sha256": "bc13301ea04638af613aacb7952c89083f22190037424f219d0a388bd9e20e90"
+ },
+ {
+  "session_id": "draft:p167:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p167_sol_a1.json.gz",
+  "private_sha256": "7f7b4e86c40d54edec593cd67201c233967b70069caabf81257f5a46ec4d6097",
+  "public_sha256": "32d2eef8471bade1ff1f26c7f1147b3df56a33db0016866be9da773268c0f39a"
+ },
+ {
+  "session_id": "draft:p168:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p168_gemini_a1.json.gz",
+  "private_sha256": "daca3255e615e218fb0fef282394b0c8ca65f9e5b6c5936a2c0fd6d996a0f19b",
+  "public_sha256": "772a051cb629953d7390dbc6c8bc1be8b692269a604a34debebcf8aa8fadb7a8"
+ },
+ {
+  "session_id": "draft:p169:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p169_gemini_a1.json.gz",
+  "private_sha256": "45f261b49e8c6821d72a8961d32e6675be81fcc8f2d76005a571246d086114bd",
+  "public_sha256": "1ee198ab73e518e0042cc05f94f0be8b765a8776d8c91a924635f833b4b11fab"
+ },
+ {
+  "session_id": "draft:p170:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p170_sol_a1.json.gz",
+  "private_sha256": "8004ca76275347e418d2edc18d7c2a434bc2daac8b659da6637a118d4f736abe",
+  "public_sha256": "bc7970e13975066c4e2452b2f3063f53bf0419381133778a8deadaebcb943b02"
+ },
+ {
+  "session_id": "draft:p171:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p171_astra_a1.json.gz",
+  "private_sha256": "e807826d648c117f2b8cb71db3fb193151d405acb595c55519faf30701e9e9b2",
+  "public_sha256": "54eb0d3ebbcb28385e9fab2be61c078ac1eb3fddc14dd5d97ef62f84dfc0552c"
+ },
+ {
+  "session_id": "draft:p172:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p172_muse_a1.json.gz",
+  "private_sha256": "7ebc18837e667be77a5b09dca7e181585a40ee94f3af78fce9a55e911e3bc4fd",
+  "public_sha256": "79fbef445cb14b4370deb52421bf70dafab2bfc279798a664f8a57a3046de8ed"
+ },
+ {
+  "session_id": "draft:p174:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p174_kimi_a1.json.gz",
+  "private_sha256": "fb7c3f6aa1d07f596192f53c18c17a01ad93a4edf14b51cf49b5b43d8ef44328",
+  "public_sha256": "7d956ed8b87a142ca0983c48c6f2c191abbf46733b9c70290607062f07ec1eea"
+ },
+ {
+  "session_id": "draft:p175:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p175_glm_a1.json.gz",
+  "private_sha256": "8d25dea56631a41da4e493f9474bd3bc5844600f71bbf42bc0101eb3ea376b4c",
+  "public_sha256": "6da8b1a9ddafd6e76a4b6b7cd64166032994adcff4ae80ffca15d223c57d9428"
+ },
+ {
+  "session_id": "draft:p176:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p176_fable_a1.json.gz",
+  "private_sha256": "5b38394c65dc327610cce10046ee9a45d21d3bfd62dd06112c269782b1024973",
+  "public_sha256": "4df015581e582a554a45fd62050bf353f8501fda01aa5f0787ba74ce7d470d32"
+ },
+ {
+  "session_id": "draft:p177:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p177_opus_a1.json.gz",
+  "private_sha256": "0685c0f1905889d76a798d1a72277e355a86504cf7ba5dcebfd8cecdba462f99",
+  "public_sha256": "68dcbc0def4e4234e26c74be84474384ff5f24328117e84c6d743704d2fadc58"
+ },
+ {
+  "session_id": "draft:p178:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p178_deepseek_a1.json.gz",
+  "private_sha256": "050fc163fdd7cd8a91842163466aff4730f80078d9257b44336a20fbb69b4e90",
+  "public_sha256": "53da8c2350d29a8e8d9861ee722b726a766b3731def832076592a17a5720e4f3"
+ },
+ {
+  "session_id": "draft:p179:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p179_grok_a1.json.gz",
+  "private_sha256": "fbeb605146743e171e613d62d6d1504a8d039df446e3bc3ff8ab17f5585313e6",
+  "public_sha256": "097aa9fbbcd823a0543528c83ca672e6fae6b30c0c5ff5f95a00589cddc57195"
+ },
+ {
+  "session_id": "draft:p180:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p180_qwen_a1.json.gz",
+  "private_sha256": "00f194746063acb1989dc47672d66af4526afb84aa1cf0b1b268cce445e279d6",
+  "public_sha256": "6659b7e74313a2c18141e8469de2af4b8d3f3fe0be95da2d3974d036665764e5"
+ },
+ {
+  "session_id": "draft:p181:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p181_mimo_a1.json.gz",
+  "private_sha256": "5363494a30d3f8c89dedf519ef0ef3179f36564261e9273cfa21687c8adbb006",
+  "public_sha256": "cf9ed0acd46b48e1223afe528d87d31b1b6c0529f79bac135fd4b64125bf4e55"
+ },
+ {
+  "session_id": "draft:p182:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p182_fugu_a1.json.gz",
+  "private_sha256": "6f399c434bab14678687ee9001c08da106049b20fff055caddbbef2fb6fcefef",
+  "public_sha256": "1ec61cc5141f9458b84177617bc57a340d52a8ac83ef349a261624ebe7be5f3a"
+ },
+ {
+  "session_id": "draft:p183:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "draft/draft_p183_fugu_a1.json.gz",
+  "private_sha256": "dfe7aea2000ff56882b9b2100af972eacfd06bf3f42f1f98318d419b726c5872",
+  "public_sha256": "b8aad13d7e3989df52bfadd4292197347e8b5bb361a459b9e36cae1727862238"
+ },
+ {
+  "session_id": "draft:p184:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "draft/draft_p184_mimo_a1.json.gz",
+  "private_sha256": "441fb827c621d7780e9d508b82c4c405751db5809de1b102a8418beec8bcf2f3",
+  "public_sha256": "6196d7134f3542d0b4f86397835ca1f9b91390d15b70204a148fdff7aba3f429"
+ },
+ {
+  "session_id": "draft:p185:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "draft/draft_p185_qwen_a1.json.gz",
+  "private_sha256": "02bd7fa7dc8151740597eeaeb15c8e95de5496579c2a4359fb0de32e715823c4",
+  "public_sha256": "6d1b8f11200e28e0efc85bf7754dc26c7b8fd01b1dee42e8414d3f6085d3579c"
+ },
+ {
+  "session_id": "draft:p186:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "draft/draft_p186_grok_a1.json.gz",
+  "private_sha256": "6b9f02eeb7609c5693014fb689a46b3e057f8a276daee5167905ce426ffac91a",
+  "public_sha256": "83eb99bace50496e8179d5b5b7b2b7cbf37609deff5c365c8607f80998fd71f9"
+ },
+ {
+  "session_id": "draft:p187:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "draft/draft_p187_deepseek_a1.json.gz",
+  "private_sha256": "34efaa24c39ea4aebf90827a35d4d5d5780028cf41af7169b3efccc4122b54b5",
+  "public_sha256": "fecf2a8f83cd92024dd710979f8d8b912b5e4759d5c03ed86ef4c24a69db9ac4"
+ },
+ {
+  "session_id": "draft:p188:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "draft/draft_p188_opus_a1.json.gz",
+  "private_sha256": "c756bae4f238912c8241120ddb37cbf73a67b78f4f1fb5de0b42b9e3cb90432d",
+  "public_sha256": "a5c52d41b904385c4ff295a7db0117e876c2fe243141e64d992a6214d7b31de3"
+ },
+ {
+  "session_id": "draft:p189:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "draft/draft_p189_fable_a1.json.gz",
+  "private_sha256": "638ad9841dc92fb50bb3704dcf53d8132fa3ed66fa29f279b4560c1881f0bbf4",
+  "public_sha256": "bec91e17b630d9cfe70c75e5e1fbd3e3cada2fb194433c736e50285ee93d9770"
+ },
+ {
+  "session_id": "draft:p190:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "draft/draft_p190_glm_a1.json.gz",
+  "private_sha256": "4c362df4890667ea1ccc8186cdf39bf6d29050e2c4f6333318638ad850c5b0db",
+  "public_sha256": "41403e4a826ba923af628052da6a04bf15ae74fa56c7057d8b42bd6de64da3a4"
+ },
+ {
+  "session_id": "draft:p191:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "draft/draft_p191_kimi_a1.json.gz",
+  "private_sha256": "d302bf5168b024bfbf6dab47f0641a405d66997d6b65775aafb67ba5ece1db79",
+  "public_sha256": "a21b52d3383dc8380e24596b2fd20001c7fbe8b616515e85b04e4e33cda1fddd"
+ },
+ {
+  "session_id": "draft:p193:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "draft/draft_p193_muse_a1.json.gz",
+  "private_sha256": "660aa4193f05cf2cd97c1c8029c060c3ccc56fcb62295a0944ed595bcd2d62d8",
+  "public_sha256": "b8d01a3badca2050d7c45a02e3d0556cf0ed76302a716d89ee275ee947e9c681"
+ },
+ {
+  "session_id": "draft:p194:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "draft/draft_p194_astra_a1.json.gz",
+  "private_sha256": "d1310f824f0d28d84ca558d875021610c7933e39884ba3988abcf96cee8d1575",
+  "public_sha256": "e457c92479653c2d0bfef8016ec0704ddf0bcc3600da6b80b6ae64db5eaa1481"
+ },
+ {
+  "session_id": "draft:p195:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "draft/draft_p195_sol_a1.json.gz",
+  "private_sha256": "2f9b79e0bc223cf3189f1cbd8714ecfff5d654c036dc65ad87f66351df9bd9f6",
+  "public_sha256": "6c39cf662ba7578d64977322e66da6323d67dd9ce907bc25fcd6b1142e6ca936"
+ },
+ {
+  "session_id": "draft:p196:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "draft/draft_p196_gemini_a1.json.gz",
+  "private_sha256": "8e22a21a5107806e50bc2dcdbe79c3655173fa270780e2ac48992a7c968bc0f3",
+  "public_sha256": "13beea7ec4322bf89c6ea8c85a7d7cc7cc5e3ad38c840da290bf11825b56892b"
+ },
+ {
+  "session_id": "mediaday:astra:a1",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_astra_a1.json.gz",
+  "private_sha256": "87b361a6ca1c88ba3cb4e67de5ecad0bd702a9aacaf96a5ce6c7898842968a1d",
+  "public_sha256": "7a27aa77a3951f1e21ffdb6a0bcfa1d7c9cac39bf798c9ae870f3768bc21ae64"
+ },
+ {
+  "session_id": "mediaday:deepseek:a1",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_deepseek_a1.json.gz",
+  "private_sha256": "d883896f297bc361f2808c5aa08d13b994a7ac4736ddd88b3faa75f0a453de6c",
+  "public_sha256": "d64b60551215ebf23811b60038b889f098be58f296641c5272ab3da82fdd00fa"
+ },
+ {
+  "session_id": "mediaday:deepseek:a2",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_deepseek_a2.json.gz",
+  "private_sha256": "a12907a157b6d57e273e905ce50785c5131f13ae9a8166614bdb043ad547516b",
+  "public_sha256": "c0bccb7bcc46b99bd3cbfb23a0c29ae1785ee61f86b0fee5fb98ae966cf8c72d"
+ },
+ {
+  "session_id": "mediaday:fable:a1",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_fable_a1.json.gz",
+  "private_sha256": "f94e07c88b938230873250fb684adecb42ad1dbbd2eca07f5df35458efed38f1",
+  "public_sha256": "9a518e2d2d40353b98cd39319a7feecd9e8f8c421601c69a95279caaf4b5ddaf"
+ },
+ {
+  "session_id": "mediaday:fable:a2",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_fable_a2.json.gz",
+  "private_sha256": "a99f5a83270901308ec1c1891f0ff87a6db9d2a38a66d0265c8e8e793acc9c4c",
+  "public_sha256": "e663ef6e14ad727234d2ac1f1675022a22ca2fa99d1eca02ec1b19d8210991f6"
+ },
+ {
+  "session_id": "mediaday:fugu:a1",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_fugu_a1.json.gz",
+  "private_sha256": "2cb1e78cba842752bf97b4fe90f1662b173d4b0caffcd6fcaf5ff81094ec7714",
+  "public_sha256": "fe2c8e27372f18e95f820ed5642f4c0b6ad0b4974fa3ee0e64ef4df38c4dfbcf"
+ },
+ {
+  "session_id": "mediaday:fugu:a2",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_fugu_a2.json.gz",
+  "private_sha256": "526ad826d0e8ee618fa09fecc822ce49a60bd641bc0e8afa88a82914c7e1d683",
+  "public_sha256": "199c433047301843d0e84f9ac9da5b229b9b7dd62c2a0f330b6204f55d8cd963"
+ },
+ {
+  "session_id": "mediaday:gemini:a1",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_gemini_a1.json.gz",
+  "private_sha256": "14c17e583ba2129d2902681619c46cb2820b2ef677a60cdea650fc0cf1db09b0",
+  "public_sha256": "4b2d7b8c19c57e377df7c56aa77c793e1ebc623abcf4127f2e9ad5a37779b832"
+ },
+ {
+  "session_id": "mediaday:glm:a1",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_glm_a1.json.gz",
+  "private_sha256": "aeb56fbc3d52242cf6c1aa494ae53dba8acd02e4e53ea76a368573346cc12890",
+  "public_sha256": "c00a2a2006c8cbe29988f0fd1af4e142ad496e1e782a34d02dbd346aae0889ea"
+ },
+ {
+  "session_id": "mediaday:glm:a2",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_glm_a2.json.gz",
+  "private_sha256": "9517925f3824df6f3ab6baa54ea43a6f043ee1f2aa2e7d1911cb8f28b2f2375d",
+  "public_sha256": "f2d72c90fe72b8120849086a096d0ecaee55d618901f0bb43e7d27d696094b72"
+ },
+ {
+  "session_id": "mediaday:grok:a1",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_grok_a1.json.gz",
+  "private_sha256": "a29c9e94e9520e3cce3eee223eff5f0d22eaeb31b0f039508da738045db0a0ad",
+  "public_sha256": "3f68a52bde7defeecd5a2a456bf7b5e5a8e2b8b4eca16c899b655970b0867a65"
+ },
+ {
+  "session_id": "mediaday:grok:a2",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_grok_a2.json.gz",
+  "private_sha256": "6f0af8a748f8b6791aa3ed3cae52342f907184441dc43b771bfb12279d39e44f",
+  "public_sha256": "4be1d8cbe92941eaee18101b125e3c14cf02f7435d5e396d24859744dabbbd6a"
+ },
+ {
+  "session_id": "mediaday:kimi:a1",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_kimi_a1.json.gz",
+  "private_sha256": "906c78d93785b072af50fdfc72b8444cb8f47e9da6406675c5dead56b783d7a6",
+  "public_sha256": "a809d256da7ea13fb65a4e0e3bcbcfd735ec7f02d91614f03eb86efce979cfcf"
+ },
+ {
+  "session_id": "mediaday:kimi:a2",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_kimi_a2.json.gz",
+  "private_sha256": "faa716f0594cd1ea3c260bd390417ae85f10a382b76675dcfb5458c8ad6af133",
+  "public_sha256": "67fb4bb2427fba2d7b2597416b5a4ce2f00fd910e481454bf0e2fb52dc7c8da4"
+ },
+ {
+  "session_id": "mediaday:mimo:a1",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_mimo_a1.json.gz",
+  "private_sha256": "55376a4a2174353037468a749719f5855d1b702949f31c880ddb1a3845a1b592",
+  "public_sha256": "a16ce90b753c8ad3377593d85be03a11ff4a8931eee8da1ab352b5e3863f8070"
+ },
+ {
+  "session_id": "mediaday:mimo:a2",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_mimo_a2.json.gz",
+  "private_sha256": "58362f0230b07ede6cc87c594762fdef837181ec243689926a5d302bbf429ff8",
+  "public_sha256": "b1fd4a276125297d5391fb77da0112c4658f244de4adb48c4f8f9d62e3e7ec98"
+ },
+ {
+  "session_id": "mediaday:muse:a1",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_muse_a1.json.gz",
+  "private_sha256": "9bd2cd976047755dfd1a3b81de1668d11ab296a3865280136353a5be127d5d63",
+  "public_sha256": "4fe3a94e1d160719a0da74f9a284ee48ff1bb9a827514a42574f21dd2dc22b7f"
+ },
+ {
+  "session_id": "mediaday:muse:a2",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_muse_a2.json.gz",
+  "private_sha256": "3466c08cb04c7fcdb580ebdfb6b3d6d4cc1932e9709307935a9953babac99305",
+  "public_sha256": "6d94e7043a7938c961e133ee450cedeb66c3fa23cb06316360dc58e9249bcfbb"
+ },
+ {
+  "session_id": "mediaday:opus:a1",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_opus_a1.json.gz",
+  "private_sha256": "8efe3cca983164d3aee8162a6bf78b498532dcd0d0bb3a4a2cd9532d33980a53",
+  "public_sha256": "af707d0bdfbe1d3b4c6a2c04a4349b54ae40df40cf96b498d335f44e68fa8b33"
+ },
+ {
+  "session_id": "mediaday:opus:a2",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_opus_a2.json.gz",
+  "private_sha256": "4d6b0bb4c65ba380f024a380d81dc97e5ee9478ba88e84a70176353c949337c5",
+  "public_sha256": "968cff3703804c534819f9c7e55e68945991375abec3e9a714316a24d1fec146"
+ },
+ {
+  "session_id": "mediaday:qwen:a1",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_qwen_a1.json.gz",
+  "private_sha256": "fd7272ca6eb5581784dfca7f96d173e601e9352bc370e2699979d25258e42d5a",
+  "public_sha256": "63e43441752b2fac94cd70eb73ee1982473d57a6a372164dfd242bb063918152"
+ },
+ {
+  "session_id": "mediaday:qwen:a2",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_qwen_a2.json.gz",
+  "private_sha256": "7efc771eab7343ca1ed5086a2529128fe8de80479a0eb55957f2b9e7754374da",
+  "public_sha256": "1d033e5f67fa51952f8e24e8e37844952b89f1af2bd6aa18a2de9df5b21074d2"
+ },
+ {
+  "session_id": "mediaday:sol:a1",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "mediaday/mediaday_sol_a1.json.gz",
+  "private_sha256": "b88032df40d65abe7174c8f7f98cfcd753ddcce57f4fd0e23be46c37e5c5e3ae",
+  "public_sha256": "7be318dd8eb5eff4ea90be8d4c5315ca173bab373afe8e8b23666f1455dee476"
+ },
+ {
+  "session_id": "postdraft:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_astra.json.gz",
+  "private_sha256": "bd552990bbef374848bc159541cabad58ecf2df1058bf3feb37c30ef87998036",
+  "public_sha256": "0fba7a793d2b6908195683b1f75094ef2d839e21f997113c160d9c3959e0a55b"
+ },
+ {
+  "session_id": "postdraft:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_deepseek.json.gz",
+  "private_sha256": "782fa77eee61b772be268315103b8502f40f951991651b6dc9fa7e4e6719aa31",
+  "public_sha256": "dc90f73ab9b931bf748f5061d7f710362b16bc3ab6d18e8cb6be77a3ff35c59f"
+ },
+ {
+  "session_id": "postdraft:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_fable.json.gz",
+  "private_sha256": "387931325332e87939988c2724215d5510216fea2f8894bad7b55f29fc9db47b",
+  "public_sha256": "809e7c3bb25ccf5c1b0c4c754b628f5c1b11ce5514f9812309eef6f0698af636"
+ },
+ {
+  "session_id": "postdraft:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_fugu.json.gz",
+  "private_sha256": "aadb3836392be5f10122a307992ba686bcff7c1c0933c2b4ef1d7ed471fbba1a",
+  "public_sha256": "c53326b9ac640931e7ec550d86271693113e5071fb14f3306746a3611dc70c85"
+ },
+ {
+  "session_id": "postdraft:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_gemini.json.gz",
+  "private_sha256": "edb2cefc6e9f3e4d41d8f7248b88d03bba9e09b89a020a764284c55c6076f2bb",
+  "public_sha256": "5b0d6266dfec08598bd282c052da72cae39858af5e054487362130ba18b51590"
+ },
+ {
+  "session_id": "postdraft:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_glm.json.gz",
+  "private_sha256": "bed8a806614b13f840c504c1b80f051a44d1aab60230fb1c2636f89408d20e35",
+  "public_sha256": "6cf7b063257ce60980eeff4451293a8f8ffa2aee8b833e11917c5ebfe73cb066"
+ },
+ {
+  "session_id": "postdraft:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_grok.json.gz",
+  "private_sha256": "46e30cebcab672b804c0ed45943029f1a6ca39d4f0b6038eb10a5130a1de97ac",
+  "public_sha256": "d0ca43614cd535eb02e3b8e32d0c5e33c0e68c0348c9005ffdf29af933118f83"
+ },
+ {
+  "session_id": "postdraft:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_kimi.json.gz",
+  "private_sha256": "d20d6209fabb778b5f0b21786a9210d623f92c0844afc208db8fd3e2178f1d5d",
+  "public_sha256": "1ec5938ae7579c962e2d0bee62c490c94260cb659f0f529e902c87c468bdd027"
+ },
+ {
+  "session_id": "postdraft:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_mimo.json.gz",
+  "private_sha256": "f81077a508ecd8f16b27a1c1239927ce8ea43754b351a063edd58926b64f7c05",
+  "public_sha256": "267ddd8fbee6f7e18d5715529809876e2fcc776cedaa1f59d363ae1663307bff"
+ },
+ {
+  "session_id": "postdraft:muse",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_muse.json.gz",
+  "private_sha256": "4bf1a4deecd0d1e32ef19cb52ef3c7d005967788eff9855f5c304a091aadf893",
+  "public_sha256": "fe42af30045f9a034dff543ea4af3ae5910ccb7c06139ef67c05dc0eba0d4239"
+ },
+ {
+  "session_id": "postdraft:opus",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_opus.json.gz",
+  "private_sha256": "fb9c15505ed7b4de6ff6f9f0114c9436d325841910e3fefadc6ae49db8246fb6",
+  "public_sha256": "0adf210ce1d87efb5e9d472a04dc960634e12b6dc9fc5a06a9dfc63501d7ca63"
+ },
+ {
+  "session_id": "postdraft:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_qwen.json.gz",
+  "private_sha256": "e8b5b99ee535a84bb7bc4166cc982899cd0be7a85be916939d39037e3cc29d40",
+  "public_sha256": "68775b417d5dbba69cd7e5663f8375757914930f1d1ac126c6364631ad6263a0"
+ },
+ {
+  "session_id": "postdraft:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "postdraft/postdraft_sol.json.gz",
+  "private_sha256": "565f82526841b09e8967705a8de9e5cc6d1b3a7ad62ac64753f1a292407a448e",
+  "public_sha256": "662f9d54eb4f2d8329b880c5ea269e2a5d4e5db5fcf4dc41165ee8dc63439a09"
+ },
+ {
+  "session_id": "prep:astra",
+  "team": "astra",
+  "model": "openai/gpt-6-astra",
+  "outcome": "ok",
+  "path": "prep/prep_astra.json.gz",
+  "private_sha256": "7b9a42c7149b07f6056074a8942bdb96b1fd387d7f2826f2f0308156875fa7a2",
+  "public_sha256": "4541c10fd7c21c6876542309597f384c7ee341e0b984e5e7d49440ff966510f9"
+ },
+ {
+  "session_id": "prep:deepseek",
+  "team": "deepseek",
+  "model": "deepseek/deepseek-v4-pro-0813",
+  "outcome": "ok",
+  "path": "prep/prep_deepseek.json.gz",
+  "private_sha256": "f1c34cc491796658d43b5a314a25286e365145e7c49fbfcaf6bcbec12c2e1389",
+  "public_sha256": "132b439c32197c29462def9717f20af6dee3983db345099c942ba52d3c8fb177"
+ },
+ {
+  "session_id": "prep:fable",
+  "team": "fable",
+  "model": "anthropic/claude-fable-5.1",
+  "outcome": "ok",
+  "path": "prep/prep_fable.json.gz",
+  "private_sha256": "f9665296e338c94c5977e1d0b83b920a51d361f00af9d8ccc9732ba4dc99cbc3",
+  "public_sha256": "d7934cec9ecd85c4cf16f851925f0249e11b78ad95e77c44b54a3acc456eb12a"
+ },
+ {
+  "session_id": "prep:fugu",
+  "team": "fugu",
+  "model": "sakana/fugu-ultra-v2",
+  "outcome": "ok",
+  "path": "prep/prep_fugu.json.gz",
+  "private_sha256": "643f38c64738d6a547f25e5fcf1303a7e160153b90c15b8e0d49a8c24dfe1a76",
+  "public_sha256": "b9c608e92b6d3d7a4807e5107c8d67563d41918e3cb63948ce68fb1ad423ea27"
+ },
+ {
+  "session_id": "prep:gemini",
+  "team": "gemini",
+  "model": "google/gemini-3.1-pro-preview",
+  "outcome": "ok",
+  "path": "prep/prep_gemini.json.gz",
+  "private_sha256": "aa08b5ee5d9d3e14ad37f52152fe915107698fef8ad5be3d3ca5c55777368a0e",
+  "public_sha256": "60ad61a5cc9c2da9df7b0314ca49720d7b8f066ef7f66423841516c3f1231fc6"
+ },
+ {
+  "session_id": "prep:glm",
+  "team": "glm",
+  "model": "z-ai/glm-5.3",
+  "outcome": "ok",
+  "path": "prep/prep_glm.json.gz",
+  "private_sha256": "db812c161312af21b501400c3640a320eb32a31e5cda4ee8e04407380bda796c",
+  "public_sha256": "286de614a65fd26514b6b062d052b73b9ca903e6a776a7289fa4898ca0a29913"
+ },
+ {
+  "session_id": "prep:grok",
+  "team": "grok",
+  "model": "x-ai/grok-4.7",
+  "outcome": "ok",
+  "path": "prep/prep_grok.json.gz",
+  "private_sha256": "dc95eba3165a1cbed34c87f9c13d62412580941164a7cdcc1fd44aa567d566b7",
+  "public_sha256": "12c6772b27a3d9844539b8c48acb88c57443571367fe0f8d17e11d1652229ff9"
+ },
+ {
+  "session_id": "prep:kimi",
+  "team": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "outcome": "ok",
+  "path": "prep/prep_kimi.json.gz",
+  "private_sha256": "d4c6f936bb01296297f5c281134f50f60c410cb64e0651b82f1393b9d0e5293f",
+  "public_sha256": "ec3e12f27d32c82f53dfc76871ba168f277d329e2b4264ba0be59002fb656e27"
+ },
+ {
+  "session_id": "prep:mimo",
+  "team": "mimo",
+  "model": "xiaomi/mimo-v2.6-pro",
+  "outcome": "ok",
+  "path": "prep/prep_mimo.json.gz",
+  "private_sha256": "a1f4bd0b38a8145f0ef1d223216cabc6aa6cbdbbdb1bf12c0e24dbda389f97c2",
+  "public_sha256": "c4182b852c213627abcf98ab4fe927f6138eab7814a3f78c4e8ad60d4d83bed7"
+ },
+ {
+  "session_id": "prep:muse",
+  "team": "muse",
+  "model": "meta/muse-spark-1.3",
+  "outcome": "ok",
+  "path": "prep/prep_muse.json.gz",
+  "private_sha256": "f11943361a32ce770a5c5d4b3571933a03c5359173372c09296f2fe781187cbf",
+  "public_sha256": "34c448a315d4f7c9c705d6adb34d5a8c1155f6aff3e1329eb683991006d73b5e"
+ },
+ {
+  "session_id": "prep:opus",
+  "team": "opus",
+  "model": "anthropic/claude-opus-5.5",
+  "outcome": "ok",
+  "path": "prep/prep_opus.json.gz",
+  "private_sha256": "cd8b1c80300ca0712598a6077cee51aca7bda170f5ef094936ce223463fc9023",
+  "public_sha256": "14431913af633afa5b514b4ba43bf65be198e10d52228bc66d1f4cbde77278be"
+ },
+ {
+  "session_id": "prep:qwen",
+  "team": "qwen",
+  "model": "qwen/qwen3.8-max-0902",
+  "outcome": "ok",
+  "path": "prep/prep_qwen.json.gz",
+  "private_sha256": "87033ed1a6486b9cfd24e4d548cd4c7777b5f449d68a40fc38ca13676c68d2ac",
+  "public_sha256": "f1c04c6a4a24f82b33c8bf0ceb91ffd8354d8986c0d6fcbc092921516dd089c6"
+ },
+ {
+  "session_id": "prep:sol",
+  "team": "sol",
+  "model": "openai/gpt-6-sol",
+  "outcome": "ok",
+  "path": "prep/prep_sol.json.gz",
+  "private_sha256": "5d7b937920d0560cbbf5aed92ebcef95f454898fb9c5226be862033ad8269090",
+  "public_sha256": "7eb4cc5103f6adf2c0a4abd2ff513fd4f65d30625a35804682e75824b17f429a"
+ }
+]

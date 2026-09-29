@@ -1,0 +1,94 @@
+WARNING: autodraft: no Media Day persona / voice_description in runs/live/exports/personas.json -- skipped
+1 voice(s) to cast; ~310 ElevenLabs characters (+155 if every voice needs a redesign; library fallback adds no design cost); budget 3000
+
+[deepseek] GMB-deepseek-Deke Seeker  -> baritone (set by --set-register (card: tenor); spec by cohere/command-a-plus)
+  accent: Saskatchewan prairie (Melfort) accent (noticeable; region central Saskatchewan; hometown Melfort, SK)
+  prompt: Native Canadian English with a clear, natural rural central Saskatchewan (Canadian prairie) accent, never a caricature. Male, late twenties. Baritone speaking voice with a thin, precise texture. Thin, precise voice with dry nasal edge. Natural speaking voice with a wide dynamic range: relaxed and conversational at rest, capable of a full, powerful shout. Clear studio recording.
+  preview: I'm Deke Seeker. I ran the numbers — you won't like them. Runs the math twice, never pays sticker, and makes you show your work. [shouting] SHOW YOUR WORK!
+
+CASTING PLAN
+team      GM                                 hometown               accent target                                        strength   card register  planned
+deepseek  Deke Seeker                        Melfort, SK            Saskatchewan prairie (Melfort) accent                noticeable tenor          baritone
+          -> prompt accent: rural central Saskatchewan (Canadian prairie) accent
+
+ElevenLabs creator: 189299 characters left, voice slots 28/30
+loading analysis models ...
+
+== deepseek (GMB-deepseek-Deke Seeker) -> baritone
+   reusing 3 previews from the last run
+   accent (preview a1p0): score 9.0 wins 2/2 PASS
+   accent (preview a1p1): score 8.25 wins 2/2 PASS
+   accent (preview a1p2): score 8.75 wins 2/2 PASS
+   trial design a1p1: plain F0 130.5 Hz (off 0.33 st), lift 14.12 at stability 0.3, nearest kimi 0.822, accent 6.62 (3/4 PASS)
+   -> kIVkIn0oMfsnOewd2Mop [design] plain F0 130.5 Hz (off 0.33 st), nearest kimi 0.832, lift 14.1, accent 6.62 (PASS), stability 0.3 (default)
+      design candidate attempt 1 preview 1 of 3: plain-read F0 125.3 Hz vs baritone band 95-128 (off 0.0 st); nearest cast voice kimi 0.851; preview lift 15.26, real v3 lift 14.12; WER 0.04
+WARNING: deepseek: replaced voice QYIjWtOXSnYHibbLI1AT is still on the account (use --delete-replaced)
+
+{
+  "ts": "2026-09-28T03:52:25Z",
+  "personas": "runs/live/exports/personas.json",
+  "done": [
+    "deepseek"
+  ],
+  "failed": [],
+  "not_done": [],
+  "chars_spent_run": 155,
+  "account_remaining": 189299,
+  "voice_slots": "29/30",
+  "f0_spread_hz": [
+    96.1,
+    211.2
+  ],
+  "max_gm_pair": [
+    [
+      "fugu",
+      "kimi"
+    ],
+    0.857
+  ],
+  "max_host_pair": [
+    [
+      "deepseek",
+      "host"
+    ],
+    0.696
+  ],
+  "gm_pairs_over_limit": 0,
+  "host_pairs_over_limit": 0,
+  "sources": {
+    "host": "library",
+    "opus": "design",
+    "deepseek": "design",
+    "gemini": "design",
+    "kimi": "design",
+    "fable": "design",
+    "grok": "design",
+    "glm": "design",
+    "astra": "design",
+    "qwen": "design",
+    "mimo": "design",
+    "fugu": "design",
+    "sol": "design",
+    "muse": "design"
+  },
+  "repaired": [],
+  "host_kept": null,
+  "accent": {
+    "host": 5.06,
+    "opus": 9.5,
+    "deepseek": 6.62,
+    "gemini": 9.0,
+    "kimi": 3.67,
+    "fable": 0.5,
+    "grok": 3.75,
+    "glm": 5.88,
+    "astra": 1.0,
+    "qwen": 8.75,
+    "mimo": 9.5,
+    "fugu": 8.83,
+    "sol": 6.17,
+    "muse": 1.0
+  },
+  "accent_judge_calls": 12
+}
+== exit 0 21:52
