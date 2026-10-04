@@ -23,7 +23,7 @@
   <section class="gdt-card" aria-labelledby="gdt-h-standings">
     <div class="gdt-card-head">
       <h2 id="gdt-h-standings" class="gdt-h2">Standings</h2>
-      <p class="gdt-note">Select a team to see its roster.</p>
+      <p class="gdt-note">Select a team to jump to its roster.</p>
     </div>
     <div data-slot="standings"><p class="gdt-empty">Loading the latest standings…</p></div>
   </section>
@@ -34,6 +34,14 @@
       <p class="gdt-note" data-slot="race-legend"></p>
     </div>
     <div class="gdt-race" data-slot="race"></div>
+  </section>
+
+  <section class="gdt-card" aria-labelledby="gdt-h-teams">
+    <div class="gdt-card-head">
+      <h2 id="gdt-h-teams" class="gdt-h2">Teams</h2>
+      <p class="gdt-note" data-slot="teams-note"></p>
+    </div>
+    <div class="gdt-teams" data-slot="teams"></div>
   </section>
 
   <section class="gdt-card" aria-labelledby="gdt-h-board">
@@ -101,27 +109,31 @@
 .gdt .gdt-standings tr.is-focus:hover{background:#e6ecfb}
 .gdt .gdt-rank{width:44px;color:var(--muted)}
 .gdt .gdt-pts{font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:18px;color:var(--ink)}
-.gdt .gdt-teambtn{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;cursor:pointer;border-radius:8px}
+.gdt .gdt-teamlink{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;border-radius:8px}
 .gdt .gdt-teamtext{display:flex;flex-direction:column;min-width:0}
 .gdt .gdt-model{font-weight:700;color:var(--ink);line-height:1.25}
 .gdt .gdt-sub{font-size:13px;color:var(--muted);line-height:1.3}
-.gdt .gdt-table .gdt-caretcell{width:36px;text-align:center;padding-left:0}
-.gdt .gdt-caret{display:inline-block;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-3px) rotate(45deg);transition:transform .15s}
-.gdt .is-open .gdt-caret{transform:translateY(2px) rotate(225deg)}
 .gdt .gdt-chip{flex:none;display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;border:3px solid var(--ts,#8fa8ea);background:var(--tp,#2a3566);color:var(--ti,#fff);
   font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:11px;letter-spacing:.02em;line-height:1}
 .gdt .gdt-chip--sm{width:26px;height:26px;border-width:2px;font-size:8px}
 .gdt .gdt-chip--dot{width:12px;height:12px;border-width:2px;vertical-align:-1px}
 .gdt .gdt-bot{display:inline-block;margin-left:6px;padding:0 6px;border-radius:10px;background:var(--soft);border:1px solid var(--line);font-size:11px;font-weight:400;color:var(--muted);vertical-align:1px}
-.gdt tr.gdt-roster-row>td{padding:4px 0 16px;background:var(--soft)}
-.gdt .gdt-roster{padding:12px 16px 4px}
-.gdt .gdt-roster-head{margin:0 0 8px;font-size:14px;color:var(--muted)}
-.gdt .gdt-roster-head b{color:var(--ink)}
-.gdt .gdt-mini{font-size:14px;background:#fff;border-radius:12px;overflow:hidden}
-.gdt .gdt-mini th,.gdt .gdt-mini td{padding:7px 10px}
-.gdt .gdt-mini .gdt-group th{background:#fff;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:12px}
+.gdt .gdt-teams{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:16px}
+.gdt .gdt-team{min-width:0;background:#fff;border:1px solid var(--line);border-top:6px solid var(--tp,#2a3566);border-radius:14px;padding:14px 14px 8px;scroll-margin-top:100px;transition:box-shadow .15s}
+.gdt .gdt-team.is-focus{box-shadow:0 0 0 2px var(--blue)}
+.gdt .gdt-team-head{display:flex;align-items:flex-start;gap:12px;margin:0 0 6px}
+.gdt .gdt-team-names{flex:1;min-width:0}
+.gdt .gdt-team-names p{margin:0}
+.gdt .gdt-team-name{margin:0 0 2px;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:18px;line-height:1.2;letter-spacing:0;color:var(--ink)}
+.gdt .gdt-sub b{font-weight:700;color:var(--ink)}
+.gdt .gdt-team-score{flex:none;text-align:right}
+.gdt .gdt-team-pts{display:block;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:24px;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+.gdt .gdt-roster-table{font-size:13px}
+.gdt .gdt-roster-table th,.gdt .gdt-roster-table td{padding:4px;border-bottom-color:#eef0f5}
+.gdt .gdt-roster-table thead th{font-size:11px;padding:0 4px 4px}
+.gdt .gdt-roster-table .gdt-group th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:10px}
+.gdt .gdt-muted{color:var(--muted)}
 .gdt .gdt-pos{display:inline-block;margin-left:6px;font-size:12px;color:var(--muted)}
-.gdt .gdt-table .gdt-nowrap{white-space:nowrap}
 .gdt .gdt-tag{display:inline-block;margin-left:6px;padding:0 7px;border-radius:10px;font-size:11px;line-height:18px;background:var(--soft);border:1px solid var(--line);color:var(--muted)}
 .gdt .gdt-former{margin:10px 2px 0;font-size:13px;color:var(--muted)}
 .gdt .gdt-race{position:relative;min-height:120px}
@@ -177,8 +189,6 @@
   .gdt .gdt-hide-sm{display:none}
   .gdt .gdt-chip{width:34px;height:34px;font-size:10px}
   .gdt .gdt-chip--sm{width:26px;height:26px;font-size:8px}
-  .gdt .gdt-roster{padding:8px 6px 0}
-  .gdt .gdt-mini th,.gdt .gdt-mini td{padding:7px 6px}
   .gdt .gdt-foot{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){.gdt *{transition:none!important}}
@@ -337,18 +347,22 @@
       : [...m.teams];
     const lead = rows.length ? rows[0].points : 0;
     return rows.map((t) => {
-      const ahead = m.teams.filter((o) => o.points > t.points).length;
+      const place = m.teams.filter((o) => o.points > t.points).length + 1;
       const tied = m.teams.filter((o) => o.points === t.points).length > 1;
-      return { t, rank: scored ? `${tied ? 'T' : ''}${ahead + 1}` : '—', back: lead - t.points };
+      return { t, place, tied, rank: scored ? `${tied ? 'T' : ''}${place}` : '—', back: lead - t.points };
     });
   }
+  const ordinal = (n) => {
+    const s = ['th', 'st', 'nd', 'rd'];
+    const v = n % 100;
+    return `${n}${s[(v - 20) % 10] || s[v] || s[0]}`;
+  };
 
   /* ------------------------------------------------------------ state */
   let model = null;
   let lastOk = 0;
   let timer = null;
   let focus = '';
-  const open = new Set();
   const readHash = () => {
     const m = /(?:^#|&)team=([a-z0-9_-]+)/i.exec(location.hash);
     return m ? m[1] : '';
@@ -383,84 +397,72 @@
 
   function drafted(m, t, pid) {
     const pk = m.pickOf.get(String(pid));
-    if (!pk) return 'Waiver';
-    const label = `R${pk.round}<span class="gdt-hide-sm"> &middot; #${pk.no}</span>`;
-    if (pk.team === t.id) return label;
+    if (!pk) return ['Waiver', 'Added on waivers'];
+    if (pk.team === t.id) return [`R${pk.round}`, `Round ${pk.round}, pick ${pk.no}`];
     const from = m.byId.get(pk.team);
-    return `Trade <span class="gdt-pos">(${esc(from ? from.abbrev : pk.team)} ${label})</span>`;
+    return ['Trade', `Traded in; drafted by ${from ? from.display : pk.team} in round ${pk.round}`];
   }
 
-  function rosterPanel(m, t) {
+  function teamCard(m, { t, place, tied }) {
     const rows = t.roster.map((r) => ({ ...r, p: player(m, r.pid), pk: m.pickOf.get(String(r.pid)) }));
-    const sortKey = (r) => [-(r.p.pts ?? 0), r.pk ? r.pk.no : 999];
     const body = GROUPS.map(([g, label]) => {
       const list = rows.filter((r) => (r.p.group || 'F') === g)
-        .sort((a, b) => { const x = sortKey(a); const y = sortKey(b); return x[0] - y[0] || x[1] - y[1]; });
+        .sort((a, b) => (b.p.pts ?? 0) - (a.p.pts ?? 0) || (a.pk ? a.pk.no : 999) - (b.pk ? b.pk.no : 999));
       if (!list.length) return '';
-      return `<tr class="gdt-group"><th colspan="6" scope="colgroup">${label}</th></tr>` + list.map((r) => `
-        <tr>
+      return `<tr class="gdt-group"><th colspan="4" scope="colgroup">${label}</th></tr>` + list.map((r) => {
+        const [how, why] = drafted(m, t, r.pid);
+        return `<tr>
           <td>${esc(r.p.name || `Player ${r.pid}`)}<span class="gdt-pos">${esc(r.p.pos || '')}</span>${r.active === false ? '<span class="gdt-tag">Bench</span>' : ''}</td>
-          <td class="gdt-hide-sm">${esc(r.p.nhl || '')}</td>
-          <td class="gdt-nowrap">${drafted(m, t, r.pid)}</td>
-          <td class="gdt-num gdt-hide-sm">${num(r.p.gp)}</td>
-          <td class="gdt-num">${num(r.p.pts)}</td>
-          <td class="gdt-num">${num(r.counted)}</td>
-        </tr>`).join('');
+          <td class="gdt-muted">${esc(r.p.nhl || '')}</td>
+          <td class="gdt-muted" title="${esc(why)}">${esc(how)}</td>
+          <td class="gdt-num">${num(r.p.pts)}</td></tr>`;
+      }).join('');
     }).join('');
     const former = t.former.filter((f) => f.counted)
       .map((f) => `${esc(player(m, f.pid).name || `Player ${f.pid}`)} (${num(Number(f.counted))})`).join(', ');
-    return `<div class="gdt-roster">
-      <p class="gdt-roster-head"><b>${esc(t.franchise)}</b>${t.gm ? ` &middot; GM ${esc(t.gm)}` : ''} &middot; ${esc(t.display)}${t.lab && !t.bot ? ` (${esc(t.lab)})` : ''}</p>
-      <table class="gdt-table gdt-mini">
-        <thead><tr><th scope="col">Player</th><th scope="col" class="gdt-hide-sm">NHL</th><th scope="col">Drafted</th>
-          <th scope="col" class="gdt-num gdt-hide-sm">GP</th><th scope="col" class="gdt-num">Pts</th>
-          <th scope="col" class="gdt-num" title="Points scored while in this team's active lineup">For team</th></tr></thead>
+    const who = t.bot ? 'Drafts by house projections' : t.gm ? `GM ${esc(t.gm)}` : '';
+    const standing = m.daysScored ? ` &middot; ${tied ? 'T-' : ''}${ordinal(place)}` : '';
+    return `<article class="gdt-team${t.id === focus ? ' is-focus' : ''}" id="gdt-team-${esc(t.id)}" style="--tp:${t.primary}" aria-labelledby="gdt-tn-${esc(t.id)}">
+      <header class="gdt-team-head">${chip(t)}
+        <div class="gdt-team-names"><h3 class="gdt-team-name" id="gdt-tn-${esc(t.id)}">${esc(t.franchise)}</h3>
+          <p class="gdt-sub">${who}</p>
+          <p class="gdt-sub"><b>${esc(t.display)}</b>${t.lab && !t.bot ? ` &middot; ${esc(t.lab)}` : ''}</p></div>
+        <div class="gdt-team-score"><span class="gdt-team-pts">${t.points}</span><span class="gdt-sub">pts${standing}</span></div>
+      </header>
+      <table class="gdt-table gdt-roster-table">
+        <caption class="gdt-sr">${esc(t.franchise)} roster</caption>
+        <thead><tr><th scope="col">Player</th><th scope="col">NHL</th><th scope="col">Drafted</th><th scope="col" class="gdt-num">Pts</th></tr></thead>
         <tbody>${body}</tbody>
       </table>
-      ${former ? `<p class="gdt-former">Also counted for this team before leaving the roster: ${former}.</p>` : ''}
-      <p class="gdt-former">${m.full ? 'Pts is the player&rsquo;s season total. For team counts only games he played in this team&rsquo;s active lineup.' : 'Player points appear once the nightly scoring feed is live.'}</p>
-    </div>`;
+      ${former ? `<p class="gdt-former">Also scored for this team before leaving the roster: ${former}.</p>` : ''}
+    </article>`;
+  }
+
+  function renderTeams(m) {
+    slot('teams-note').innerHTML = m.full
+      ? 'Current rosters. Pts is each player&rsquo;s season total; bench players don&rsquo;t score for the team.'
+      : 'Current rosters. Player points appear once nightly scoring is live.';
+    slot('teams').innerHTML = ranked(m).map((r) => teamCard(m, r)).join('');
   }
 
   function renderStandings(m) {
-    const rows = ranked(m).map(({ t, rank, back }) => {
-      const id = `gdt-roster-${esc(t.id)}`;
-      const isOpen = open.has(t.id);
-      return `
-      <tr class="gdt-row${t.id === focus ? ' is-focus' : ''}${isOpen ? ' is-open' : ''}" data-team="${esc(t.id)}">
+    const rows = ranked(m).map(({ t, rank, back }) => `
+      <tr class="gdt-row${t.id === focus ? ' is-focus' : ''}" data-team="${esc(t.id)}">
         <td class="gdt-num gdt-rank">${rank}</td>
-        <td><button type="button" class="gdt-teambtn" aria-expanded="${isOpen}" aria-controls="${id}">
-          ${chip(t)}
+        <td><a class="gdt-teamlink" href="#gdt-team-${esc(t.id)}">${chip(t)}
           <span class="gdt-teamtext"><span class="gdt-model">${esc(t.display)}${t.bot ? '<span class="gdt-bot">control</span>' : ''}</span>
-          <span class="gdt-sub">${t.bot ? 'Drafts by house projections' : `${esc(t.lab)} &middot; ${esc(t.franchise)}`}</span></span></button></td>
+          <span class="gdt-sub">${t.bot ? 'Drafts by house projections' : `${esc(t.franchise)} &middot; ${esc(t.lab)}`}</span></span></a></td>
         <td class="gdt-num gdt-pts">${t.points}</td>
         <td class="gdt-num gdt-hide-sm">${m.daysScored ? t.last_7 : '—'}</td>
         <td class="gdt-num gdt-hide-sm">${m.daysScored ? (back ? `&minus;${back}` : 'Lead') : '—'}</td>
-        <td class="gdt-caretcell"><span class="gdt-caret" aria-hidden="true"></span></td>
-      </tr>
-      <tr class="gdt-roster-row" id="${id}"${isOpen ? '' : ' hidden'}><td colspan="6">${isOpen ? rosterPanel(m, t) : ''}</td></tr>`;
-    }).join('');
+      </tr>`).join('');
     slot('standings').innerHTML = `
       <table class="gdt-table gdt-standings">
         <caption class="gdt-sr">Standings by AI model. Points are fantasy points from each team's active lineup.</caption>
         <thead><tr><th scope="col" class="gdt-num">#</th><th scope="col">Model &middot; team</th><th scope="col" class="gdt-num">Pts</th>
-          <th scope="col" class="gdt-num gdt-hide-sm">Last 7</th><th scope="col" class="gdt-num gdt-hide-sm">Back</th><td></td></tr></thead>
+          <th scope="col" class="gdt-num gdt-hide-sm">Last 7</th><th scope="col" class="gdt-num gdt-hide-sm">Back</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>`;
-  }
-
-  function toggleTeam(id, force) {
-    const t = model && model.byId.get(id);
-    if (!t) return;
-    const willOpen = force ?? !open.has(id);
-    if (willOpen) open.add(id); else open.delete(id);
-    const row = slot('standings').querySelector(`#gdt-roster-${CSS.escape(id)}`);
-    const btn = slot('standings').querySelector(`tr[data-team="${CSS.escape(id)}"] .gdt-teambtn`);
-    if (!row || !btn) return;
-    btn.setAttribute('aria-expanded', String(willOpen));
-    btn.closest('tr').classList.toggle('is-open', willOpen);
-    row.hidden = !willOpen;
-    row.firstElementChild.innerHTML = willOpen ? rosterPanel(model, t) : '';
   }
 
   /* Season points → one-hue heat step (0 = no points yet). */
@@ -651,20 +653,19 @@
   function render() {
     if (!model) return;
     if (focus && !model.byId.has(focus)) focus = '';
-    for (const id of [...open]) if (!model.byId.has(id)) open.delete(id);
     renderKpis(model);
     renderFocusOptions(model);
     renderStandings(model);
     renderRace(model);
+    renderTeams(model);
     renderBoard(model);
   }
 
-  function setFocus(id, { expand = true } = {}) {
+  function setFocus(id) {
     focus = model && model.byId.has(id) ? id : '';
     try {
       history.replaceState(null, '', focus ? `#team=${focus}` : location.pathname + location.search);
     } catch (_) { /* sandboxed previews */ }
-    if (focus && expand) open.add(focus);
     render();
   }
 
@@ -692,12 +693,16 @@
   slot('focus').addEventListener('change', (e) => setFocus(e.target.value));
   slot('standings').addEventListener('click', (e) => {
     const row = e.target.closest('tr.gdt-row');
-    if (row) toggleTeam(row.dataset.team);
+    if (!row) return;
+    e.preventDefault();
+    setFocus(row.dataset.team);
+    const card = root.querySelector(`#gdt-team-${CSS.escape(row.dataset.team)}`);
+    if (card) card.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
   const board = slot('board');
   board.addEventListener('click', (e) => {
     const th = e.target.closest('.gdt-colhead');
-    if (th) setFocus(th.dataset.team === focus ? '' : th.dataset.team, { expand: false });
+    if (th) setFocus(th.dataset.team === focus ? '' : th.dataset.team);
   });
   const cellTip = (e) => {
     const cell = e.target.closest('.gdt-cell');
@@ -742,7 +747,6 @@
   window.addEventListener('hashchange', () => { if (model) setFocus(readHash()); });
 
   focus = readHash();
-  if (focus) open.add(focus);
   refresh();
 })();
 </script>
