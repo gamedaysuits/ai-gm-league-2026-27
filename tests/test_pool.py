@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from gmbench.pool import Directory, score_pool
+from gmbench.pool import Directory, check_markdown, check_pool, score_pool
 from gmbench.season.scoring import PlayerTotal
 
 POOL = {
@@ -72,3 +72,22 @@ def test_fuzzy_match_without_a_club_needs_a_unique_surname() -> None:
     directory = Directory({7: _total(7, "Ivar Stenberg", "C", "TOR")})
     assert directory.resolve("Ivar Stenberg", "", "F") == (7, "exact")
     assert directory.resolve("I. Stenberg", "", "F") == (7, "fuzzy")
+
+
+def test_pool_check_reads_player_pages_and_searches_names() -> None:
+    pages = {
+        "https://api-web.nhle.com/v1/player/1/landing": {
+            "firstName": {"default": "Nikita"}, "lastName": {"default": "Kucherov"}, "position": "R",
+            "currentTeamAbbrev": "TBL", "isActive": True},
+    }
+    search = [{"playerId": "2", "name": "Quinn Hughes", "positionCode": "D", "teamAbbrev": "MIN", "active": True},
+              {"playerId": "9", "name": "Jack Hughes", "positionCode": "C", "teamAbbrev": "NJD", "active": True}]
+
+    def get_json(url: str):
+        return (pages[url] if url in pages else search if "Hughes" in url else []), "sha"
+
+    rows = {r["listed"]: r for r in check_pool(POOL, get_json)}
+    assert (rows["Kucherov"]["id"], rows["Kucherov"]["how"], rows["Kucherov"]["flags"]) == (1, "listed id", [])
+    assert (rows["Q. Hughes"]["id"], rows["Q. Hughes"]["team"]) == (2, "MIN")
+    assert rows["Petterson"]["flags"][0].startswith("no single match")
+    assert "| Jeff H | F1 | Kucherov | Nikita Kucherov | 1 |" in check_markdown(list(rows.values()))

@@ -1,0 +1,16 @@
+name: pool-check
+# Look up every auction-pool player in the NHL's player directory and list the mapping for review.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - name: Check names
+        run: uv run gmbench pool-check --pool pools/auction-pool-2026-27.yaml | tee -a "$GITHUB_STEP_SUMMARY"

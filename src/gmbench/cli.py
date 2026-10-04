@@ -71,6 +71,9 @@ def main(argv: list[str] | None = None) -> None:
     pl.add_argument("--run", default="live", help="run whose committed game lines to score from")
     pl.add_argument("--offline", action="store_true", help="skip the NHL name lookup; players without an id stay unresolved")
 
+    pc = sub.add_parser("pool-check", help="look up every pool player in the NHL's player directory, for review")
+    pc.add_argument("--pool", required=True, help="pool file, e.g. pools/auction-pool-2026-27.yaml")
+
     ex = sub.add_parser("export", help="write public exports: draft, standings, scorecard, redacted transcripts")
     ex.add_argument("--run", required=True)
 
@@ -250,6 +253,16 @@ def main(argv: list[str] | None = None) -> None:
         path = write_pool_export(pool, run_dir(args.run) / "data" / "games", ROOT / "exports" / "pools", directory=directory)
         missing = json.loads(path.read_text())["unresolved"]
         print(f"pool → {path}" + (f" | unresolved: {', '.join(m['name'] for m in missing)}" if missing else ""))
+
+    elif args.command == "pool-check":
+        from pathlib import Path
+
+        from gmbench.data.http import get_json
+        from gmbench.pool import check_markdown, check_pool, load_pool
+
+        rows = check_pool(load_pool(Path(args.pool)), get_json)
+        print(check_markdown(rows))
+        print(f"\n{len(rows)} players, {sum(1 for r in rows if r['flags'])} flagged for review")
 
     elif args.command == "snapshot":
         import hashlib

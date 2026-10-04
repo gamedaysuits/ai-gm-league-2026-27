@@ -145,3 +145,64 @@ def write_pool_export(pool: Mapping[str, Any], games_dir: Path, out_dir: Path, *
     path = out_dir / f"{pool['slug']}.json"
     _write(path, score_pool(pool, games_dir, directory), compact=True)
     return path
+
+
+# --- roster check against the NHL's player directory -------------------------------
+
+SEARCH_URL = "https://search.d3.nhle.com/api/v1/search/player?culture=en-us&limit=20&q={q}"
+
+
+def check_pool(pool: Mapping[str, Any], get_json: Any) -> list[dict[str, Any]]:
+    """One row per pool player: the NHL player behind its ``id`` (player page), or the name search's candidates.
+
+    ``get_json(url) -> (payload, sha)``. Rows carry ``flags`` for anything a person should look at:
+    a position outside the slot's group, a surname that differs from the sheet's, or no single match.
+    """
+    from urllib.parse import quote
+
+    from gmbench.data.nhl import PLAYER_URL
+
+    def text(v: Any) -> str:
+        return (v.get("default") if isinstance(v, dict) else v) or ""
+
+    rows = []
+    for team in pool["teams"]:
+        for p in team["players"]:
+            group, flags, row = p["slot"][0], [], {"manager": team["manager"], "slot": p["slot"], "listed": p.get("listed", p["name"])}
+            if p.get("id"):
+                page, _ = get_json(PLAYER_URL.format(player_id=p["id"]))
+                row.update(id=int(p["id"]), nhl_name=f"{text(page.get('firstName'))} {text(page.get('lastName'))}".strip(),
+                           position=page.get("position"), team=page.get("currentTeamAbbrev"), active=page.get("isActive"),
+                           how="listed id")
+            else:
+                found, _ = get_json(SEARCH_URL.format(q=quote(p["name"])))
+                found = found if isinstance(found, list) else found.get("results", [])
+                same = [c for c in found if norm(str(c.get("name", ""))) == norm(p["name"])
+                        and c.get("positionCode") in GROUP_POSITIONS[group]]
+                if len(same) > 1:
+                    same = [c for c in same if c.get("active")] or same
+                if len(same) == 1:
+                    c = same[0]
+                    row.update(id=int(c["playerId"]), nhl_name=c.get("name"), position=c.get("positionCode"),
+                               team=c.get("teamAbbrev"), active=c.get("active"), how="name search")
+                else:
+                    row.update(id=None, nhl_name=None, position=None, team=None, active=None, how="name search")
+                    flags.append("no single match: " + "; ".join(
+                        f"{c.get('name')} {c.get('positionCode')} {c.get('teamAbbrev')} {c.get('playerId')}" for c in found[:6]))
+            if row.get("position") and row["position"] not in GROUP_POSITIONS[group]:
+                flags.append(f"position {row['position']} in a {group} slot")
+            if row.get("nhl_name") and norm(row["listed"]).split()[-1] != norm(row["nhl_name"]).split()[-1]:
+                flags.append("sheet spelling differs")
+            if row.get("id") and row.get("active") is False:
+                flags.append("NHL lists him as inactive")
+            row["flags"] = flags
+            rows.append(row)
+    return rows
+
+
+def check_markdown(rows: list[dict[str, Any]]) -> str:
+    lines = ["| Manager | Slot | Sheet | NHL player | ID | Pos | Club | How | Check |", "|---|---|---|---|---|---|---|---|---|"]
+    for r in rows:
+        lines.append(f"| {r['manager']} | {r['slot']} | {r['listed']} | {r['nhl_name'] or '?'} | {r['id'] or '?'} | "
+                     f"{r['position'] or ''} | {r['team'] or ''} | {r['how']} | {'; '.join(r['flags']) or 'ok'} |")
+    return "\n".join(lines)
