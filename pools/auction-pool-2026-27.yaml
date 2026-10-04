@@ -135,7 +135,7 @@ teams:
     players:
       - {slot: F1, listed: "Kucherov", name: "Nikita Kucherov", club: TBL, price: 300, id: 8476453}
       - {slot: F2, listed: "Rantanen", name: "Mikko Rantanen", club: DAL, price: 200, id: 8478420}
-      - {slot: F3, listed: "Savoie", name: "Matt Savoie", club: null, price: 10}
+      - {slot: F3, listed: "Savoie", name: "Matt Savoie", club: EDM, price: 10, id: 8483512}
       - {slot: F4, listed: "Kyrou", name: "Jordan Kyrou", club: WSH, price: 20, id: 8479385}
       - {slot: F5, listed: "McCann", name: "Jared McCann", club: SEA, price: 10, id: 8477955}
       - {slot: F6, listed: "Cowan", name: "Easton Cowan", club: TOR, price: 10, id: 8484158}
