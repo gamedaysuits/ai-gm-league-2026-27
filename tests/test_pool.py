@@ -91,3 +91,16 @@ def test_pool_check_reads_player_pages_and_searches_names() -> None:
     assert (rows["Q. Hughes"]["id"], rows["Q. Hughes"]["team"]) == (2, "MIN")
     assert rows["Petterson"]["flags"][0].startswith("no single match")
     assert "| Jeff H | F1 | Kucherov | Nikita Kucherov | 1 |" in check_markdown(list(rows.values()))
+
+
+def test_pool_check_falls_back_to_a_surname_search() -> None:
+    pool = {"teams": [{"manager": "Jeff H", "players": [
+        {"slot": "F3", "listed": "Savoie", "name": "Matthew Savoie", "club": None, "price": 10}]}]}
+    found = [{"playerId": "8", "name": "Matt Savoie", "positionCode": "C", "teamAbbrev": "EDM", "active": True},
+             {"playerId": "6", "name": "Carson Savoie", "positionCode": "D", "teamAbbrev": None, "active": False}]
+
+    def get_json(url: str):
+        return (found if url.endswith("q=Savoie") else []), "sha"
+
+    (row,) = check_pool(pool, get_json)
+    assert (row["id"], row["nhl_name"], row["how"], row["flags"]) == (8, "Matt Savoie", "surname search", [])

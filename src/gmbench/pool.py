@@ -175,16 +175,22 @@ def check_pool(pool: Mapping[str, Any], get_json: Any) -> list[dict[str, Any]]:
                            position=page.get("position"), team=page.get("currentTeamAbbrev"), active=page.get("isActive"),
                            how="listed id")
             else:
-                found, _ = get_json(SEARCH_URL.format(q=quote(p["name"])))
-                found = found if isinstance(found, list) else found.get("results", [])
-                same = [c for c in found if norm(str(c.get("name", ""))) == norm(p["name"])
-                        and c.get("positionCode") in GROUP_POSITIONS[group]]
-                if len(same) > 1:
-                    same = [c for c in same if c.get("active")] or same
+                key = norm(p["name"])
+
+                def search(q: str, match: Any) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+                    found, _ = get_json(SEARCH_URL.format(q=quote(q)))
+                    found = found if isinstance(found, list) else found.get("results", [])
+                    same = [c for c in found if match(norm(str(c.get("name", ""))))
+                            and c.get("positionCode") in GROUP_POSITIONS[group]]
+                    return (([c for c in same if c.get("active")] or same) if len(same) > 1 else same), found
+
+                (same, found), how = search(p["name"], lambda n: n == key), "name search"
+                if len(same) != 1:  # "Matthew" in the sheet, "Matt" in the NHL's directory: same surname and initial
+                    (same, found), how = search(key.split()[-1], lambda n: n.split()[-1] == key.split()[-1] and n[:1] == key[:1]), "surname search"
                 if len(same) == 1:
                     c = same[0]
                     row.update(id=int(c["playerId"]), nhl_name=c.get("name"), position=c.get("positionCode"),
-                               team=c.get("teamAbbrev"), active=c.get("active"), how="name search")
+                               team=c.get("teamAbbrev"), active=c.get("active"), how=how)
                 else:
                     row.update(id=None, nhl_name=None, position=None, team=None, active=None, how="name search")
                     flags.append("no single match: " + "; ".join(
@@ -195,6 +201,8 @@ def check_pool(pool: Mapping[str, Any], get_json: Any) -> list[dict[str, Any]]:
                 flags.append("sheet spelling differs")
             if row.get("id") and row.get("active") is False:
                 flags.append("NHL lists him as inactive")
+            if row.get("team") and p.get("club") and row["team"] != p["club"]:
+                flags.append(f"club in file {p['club']}, NHL says {row['team']}")
             row["flags"] = flags
             rows.append(row)
     return rows
