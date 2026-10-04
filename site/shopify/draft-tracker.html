@@ -1,0 +1,748 @@
+<!--
+  AI GM League draft tracker: the body of the Shopify page at gamedaysuits.ca/pages/ai-gm-draft-tracker.
+  Self-contained (scoped CSS + JS). It reads runs/live/exports/tracker.json from this repo's main branch,
+  which the daily-scoring workflow rewrites every morning; until that file exists it falls back to
+  draft.json + standings.json. Update the live page by pasting this file into the page's HTML (<>) view,
+  or with the Admin API pageUpdate mutation. Do not edit it in Shopify's visual editor.
+-->
+<div id="gds-tracker" class="gdt" data-src="https://raw.githubusercontent.com/gamedaysuits/ai-gm-league-2026-27/main/runs/live/exports/">
+  <header class="gdt-hero">
+    <p class="gdt-eyebrow">The Suits &middot; Game Day Suits AI GM League 2026&ndash;27</p>
+    <h1 class="gdt-title">AI GM Draft Tracker</h1>
+    <p class="gdt-lede">Thirteen frontier AI models, plus one rules-based control bot, each drafted a 14-player NHL fantasy team on September&nbsp;28. This page follows every pick through the season, updated each morning from official NHL stats.</p>
+    <dl class="gdt-kpis" data-slot="kpis" aria-live="polite"></dl>
+  </header>
+
+  <div class="gdt-controls">
+    <label class="gdt-follow">Follow a model
+      <select data-slot="focus"><option value="">All models</option></select>
+    </label>
+    <p class="gdt-status" data-slot="status" role="status"></p>
+  </div>
+
+  <section class="gdt-card" aria-labelledby="gdt-h-standings">
+    <div class="gdt-card-head">
+      <h2 id="gdt-h-standings" class="gdt-h2">Standings</h2>
+      <p class="gdt-note">Select a team to see its roster.</p>
+    </div>
+    <div data-slot="standings"><p class="gdt-empty">Loading the latest standings&hellip;</p></div>
+  </section>
+
+  <section class="gdt-card" aria-labelledby="gdt-h-race">
+    <div class="gdt-card-head">
+      <h2 id="gdt-h-race" class="gdt-h2">Points race</h2>
+      <p class="gdt-note" data-slot="race-legend"></p>
+    </div>
+    <div class="gdt-race" data-slot="race"></div>
+  </section>
+
+  <section class="gdt-card" aria-labelledby="gdt-h-board">
+    <div class="gdt-card-head">
+      <h2 id="gdt-h-board" class="gdt-h2">Draft board</h2>
+      <div class="gdt-legend" data-slot="board-legend"></div>
+    </div>
+    <div data-slot="board"></div>
+  </section>
+
+  <footer class="gdt-foot">
+    <div>
+      <h2 class="gdt-h3">How it works</h2>
+      <p>Skaters score 1 point per goal and 1 per assist. Goalies score 2 per win, 1 per overtime loss and 2 per shutout. Only each team&rsquo;s 12 active players count (6 forwards, 4 defence, 2 goalies); 2 sit on the bench. Each AI sets its lineup weekly and can make waiver claims and, from October&nbsp;12, trades.</p>
+      <p>Every pick, lineup and score is recorded in a public, tamper-evident ledger: <a class="gdt-link" href="https://github.com/gamedaysuits/ai-gm-league-2026-27" target="_blank" rel="noopener">view the league on GitHub<span class="gdt-sr"> (opens in a new tab)</span></a>.</p>
+    </div>
+    <div class="gdt-cta">
+      <p>Every AI GM wears a real Game Day Suit.</p>
+      <a class="gdt-btn" href="/collections/suits">Build yours</a>
+    </div>
+  </footer>
+
+  <div class="gdt-tip" data-slot="tip" role="tooltip" hidden></div>
+</div>
+<noscript><p>Turn on JavaScript to see the live draft tracker.</p></noscript>
+
+<style>
+.main-page-title{display:none}
+.gdt{--navy:#0e1b4d;--blue:#4770db;--red:#e32402;--ink:#0e1b4d;--muted:#4a5478;--line:#dfe2ec;--soft:#f4f6fb;--card:#fff;
+  --s0:#f4f6fb;--s1:#dde6fb;--s2:#b9cbf6;--s3:#8ea9ec;--s4:#3f63c9;--s5:#22398f;
+  position:relative;width:min(1200px,calc(100vw - 32px));margin-left:calc(50% - min(600px,50vw - 16px));
+  font-family:var(--font-body-family,"Questrial",system-ui,sans-serif);font-size:16px;line-height:1.5;letter-spacing:0;color:var(--ink);text-align:left}
+.gdt *,.gdt *::before,.gdt *::after{box-sizing:border-box}
+.gdt .gdt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gdt .gdt-hero{background:var(--navy);color:#fff;border-radius:20px;padding:32px 32px 28px;margin:0 0 20px}
+.gdt .gdt-eyebrow{margin:0 0 6px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b9cbf6}
+.gdt .gdt-title{margin:0 0 10px;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:clamp(30px,5vw,46px);line-height:1.1;letter-spacing:0;color:#fff}
+.gdt .gdt-lede{margin:0 0 24px;max-width:62ch;font-size:17px;color:#dde3f5}
+.gdt .gdt-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0}
+.gdt .gdt-kpi{background:rgba(255,255,255,.08);border-radius:14px;padding:12px 14px;min-width:0}
+.gdt .gdt-kpi dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#b9cbf6;margin:0}
+.gdt .gdt-kpi dd{margin:2px 0 0;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:22px;line-height:1.2;color:#fff;overflow-wrap:anywhere}
+.gdt .gdt-kpi dd small{display:block;font-family:var(--font-body-family,"Questrial",system-ui,sans-serif);font-weight:400;font-size:13px;color:#dde3f5}
+.gdt .gdt-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin:0 0 16px}
+.gdt .gdt-follow{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted)}
+.gdt .gdt-follow select{font:inherit;color:var(--ink);background:#fff;border:1px solid #c5cad8;border-radius:26px;padding:7px 34px 7px 14px;min-height:40px;max-width:70vw;
+  appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;cursor:pointer}
+.gdt .gdt-follow select:focus-visible,.gdt button:focus-visible,.gdt [tabindex]:focus-visible,.gdt a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.gdt .gdt-status{margin:0;font-size:14px;color:var(--muted)}
+.gdt .gdt-status.is-warn{color:#9a1b02}
+.gdt .gdt-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 20px 16px;margin:0 0 20px}
+.gdt .gdt-card-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;margin:0 0 12px}
+.gdt .gdt-h2{margin:0;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:24px;line-height:1.2;letter-spacing:0;color:var(--ink)}
+.gdt .gdt-h3{margin:0 0 6px;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:18px;letter-spacing:0;color:var(--ink)}
+.gdt .gdt-note{margin:0;font-size:14px;color:var(--muted)}
+.gdt .gdt-empty{margin:8px 0;color:var(--muted)}
+.gdt .gdt-table{width:100%;border-collapse:collapse;table-layout:auto;border:0;box-shadow:none;font-size:15px;margin:0}
+.gdt .gdt-table th,.gdt .gdt-table td{padding:10px 8px;border:0;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;font-weight:400}
+.gdt .gdt-table thead th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:4px;padding-bottom:8px}
+.gdt .gdt-table .gdt-num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gdt .gdt-standings tbody tr.gdt-row{cursor:pointer}
+.gdt .gdt-standings tbody tr.gdt-row:hover{background:var(--soft)}
+.gdt .gdt-standings tr.is-focus{background:#eef2fc}
+.gdt .gdt-standings tr.is-focus:hover{background:#e6ecfb}
+.gdt .gdt-rank{width:44px;color:var(--muted)}
+.gdt .gdt-pts{font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:18px;color:var(--ink)}
+.gdt .gdt-teambtn{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;cursor:pointer;border-radius:8px}
+.gdt .gdt-teamtext{display:flex;flex-direction:column;min-width:0}
+.gdt .gdt-model{font-weight:700;color:var(--ink);line-height:1.25}
+.gdt .gdt-sub{font-size:13px;color:var(--muted);line-height:1.3}
+.gdt .gdt-table .gdt-caretcell{width:36px;text-align:center;padding-left:0}
+.gdt .gdt-caret{display:inline-block;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-3px) rotate(45deg);transition:transform .15s}
+.gdt .is-open .gdt-caret{transform:translateY(2px) rotate(225deg)}
+.gdt .gdt-chip{flex:none;display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;border:3px solid var(--ts,#8fa8ea);background:var(--tp,#2a3566);color:var(--ti,#fff);
+  font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:11px;letter-spacing:.02em;line-height:1}
+.gdt .gdt-chip--sm{width:26px;height:26px;border-width:2px;font-size:8px}
+.gdt .gdt-chip--dot{width:12px;height:12px;border-width:2px;vertical-align:-1px}
+.gdt .gdt-bot{display:inline-block;margin-left:6px;padding:0 6px;border-radius:10px;background:var(--soft);border:1px solid var(--line);font-size:11px;font-weight:400;color:var(--muted);vertical-align:1px}
+.gdt tr.gdt-roster-row>td{padding:4px 0 16px;background:var(--soft)}
+.gdt .gdt-roster{padding:12px 16px 4px}
+.gdt .gdt-roster-head{margin:0 0 8px;font-size:14px;color:var(--muted)}
+.gdt .gdt-roster-head b{color:var(--ink)}
+.gdt .gdt-mini{font-size:14px;background:#fff;border-radius:12px;overflow:hidden}
+.gdt .gdt-mini th,.gdt .gdt-mini td{padding:7px 10px}
+.gdt .gdt-mini .gdt-group th{background:#fff;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:12px}
+.gdt .gdt-pos{display:inline-block;margin-left:6px;font-size:12px;color:var(--muted)}
+.gdt .gdt-table .gdt-nowrap{white-space:nowrap}
+.gdt .gdt-tag{display:inline-block;margin-left:6px;padding:0 7px;border-radius:10px;font-size:11px;line-height:18px;background:var(--soft);border:1px solid var(--line);color:var(--muted)}
+.gdt .gdt-former{margin:10px 2px 0;font-size:13px;color:var(--muted)}
+.gdt .gdt-race{position:relative;min-height:120px}
+.gdt .gdt-race svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.gdt .gdt-race svg:focus{outline:none}
+.gdt .gdt-race svg:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:6px}
+.gdt .gdt-axis{font-size:11px;fill:var(--muted);font-variant-numeric:tabular-nums}
+.gdt .gdt-swatch{display:inline-block;width:18px;height:0;border-top:3px solid var(--blue);vertical-align:4px;margin:0 6px 0 0;border-radius:2px}
+.gdt .gdt-swatch--muted{border-top:2px solid #b4bbcd}
+.gdt .gdt-legend{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-size:13px;color:var(--muted)}
+.gdt .gdt-legend .gdt-key{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:22px;padding:0 6px;border-radius:5px;font-size:12px;font-variant-numeric:tabular-nums}
+.gdt .gdt-boardwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px 6px}
+.gdt .gdt-board{border-collapse:separate;border-spacing:3px;table-layout:fixed;width:100%;min-width:1080px;margin:0;border:0;box-shadow:none}
+.gdt .gdt-board th,.gdt .gdt-board td{border:0;padding:0;font-weight:400;vertical-align:top}
+.gdt .gdt-board .gdt-rd{width:40px;position:sticky;left:0;z-index:1;background:#fff;text-align:center;font-size:12px;color:var(--muted);padding-top:12px;font-variant-numeric:tabular-nums}
+.gdt .gdt-board thead .gdt-rd{padding-top:0;vertical-align:bottom}
+.gdt .gdt-colhead{padding:0 2px 6px!important;text-align:center;cursor:pointer;border-radius:8px}
+.gdt .gdt-colhead .gdt-chip{margin:0 auto 4px}
+.gdt .gdt-colname{display:block;font-size:11px;line-height:1.25;color:var(--ink);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:2.5em}
+.gdt .gdt-colhead.is-focus{background:#eef2fc;box-shadow:inset 0 -3px 0 var(--blue)}
+.gdt .gdt-cell{height:62px;border-radius:7px;padding:5px 6px!important;background:var(--s0);color:var(--ink);font-size:11px;line-height:1.25;overflow:hidden;position:relative;transition:opacity .15s}
+.gdt .gdt-cell.s1{background:var(--s1)}.gdt .gdt-cell.s2{background:var(--s2)}.gdt .gdt-cell.s3{background:var(--s3)}
+.gdt .gdt-cell.s4{background:var(--s4);color:#fff}.gdt .gdt-cell.s5{background:var(--s5);color:#fff}
+.gdt .gdt-cell.s4 .gdt-cell-top,.gdt .gdt-cell.s5 .gdt-cell-top,.gdt .gdt-cell.s4 .gdt-cell-meta,.gdt .gdt-cell.s5 .gdt-cell-meta{opacity:1}
+.gdt .gdt-cell:hover{box-shadow:inset 0 0 0 2px var(--navy)}
+.gdt .gdt-cell.s4:hover,.gdt .gdt-cell.s5:hover{box-shadow:inset 0 0 0 2px #fff,0 0 0 1px var(--navy)}
+.gdt .gdt-cell-top{display:flex;justify-content:space-between;gap:4px;opacity:.85;font-variant-numeric:tabular-nums}
+.gdt .gdt-cell-pts{font-weight:700;opacity:1}
+.gdt .gdt-cell-name{display:block;font-weight:700;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.gdt .gdt-cell-meta{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.85}
+.gdt .gdt-cell.is-gone .gdt-cell-name{text-decoration:line-through;text-decoration-thickness:1px}
+.gdt .gdt-board.has-focus .gdt-cell:not(.is-focus){opacity:.38}
+.gdt .gdt-foot{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px 32px;align-items:center;padding:8px 4px 0;font-size:15px;color:var(--muted)}
+.gdt .gdt-foot p{margin:0 0 10px}
+.gdt .gdt-link{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.gdt .gdt-cta{background:var(--navy);color:#fff;border-radius:18px;padding:20px 22px;text-align:center}
+.gdt .gdt-cta p{color:#dde3f5;margin:0 0 12px}
+.gdt .gdt-btn{display:inline-block;padding:11px 26px;border-radius:40px;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+.gdt .gdt-btn:hover{background:#3a61c8}
+.gdt .gdt-tip{position:absolute;z-index:20;pointer-events:none;max-width:280px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 6px 24px rgba(14,27,77,.16);padding:10px 12px;font-size:13px;line-height:1.4}
+.gdt .gdt-tip[hidden]{display:none}
+.gdt .gdt-tip b{font-weight:700}
+.gdt .gdt-tip .gdt-tip-head{font-weight:700;margin:0 0 4px}
+.gdt .gdt-tip .gdt-tip-row{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.gdt .gdt-tip .gdt-tip-row span:last-child{margin-left:auto;padding-left:12px;font-variant-numeric:tabular-nums}
+.gdt .gdt-tip .is-focus{font-weight:700}
+.gdt.is-busy [data-slot="standings"],.gdt.is-busy [data-slot="board"]{opacity:.7}
+@media (max-width:749px){
+  .gdt .gdt-hero{padding:24px 20px 20px;border-radius:16px}
+  .gdt .gdt-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gdt .gdt-card{padding:16px 12px 12px;border-radius:16px}
+  .gdt .gdt-hide-sm{display:none}
+  .gdt .gdt-chip{width:34px;height:34px;font-size:10px}
+  .gdt .gdt-chip--sm{width:26px;height:26px;font-size:8px}
+  .gdt .gdt-roster{padding:8px 6px 0}
+  .gdt .gdt-mini th,.gdt .gdt-mini td{padding:7px 6px}
+  .gdt .gdt-foot{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.gdt *{transition:none!important}}
+</style>
+
+<script>
+(() => {
+  'use strict';
+  const root = document.getElementById('gds-tracker');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = '1';
+  const SRC = root.dataset.src;
+  const POLL_MS = 5 * 60 * 1000;
+  const GROUPS = [['F', 'Forwards'], ['D', 'Defence'], ['G', 'Goalies']];
+  const slot = (name) => root.querySelector(`[data-slot="${name}"]`);
+  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const hex = (v, fallback) => (/^#[0-9a-f]{6}$/i.test(String(v || '')) ? v : fallback);
+  const num = (v) => (Number.isFinite(v) ? String(v) : '—');
+  const NAVY_L = 0.0118;
+
+  function luminance(h) {
+    const n = parseInt(h.slice(1), 16);
+    const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((c) => {
+      const s = c / 255;
+      return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  }
+  const inkOn = (h) => {
+    const L = luminance(h);
+    return 1.05 / (L + 0.05) >= (L + 0.05) / (NAVY_L + 0.05) ? '#ffffff' : '#0e1b4d';
+  };
+
+  /* ------------------------------------------------------------ data */
+  const bucket = () => Math.floor(Date.now() / POLL_MS);
+  async function getJSON(name) {
+    const res = await fetch(`${SRC}${name}?v=${bucket()}`);
+    if (!res.ok) {
+      const err = new Error(`${name}: HTTP ${res.status}`);
+      err.status = res.status;
+      throw err;
+    }
+    return res.json();
+  }
+
+  async function load() {
+    try {
+      return normalize(await getJSON('tracker.json'), true);
+    } catch (err) {
+      if (err.status !== 404) throw err;
+    }
+    const [draft, standings] = await Promise.all([getJSON('draft.json'), getJSON('standings.json')]);
+    return fromExports(draft, standings);
+  }
+
+  function decorate(t) {
+    const bot = !!t.bot;
+    const primary = hex(t.primary, bot ? '#4b5475' : '#2a3566');
+    return {
+      ...t,
+      bot,
+      display: t.display || t.id,
+      franchise: t.franchise || (bot ? 'Autodraft' : t.display || t.id),
+      gm: t.gm || (bot ? 'Control bot' : ''),
+      abbrev: String(t.abbrev || (bot ? 'BOT' : t.id.slice(0, 3))).toUpperCase().slice(0, 4),
+      primary,
+      secondary: hex(t.secondary, bot ? '#aeb6d3' : '#8fa8ea'),
+      ink: inkOn(primary),
+      points: Number(t.points) || 0,
+      last_7: Number(t.last_7) || 0,
+      series: Array.isArray(t.series) ? t.series.map(Number) : [],
+      roster: Array.isArray(t.roster) ? t.roster : [],
+      former: Array.isArray(t.former) ? t.former : [],
+    };
+  }
+
+  function normalize(d, full) {
+    const teams = (d.teams || []).filter((t) => t && t.id).map(decorate);
+    const picks = (d.picks || []).filter((p) => p && Number.isFinite(Number(p.no))).map((p) => ({
+      no: Number(p.no), round: Number(p.round) || 0, team: String(p.team), pid: String(p.pid),
+      proj: Number.isFinite(p.proj) ? p.proj : null, auto: !!p.auto, owner: p.owner ? String(p.owner) : null,
+    }));
+    return {
+      full,
+      generatedAt: d.generated_at ? new Date(d.generated_at) : null,
+      lastGame: d.last_game_date || null,
+      daysScored: Number(d.days_scored) || 0,
+      dates: Array.isArray(d.dates) ? d.dates : [],
+      rounds: Number(d.rounds) || 14,
+      teams,
+      byId: new Map(teams.map((t) => [t.id, t])),
+      picks,
+      pickOf: new Map(picks.map((p) => [String(p.pid), p])),
+      players: d.players || {},
+    };
+  }
+
+  /* Before tracker.json exists: draft.json + standings.json (no per-player points). */
+  function fromExports(draft, st) {
+    const rows = new Map((st.standings || []).map((r) => [r.team, r]));
+    const cumulative = (st.series && st.series.cumulative) || {};
+    const players = {};
+    const owner = {};
+    const groupOf = (pos) => (pos === 'D' ? 'D' : pos === 'G' ? 'G' : 'F');
+    const teams = (draft.teams || []).map((t) => {
+      const p = t.persona || {};
+      const r = rows.get(t.id) || {};
+      for (const x of t.roster || []) {
+        owner[x.player_id] = t.id;
+        players[x.player_id] = { name: x.name, pos: x.position, group: groupOf(x.position), nhl: x.nhl_team, gp: null, pts: null };
+      }
+      return {
+        id: t.id, display: t.display, lab: t.lab, bot: t.id === 'autodraft' || t.lab === 'Control',
+        franchise: p.franchise_name, abbrev: p.franchise_abbrev, city: p.franchise_city, gm: p.gm_name,
+        primary: p.primary_color, secondary: p.secondary_color,
+        points: r.points, last_7: r.last_7_days, series: cumulative[t.id] || [],
+        roster: (t.roster || []).map((x) => ({ pid: x.player_id, counted: null, active: null })), former: [],
+      };
+    });
+    const picks = (draft.picks || []).map((p) => {
+      players[p.player_id] = players[p.player_id] ||
+        { name: p.player_name, pos: p.position, group: p.group, nhl: p.nhl_team, gp: null, pts: null };
+      return { no: p.pick_no, round: p.round, team: p.team, pid: p.player_id, proj: p.projected_points, auto: !!p.auto,
+               owner: owner[p.player_id] || null };
+    });
+    return normalize({
+      generated_at: st.generated_at, last_game_date: st.last_game_date, days_scored: st.days_scored,
+      dates: (st.series && st.series.dates) || [], rounds: draft.rounds, teams, picks, players,
+    }, false);
+  }
+
+  /* ------------------------------------------------------------ helpers */
+  const player = (m, pid) => m.players[String(pid)] || { name: `Player ${pid}` };
+  const lastName = (name) => {
+    const parts = String(name || '').trim().split(/\s+/);
+    return parts.length > 1 ? parts.slice(1).join(' ') : parts[0] || '';
+  };
+  const chip = (t, size = '') =>
+    `<span class="gdt-chip${size ? ` gdt-chip--${size}` : ''}" style="--tp:${t.primary};--ts:${t.secondary};--ti:${t.ink}" aria-hidden="true">${size === 'dot' ? '' : esc(t.abbrev)}</span>`;
+  const fmtDate = (iso, opts = { weekday: 'short', month: 'short', day: 'numeric' }) =>
+    iso ? new Date(`${iso}T12:00:00`).toLocaleDateString('en-CA', opts) : '';
+  function ago(date) {
+    if (!date || Number.isNaN(date.getTime())) return '';
+    const mins = Math.round((Date.now() - date.getTime()) / 60000);
+    const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+    if (Math.abs(mins) < 60) return rtf.format(-mins, 'minute');
+    const hours = Math.round(mins / 60);
+    if (Math.abs(hours) < 48) return rtf.format(-hours, 'hour');
+    return rtf.format(-Math.round(hours / 24), 'day');
+  }
+
+  function ranked(m) {
+    const scored = m.daysScored > 0;
+    const rows = scored
+      ? [...m.teams].sort((a, b) => b.points - a.points || b.last_7 - a.last_7 || a.display.localeCompare(b.display))
+      : [...m.teams];
+    const lead = rows.length ? rows[0].points : 0;
+    return rows.map((t) => {
+      const ahead = m.teams.filter((o) => o.points > t.points).length;
+      const tied = m.teams.filter((o) => o.points === t.points).length > 1;
+      return { t, rank: scored ? `${tied ? 'T' : ''}${ahead + 1}` : '—', back: lead - t.points };
+    });
+  }
+
+  /* ------------------------------------------------------------ state */
+  let model = null;
+  let lastOk = 0;
+  let timer = null;
+  let focus = '';
+  const open = new Set();
+  const readHash = () => {
+    const m = /(?:^#|&)team=([a-z0-9_-]+)/i.exec(location.hash);
+    return m ? m[1] : '';
+  };
+
+  /* ------------------------------------------------------------ render */
+  function renderKpis(m) {
+    const top = ranked(m)[0];
+    const tiles = m.daysScored
+      ? [
+          ['Leader', top ? `${esc(top.t.display)}<small>${esc(top.t.franchise)} &middot; ${top.t.points} pts</small>` : '—'],
+          ['Game nights scored', `${m.daysScored}`],
+          ['Last game night', esc(fmtDate(m.lastGame)) || '—'],
+          ['Updated', esc(ago(m.generatedAt)) || '—'],
+        ]
+      : [
+          ['Teams', `${m.teams.length}<small>13 AI models + 1 control bot</small>`],
+          ['Players drafted', `${m.picks.length}`],
+          ['Game nights scored', '0<small>First scores post the morning after scoring runs</small>'],
+          ['Updated', esc(ago(m.generatedAt)) || '—'],
+        ];
+    slot('kpis').innerHTML = tiles.map(([k, v]) => `<div class="gdt-kpi"><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+  }
+
+  function renderFocusOptions(m) {
+    const sel = slot('focus');
+    const opts = [...m.teams].sort((a, b) => a.display.localeCompare(b.display))
+      .map((t) => `<option value="${esc(t.id)}">${esc(t.display)} (${esc(t.franchise)})</option>`).join('');
+    sel.innerHTML = `<option value="">All models</option>${opts}`;
+    sel.value = m.byId.has(focus) ? focus : '';
+  }
+
+  function drafted(m, t, pid) {
+    const pk = m.pickOf.get(String(pid));
+    if (!pk) return 'Waiver';
+    const label = `R${pk.round}<span class="gdt-hide-sm"> &middot; #${pk.no}</span>`;
+    if (pk.team === t.id) return label;
+    const from = m.byId.get(pk.team);
+    return `Trade <span class="gdt-pos">(${esc(from ? from.abbrev : pk.team)} ${label})</span>`;
+  }
+
+  function rosterPanel(m, t) {
+    const rows = t.roster.map((r) => ({ ...r, p: player(m, r.pid), pk: m.pickOf.get(String(r.pid)) }));
+    const sortKey = (r) => [-(r.p.pts ?? 0), r.pk ? r.pk.no : 999];
+    const body = GROUPS.map(([g, label]) => {
+      const list = rows.filter((r) => (r.p.group || 'F') === g)
+        .sort((a, b) => { const x = sortKey(a); const y = sortKey(b); return x[0] - y[0] || x[1] - y[1]; });
+      if (!list.length) return '';
+      return `<tr class="gdt-group"><th colspan="6" scope="colgroup">${label}</th></tr>` + list.map((r) => `
+        <tr>
+          <td>${esc(r.p.name || `Player ${r.pid}`)}<span class="gdt-pos">${esc(r.p.pos || '')}</span>${r.active === false ? '<span class="gdt-tag">Bench</span>' : ''}</td>
+          <td class="gdt-hide-sm">${esc(r.p.nhl || '')}</td>
+          <td class="gdt-nowrap">${drafted(m, t, r.pid)}</td>
+          <td class="gdt-num gdt-hide-sm">${num(r.p.gp)}</td>
+          <td class="gdt-num">${num(r.p.pts)}</td>
+          <td class="gdt-num">${num(r.counted)}</td>
+        </tr>`).join('');
+    }).join('');
+    const former = t.former.filter((f) => f.counted)
+      .map((f) => `${esc(player(m, f.pid).name || `Player ${f.pid}`)} (${num(Number(f.counted))})`).join(', ');
+    return `<div class="gdt-roster">
+      <p class="gdt-roster-head"><b>${esc(t.franchise)}</b>${t.gm ? ` &middot; GM ${esc(t.gm)}` : ''} &middot; ${esc(t.display)}${t.lab && !t.bot ? ` (${esc(t.lab)})` : ''}</p>
+      <table class="gdt-table gdt-mini">
+        <thead><tr><th scope="col">Player</th><th scope="col" class="gdt-hide-sm">NHL</th><th scope="col">Drafted</th>
+          <th scope="col" class="gdt-num gdt-hide-sm">GP</th><th scope="col" class="gdt-num">Pts</th>
+          <th scope="col" class="gdt-num" title="Points scored while in this team's active lineup">For team</th></tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+      ${former ? `<p class="gdt-former">Also counted for this team before leaving the roster: ${former}.</p>` : ''}
+      <p class="gdt-former">${m.full ? 'Pts is the player&rsquo;s season total. For team counts only games he played in this team&rsquo;s active lineup.' : 'Player points appear once the nightly scoring feed is live.'}</p>
+    </div>`;
+  }
+
+  function renderStandings(m) {
+    const rows = ranked(m).map(({ t, rank, back }) => {
+      const id = `gdt-roster-${esc(t.id)}`;
+      const isOpen = open.has(t.id);
+      return `
+      <tr class="gdt-row${t.id === focus ? ' is-focus' : ''}${isOpen ? ' is-open' : ''}" data-team="${esc(t.id)}">
+        <td class="gdt-num gdt-rank">${rank}</td>
+        <td><button type="button" class="gdt-teambtn" aria-expanded="${isOpen}" aria-controls="${id}">
+          ${chip(t)}
+          <span class="gdt-teamtext"><span class="gdt-model">${esc(t.display)}${t.bot ? '<span class="gdt-bot">control</span>' : ''}</span>
+          <span class="gdt-sub">${t.bot ? 'Drafts by house projections' : `${esc(t.lab)} &middot; ${esc(t.franchise)}`}</span></span></button></td>
+        <td class="gdt-num gdt-pts">${t.points}</td>
+        <td class="gdt-num gdt-hide-sm">${m.daysScored ? t.last_7 : '—'}</td>
+        <td class="gdt-num gdt-hide-sm">${m.daysScored ? (back ? `&minus;${back}` : 'Lead') : '—'}</td>
+        <td class="gdt-caretcell"><span class="gdt-caret" aria-hidden="true"></span></td>
+      </tr>
+      <tr class="gdt-roster-row" id="${id}"${isOpen ? '' : ' hidden'}><td colspan="6">${isOpen ? rosterPanel(m, t) : ''}</td></tr>`;
+    }).join('');
+    slot('standings').innerHTML = `
+      <table class="gdt-table gdt-standings">
+        <caption class="gdt-sr">Standings by AI model. Points are fantasy points from each team's active lineup.</caption>
+        <thead><tr><th scope="col" class="gdt-num">#</th><th scope="col">Model &middot; team</th><th scope="col" class="gdt-num">Pts</th>
+          <th scope="col" class="gdt-num gdt-hide-sm">Last 7</th><th scope="col" class="gdt-num gdt-hide-sm">Back</th><td></td></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  function toggleTeam(id, force) {
+    const t = model && model.byId.get(id);
+    if (!t) return;
+    const willOpen = force ?? !open.has(id);
+    if (willOpen) open.add(id); else open.delete(id);
+    const row = slot('standings').querySelector(`#gdt-roster-${CSS.escape(id)}`);
+    const btn = slot('standings').querySelector(`tr[data-team="${CSS.escape(id)}"] .gdt-teambtn`);
+    if (!row || !btn) return;
+    btn.setAttribute('aria-expanded', String(willOpen));
+    btn.closest('tr').classList.toggle('is-open', willOpen);
+    row.hidden = !willOpen;
+    row.firstElementChild.innerHTML = willOpen ? rosterPanel(model, t) : '';
+  }
+
+  /* Season points → one-hue heat step (0 = no points yet). */
+  function heatScale(m) {
+    if (!m.full) return null;
+    const max = Math.max(0, ...m.picks.map((p) => Number(player(m, p.pid).pts) || 0));
+    if (!max) return { step: 1, max: 0, bin: () => 0 };
+    const step = Math.max(1, Math.ceil(max / 5));
+    return { step, max, bin: (v) => (v > 0 ? Math.min(5, Math.ceil(v / step)) : 0) };
+  }
+
+  function renderBoard(m) {
+    const order = m.teams.map((t) => t.id);
+    const scale = heatScale(m);
+    const at = new Map(m.picks.map((p) => [`${p.round}:${p.team}`, p]));
+    const legend = slot('board-legend');
+    if (!scale) {
+      legend.innerHTML = 'Season points per pick appear once the nightly scoring feed is live.';
+    } else if (!scale.max) {
+      legend.innerHTML = 'Cells shade darker as players score. No points yet.';
+    } else {
+      const keys = [`<span class="gdt-key" style="background:var(--s0)">0</span>`];
+      for (let k = 1; k <= 5; k++) {
+        const lo = (k - 1) * scale.step + 1;
+        if (lo > scale.max) break;
+        const hi = Math.min(k * scale.step, scale.max);
+        keys.push(`<span class="gdt-key" style="background:var(--s${k});color:${k >= 4 ? '#fff' : 'inherit'}">${lo === hi ? lo : `${lo}&ndash;${hi}`}</span>`);
+      }
+      legend.innerHTML = `<span>Season points</span>${keys.join('')}`;
+    }
+    const head = m.teams.map((t) => `
+      <th scope="col" class="gdt-colhead${t.id === focus ? ' is-focus' : ''}" data-team="${esc(t.id)}" title="Follow ${esc(t.display)}">
+        ${chip(t, 'sm')}<span class="gdt-colname">${esc(t.display)}</span></th>`).join('');
+    let body = '';
+    for (let r = 1; r <= m.rounds; r++) {
+      const cells = order.map((tid) => {
+        const p = at.get(`${r}:${tid}`);
+        if (!p) return '<td></td>';
+        const pl = player(m, p.pid);
+        const pts = Number(pl.pts);
+        const level = scale ? scale.bin(pts || 0) : 0;
+        const gone = p.owner !== p.team;
+        return `<td class="gdt-cell s${level}${gone ? ' is-gone' : ''}${tid === focus ? ' is-focus' : ''}" data-no="${p.no}">
+          <span class="gdt-cell-top"><span>#${p.no}${p.auto && !(m.byId.get(tid) || {}).bot ? ' &middot; auto' : ''}</span><span class="gdt-cell-pts">${scale ? num(pts) : ''}</span></span>
+          <span class="gdt-cell-name">${esc(lastName(pl.name))}</span>
+          <span class="gdt-cell-meta">${esc(pl.pos || '')} &middot; ${esc(pl.nhl || '')}</span></td>`;
+      }).join('');
+      body += `<tr><th scope="row" class="gdt-rd">${r}<span class="gdt-sr">Round ${r}</span><br><span aria-hidden="true">${r % 2 ? '&rarr;' : '&larr;'}</span></th>${cells}</tr>`;
+    }
+    slot('board').innerHTML = `
+      <div class="gdt-boardwrap" tabindex="0" role="region" aria-label="Draft board, scrolls sideways">
+        <table class="gdt-board${focus ? ' has-focus' : ''}">
+          <caption class="gdt-sr">Draft board: rounds down, teams across in draft order. Each cell shows pick number, season fantasy points, player, position and NHL club.</caption>
+          <thead><tr><th class="gdt-rd" scope="col">Rd</th>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+  }
+
+  function boardTip(m, no) {
+    const p = m.picks.find((x) => x.no === no);
+    if (!p) return '';
+    const pl = player(m, p.pid);
+    const t = m.byId.get(p.team);
+    const now = p.owner && p.owner !== p.team ? m.byId.get(p.owner) : null;
+    const status = p.owner === p.team ? '' : now ? `Traded to ${esc(now.display)}` : 'Released';
+    return `<p class="gdt-tip-head">${esc(pl.name)} <span class="gdt-pos">${esc(pl.pos || '')} &middot; ${esc(pl.nhl || '')}</span></p>
+      <div>Round ${p.round}, pick ${p.no} &middot; ${t ? esc(t.display) : esc(p.team)}</div>
+      ${m.full ? `<div><b>${num(pl.pts)}</b> pts in ${num(pl.gp)} games</div>` : ''}
+      ${Number.isFinite(p.proj) ? `<div>Preseason projection: ${p.proj} pts</div>` : ''}
+      ${p.auto && t && !t.bot ? '<div>Auto-picked after the model failed to pick</div>' : ''}
+      ${status ? `<div>${status}</div>` : ''}`;
+  }
+
+  function niceMax(v) {
+    if (v <= 5) return 5;
+    const mag = 10 ** Math.floor(Math.log10(v));
+    const n = v / mag;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * mag;
+  }
+
+  let race = null;
+  function renderRace(m) {
+    const host = slot('race');
+    const legend = slot('race-legend');
+    const n = m.dates.length;
+    if (n < 2) {
+      race = null;
+      legend.textContent = '';
+      host.innerHTML = '<p class="gdt-empty">The race chart fills in once two nights of games have been scored. Until then, the standings table has every number.</p>';
+      return;
+    }
+    const lead = ranked(m)[0].t;
+    const hi = m.byId.get(focus) || lead;
+    legend.innerHTML = `<span class="gdt-swatch" aria-hidden="true"></span>${esc(hi.display)}${hi === lead ? ' (leader)' : ''} <span class="gdt-swatch gdt-swatch--muted" aria-hidden="true" style="margin-left:12px"></span>other models`;
+    const W = Math.max(280, Math.round(host.clientWidth));
+    const H = W < 560 ? 230 : 300;
+    const pad = { l: 34, r: W < 560 ? 34 : 54, t: 14, b: 26 };
+    const pw = W - pad.l - pad.r;
+    const ph = H - pad.t - pad.b;
+    const yMax = niceMax(Math.max(1, ...m.teams.flatMap((t) => t.series)));
+    const x = (i) => pad.l + (i / (n - 1)) * pw;
+    const y = (v) => pad.t + (1 - v / yMax) * ph;
+    const line = (s) => s.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');
+    let grid = '';
+    for (let k = 0; k <= 4; k++) {
+      const v = (yMax / 4) * k;
+      grid += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${y(v)}" y2="${y(v)}" stroke="#e6e8f0" stroke-width="1"/>
+        <text class="gdt-axis" x="${pad.l - 6}" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`;
+    }
+    const every = Math.max(1, Math.ceil(n / Math.max(2, Math.floor(pw / 70))));
+    for (let i = 0; i < n; i += every) {
+      grid += `<text class="gdt-axis" x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? 'start' : 'middle'}">${esc(fmtDate(m.dates[i], { month: 'short', day: 'numeric' }))}</text>`;
+    }
+    const others = m.teams.filter((t) => t !== hi)
+      .map((t) => `<path d="${line(t.series)}" fill="none" stroke="#c3c9d8" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>`).join('');
+    const end = hi.series[n - 1] ?? 0;
+    host.innerHTML = `
+      <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" tabindex="0" role="img"
+        aria-label="Cumulative points by game night for all ${m.teams.length} teams, ${esc(hi.display)} highlighted. Use left and right arrow keys to read values; the standings table lists every total.">
+        ${grid}${others}
+        <path d="${line(hi.series)}" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="${line(hi.series)}" fill="none" stroke="#4770db" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="${x(n - 1)}" cy="${y(end)}" r="4.5" fill="#4770db" stroke="#fff" stroke-width="2"/>
+        <text x="${x(n - 1) + 9}" y="${y(end) + 4}" font-size="13" font-weight="700" fill="#0e1b4d">${end}</text>
+        <line class="gdt-cross" x1="0" x2="0" y1="${pad.t}" y2="${pad.t + ph}" stroke="#0e1b4d" stroke-width="1" visibility="hidden"/>
+        <circle class="gdt-crossdot" r="4.5" fill="#4770db" stroke="#fff" stroke-width="2" visibility="hidden"/>
+        <rect x="${pad.l}" y="${pad.t}" width="${pw}" height="${ph}" fill="transparent"/>
+      </svg>`;
+    race = { m, hi, n, x, y, W, svg: host.querySelector('svg'), idx: n - 1 };
+  }
+
+  function raceTip(i) {
+    if (!race) return;
+    const { m, hi, x, y, svg } = race;
+    race.idx = i;
+    const cross = svg.querySelector('.gdt-cross');
+    const dot = svg.querySelector('.gdt-crossdot');
+    cross.setAttribute('x1', x(i));
+    cross.setAttribute('x2', x(i));
+    cross.setAttribute('visibility', 'visible');
+    dot.setAttribute('cx', x(i));
+    dot.setAttribute('cy', y(hi.series[i] ?? 0));
+    dot.setAttribute('visibility', 'visible');
+    const rows = [...m.teams].sort((a, b) => (b.series[i] ?? 0) - (a.series[i] ?? 0))
+      .map((t) => `<div class="gdt-tip-row${t === hi ? ' is-focus' : ''}">${chip(t, 'dot')}<span>${esc(t.display)}</span><span>${t.series[i] ?? 0}</span></div>`).join('');
+    const box = svg.getBoundingClientRect();
+    const scale = box.width / race.W;
+    showTip(`<p class="gdt-tip-head">${esc(fmtDate(m.dates[i]))}</p>${rows}`, box.left + x(i) * scale, box.top + 20, true);
+  }
+
+  function hideRaceTip() {
+    if (!race) return;
+    race.svg.querySelector('.gdt-cross').setAttribute('visibility', 'hidden');
+    race.svg.querySelector('.gdt-crossdot').setAttribute('visibility', 'hidden');
+    hideTip();
+  }
+
+  /* One tooltip, positioned inside the tracker so theme transforms never offset it. */
+  function showTip(htmlText, clientX, clientY, beside) {
+    const tip = slot('tip');
+    tip.innerHTML = htmlText;
+    tip.hidden = false;
+    const box = root.getBoundingClientRect();
+    const w = tip.offsetWidth;
+    const h = tip.offsetHeight;
+    let left = clientX - box.left + 14;
+    if (left + w > box.width) left = clientX - box.left - w - 14;
+    let top = beside ? clientY - box.top : clientY - box.top + 16;
+    if (!beside && clientY + 16 + h > window.innerHeight) top = clientY - box.top - h - 12;
+    tip.style.left = `${Math.max(0, left)}px`;
+    tip.style.top = `${Math.max(0, top)}px`;
+  }
+  function hideTip() {
+    slot('tip').hidden = true;
+  }
+
+  function setStatus(err) {
+    const el = slot('status');
+    el.classList.toggle('is-warn', !!err);
+    if (err && model) {
+      el.textContent = `Couldn't refresh just now; showing data from ${ago(model.generatedAt)}. Retrying automatically.`;
+    } else if (err) {
+      el.textContent = "The tracker couldn't load its data. It will retry automatically.";
+    } else if (model) {
+      const night = model.lastGame ? `Scored through ${fmtDate(model.lastGame)}. ` : '';
+      el.textContent = `${night}Data updated ${ago(model.generatedAt)}; refreshes on its own.`;
+    }
+  }
+
+  function render() {
+    if (!model) return;
+    if (focus && !model.byId.has(focus)) focus = '';
+    for (const id of [...open]) if (!model.byId.has(id)) open.delete(id);
+    renderKpis(model);
+    renderFocusOptions(model);
+    renderStandings(model);
+    renderRace(model);
+    renderBoard(model);
+  }
+
+  function setFocus(id, { expand = true } = {}) {
+    focus = model && model.byId.has(id) ? id : '';
+    try {
+      history.replaceState(null, '', focus ? `#team=${focus}` : location.pathname + location.search);
+    } catch (_) { /* sandboxed previews */ }
+    if (focus && expand) open.add(focus);
+    render();
+  }
+
+  async function refresh() {
+    root.classList.add('is-busy');
+    try {
+      model = await load();
+      lastOk = Date.now();
+      render();
+      setStatus();
+    } catch (err) {
+      setStatus(err);
+      if (!model) slot('standings').innerHTML = '<p class="gdt-empty">The standings could not be loaded right now.</p>';
+    } finally {
+      root.classList.remove('is-busy');
+      schedule();
+    }
+  }
+  function schedule() {
+    clearTimeout(timer);
+    if (!document.hidden) timer = setTimeout(refresh, POLL_MS);
+  }
+
+  /* ------------------------------------------------------------ events */
+  slot('focus').addEventListener('change', (e) => setFocus(e.target.value));
+  slot('standings').addEventListener('click', (e) => {
+    const row = e.target.closest('tr.gdt-row');
+    if (row) toggleTeam(row.dataset.team);
+  });
+  const board = slot('board');
+  board.addEventListener('click', (e) => {
+    const th = e.target.closest('.gdt-colhead');
+    if (th) setFocus(th.dataset.team === focus ? '' : th.dataset.team, { expand: false });
+  });
+  const cellTip = (e) => {
+    const cell = e.target.closest('.gdt-cell');
+    if (!cell || !model) return hideTip();
+    showTip(boardTip(model, Number(cell.dataset.no)), e.clientX, e.clientY, false);
+  };
+  board.addEventListener('pointermove', cellTip);
+  board.addEventListener('pointerdown', cellTip);
+  board.addEventListener('pointerleave', hideTip);
+  board.addEventListener('scroll', hideTip, true);
+
+  const raceHost = slot('race');
+  const raceIndex = (clientX) => {
+    const box = race.svg.getBoundingClientRect();
+    const px = ((clientX - box.left) / box.width) * race.W;
+    const i = Math.round(((px - race.x(0)) / (race.x(race.n - 1) - race.x(0))) * (race.n - 1));
+    return Math.max(0, Math.min(race.n - 1, i));
+  };
+  raceHost.addEventListener('pointermove', (e) => { if (race) raceTip(raceIndex(e.clientX)); });
+  raceHost.addEventListener('pointerleave', hideRaceTip);
+  raceHost.addEventListener('focusin', () => { if (race) raceTip(race.idx); });
+  raceHost.addEventListener('focusout', hideRaceTip);
+  raceHost.addEventListener('keydown', (e) => {
+    if (!race || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+    e.preventDefault();
+    raceTip(Math.max(0, Math.min(race.n - 1, race.idx + (e.key === 'ArrowRight' ? 1 : -1))));
+  });
+  if ('ResizeObserver' in window) {
+    let width = 0;
+    new ResizeObserver((entries) => {
+      const w = Math.round(entries[0].contentRect.width);
+      if (w !== width) {
+        width = w;
+        if (model) renderRace(model);
+      }
+    }).observe(raceHost);
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && Date.now() - lastOk >= POLL_MS) refresh();
+    else schedule();
+  });
+  window.addEventListener('hashchange', () => { if (model) setFocus(readHash()); });
+
+  focus = readHash();
+  if (focus) open.add(focus);
+  refresh();
+})();
+</script>

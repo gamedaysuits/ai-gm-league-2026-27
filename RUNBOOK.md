@@ -143,6 +143,16 @@ Keep the Mac awake during long steps: prefix with `caffeinate -i`.
 - `weekly.yml` scores through Sunday, snapshots, runs the front office, locks lineups, commits.
 - Trading opens Mon Oct 12 (Thanksgiving; first puck 11:00 MDT, lock 10:45 MDT).
 
+## Draft tracker (gamedaysuits.ca/pages/ai-gm-draft-tracker)
+
+- Every `gmbench score` (daily and weekly workflows) and `gmbench export` rewrites
+  `runs/live/exports/tracker.json`: standings by model, every pick with season points, current rosters.
+- The Shopify page reads that file from `main` on raw.githubusercontent.com (5-minute CDN cache) and
+  re-polls every 5 minutes, so a scoring commit reaches the page with no deploy.
+- The page body is `site/shopify/draft-tracker.html`. To change the page, edit that file and paste it into
+  the page's HTML view in Shopify admin (or `pageUpdate` via the Admin API). Never save the page from the
+  visual editor; it can strip the script.
+
 ## If something goes wrong
 
 - `uv run gmbench verify --run live` pinpoints any ledger corruption by sequence number.

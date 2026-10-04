@@ -14,10 +14,11 @@ from gmbench.state import LeagueState
 SCHEMA_VERSION = 1
 
 
-def _write(path: Path, doc: dict[str, Any]) -> None:
+def _write(path: Path, doc: dict[str, Any], *, compact: bool = False) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(path.suffix + ".tmp")
-    tmp.write_text(json.dumps(doc, indent=1, ensure_ascii=False))
+    tmp.write_text(json.dumps(doc, separators=(",", ":"), ensure_ascii=False) if compact
+                   else json.dumps(doc, indent=1, ensure_ascii=False))
     os.replace(tmp, path)
 
 
@@ -55,22 +56,27 @@ def _public_persona(persona: dict[str, Any] | None) -> dict[str, Any] | None:
     return {k: v for k, v in persona.items() if not k.startswith("private_")}
 
 
-def write_standings_export(state: LeagueState, cfg: LeagueConfig, out_dir: Path, *, today: str) -> Path:
-    """Standings with totals, last-7-days, and a daily cumulative series per team."""
+def standings_series(state: LeagueState) -> tuple[list[str], dict[str, int], dict[str, list[int]]]:
+    """Scored game dates, each team's points over the last 7 scored dates, and its running total per date."""
     days = sorted(state.scores)
-    totals = state.points()
-    cutoff = max(days[-7:]) if days else None
     recent = {tid: 0 for tid in state.teams}
-    if days:
-        for d in days[-7:]:
-            for tid, pts in state.scores[d]["team_points"].items():
-                recent[tid] = recent.get(tid, 0) + int(pts)
+    for d in days[-7:]:
+        for tid, pts in state.scores[d]["team_points"].items():
+            recent[tid] = recent.get(tid, 0) + int(pts)
     series: dict[str, list[int]] = {tid: [] for tid in state.teams}
     running = {tid: 0 for tid in state.teams}
     for d in days:
         for tid in state.teams:
             running[tid] += int(state.scores[d]["team_points"].get(tid, 0))
             series[tid].append(running[tid])
+    return days, recent, series
+
+
+def write_standings_export(state: LeagueState, cfg: LeagueConfig, out_dir: Path, *, today: str) -> Path:
+    """Standings with totals, last-7-days, and a daily cumulative series per team."""
+    days, recent, series = standings_series(state)
+    totals = state.points()
+    cutoff = max(days[-7:]) if days else None
     rows = sorted(state.teams, key=lambda t: (-totals.get(t, 0), t))
     doc = {
         "schema_version": SCHEMA_VERSION, "generated_at": utc_now(), "as_of": today, "ledger_head_seq": state.head_seq,

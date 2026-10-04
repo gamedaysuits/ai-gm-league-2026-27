@@ -168,20 +168,26 @@ def main(argv: list[str] | None = None) -> None:
         from datetime import timedelta
 
         from gmbench.export.site import write_standings_export
+        from gmbench.export.tracker import write_tracker_export
         from gmbench.league import ledger_for, run_dir
         from gmbench.season.daily import run_scoring, yesterday_eastern
         from gmbench.state import replay
 
         ledger = ledger_for(args.run)
         ledger.verify()
+        games_dir = run_dir(args.run) / "data" / "games"
         end = date.fromisoformat(args.end) if args.end else yesterday_eastern()
         start = max(end - timedelta(days=args.days - 1), date(2026, 9, 29))
         if start > end:
             print(f"nothing to score yet (season starts 2026-09-29; end {end})")
         else:
-            run_scoring(ledger, start=start, end=end, games_dir=run_dir(args.run) / "data" / "games")
-        path = write_standings_export(replay(ledger.events()), cfg, run_dir(args.run) / "exports", today=date.today().isoformat())
-        print(f"standings → {path}")
+            run_scoring(ledger, start=start, end=end, games_dir=games_dir)
+        state = replay(ledger.events())
+        out = run_dir(args.run) / "exports"
+        path = write_standings_export(state, cfg, out, today=date.today().isoformat())
+        tracker = write_tracker_export(state, cfg, out, games_dir=games_dir, today=date.today().isoformat(),
+                                       snapshot=_snapshot_on_disk(state))
+        print(f"standings → {path} | tracker → {tracker}")
 
     elif args.command == "week":
         from datetime import datetime, timedelta
@@ -208,6 +214,7 @@ def main(argv: list[str] | None = None) -> None:
     elif args.command == "export":
         from gmbench.export.scorecard import write_scorecard
         from gmbench.export.site import write_draft_export, write_grades_export, write_standings_export
+        from gmbench.export.tracker import write_tracker_export
         from gmbench.export.transcripts import export_public_transcripts
         from gmbench.league import ledger_for, load_run_snapshot, run_dir
         from gmbench.state import replay
@@ -218,6 +225,8 @@ def main(argv: list[str] | None = None) -> None:
         out = run_dir(args.run) / "exports"
         write_draft_export(state, load_run_snapshot(state.snapshot["ref"]), cfg, out)
         write_standings_export(state, cfg, out, today=date.today().isoformat())
+        write_tracker_export(state, cfg, out, games_dir=run_dir(args.run) / "data" / "games",
+                             today=date.today().isoformat(), snapshot=_snapshot_on_disk(state))
         write_scorecard(ledger, cfg, out)
         write_grades_export(state, cfg, out)
         print("exports →", out, "| public transcripts →", export_public_transcripts(run_dir(args.run)))
@@ -248,6 +257,19 @@ def main(argv: list[str] | None = None) -> None:
         ledger = ledger_for(args.run)
         count, head = ledger.verify()
         print(f"ledger OK: {count} events, head {head[:16]}…, state {state_sha256(replay(ledger.events()))[:16]}…")
+
+
+def _snapshot_on_disk(state):
+    """The run's current snapshot, or None when its file is not on this machine (snapshots are never committed)."""
+    from gmbench.league import load_run_snapshot
+
+    ref = (state.snapshot or {}).get("ref")
+    if not ref:
+        return None
+    try:
+        return load_run_snapshot(ref)
+    except (OSError, ValueError):
+        return None
 
 
 def _client(cfg, fake: bool):
