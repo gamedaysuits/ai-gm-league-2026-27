@@ -18,8 +18,6 @@ from __future__ import annotations
 import csv
 import json
 import os
-import re
-import unicodedata
 from collections.abc import Callable, Mapping
 from itertools import groupby
 from pathlib import Path
@@ -29,6 +27,7 @@ import pytest
 import yaml
 
 from gmbench.config import ROOT
+from gmbench.pool import Directory, norm
 from gmbench.season import scoring as sc
 
 SOURCE = Path(os.environ.get("GMBENCH_HISTORY_SOURCE", "/Users/gamedaysuits/local projects/AI Draft Regular Season"))
@@ -46,7 +45,6 @@ GOAL_GUESSES = {
     "Llama 4": 742, "Gemini": 700, "Gemma": 224, "Hermes": 700, "Mistral": 700, "Qwen": 750,
 }
 CLUB_FIX = {"VEG": "VGK"}
-GROUP_POSITIONS = {"F": {"C", "L", "R"}, "D": {"D"}, "G": {"G"}}
 
 BUDGET = 1000
 ROSTER_SIZE = 11
@@ -78,54 +76,6 @@ REGULAR_STANDINGS = {  # team: (raw, best 10, best 10 minus unspent), in best-10
 }
 
 
-# --- name -> NHL player ID ---------------------------------------------------------
-
-
-def norm(name: str) -> str:
-    """Lower-case ASCII name without punctuation: 'Tim Stützle' -> 'tim stutzle', 'J.T. Miller' -> 'jt miller'."""
-    ascii_name = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
-    return " ".join(re.sub(r"[^a-z ]", " ", ascii_name.replace(".", "").replace("'", "")).split())
-
-
-class Directory:
-    """Everyone with 2025-26 NHL stats in the given totals, for resolving drafted names to IDs."""
-
-    def __init__(self, *totals: Mapping[int, sc.PlayerTotal]) -> None:
-        self.people: dict[int, dict[str, Any]] = {}
-        for source in totals:
-            for pid, t in source.items():
-                person = self.people.setdefault(pid, {"name": t.name, "position": t.position, "clubs": set()})
-                person["clubs"].update(filter(None, t.teams.split(",")))
-
-    def name(self, pid: int) -> str:
-        return self.people[pid]["name"]
-
-    def resolve(self, name: str, club: str, group: str | None = None) -> tuple[int, str]:
-        """(player ID, how it matched: exact | fuzzy | override). Raises LookupError unless exactly one fits."""
-        key = norm(name)
-        if (key, club) in OVERRIDES:
-            return OVERRIDES[(key, club)], "override"
-
-        def fits(p: dict[str, Any]) -> bool:
-            return group is None or p["position"] in GROUP_POSITIONS[group]
-
-        found = [pid for pid, p in self.people.items() if norm(p["name"]) == key and fits(p)]
-        if len(found) > 1:
-            found = [pid for pid in found if club in self.people[pid]["clubs"]]
-        if len(found) == 1:
-            return found[0], "exact"
-        # Official names can differ from everyday ones ("Mats Zuccarello Aasen", "John-Jason Peterka"):
-        # same club and position group, the drafted surname among the official name's words, same first initial.
-        surname = key.split()[-1]
-        found = [
-            pid for pid, p in self.people.items()
-            if fits(p) and club in p["clubs"] and surname in norm(p["name"]).split() and norm(p["name"])[:1] == key[:1]
-        ]
-        if len(found) == 1:
-            return found[0], "fuzzy"
-        raise LookupError(f"cannot resolve {name!r} ({club}, {group}): candidates {found}")
-
-
 # --- 2026 AI Playoff Pool ----------------------------------------------------------
 
 
@@ -133,7 +83,7 @@ def build_playoff_pool() -> dict[str, Any]:
     lines = sc.fetch_game_lines(*PLAYOFF_WINDOW, sc.PLAYOFFS, scoring=PLAYOFF_RULES)
     playoff_totals = sc.fetch_season_totals(SEASON, sc.PLAYOFFS)
     mismatches = sc.reconcile(lines, playoff_totals)
-    directory = Directory(sc.fetch_season_totals(SEASON, sc.REGULAR), playoff_totals)
+    directory = Directory(sc.fetch_season_totals(SEASON, sc.REGULAR), playoff_totals, overrides=OVERRIDES)
     sums = sc.sum_lines(lines)
     total_goals = sum(ln.goals for ln in lines)
     config = yaml.safe_load((PLAYOFF_DIR / "config.yaml").read_text(encoding="utf-8"))
@@ -248,7 +198,7 @@ def build_regular_pool() -> dict[str, Any]:
     totals = sc.fetch_season_totals(SEASON, sc.REGULAR)
     season_lines = sc.fetch_game_lines("2025-09-01", "2026-05-31", sc.REGULAR)  # cross-check only
     mismatches = sc.reconcile(season_lines, totals)
-    directory = Directory(totals)
+    directory = Directory(totals, overrides=OVERRIDES)
     with REGULAR_CSV.open(newline="", encoding="utf-8-sig") as fh:
         header, *rows = list(csv.reader(fh))
     name_col, club_col = header.index("Name"), header.index("Team")

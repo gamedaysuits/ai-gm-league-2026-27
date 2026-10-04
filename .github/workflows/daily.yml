@@ -26,11 +26,14 @@ jobs:
         run: uv run gmbench score --run live ${{ inputs.end && format('--end {0}', inputs.end) || '' }}
       - name: Verify ledger
         run: uv run gmbench verify --run live
+      - name: Auction pool
+        continue-on-error: true  # a pool problem never blocks league scoring
+        run: uv run gmbench pool --pool pools/auction-pool-2026-27.yaml
       - name: Commit
         run: |
           git config user.name "gmbench-scorer"
           git config user.email "gmbench@gamedaysuits.ca"
-          git add runs/live/ledger runs/live/exports runs/live/data
+          git add runs/live/ledger runs/live/exports runs/live/data exports/pools
           git diff --cached --quiet || git commit -m "score: through $(date -u -d yesterday +%F)"
           git push
       - name: Alert on failure

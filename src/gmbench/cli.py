@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from datetime import date
 
 from gmbench.config import load_config, load_secrets
@@ -64,6 +65,11 @@ def main(argv: list[str] | None = None) -> None:
     wk.add_argument("--snapshot", help="snapshot ref for this week (default: the run's latest SNAPSHOT_TAKEN)")
     wk.add_argument("--fake", action="store_true")
     wk.add_argument("--today", default=date.today().isoformat())
+
+    pl = sub.add_parser("pool", help="score an auction pool from the committed NHL game lines")
+    pl.add_argument("--pool", required=True, help="pool file, e.g. pools/auction-pool-2026-27.yaml")
+    pl.add_argument("--run", default="live", help="run whose committed game lines to score from")
+    pl.add_argument("--offline", action="store_true", help="skip the NHL name lookup; players without an id stay unresolved")
 
     ex = sub.add_parser("export", help="write public exports: draft, standings, scorecard, redacted transcripts")
     ex.add_argument("--run", required=True)
@@ -230,6 +236,20 @@ def main(argv: list[str] | None = None) -> None:
         write_scorecard(ledger, cfg, out)
         write_grades_export(state, cfg, out)
         print("exports →", out, "| public transcripts →", export_public_transcripts(run_dir(args.run)))
+
+    elif args.command == "pool":
+        from pathlib import Path
+
+        from gmbench.config import ROOT
+        from gmbench.league import run_dir
+        from gmbench.pool import Directory, load_pool, write_pool_export
+        from gmbench.season.scoring import fetch_season_totals
+
+        pool = load_pool(Path(args.pool))
+        directory = None if args.offline else Directory(fetch_season_totals(pool["season"]))
+        path = write_pool_export(pool, run_dir(args.run) / "data" / "games", ROOT / "exports" / "pools", directory=directory)
+        missing = json.loads(path.read_text())["unresolved"]
+        print(f"pool → {path}" + (f" | unresolved: {', '.join(m['name'] for m in missing)}" if missing else ""))
 
     elif args.command == "snapshot":
         import hashlib

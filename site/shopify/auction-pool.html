@@ -1,0 +1,671 @@
+<!--
+  Auction Pool 2026-27 tracker: the body of the Shopify page at gamedaysuits.ca/pages/auction-pool-tracker.
+  Self-contained (scoped CSS + JS), same design as site/shopify/draft-tracker.html. It reads
+  exports/pools/auction-pool-2026-27.json from this repo's main branch, which the daily-scoring workflow
+  rewrites every morning (`gmbench pool`). Rosters live in pools/auction-pool-2026-27.yaml.
+  Update the live page by pasting this file into the page's HTML (<>) view, or with the Admin API
+  pageUpdate mutation. Do not edit it in Shopify's visual editor.
+-->
+<div id="gds-pool" class="gdt" data-src="https://raw.githubusercontent.com/gamedaysuits/ai-gm-league-2026-27/main/exports/pools/auction-pool-2026-27.json">
+  <header class="gdt-hero">
+    <p class="gdt-eyebrow">Game Day Suits · Auction Pool 2026–27</p>
+    <h1 class="gdt-title">Auction Pool Tracker</h1>
+    <p class="gdt-lede">Twelve managers, $1,000 each, eight forwards and two defence per team. Every regular-season goal and assist counts, updated each morning from official NHL stats.</p>
+    <dl class="gdt-kpis" data-slot="kpis" aria-live="polite"></dl>
+  </header>
+
+  <div class="gdt-controls">
+    <label class="gdt-follow">Follow a manager
+      <select data-slot="focus"><option value="">All managers</option></select>
+    </label>
+    <p class="gdt-status" data-slot="status" role="status"></p>
+  </div>
+
+  <section class="gdt-card" aria-labelledby="gdt-h-standings">
+    <div class="gdt-card-head">
+      <h2 id="gdt-h-standings" class="gdt-h2">Standings</h2>
+      <p class="gdt-note">Select a manager to jump to their team.</p>
+    </div>
+    <div data-slot="standings"><p class="gdt-empty">Loading the latest standings…</p></div>
+  </section>
+
+  <section class="gdt-card" aria-labelledby="gdt-h-race">
+    <div class="gdt-card-head">
+      <h2 id="gdt-h-race" class="gdt-h2">Points race</h2>
+      <p class="gdt-note" data-slot="race-legend"></p>
+    </div>
+    <div class="gdt-race" data-slot="race"></div>
+  </section>
+
+  <section class="gdt-card" aria-labelledby="gdt-h-teams">
+    <div class="gdt-card-head">
+      <h2 id="gdt-h-teams" class="gdt-h2">Teams</h2>
+      <p class="gdt-note" data-slot="teams-note"></p>
+    </div>
+    <div class="gdt-teams" data-slot="teams"></div>
+  </section>
+
+  <section class="gdt-card" aria-labelledby="gdt-h-board">
+    <div class="gdt-card-head">
+      <h2 id="gdt-h-board" class="gdt-h2">Auction board</h2>
+      <div class="gdt-legend" data-slot="board-legend"></div>
+    </div>
+    <div data-slot="board"></div>
+  </section>
+
+  <footer class="gdt-foot">
+    <div>
+      <h2 class="gdt-h3">How it works</h2>
+      <p data-slot="rules">Each manager had $1,000 to bid on eight forwards and two defence. Points are regular-season goals plus assists, from official NHL stats.</p>
+      <p>Want to see how AI drafts? <a class="gdt-link" href="/pages/ai-gm-draft-tracker">Follow 13 AI models in the AI GM League</a>.</p>
+    </div>
+    <div class="gdt-cta">
+      <p>Pool night calls for a Game Day Suit.</p>
+      <a class="gdt-btn" href="/collections/suits">Build yours</a>
+    </div>
+  </footer>
+
+  <div class="gdt-tip" data-slot="tip" role="tooltip" hidden></div>
+</div>
+<noscript><p>Turn on JavaScript to see the live pool tracker.</p></noscript>
+
+<style>
+.main-page-title{display:none}
+.gdt{--navy:#0e1b4d;--blue:#4770db;--red:#e32402;--ink:#0e1b4d;--muted:#4a5478;--line:#dfe2ec;--soft:#f4f6fb;--card:#fff;
+  --s0:#f4f6fb;--s1:#dde6fb;--s2:#b9cbf6;--s3:#8ea9ec;--s4:#3f63c9;--s5:#22398f;
+  position:relative;width:min(1200px,calc(100vw - 32px));margin-left:calc(50% - min(600px,50vw - 16px));
+  font-family:var(--font-body-family,"Questrial",system-ui,sans-serif);font-size:16px;line-height:1.5;letter-spacing:0;color:var(--ink);text-align:left}
+.gdt *,.gdt *::before,.gdt *::after{box-sizing:border-box}
+.gdt .gdt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gdt .gdt-hero{background:var(--navy);color:#fff;border-radius:20px;padding:32px 32px 28px;margin:0 0 20px}
+.gdt .gdt-eyebrow{margin:0 0 6px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#b9cbf6}
+.gdt .gdt-title{margin:0 0 10px;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:clamp(30px,5vw,46px);line-height:1.1;letter-spacing:0;color:#fff}
+.gdt .gdt-lede{margin:0 0 24px;max-width:62ch;font-size:17px;color:#dde3f5}
+.gdt .gdt-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0}
+.gdt .gdt-kpi{background:rgba(255,255,255,.08);border-radius:14px;padding:12px 14px;min-width:0}
+.gdt .gdt-kpi dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#b9cbf6;margin:0}
+.gdt .gdt-kpi dd{margin:2px 0 0;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:22px;line-height:1.2;color:#fff;overflow-wrap:anywhere}
+.gdt .gdt-kpi dd small{display:block;font-family:var(--font-body-family,"Questrial",system-ui,sans-serif);font-weight:400;font-size:13px;color:#dde3f5}
+.gdt .gdt-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin:0 0 16px}
+.gdt .gdt-follow{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted)}
+.gdt .gdt-follow select{font:inherit;color:var(--ink);background:#fff;border:1px solid #c5cad8;border-radius:26px;padding:7px 34px 7px 14px;min-height:40px;max-width:70vw;
+  appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);
+  background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;cursor:pointer}
+.gdt .gdt-follow select:focus-visible,.gdt button:focus-visible,.gdt [tabindex]:focus-visible,.gdt a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.gdt .gdt-status{margin:0;font-size:14px;color:var(--muted)}
+.gdt .gdt-status.is-warn{color:#9a1b02}
+.gdt .gdt-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 20px 16px;margin:0 0 20px}
+.gdt .gdt-card-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;margin:0 0 12px}
+.gdt .gdt-h2{margin:0;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:24px;line-height:1.2;letter-spacing:0;color:var(--ink)}
+.gdt .gdt-h3{margin:0 0 6px;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:18px;letter-spacing:0;color:var(--ink)}
+.gdt .gdt-note{margin:0;font-size:14px;color:var(--muted)}
+.gdt .gdt-empty{margin:8px 0;color:var(--muted)}
+.gdt .gdt-table{width:100%;border-collapse:collapse;table-layout:auto;border:0;box-shadow:none;font-size:15px;margin:0}
+.gdt .gdt-table th,.gdt .gdt-table td{padding:10px 8px;border:0;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;font-weight:400}
+.gdt .gdt-table thead th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:4px;padding-bottom:8px}
+.gdt .gdt-table .gdt-num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gdt .gdt-standings tbody tr.gdt-row{cursor:pointer}
+.gdt .gdt-standings tbody tr.gdt-row:hover{background:var(--soft)}
+.gdt .gdt-standings tr.is-focus{background:#eef2fc}
+.gdt .gdt-standings tr.is-focus:hover{background:#e6ecfb}
+.gdt .gdt-rank{width:44px;color:var(--muted)}
+.gdt .gdt-pts{font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:18px;color:var(--ink)}
+.gdt .gdt-teamlink{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;border-radius:8px}
+.gdt .gdt-teamtext{display:flex;flex-direction:column;min-width:0}
+.gdt .gdt-model{font-weight:700;color:var(--ink);line-height:1.25}
+.gdt .gdt-sub{font-size:13px;color:var(--muted);line-height:1.3}
+.gdt .gdt-chip{flex:none;display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;border:3px solid var(--ts,#8fa8ea);background:var(--tp,#2a3566);color:var(--ti,#fff);
+  font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:11px;letter-spacing:.02em;line-height:1}
+.gdt .gdt-chip--sm{width:26px;height:26px;border-width:2px;font-size:8px}
+.gdt .gdt-chip--dot{width:12px;height:12px;border-width:2px;vertical-align:-1px}
+.gdt .gdt-bot{display:inline-block;margin-left:6px;padding:0 6px;border-radius:10px;background:var(--soft);border:1px solid var(--line);font-size:11px;font-weight:400;color:var(--muted);vertical-align:1px}
+.gdt .gdt-teams{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:16px}
+.gdt .gdt-team{min-width:0;background:#fff;border:1px solid var(--line);border-top:6px solid var(--tp,#2a3566);border-radius:14px;padding:14px 14px 8px;scroll-margin-top:100px;transition:box-shadow .15s}
+.gdt .gdt-team.is-focus{box-shadow:0 0 0 2px var(--blue)}
+.gdt .gdt-team-head{display:flex;align-items:flex-start;gap:12px;margin:0 0 6px}
+.gdt .gdt-team-names{flex:1;min-width:0}
+.gdt .gdt-team-names p{margin:0}
+.gdt .gdt-team-name{margin:0 0 2px;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:18px;line-height:1.2;letter-spacing:0;color:var(--ink)}
+.gdt .gdt-sub b{font-weight:700;color:var(--ink)}
+.gdt .gdt-team-score{flex:none;text-align:right}
+.gdt .gdt-team-pts{display:block;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:24px;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+.gdt .gdt-roster-table{font-size:13px}
+.gdt .gdt-roster-table th,.gdt .gdt-roster-table td{padding:4px;border-bottom-color:#eef0f5}
+.gdt .gdt-roster-table thead th{font-size:11px;padding:0 4px 4px}
+.gdt .gdt-roster-table .gdt-group th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:10px}
+.gdt .gdt-muted{color:var(--muted)}
+.gdt .gdt-pos{display:inline-block;margin-left:6px;font-size:12px;color:var(--muted)}
+.gdt .gdt-tag{display:inline-block;margin-left:6px;padding:0 7px;border-radius:10px;font-size:11px;line-height:18px;background:var(--soft);border:1px solid var(--line);color:var(--muted)}
+.gdt .gdt-former{margin:10px 2px 0;font-size:13px;color:var(--muted)}
+.gdt .gdt-race{position:relative;min-height:120px}
+.gdt .gdt-race svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.gdt .gdt-race svg:focus{outline:none}
+.gdt .gdt-race svg:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:6px}
+.gdt .gdt-axis{font-size:11px;fill:var(--muted);font-variant-numeric:tabular-nums}
+.gdt .gdt-swatch{display:inline-block;width:18px;height:0;border-top:3px solid var(--blue);vertical-align:4px;margin:0 6px 0 0;border-radius:2px}
+.gdt .gdt-swatch--muted{border-top:2px solid #b4bbcd}
+.gdt .gdt-legend{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-size:13px;color:var(--muted)}
+.gdt .gdt-legend .gdt-key{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:22px;padding:0 6px;border-radius:5px;font-size:12px;font-variant-numeric:tabular-nums}
+.gdt .gdt-boardwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px 6px}
+.gdt .gdt-board{border-collapse:separate;border-spacing:3px;table-layout:fixed;width:100%;min-width:1080px;margin:0;border:0;box-shadow:none}
+.gdt .gdt-board th,.gdt .gdt-board td{border:0;padding:0;font-weight:400;vertical-align:top}
+.gdt .gdt-board .gdt-rd{width:40px;position:sticky;left:0;z-index:1;background:#fff;text-align:center;font-size:12px;color:var(--muted);padding-top:12px;font-variant-numeric:tabular-nums}
+.gdt .gdt-board thead .gdt-rd{padding-top:0;vertical-align:bottom}
+.gdt .gdt-colhead{padding:0 2px 6px!important;text-align:center;cursor:pointer;border-radius:8px}
+.gdt .gdt-colhead .gdt-chip{margin:0 auto 4px}
+.gdt .gdt-colname{display:block;font-size:11px;line-height:1.25;color:var(--ink);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:2.5em}
+.gdt .gdt-colhead.is-focus{background:#eef2fc;box-shadow:inset 0 -3px 0 var(--blue)}
+.gdt .gdt-cell{height:62px;border-radius:7px;padding:5px 6px!important;background:var(--s0);color:var(--ink);font-size:11px;line-height:1.25;overflow:hidden;position:relative;transition:opacity .15s}
+.gdt .gdt-cell.s1{background:var(--s1)}.gdt .gdt-cell.s2{background:var(--s2)}.gdt .gdt-cell.s3{background:var(--s3)}
+.gdt .gdt-cell.s4{background:var(--s4);color:#fff}.gdt .gdt-cell.s5{background:var(--s5);color:#fff}
+.gdt .gdt-cell.s4 .gdt-cell-top,.gdt .gdt-cell.s5 .gdt-cell-top,.gdt .gdt-cell.s4 .gdt-cell-meta,.gdt .gdt-cell.s5 .gdt-cell-meta{opacity:1}
+.gdt .gdt-cell:hover{box-shadow:inset 0 0 0 2px var(--navy)}
+.gdt .gdt-cell.s4:hover,.gdt .gdt-cell.s5:hover{box-shadow:inset 0 0 0 2px #fff,0 0 0 1px var(--navy)}
+.gdt .gdt-cell-top{display:flex;justify-content:space-between;gap:4px;opacity:.85;font-variant-numeric:tabular-nums}
+.gdt .gdt-cell-pts{font-weight:700;opacity:1}
+.gdt .gdt-cell-name{display:block;font-weight:700;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.gdt .gdt-cell-meta{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.85}
+.gdt .gdt-cell.is-gone .gdt-cell-name{text-decoration:line-through;text-decoration-thickness:1px}
+.gdt .gdt-board.has-focus .gdt-cell:not(.is-focus){opacity:.38}
+.gdt .gdt-foot{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px 32px;align-items:center;padding:8px 4px 0;font-size:15px;color:var(--muted)}
+.gdt .gdt-foot p{margin:0 0 10px}
+.gdt .gdt-link{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.gdt .gdt-cta{background:var(--navy);color:#fff;border-radius:18px;padding:20px 22px;text-align:center}
+.gdt .gdt-cta p{color:#dde3f5;margin:0 0 12px}
+.gdt .gdt-btn{display:inline-block;padding:11px 26px;border-radius:40px;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+.gdt .gdt-btn:hover{background:#3a61c8}
+.gdt .gdt-tip{position:absolute;z-index:20;pointer-events:none;max-width:280px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 6px 24px rgba(14,27,77,.16);padding:10px 12px;font-size:13px;line-height:1.4}
+.gdt .gdt-tip[hidden]{display:none}
+.gdt .gdt-tip b{font-weight:700}
+.gdt .gdt-tip .gdt-tip-head{font-weight:700;margin:0 0 4px}
+.gdt .gdt-tip .gdt-tip-row{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.gdt .gdt-tip .gdt-tip-row span:last-child{margin-left:auto;padding-left:12px;font-variant-numeric:tabular-nums}
+.gdt .gdt-tip .is-focus{font-weight:700}
+.gdt .gdt-prize{display:inline-block;margin-left:8px;padding:0 7px;border-radius:10px;font-size:11px;line-height:18px;font-weight:700;background:#fff4d6;color:#7a5200;vertical-align:1px}
+.gdt .gdt-cell--empty{background:#fff;border:1px dashed var(--line);color:var(--muted)}
+.gdt.is-busy [data-slot="standings"],.gdt.is-busy [data-slot="board"]{opacity:.7}
+@media (max-width:749px){
+  .gdt .gdt-hero{padding:24px 20px 20px;border-radius:16px}
+  .gdt .gdt-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gdt .gdt-card{padding:16px 12px 12px;border-radius:16px}
+  .gdt .gdt-hide-sm{display:none}
+  .gdt .gdt-chip{width:34px;height:34px;font-size:10px}
+  .gdt .gdt-chip--sm{width:26px;height:26px;font-size:8px}
+  .gdt .gdt-foot{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.gdt *{transition:none!important}}
+</style>
+
+<script>
+(() => {
+  'use strict';
+  const root = document.getElementById('gds-pool');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = '1';
+  const SRC = root.dataset.src;
+  const POLL_MS = 5 * 60 * 1000;
+  const GROUPS = [['F', 'Forwards'], ['D', 'Defence']];
+  const slot = (name) => root.querySelector(`[data-slot="${name}"]`);
+  const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const num = (v) => (Number.isFinite(v) ? String(v) : '—');
+  const money = (v) => `$${(Number(v) || 0).toLocaleString('en-CA')}`;
+
+  /* ------------------------------------------------------------ data */
+  async function load() {
+    const res = await fetch(`${SRC}?v=${Math.floor(Date.now() / POLL_MS)}`);
+    if (!res.ok) throw new Error(`pool: HTTP ${res.status}`);
+    return normalize(await res.json());
+  }
+
+  const initials = (name) => {
+    const words = String(name || '').trim().split(/\s+/).filter(Boolean);
+    return (words.length > 1 ? words[0][0] + words[words.length - 1][0] : (words[0] || '?').slice(0, 2)).toUpperCase();
+  };
+
+  function normalize(d) {
+    const teams = (d.teams || []).filter((t) => t && t.id).map((t) => ({
+      id: String(t.id),
+      name: String(t.manager || t.id),
+      abbrev: initials(t.manager || t.id),
+      points: Number(t.points) || 0,
+      last_7: Number(t.last_7) || 0,
+      series: Array.isArray(t.series) ? t.series.map(Number) : [],
+      spent: Number(t.spent) || 0,
+      left: Number(t.left) || 0,
+      players: (Array.isArray(t.players) ? t.players : []).map((p) => ({
+        slot: String(p.slot || ''),
+        group: String(p.slot || '').startsWith('D') ? 'D' : 'F',
+        name: String(p.name || p.listed || ''),
+        club: String(p.club || ''),
+        price: Number(p.price) || 0,
+        gp: Number(p.gp) || 0,
+        goals: Number(p.goals) || 0,
+        assists: Number(p.assists) || 0,
+        points: Number(p.points) || 0,
+        matched: p.matched ? String(p.matched) : null,
+      })),
+    }));
+    const roster = d.roster || { F: 8, D: 2 };
+    const run = (g, n) => Array.from({ length: Number(n) || 0 }, (_, i) => `${g}${i + 1}`);
+    return {
+      generatedAt: d.generated_at ? new Date(d.generated_at) : null,
+      lastGame: d.last_game_date || null,
+      daysScored: Number(d.days_scored) || 0,
+      dates: Array.isArray(d.dates) ? d.dates : [],
+      countFrom: d.count_from || null,
+      budget: Number(d.budget) || 0,
+      prizes: (Array.isArray(d.prizes) ? d.prizes : []).map(Number).filter(Number.isFinite),
+      teams,
+      byId: new Map(teams.map((t) => [t.id, t])),
+      slots: [...run('F', roster.F), ...run('D', roster.D)],
+    };
+  }
+
+  /* ------------------------------------------------------------ helpers */
+  const lastName = (name) => {
+    const parts = String(name || '').trim().split(/\s+/);
+    return parts.length > 1 ? parts.slice(1).join(' ') : parts[0] || '';
+  };
+  const chip = (t, size = '') =>
+    `<span class="gdt-chip${size ? ` gdt-chip--${size}` : ''}" style="--tp:#0e1b4d;--ts:#4770db;--ti:#ffffff" aria-hidden="true">${size === 'dot' ? '' : esc(t.abbrev)}</span>`;
+  const fmtDate = (iso, opts = { weekday: 'short', month: 'short', day: 'numeric' }) =>
+    iso ? new Date(`${iso}T12:00:00`).toLocaleDateString('en-CA', opts) : '';
+  function ago(date) {
+    if (!date || Number.isNaN(date.getTime())) return '';
+    const mins = Math.round((Date.now() - date.getTime()) / 60000);
+    const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+    if (Math.abs(mins) < 60) return rtf.format(-mins, 'minute');
+    const hours = Math.round(mins / 60);
+    if (Math.abs(hours) < 48) return rtf.format(-hours, 'hour');
+    return rtf.format(-Math.round(hours / 24), 'day');
+  }
+  const ordinal = (n) => {
+    const s = ['th', 'st', 'nd', 'rd'];
+    const v = n % 100;
+    return `${n}${s[(v - 20) % 10] || s[v] || s[0]}`;
+  };
+  const statLine = (p) => (p.matched ? `${p.goals} G, ${p.assists} A in ${p.gp} games` : 'No NHL games yet');
+
+  function ranked(m) {
+    const scored = m.daysScored > 0;
+    const rows = scored
+      ? [...m.teams].sort((a, b) => b.points - a.points || b.last_7 - a.last_7 || a.name.localeCompare(b.name))
+      : [...m.teams];
+    const lead = rows.length ? rows[0].points : 0;
+    return rows.map((t) => {
+      const place = m.teams.filter((o) => o.points > t.points).length + 1;
+      const tied = m.teams.filter((o) => o.points === t.points).length > 1;
+      return { t, place, tied, rank: scored ? `${tied ? 'T' : ''}${place}` : '—', back: lead - t.points };
+    });
+  }
+
+  /* ------------------------------------------------------------ state */
+  let model = null;
+  let lastOk = 0;
+  let timer = null;
+  let focus = '';
+  const readHash = () => {
+    const m = /(?:^#|&)team=([a-z0-9_-]+)/i.exec(location.hash);
+    return m ? m[1] : '';
+  };
+
+  /* ------------------------------------------------------------ render */
+  function renderKpis(m) {
+    const top = ranked(m)[0];
+    const pot = m.prizes.reduce((a, b) => a + b, 0);
+    const prizeLine = m.prizes.map((p, i) => `${ordinal(i + 1)} ${money(p)}`).join(' &middot; ');
+    const prizes = ['Prize pool', `${money(pot)}<small>${prizeLine}</small>`];
+    const tiles = m.daysScored
+      ? [
+          ['Leader', top ? `${esc(top.t.name)}<small>${top.t.points} pts</small>` : '—'],
+          ['Game nights scored', `${m.daysScored}`],
+          ['Last game night', esc(fmtDate(m.lastGame)) || '—'],
+          prizes,
+        ]
+      : [
+          ['Managers', `${m.teams.length}<small>${money(m.budget)} budget each</small>`],
+          ['Players bought', `${m.teams.reduce((a, t) => a + t.players.length, 0)}`],
+          ['Game nights scored', '0'],
+          prizes,
+        ];
+    slot('kpis').innerHTML = tiles.map(([k, v]) => `<div class="gdt-kpi"><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+    if (m.countFrom) {
+      slot('rules').innerHTML = `Each manager had ${money(m.budget)} to bid on eight forwards and two defence. Points are regular-season goals plus assists from ${esc(fmtDate(m.countFrom, { month: 'long', day: 'numeric' }))} on, from official NHL stats.${m.prizes.length ? ` Prizes: ${prizeLine}.` : ''}`;
+    }
+  }
+
+  function renderFocusOptions(m) {
+    const sel = slot('focus');
+    const opts = [...m.teams].sort((a, b) => a.name.localeCompare(b.name))
+      .map((t) => `<option value="${esc(t.id)}">${esc(t.name)}</option>`).join('');
+    sel.innerHTML = `<option value="">All managers</option>${opts}`;
+    sel.value = m.byId.has(focus) ? focus : '';
+  }
+
+  const budgetLine = (t) => `${money(t.spent)} spent${t.left ? ` &middot; ${money(t.left)} left` : ''}`;
+
+  function renderStandings(m) {
+    const rows = ranked(m).map(({ t, place, rank, back }) => {
+      const prize = m.daysScored && place <= m.prizes.length ? `<span class="gdt-prize">${money(m.prizes[place - 1])}</span>` : '';
+      return `
+      <tr class="gdt-row${t.id === focus ? ' is-focus' : ''}" data-team="${esc(t.id)}">
+        <td class="gdt-num gdt-rank">${rank}</td>
+        <td><a class="gdt-teamlink" href="#gdt-team-${esc(t.id)}">${chip(t)}
+          <span class="gdt-teamtext"><span class="gdt-model">${esc(t.name)}${prize}</span>
+          <span class="gdt-sub">${budgetLine(t)}</span></span></a></td>
+        <td class="gdt-num gdt-pts">${t.points}</td>
+        <td class="gdt-num gdt-hide-sm">${m.daysScored ? t.last_7 : '—'}</td>
+        <td class="gdt-num gdt-hide-sm">${m.daysScored ? (back ? `&minus;${back}` : 'Lead') : '—'}</td>
+      </tr>`;
+    }).join('');
+    slot('standings').innerHTML = `
+      <table class="gdt-table gdt-standings">
+        <caption class="gdt-sr">Pool standings. Points are goals plus assists from each manager's ten players.</caption>
+        <thead><tr><th scope="col" class="gdt-num">#</th><th scope="col">Manager</th><th scope="col" class="gdt-num">Pts</th>
+          <th scope="col" class="gdt-num gdt-hide-sm">Last 7</th><th scope="col" class="gdt-num gdt-hide-sm">Back</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  function teamCard(m, { t, place, tied }) {
+    const body = GROUPS.map(([g, label]) => {
+      const list = t.players.filter((p) => p.group === g).sort((a, b) => b.points - a.points || b.price - a.price);
+      if (!list.length) return '';
+      return `<tr class="gdt-group"><th colspan="4" scope="colgroup">${label}</th></tr>` + list.map((p) => `<tr>
+          <td>${esc(p.name)}${p.matched ? '' : '<span class="gdt-tag">No NHL games yet</span>'}</td>
+          <td class="gdt-muted">${esc(p.club)}</td>
+          <td class="gdt-num gdt-muted">${money(p.price)}</td>
+          <td class="gdt-num" title="${esc(statLine(p))}">${p.points}</td></tr>`).join('');
+    }).join('');
+    const standing = m.daysScored ? ` &middot; ${tied ? 'T-' : ''}${ordinal(place)}` : '';
+    const open = m.slots.length - t.players.length;
+    return `<article class="gdt-team${t.id === focus ? ' is-focus' : ''}" id="gdt-team-${esc(t.id)}" aria-labelledby="gdt-tn-${esc(t.id)}">
+      <header class="gdt-team-head">${chip(t)}
+        <div class="gdt-team-names"><h3 class="gdt-team-name" id="gdt-tn-${esc(t.id)}">${esc(t.name)}</h3>
+          <p class="gdt-sub">${budgetLine(t)}</p>
+          <p class="gdt-sub">${t.players.length} players${open > 0 ? ` &middot; ${open} empty slot${open > 1 ? 's' : ''}` : ''}</p></div>
+        <div class="gdt-team-score"><span class="gdt-team-pts">${t.points}</span><span class="gdt-sub">pts${standing}</span></div>
+      </header>
+      <table class="gdt-table gdt-roster-table">
+        <caption class="gdt-sr">${esc(t.name)}'s team</caption>
+        <thead><tr><th scope="col">Player</th><th scope="col">NHL</th><th scope="col" class="gdt-num">Paid</th><th scope="col" class="gdt-num">Pts</th></tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+    </article>`;
+  }
+
+  function renderTeams(m) {
+    slot('teams-note').innerHTML = 'Every manager&rsquo;s ten players, what they paid and the points they&rsquo;ve scored.';
+    slot('teams').innerHTML = ranked(m).map((r) => teamCard(m, r)).join('');
+  }
+
+  /* Season points → one-hue heat step (0 = no points yet). */
+  function heatScale(m) {
+    const max = Math.max(0, ...m.teams.flatMap((t) => t.players.map((p) => p.points)));
+    if (!max) return { step: 1, max: 0, bin: () => 0 };
+    const step = Math.max(1, Math.ceil(max / 5));
+    return { step, max, bin: (v) => (v > 0 ? Math.min(5, Math.ceil(v / step)) : 0) };
+  }
+
+  function renderBoard(m) {
+    const scale = heatScale(m);
+    const legend = slot('board-legend');
+    if (!scale.max) {
+      legend.innerHTML = 'Cells shade darker as players score. No points yet.';
+    } else {
+      const keys = [`<span class="gdt-key" style="background:var(--s0)">0</span>`];
+      for (let k = 1; k <= 5; k++) {
+        const lo = (k - 1) * scale.step + 1;
+        if (lo > scale.max) break;
+        const hi = Math.min(k * scale.step, scale.max);
+        keys.push(`<span class="gdt-key" style="background:var(--s${k});color:${k >= 4 ? '#fff' : 'inherit'}">${lo === hi ? lo : `${lo}&ndash;${hi}`}</span>`);
+      }
+      legend.innerHTML = `<span>Points</span>${keys.join('')}`;
+    }
+    const head = m.teams.map((t) => `
+      <th scope="col" class="gdt-colhead${t.id === focus ? ' is-focus' : ''}" data-team="${esc(t.id)}" title="Follow ${esc(t.name)}">
+        ${chip(t, 'sm')}<span class="gdt-colname">${esc(t.name)}</span></th>`).join('');
+    const body = m.slots.map((s) => {
+      const cells = m.teams.map((t) => {
+        const p = t.players.find((x) => x.slot === s);
+        if (!p) return `<td class="gdt-cell gdt-cell--empty${t.id === focus ? ' is-focus' : ''}"><span class="gdt-cell-meta">Empty</span></td>`;
+        return `<td class="gdt-cell s${scale.bin(p.points)}${t.id === focus ? ' is-focus' : ''}" data-team="${esc(t.id)}" data-slot="${esc(s)}">
+          <span class="gdt-cell-top"><span>${money(p.price)}</span><span class="gdt-cell-pts">${p.points}</span></span>
+          <span class="gdt-cell-name">${esc(lastName(p.name))}</span>
+          <span class="gdt-cell-meta">${esc(p.club)}</span></td>`;
+      }).join('');
+      return `<tr><th scope="row" class="gdt-rd">${esc(s)}</th>${cells}</tr>`;
+    }).join('');
+    slot('board').innerHTML = `
+      <div class="gdt-boardwrap" tabindex="0" role="region" aria-label="Auction board, scrolls sideways">
+        <table class="gdt-board${focus ? ' has-focus' : ''}" style="min-width:${Math.max(720, 92 * m.teams.length)}px">
+          <caption class="gdt-sr">Auction board: roster slots down, managers across. Each cell shows the price paid, points, player and NHL club.</caption>
+          <thead><tr><th class="gdt-rd" scope="col">Slot</th>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+  }
+
+  function boardTip(m, teamId, s) {
+    const t = m.byId.get(teamId);
+    const p = t && t.players.find((x) => x.slot === s);
+    if (!p) return '';
+    return `<p class="gdt-tip-head">${esc(p.name)} <span class="gdt-pos">${esc(p.club)}</span></p>
+      <div>${esc(t.name)} paid ${money(p.price)} (${esc(s)})</div>
+      <div><b>${p.points}</b> pts &middot; ${esc(statLine(p))}</div>`;
+  }
+
+  function niceMax(v) {
+    if (v <= 5) return 5;
+    const mag = 10 ** Math.floor(Math.log10(v));
+    const n = v / mag;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * mag;
+  }
+
+  let race = null;
+  function renderRace(m) {
+    const host = slot('race');
+    const legend = slot('race-legend');
+    const n = m.dates.length;
+    if (n < 2) {
+      race = null;
+      legend.textContent = '';
+      host.innerHTML = '<p class="gdt-empty">The race chart fills in once two nights of games have been scored. Until then, the standings table has every number.</p>';
+      return;
+    }
+    const lead = ranked(m)[0].t;
+    const hi = m.byId.get(focus) || lead;
+    legend.innerHTML = `<span class="gdt-swatch" aria-hidden="true"></span>${esc(hi.name)}${hi === lead ? ' (leader)' : ''} <span class="gdt-swatch gdt-swatch--muted" aria-hidden="true" style="margin-left:12px"></span>other managers`;
+    const W = Math.max(280, Math.round(host.clientWidth));
+    const H = W < 560 ? 230 : 300;
+    const pad = { l: 34, r: W < 560 ? 34 : 54, t: 14, b: 26 };
+    const pw = W - pad.l - pad.r;
+    const ph = H - pad.t - pad.b;
+    const yMax = niceMax(Math.max(1, ...m.teams.flatMap((t) => t.series)));
+    const x = (i) => pad.l + (i / (n - 1)) * pw;
+    const y = (v) => pad.t + (1 - v / yMax) * ph;
+    const line = (s) => s.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');
+    let grid = '';
+    for (let k = 0; k <= 4; k++) {
+      const v = (yMax / 4) * k;
+      grid += `<line x1="${pad.l}" x2="${W - pad.r}" y1="${y(v)}" y2="${y(v)}" stroke="#e6e8f0" stroke-width="1"/>
+        <text class="gdt-axis" x="${pad.l - 6}" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`;
+    }
+    const every = Math.max(1, Math.ceil(n / Math.max(2, Math.floor(pw / 70))));
+    for (let i = 0; i < n; i += every) {
+      grid += `<text class="gdt-axis" x="${x(i)}" y="${H - 6}" text-anchor="${i === 0 ? 'start' : 'middle'}">${esc(fmtDate(m.dates[i], { month: 'short', day: 'numeric' }))}</text>`;
+    }
+    const others = m.teams.filter((t) => t !== hi)
+      .map((t) => `<path d="${line(t.series)}" fill="none" stroke="#c3c9d8" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>`).join('');
+    const end = hi.series[n - 1] ?? 0;
+    host.innerHTML = `
+      <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" tabindex="0" role="img"
+        aria-label="Points by game night for all ${m.teams.length} managers, ${esc(hi.name)} highlighted. Use left and right arrow keys to read values; the standings table lists every total.">
+        ${grid}${others}
+        <path d="${line(hi.series)}" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="${line(hi.series)}" fill="none" stroke="#4770db" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="${x(n - 1)}" cy="${y(end)}" r="4.5" fill="#4770db" stroke="#fff" stroke-width="2"/>
+        <text x="${x(n - 1) + 9}" y="${y(end) + 4}" font-size="13" font-weight="700" fill="#0e1b4d">${end}</text>
+        <line class="gdt-cross" x1="0" x2="0" y1="${pad.t}" y2="${pad.t + ph}" stroke="#0e1b4d" stroke-width="1" visibility="hidden"/>
+        <circle class="gdt-crossdot" r="4.5" fill="#4770db" stroke="#fff" stroke-width="2" visibility="hidden"/>
+        <rect x="${pad.l}" y="${pad.t}" width="${pw}" height="${ph}" fill="transparent"/>
+      </svg>`;
+    race = { m, hi, n, x, y, W, svg: host.querySelector('svg'), idx: n - 1 };
+  }
+
+  function raceTip(i) {
+    if (!race) return;
+    const { m, hi, x, y, svg } = race;
+    race.idx = i;
+    const cross = svg.querySelector('.gdt-cross');
+    const dot = svg.querySelector('.gdt-crossdot');
+    cross.setAttribute('x1', x(i));
+    cross.setAttribute('x2', x(i));
+    cross.setAttribute('visibility', 'visible');
+    dot.setAttribute('cx', x(i));
+    dot.setAttribute('cy', y(hi.series[i] ?? 0));
+    dot.setAttribute('visibility', 'visible');
+    const rows = [...m.teams].sort((a, b) => (b.series[i] ?? 0) - (a.series[i] ?? 0))
+      .map((t) => `<div class="gdt-tip-row${t === hi ? ' is-focus' : ''}">${chip(t, 'dot')}<span>${esc(t.name)}</span><span>${t.series[i] ?? 0}</span></div>`).join('');
+    const box = svg.getBoundingClientRect();
+    const scale = box.width / race.W;
+    showTip(`<p class="gdt-tip-head">${esc(fmtDate(m.dates[i]))}</p>${rows}`, box.left + x(i) * scale, box.top + 20, true);
+  }
+
+  function hideRaceTip() {
+    if (!race) return;
+    race.svg.querySelector('.gdt-cross').setAttribute('visibility', 'hidden');
+    race.svg.querySelector('.gdt-crossdot').setAttribute('visibility', 'hidden');
+    hideTip();
+  }
+
+  /* One tooltip, positioned inside the tracker so theme transforms never offset it. */
+  function showTip(htmlText, clientX, clientY, beside) {
+    const tip = slot('tip');
+    tip.innerHTML = htmlText;
+    tip.hidden = false;
+    const box = root.getBoundingClientRect();
+    const w = tip.offsetWidth;
+    const h = tip.offsetHeight;
+    let left = clientX - box.left + 14;
+    if (left + w > box.width) left = clientX - box.left - w - 14;
+    let top = beside ? clientY - box.top : clientY - box.top + 16;
+    if (!beside && clientY + 16 + h > window.innerHeight) top = clientY - box.top - h - 12;
+    tip.style.left = `${Math.max(0, left)}px`;
+    tip.style.top = `${Math.max(0, top)}px`;
+  }
+  function hideTip() {
+    slot('tip').hidden = true;
+  }
+
+  function setStatus(err) {
+    const el = slot('status');
+    el.classList.toggle('is-warn', !!err);
+    if (err && model) {
+      el.textContent = `Couldn't refresh just now; showing data from ${ago(model.generatedAt)}. Retrying automatically.`;
+    } else if (err) {
+      el.textContent = "The pool tracker couldn't load its data. It will retry automatically.";
+    } else if (model) {
+      const night = model.lastGame ? `Scored through ${fmtDate(model.lastGame)}. ` : '';
+      el.textContent = `${night}Data updated ${ago(model.generatedAt)}; refreshes on its own.`;
+    }
+  }
+
+  function render() {
+    if (!model) return;
+    if (focus && !model.byId.has(focus)) focus = '';
+    renderKpis(model);
+    renderFocusOptions(model);
+    renderStandings(model);
+    renderRace(model);
+    renderTeams(model);
+    renderBoard(model);
+  }
+
+  function setFocus(id) {
+    focus = model && model.byId.has(id) ? id : '';
+    try {
+      history.replaceState(null, '', focus ? `#team=${focus}` : location.pathname + location.search);
+    } catch (_) { /* sandboxed previews */ }
+    render();
+  }
+
+  async function refresh() {
+    root.classList.add('is-busy');
+    try {
+      model = await load();
+      lastOk = Date.now();
+      render();
+      setStatus();
+    } catch (err) {
+      setStatus(err);
+      if (!model) slot('standings').innerHTML = '<p class="gdt-empty">The standings could not be loaded right now.</p>';
+    } finally {
+      root.classList.remove('is-busy');
+      schedule();
+    }
+  }
+  function schedule() {
+    clearTimeout(timer);
+    if (!document.hidden) timer = setTimeout(refresh, POLL_MS);
+  }
+
+  /* ------------------------------------------------------------ events */
+  slot('focus').addEventListener('change', (e) => setFocus(e.target.value));
+  slot('standings').addEventListener('click', (e) => {
+    const row = e.target.closest('tr.gdt-row');
+    if (!row) return;
+    e.preventDefault();
+    setFocus(row.dataset.team);
+    const card = root.querySelector(`#gdt-team-${CSS.escape(row.dataset.team)}`);
+    if (card) card.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+  });
+  const board = slot('board');
+  board.addEventListener('click', (e) => {
+    const th = e.target.closest('.gdt-colhead');
+    if (th) setFocus(th.dataset.team === focus ? '' : th.dataset.team);
+  });
+  const cellTip = (e) => {
+    const cell = e.target.closest('.gdt-cell[data-slot]');
+    if (!cell || !model) return hideTip();
+    showTip(boardTip(model, cell.dataset.team, cell.dataset.slot), e.clientX, e.clientY, false);
+  };
+  board.addEventListener('pointermove', cellTip);
+  board.addEventListener('pointerdown', cellTip);
+  board.addEventListener('pointerleave', hideTip);
+  board.addEventListener('scroll', hideTip, true);
+
+  const raceHost = slot('race');
+  const raceIndex = (clientX) => {
+    const box = race.svg.getBoundingClientRect();
+    const px = ((clientX - box.left) / box.width) * race.W;
+    const i = Math.round(((px - race.x(0)) / (race.x(race.n - 1) - race.x(0))) * (race.n - 1));
+    return Math.max(0, Math.min(race.n - 1, i));
+  };
+  raceHost.addEventListener('pointermove', (e) => { if (race) raceTip(raceIndex(e.clientX)); });
+  raceHost.addEventListener('pointerleave', hideRaceTip);
+  raceHost.addEventListener('focusin', () => { if (race) raceTip(race.idx); });
+  raceHost.addEventListener('focusout', hideRaceTip);
+  raceHost.addEventListener('keydown', (e) => {
+    if (!race || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return;
+    e.preventDefault();
+    raceTip(Math.max(0, Math.min(race.n - 1, race.idx + (e.key === 'ArrowRight' ? 1 : -1))));
+  });
+  if ('ResizeObserver' in window) {
+    let width = 0;
+    new ResizeObserver((entries) => {
+      const w = Math.round(entries[0].contentRect.width);
+      if (w !== width) {
+        width = w;
+        if (model) renderRace(model);
+      }
+    }).observe(raceHost);
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && Date.now() - lastOk >= POLL_MS) refresh();
+    else schedule();
+  });
+  window.addEventListener('hashchange', () => { if (model) setFocus(readHash()); });
+
+  focus = readHash();
+  refresh();
+})();
+</script>

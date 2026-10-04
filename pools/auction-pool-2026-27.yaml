@@ -1,0 +1,155 @@
+# Auction Pool 2026-27: the "Teams" sheet of the pool's Google Sheet, transcribed Oct 4 2026
+# (https://docs.google.com/spreadsheets/d/1wl8Dg6YdlKv_dyS_IRsccrrxzJyzXFUV_KNUCG50Ux8).
+# `listed` is the name as written in the sheet. `id` is the NHL player ID where it is known (from the
+# AI league's draft data); players without one are resolved by name and club when the pool is scored.
+# Score it with: uv run gmbench pool --pool pools/auction-pool-2026-27.yaml
+name: Auction Pool 2026-27
+slug: auction-pool-2026-27
+season: "20262027"
+count_from: "2026-09-29"   # opening night: every regular-season game counts
+budget: 1000
+roster: {F: 8, D: 2}
+scoring: goals + assists, regular season
+prizes: [800, 300, 100]
+teams:
+  - manager: Justin
+    players:
+      - {slot: F1, listed: "Matthews", name: "Auston Matthews", club: TOR, price: 180, id: 8479318}
+      - {slot: F2, listed: "Draisaitl", name: "Leon Draisaitl", club: EDM, price: 270, id: 8477934}
+      - {slot: F3, listed: "Scheifele", name: "Mark Scheifele", club: WPG, price: 120, id: 8476460}
+      - {slot: F4, listed: "Ovechkin", name: "Alex Ovechkin", club: WSH, price: 30, id: 8471214}
+      - {slot: F5, listed: "Petterson", name: "Elias Pettersson", club: VAN, price: 60, id: 8480012}
+      - {slot: F6, listed: "Hintz", name: "Roope Hintz", club: DAL, price: 30, id: 8478449}
+      - {slot: F7, listed: "Boeser", name: "Brock Boeser", club: "VAN", price: 10}
+      - {slot: F8, listed: "Stennberg", name: "Ivar Stenberg", club: null, price: 50}
+      - {slot: D1, listed: "Schafer", name: "Matthew Schaefer", club: NYI, price: 160, id: 8485366}
+      - {slot: D2, listed: "Raddysh", name: "Darren Raddysh", club: TOR, price: 90, id: 8478178}
+  - manager: Curtis
+    players:
+      - {slot: F1, listed: "Kaprizov", name: "Kirill Kaprizov", club: MIN, price: 210, id: 8478864}
+      - {slot: F2, listed: "Suzuki", name: "Nick Suzuki", club: MTL, price: 180, id: 8480018}
+      - {slot: F3, listed: "Zibanejad", name: "Mika Zibanejad", club: NYR, price: 90, id: 8476459}
+      - {slot: F4, listed: "Reinhardt", name: "Sam Reinhardt", club: "FLA", price: 120}
+      - {slot: F5, listed: "Duchene", name: "Matt Duchene", club: "DAL", price: 40}
+      - {slot: F6, listed: "Stamkos", name: "Steven Stamkos", club: NSH, price: 30, id: 8474564}
+      - {slot: F7, listed: "Geekie", name: "Morgan Geekie", club: BOS, price: 60, id: 8479987}
+      - {slot: F8, listed: "Hagel", name: "Brandon Hagel", club: TBL, price: 100, id: 8479542}
+      - {slot: D1, listed: "Sergachev", name: "Mikhail Sergachev", club: UTA, price: 60, id: 8479410}
+      - {slot: D2, listed: "Ekbald", name: "Aaron Ekblad", club: "FLA", price: 10}
+  - manager: Matt Wildcat
+    players:
+      - {slot: F1, listed: "W. Johnson", name: "Wyatt Johnston", club: DAL, price: 160, id: 8482740}
+      - {slot: F2, listed: "Keller", name: "Clayton Keller", club: UTA, price: 150, id: 8479343}
+      - {slot: F3, listed: "Stützle", name: "Tim Stützle", club: OTT, price: 120, id: 8482116}
+      - {slot: F4, listed: "Pasternak", name: "David Pastrnak", club: BOS, price: 190, id: 8477956}
+      - {slot: F5, listed: "Stone", name: "Mark Stone", club: VGK, price: 60, id: 8475913}
+      - {slot: F6, listed: "Guentzel", name: "Jake Guentzel", club: TBL, price: 90, id: 8477404}
+      - {slot: F7, listed: "Panarin", name: "Artemi Panarin", club: LAK, price: 130, id: 8478550}
+      - {slot: F8, listed: "Zacha", name: "Pavel Zacha", club: BOS, price: 20, id: 8478401}
+      - {slot: D1, listed: "Karlsson", name: "Erik Karlsson", club: PIT, price: 70, id: 8474578}
+      - {slot: D2, listed: "Carlson", name: "John Carlson", club: TBL, price: 10, id: 8474590}
+  - manager: Matt DeBeurs
+    players:
+      - {slot: F1, listed: "Larkin", name: "Dylan Larkin", club: DET, price: 70, id: 8477946}
+      - {slot: F2, listed: "M. Tkachuk", name: "Matthew Tkachuk", club: FLA, price: 155, id: 8479314}
+      - {slot: F3, listed: "B. Tkachuk", name: "Brady Tkachuk", club: FLA, price: 155, id: 8480801}
+      - {slot: F4, listed: "Nylander", name: "William Nylander", club: TOR, price: 170, id: 8477939}
+      - {slot: F5, listed: "Malkin", name: "Evgeni Malkin", club: PIT, price: 60, id: 8471215}
+      - {slot: F6, listed: "Barkov", name: "Aleksander Barkov", club: FLA, price: 20, id: 8477493}
+      - {slot: F7, listed: "Konecny", name: "Travis Konecny", club: PHI, price: 60, id: 8478439}
+      - {slot: F8, listed: "D. Strome", name: "Dylan Strome", club: WSH, price: 10, id: 8478440}
+      - {slot: D1, listed: "McAvoy", name: "Charlie McAvoy", club: BOS, price: 60, id: 8479325}
+      - {slot: D2, listed: "Bouchard", name: "Evan Bouchard", club: EDM, price: 240, id: 8480803}
+  - manager: Jeff L
+    players:
+      - {slot: F1, listed: "J. Hughes", name: "Jack Hughes", club: NJD, price: 150, id: 8481559}
+      - {slot: F2, listed: "Aho", name: "Sebastian Aho", club: CAR, price: 150, id: 8478427}
+      - {slot: F3, listed: "Gauthier", name: "Cutter Gauthier", club: ANA, price: 130, id: 8483445}
+      - {slot: F4, listed: "Guenther", name: "Dylan Guenther", club: UTA, price: 110, id: 8482699}
+      - {slot: F5, listed: "W. smith", name: "Will Smith", club: SJS, price: 110, id: 8484227}
+      - {slot: F6, listed: "Slafkovsky", name: "Juraj Slafkovský", club: MTL, price: 90, id: 8483515}
+      - {slot: F7, listed: "Knies", name: "Matthew Knies", club: TOR, price: 40, id: 8482720}
+      - {slot: F8, listed: "Sennecke", name: "Beckett Sennecke", club: ANA, price: 70, id: 8484762}
+      - {slot: D1, listed: "Fox", name: "Adam Fox", club: NYR, price: 110, id: 8479323}
+      - {slot: D2, listed: "L. Hughes", name: "Luke Hughes", club: NJD, price: 10, id: 8482684}
+  - manager: Joe
+    players:
+      - {slot: F1, listed: "Mackinnon", name: "Nathan MacKinnon", club: COL, price: 290, id: 8477492}
+      - {slot: F2, listed: "McDavid", name: "Connor McDavid", club: EDM, price: 360, id: 8478402}
+      - {slot: F3, listed: "RNH", name: "Ryan Nugent-Hopkins", club: EDM, price: 70, id: 8476454}
+      - {slot: F4, listed: "Thomas", name: "Robert Thomas", club: STL, price: 80, id: 8480023}
+      - {slot: F5, listed: "Fantilli", name: "Adam Fantilli", club: CBJ, price: 50, id: 8484166}
+      - {slot: F6, listed: "Podkolzin", name: "Vasily Podkolzin", club: "EDM", price: 20}
+      - {slot: D1, listed: "Byram", name: "Bowen Byram", club: CHI, price: 50, id: 8481524}
+      - {slot: D2, listed: "Josi", name: "Roman Josi", club: NSH, price: 80, id: 8474600}
+  - manager: Elijah
+    players:
+      - {slot: F1, listed: "Celebrini", name: "Macklin Celebrini", club: SJS, price: 270, id: 8484801}
+      - {slot: F2, listed: "Robertson", name: "Jason Robertson", club: DAL, price: 190, id: 8480027}
+      - {slot: F3, listed: "Bratt", name: "Jesper Bratt", club: NJD, price: 100, id: 8479407}
+      - {slot: F4, listed: "Hischier", name: "Nico Hischier", club: NJD, price: 50, id: 8480002}
+      - {slot: F5, listed: "DeBrincat", name: "Alex DeBrincat", club: DET, price: 60, id: 8479337}
+      - {slot: F6, listed: "Svechnikov", name: "Andrei Svechnikov", club: CAR, price: 30, id: 8480830}
+      - {slot: F7, listed: "Barzal", name: "Mathew Barzal", club: NYI, price: 20, id: 8478445}
+      - {slot: F8, listed: "Ehlers", name: "Nikolaj Ehlers", club: CAR, price: 60, id: 8477940}
+      - {slot: D1, listed: "Sanderson", name: "Jake Sanderson", club: OTT, price: 60, id: 8482105}
+      - {slot: D2, listed: "Morrisey", name: "Josh Morrissey", club: WPG, price: 100, id: 8477504}
+  - manager: Reece
+    players:
+      - {slot: F1, listed: "Forsberg", name: "Filip Forsberg", club: NSH, price: 100, id: 8476887}
+      - {slot: F2, listed: "Tavares", name: "John Tavares", club: TOR, price: 70, id: 8475166}
+      - {slot: F3, listed: "Raymond", name: "Lucas Raymond", club: DET, price: 140, id: 8482078}
+      - {slot: F4, listed: "Marchenko", name: "Kirill Marchenko", club: CBJ, price: 90, id: 8480893}
+      - {slot: F5, listed: "Thompson", name: "Tage Thompson", club: BUF, price: 130, id: 8479420}
+      - {slot: F6, listed: "Jarvis", name: "Seth Jarvis", club: CAR, price: 20, id: 8482093}
+      - {slot: F7, listed: "Batherson", name: "Drake Batherson", club: OTT, price: 20, id: 8480208}
+      - {slot: F8, listed: "Dorofeyev", name: "Pavel Dorofeyev", club: NYR, price: 40, id: 8481604}
+      - {slot: D1, listed: "L. Hutson", name: "Lane Hutson", club: MTL, price: 220, id: 8483457}
+      - {slot: D2, listed: "Seider", name: "Moritz Seider", club: DET, price: 90, id: 8481542}
+  - manager: Bob
+    players:
+      - {slot: F1, listed: "Caufield", name: "Cole Caufield", club: MTL, price: 190, id: 8481540}
+      - {slot: F2, listed: "Mckenna", name: "Gavin McKenna", club: "TOR", price: 90}
+      - {slot: F3, listed: "Eichel", name: "Jack Eichel", club: VGK, price: 220, id: 8478403}
+      - {slot: F4, listed: "Cooley", name: "Logan Cooley", club: UTA, price: 90, id: 8483431}
+      - {slot: F5, listed: "Demidov", name: "Ivan Demidov", club: MTL, price: 100, id: 8484984}
+      - {slot: F6, listed: "Tuch", name: "Alex Tuch", club: WSH, price: 60, id: 8477949}
+      - {slot: F7, listed: "J.T. Miller", name: "J.T. Miller", club: NYR, price: 30, id: 8476468}
+      - {slot: F8, listed: "Eklund", name: "William Eklund", club: OTT, price: 30, id: 8482667}
+      - {slot: D1, listed: "Dahlin", name: "Rasmus Dahlin", club: BUF, price: 140, id: 8480839}
+      - {slot: D2, listed: "C. Hutson", name: "Cole Hutson", club: WSH, price: 50, id: 8484873}
+  - manager: Ryder
+    players:
+      - {slot: F1, listed: "Carlsson", name: "Leo Carlsson", club: ANA, price: 150, id: 8484153}
+      - {slot: F2, listed: "Crosby", name: "Sidney Crosby", club: PIT, price: 150, id: 8471675}
+      - {slot: F3, listed: "Hyman", name: "Zach Hyman", club: EDM, price: 110, id: 8475786}
+      - {slot: F4, listed: "Kempe", name: "Adrian Kempe", club: LAK, price: 100, id: 8477960}
+      - {slot: F5, listed: "Bedard", name: "Connor Bedard", club: CHI, price: 110, id: 8484144}
+      - {slot: F6, listed: "Holloway", name: "Dylan Holloway", club: STL, price: 80, id: 8482077}
+      - {slot: F7, listed: "Point", name: "Brayden Point", club: TBL, price: 100, id: 8478010}
+      - {slot: F8, listed: "P. Kane", name: "Patrick Kane", club: CHI, price: 10, id: 8474141}
+      - {slot: D1, listed: "Werenski", name: "Zach Werenski", club: CBJ, price: 170, id: 8478460}
+      - {slot: D2, listed: "Broberg", name: "Philip Broberg", club: STL, price: 20, id: 8481598}
+  - manager: Jeff H
+    players:
+      - {slot: F1, listed: "Kucherov", name: "Nikita Kucherov", club: TBL, price: 300, id: 8476453}
+      - {slot: F2, listed: "Rantanen", name: "Mikko Rantanen", club: DAL, price: 200, id: 8478420}
+      - {slot: F3, listed: "Savoie", name: "Matthew Savoie", club: "EDM", price: 10}
+      - {slot: F4, listed: "Kyrou", name: "Jordan Kyrou", club: "WSH", price: 20}
+      - {slot: F5, listed: "McCann", name: "Jared McCann", club: "SEA", price: 10}
+      - {slot: F6, listed: "Cowan", name: "Easton Cowan", club: "TOR", price: 10}
+      - {slot: F7, listed: "Frondell", name: "Anton Frondell", club: "CHI", price: 10}
+      - {slot: D1, listed: "Q. Hughes", name: "Quinn Hughes", club: MIN, price: 200, id: 8480800}
+      - {slot: D2, listed: "Makar", name: "Cale Makar", club: COL, price: 240, id: 8480069}
+  - manager: Eli H
+    players:
+      - {slot: F1, listed: "Necas", name: "Martin Necas", club: COL, price: 190, id: 8480039}
+      - {slot: F2, listed: "Connor", name: "Kyle Connor", club: WPG, price: 170, id: 8478398}
+      - {slot: F3, listed: "Marner", name: "Mitch Marner", club: VGK, price: 190, id: 8478483}
+      - {slot: F4, listed: "Boldy", name: "Matt Boldy", club: MIN, price: 160, id: 8481557}
+      - {slot: F5, listed: "Horvat", name: "Bo Horvat", club: NYI, price: 50, id: 8477500}
+      - {slot: F6, listed: "Byfield", name: "Quinton Byfield", club: "LAK", price: 20}
+      - {slot: F7, listed: "Schmaltz", name: "Nick Schmaltz", club: UTA, price: 40, id: 8477951}
+      - {slot: F8, listed: "Vilardi", name: "Gabriel Vilardi", club: WPG, price: 30, id: 8480014}
+      - {slot: D1, listed: "Chychrun", name: "Jakob Chychrun", club: WSH, price: 80, id: 8479345}
+      - {slot: D2, listed: "Lacombe", name: "Jackson LaCombe", club: ANA, price: 70, id: 8481605}

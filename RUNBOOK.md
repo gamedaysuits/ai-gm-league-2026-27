@@ -153,6 +153,16 @@ Keep the Mac awake during long steps: prefix with `caffeinate -i`.
   the page's HTML view in Shopify admin (or `pageUpdate` via the Admin API). Never save the page from the
   visual editor; it can strip the script.
 
+## Auction pool (gamedaysuits.ca/pages/auction-pool-tracker)
+
+- Rosters: `pools/auction-pool-2026-27.yaml`, transcribed from the pool's Google Sheet. When the sheet
+  changes (a filled slot, a correction), edit the YAML; players without an `id` are matched by name and club.
+- The daily workflow runs `gmbench pool --pool pools/auction-pool-2026-27.yaml` after scoring and commits
+  `exports/pools/auction-pool-2026-27.json`; a pool failure never blocks league scoring. Points are goals +
+  assists from the committed game lines on or after `count_from`.
+- The command prints any names it could not match; they show as "No NHL games yet" on the page.
+- Page body: `site/shopify/auction-pool.html` (same rules as the draft tracker page).
+
 ## If something goes wrong
 
 - `uv run gmbench verify --run live` pinpoints any ledger corruption by sequence number.
