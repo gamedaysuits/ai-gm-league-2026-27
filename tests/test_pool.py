@@ -100,7 +100,7 @@ def test_pool_check_falls_back_to_a_surname_search() -> None:
              {"playerId": "6", "name": "Carson Savoie", "positionCode": "D", "teamAbbrev": None, "active": False}]
 
     def get_json(url: str):
-        return (found if url.endswith("q=Savoie") else []), "sha"
+        return (found if url.lower().endswith("q=savoie") else []), "sha"
 
     (row,) = check_pool(pool, get_json)
     assert (row["id"], row["nhl_name"], row["how"], row["flags"]) == (8, "Matt Savoie", "surname search", [])
