@@ -59,7 +59,8 @@ def facts_brief(f: WeekFacts) -> str:
     for s in f.standings:
         t = f.teams[s["team"]]
         out.append(f"{s['rank']}. {t.call} = {t.credit} [{t.franchise or 'Autodraft'}] {s['points']} pts, "
-                   f"{s['week_points']} last week, was {s['prev_rank'] or '-'}")
+                   f"{s['week_points']} last week, was {s['prev_rank'] or '-'}"
+                   + (f"; Stanley Cup pick: {t.cup_pick}" if t.cup_pick else ""))
     out.append("Rosters (player, position, NHL club):")
     for tid, roster in f.rosters.items():
         out.append(f"{f.teams[tid].call}: " + "; ".join(f.label(p) for p in roster))
@@ -72,6 +73,10 @@ def facts_brief(f: WeekFacts) -> str:
                    f"{f.teams[t.recipient].call}; final status {t.status}.")
     for w in f.waivers:
         out.append(f"Waivers: {f.teams[w['team']].call} added {f.name(w['add'])}, dropped {f.name(w['drop'])}.")
+    if f.season:
+        out.append("Season so far for the players who moved this week: " + "; ".join(
+            f"{f.name(p)}: {s['gp']} GP, {s['goals']} G, {s['assists']} A" + (f", {s['wins']} W" if s["wins"] else "")
+            for p, s in sorted(f.season.items())))
     return "\n".join(out)
 
 

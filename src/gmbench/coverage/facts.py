@@ -38,6 +38,7 @@ class Team:
     gm: str | None
     primary: str
     secondary: str
+    cup_pick: str | None = None
 
     @property
     def credit(self) -> str:
@@ -86,6 +87,7 @@ class WeekFacts:
     lines: list[Line]
     names: dict[int, dict[str, Any]]  # player id -> {name, pos, nhl}
     rosters: dict[str, list[int]]
+    season: dict[int, dict[str, int]] = field(default_factory=dict)  # moved players: gp/goals/assists/wins to Sunday
 
     @property
     def week_end(self) -> date:
@@ -134,7 +136,7 @@ def _team_meta(state: LeagueState, cfg: LeagueConfig) -> dict[str, Team]:
         out[tid] = Team(id=tid, display=spec.display or tid, lab=spec.lab, call=call_name(tid), bot=t.is_bot,
                         franchise=p.get("franchise_name"), gm=p.get("gm_name"),
                         primary=p.get("primary_color") or ("#4b5475" if t.is_bot else "#2a3566"),
-                        secondary=p.get("secondary_color") or "#8fa8ea")
+                        secondary=p.get("secondary_color") or "#8fa8ea", cup_pick=p.get("cup_pick"))
     return out
 
 
@@ -226,11 +228,28 @@ def week_facts(events: list[dict[str, Any]], cfg: LeagueConfig, *, week_start: d
                 lines.append(Line(id=f"reply-{t.trade_id}-{i}", team=r["team"], kind="reply", text=clean(r["message"]),
                                   context=f"{r['action']}s {meta[t.proposer].call}'s offer: {deal(t)}"))
 
+    moved = {p for t in trades for p in t.give + t.get} | {p for w in waivers for p in (w["add"], w["drop"])}
     return WeekFacts(week_start=week_start, number=week_number(week_start),
                      trades_open=bool((opened or {}).get("trades_open")), lock_at=(opened or {}).get("lock_at"),
                      locked=locked, teams=meta, standings=standings, results_dates=results_dates,
                      top_players=top_players, trades=trades, waivers=waivers, waiver_claims=claims, lines=lines,
-                     names=names, rosters={t: list(v.roster) for t, v in state.teams.items()})
+                     names=names, rosters={t: list(v.roster) for t, v in state.teams.items()},
+                     season=_season(run_dir / "data" / "games", moved, cfg.raw["league"]["first_puck_drop_utc"][:10], cutoff))
+
+
+def _season(games_dir: Path, pids: set[int], since: str, through: str) -> dict[int, dict[str, int]]:
+    """Season-to-date lines for the players who moved this week, from the committed per-game files."""
+    out = {p: {"gp": 0, "goals": 0, "assists": 0, "wins": 0} for p in pids}
+    for path in sorted(games_dir.glob("*.json")) if games_dir.is_dir() else []:
+        if since <= path.stem <= through:
+            for ln in json.loads(path.read_text()):
+                row = out.get(int(ln["player_id"]))
+                if row is not None:
+                    row["gp"] += 1
+                    row["goals"] += int(ln.get("goals") or 0)
+                    row["assists"] += int(ln.get("assists") or 0)
+                    row["wins"] += int(ln.get("win") or 0)
+    return out
 
 
 def weeks_with_front_office(events: list[dict[str, Any]]) -> list[date]:
