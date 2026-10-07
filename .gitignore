@@ -23,6 +23,8 @@ runs/*
 !runs/live/
 runs/live/private/
 runs/live/transcripts/
+runs/live/coverage/*/img/
+runs/live/coverage/*/preview.html
 
 # large intermediate media (regenerable)
 media/assets/avatars/*/raw/

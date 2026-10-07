@@ -1,0 +1,39 @@
+name: coverage
+# Re-run a week's coverage by hand (the weekly workflow runs it on its own): judge the chatter (cached verdicts are
+# reused), rebuild the article and images, publish to gamedaysuits.ca, refresh the tracker page.
+on:
+  workflow_dispatch:
+    inputs:
+      week_start:
+        description: "Monday of the week (YYYY-MM-DD); default the latest locked front office"
+        required: false
+concurrency:
+  group: ledger
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      SHOPIFY_STORE: xd7yhc-zg.myshopify.com
+      SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+      SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - run: uv run gmbench coverage --run live --publish ${{ inputs.week_start && format('--week-start {0}', inputs.week_start) || '' }}
+      - run: uv run gmbench score --run live --days 1
+      - name: Commit
+        run: |
+          git config user.name "gmbench-league"
+          git config user.email "gmbench@gamedaysuits.ca"
+          git add runs/live/coverage runs/live/exports
+          git diff --cached --quiet || git commit -m "coverage: refresh $(date -u +%F)"
+          git pull --rebase && git push

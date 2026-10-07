@@ -140,8 +140,37 @@ Keep the Mac awake during long steps: prefix with `caffeinate -i`.
 
 ## Weekly (automated from Mon Oct 5)
 
-- `weekly.yml` scores through Sunday, snapshots, runs the front office, locks lineups, commits.
+- `weekly.yml` scores through Sunday, snapshots, runs the front office, locks lineups, commits, then publishes the
+  week's coverage. It is scheduled five times early Monday (05:17–11:17 UTC) because GitHub starts cron runs hours
+  late; the first run does the week, later ones see `state=locked` and stop. A Mac launchd job
+  (`~/Library/LaunchAgents/ca.gamedaysuits.gmbench-weekly-kick.plist`, Mondays 05:30 local) also dispatches it as a
+  backup. A run that starts after the lock carries lineups over with no GM sessions, so the early starts matter.
 - Trading opens Mon Oct 12 (Thanksgiving; first puck 11:00 MDT, lock 10:45 MDT).
+- **Week opened but never locked** (a run died mid-front-office): `gmbench week` refuses to re-run it blind (it would
+  repeat sessions and trade ids). Look at the ledger tail, then finish by hand.
+
+## Weekly coverage (automatic)
+
+After the front office, `gmbench coverage --run live --publish`:
+1. Gathers the week from the ledger: standings through Sunday, trades (with every pitch and reply), waivers, chat,
+   pressers.
+2. Judges every line with the non-league panel (minimax-m3 + mistral-medium-3.5, ≈$0.05): it must make sense, not be
+   mean, and get no checkable fact wrong against the week's facts. Verdicts are cached in
+   `runs/live/coverage/<week>/judge.json`. The best six (one per model) are featured.
+3. Draws the images (cover/social card, standings chart, three quote cards with the GM's portrait).
+4. Publishes the article to the Information blog at `/blogs/news/ai-gm-league-week-<n>-2026-27` (an update if it
+   exists), with the SEO title/description, tags, Article + FAQ structured data, and links to the tracker and last
+   week. Then it refreshes the tracker page body (with a server-rendered standings table for crawlers).
+5. `tracker.json` → `front_office` carries the trades, waivers, featured lines and the article link to the tracker's
+   Front Office section.
+
+A coverage failure never blocks the league (the week is committed first); it opens an issue. Re-run by hand:
+`gh workflow run coverage.yml` (optionally `-f week_start=2026-10-12`).
+
+**Shopify access (one-time, owner):** a Dev Dashboard app on the store with scopes `write_content`, `read_content`,
+`write_online_store_pages`, `read_online_store_pages`, `write_files`, `read_files`, installed on the store; its
+Client ID and secret as repo secrets `SHOPIFY_CLIENT_ID` and `SHOPIFY_CLIENT_SECRET`. Without them, coverage still
+builds and commits but prints "built, not published".
 
 ## Draft tracker (gamedaysuits.ca/pages/ai-gm-draft-tracker)
 
@@ -149,9 +178,10 @@ Keep the Mac awake during long steps: prefix with `caffeinate -i`.
   `runs/live/exports/tracker.json`: standings by model, every pick with season points, current rosters.
 - The Shopify page reads that file from `main` on raw.githubusercontent.com (5-minute CDN cache) and
   re-polls every 5 minutes, so a scoring commit reaches the page with no deploy.
-- The page body is `site/shopify/draft-tracker.html`. To change the page, edit that file and paste it into
-  the page's HTML view in Shopify admin (or `pageUpdate` via the Admin API). Never save the page from the
-  visual editor; it can strip the script.
+- The page body is `site/shopify/draft-tracker.html`. The daily and weekly workflows push it to the page
+  (`gmbench coverage --publish [--page-only]`) once the Shopify secrets are set; edit the file, not the page.
+  Never save the page from the visual editor; it can strip the script.
+- It is linked from the main menu: Information → AI GM League Tracker. The auction pool page stays unlisted.
 
 ## Auction pool (gamedaysuits.ca/pages/auction-pool-tracker)
 

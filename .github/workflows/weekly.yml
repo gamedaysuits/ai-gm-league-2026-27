@@ -1,9 +1,18 @@
 name: weekly-front-office
 # Monday: score through Sunday, take a fresh snapshot (rosters, injuries, season-to-date stats),
-# run the three sealed front-office rounds (lineups, waivers, trades), lock, and commit.
+# run the three sealed front-office rounds (lineups, waivers, trades), lock, commit, then publish the week's
+# coverage (article + images on gamedaysuits.ca, tracker page refresh).
+#
+# GitHub starts scheduled runs late (5-9 h late in October 2026), and a run that starts after the week's lineup lock
+# skips the GM sessions entirely. So it is scheduled five times, early; the first run to get through does the week
+# and every later one sees the week locked and stops after one step. (Thanksgiving Monday Oct 12 locks at 16:45 UTC.)
 on:
   schedule:
-    - cron: "7 8 * * 1"   # Mondays 08:07 UTC, hours before the earliest Monday puck drop
+    - cron: "17 5 * * 1"    # Mondays 05:17 UTC (Sunday's late games are final by then)
+    - cron: "47 6 * * 1"
+    - cron: "17 8 * * 1"
+    - cron: "47 9 * * 1"
+    - cron: "17 11 * * 1"
   workflow_dispatch:
     inputs:
       week_start:
@@ -21,13 +30,25 @@ jobs:
     timeout-minutes: 150
     env:
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      SHOPIFY_STORE: xd7yhc-zg.myshopify.com
+      SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+      SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+      SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+      WEEK_ARG: ${{ inputs.week_start && format('--week-start {0}', inputs.week_start) || '' }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main   # the tip of main when this run starts, not when it was queued
       - uses: astral-sh/setup-uv@v6
       - run: uv sync --frozen
+      - name: Already done this week?
+        id: status
+        run: uv run gmbench week --run live --status $WEEK_ARG | tee -a "$GITHUB_OUTPUT"
       - name: Score through Sunday
+        if: steps.status.outputs.state == 'none'
         run: uv run gmbench score --run live
       - name: Weekly snapshot
+        if: steps.status.outputs.state == 'none'
         id: snap
         run: |
           out=$(uv run python -m gmbench.data.snapshot --kind week --as-of "$(date -u +%F)")
@@ -35,18 +56,40 @@ jobs:
           path=$(echo "$out" | sed -n 's/^saved \(.*\.json\) (.*/\1/p' | sed "s#^$GITHUB_WORKSPACE/##")
           echo "path=$path" >> "$GITHUB_OUTPUT"
       - name: Front office (R1 → R2 → R3 → lock)
-        run: uv run gmbench week --run live --snapshot "${{ steps.snap.outputs.path }}" ${{ inputs.week_start && format('--week-start {0}', inputs.week_start) || '' }}
+        if: steps.status.outputs.state == 'none'
+        run: uv run gmbench week --run live --snapshot "${{ steps.snap.outputs.path }}" $WEEK_ARG
       - name: Verify ledger and export standings
+        if: steps.status.outputs.state == 'none'
         run: |
           uv run gmbench verify --run live
           uv run gmbench score --run live --days 1
-      - name: Commit
+      - name: Commit the week
+        if: steps.status.outputs.state == 'none'
         run: |
           git config user.name "gmbench-league"
           git config user.email "gmbench@gamedaysuits.ca"
           git add runs/live/ledger runs/live/exports runs/live/data data/snapshots
           git diff --cached --quiet || git commit -m "week: front office $(date -u +%F)"
           git push
+      - name: Coverage (judge the chatter, article + images, publish to gamedaysuits.ca)
+        if: steps.status.outputs.state == 'none'
+        id: cov
+        continue-on-error: true   # a Shopify or judge hiccup must never hold up the league itself
+        run: |
+          uv run gmbench coverage --run live --publish $WEEK_ARG
+          uv run gmbench score --run live --days 1   # tracker.json picks up the article link
+      - name: Commit the coverage
+        if: steps.status.outputs.state == 'none'
+        run: |
+          git add runs/live/coverage runs/live/exports
+          git diff --cached --quiet || git commit -m "coverage: week of $(date -u +%F)"
+          git pull --rebase && git push
+      - name: Alert on coverage failure
+        if: steps.cov.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Weekly coverage failed $(date -u +%F)" --body "The league week is done and committed; only the article/publish step failed. Re-run with: gh workflow run coverage.yml. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
       - name: Alert on failure
         if: failure()
         env:

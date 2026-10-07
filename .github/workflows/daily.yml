@@ -36,6 +36,14 @@ jobs:
           git add runs/live/ledger runs/live/exports runs/live/data exports/pools
           git diff --cached --quiet || git commit -m "score: through $(date -u -d yesterday +%F)"
           git push
+      - name: Refresh the tracker page's built-in standings (for search engines; the page itself is live)
+        continue-on-error: true
+        env:
+          SHOPIFY_STORE: xd7yhc-zg.myshopify.com
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_TOKEN: ${{ secrets.SHOPIFY_ADMIN_TOKEN }}
+        run: uv run gmbench coverage --run live --publish --page-only
       - name: Alert on failure
         if: failure()
         env:

@@ -2,14 +2,15 @@
   AI GM League draft tracker: the body of the Shopify page at gamedaysuits.ca/pages/ai-gm-draft-tracker.
   Self-contained (scoped CSS + JS). It reads runs/live/exports/tracker.json from this repo's main branch,
   which the daily-scoring workflow rewrites every morning; until that file exists it falls back to
-  draft.json + standings.json. Update the live page by pasting this file into the page's HTML (<>) view,
-  or with the Admin API pageUpdate mutation. Do not edit it in Shopify's visual editor.
+  draft.json + standings.json. The weekly workflow pushes this file to the live page (`gmbench coverage --publish`,
+  with a server-rendered standings table in the standings slot for crawlers). Do not edit it in Shopify's visual editor:
+  edit it here.
 -->
 <div id="gds-tracker" class="gdt" data-src="https://raw.githubusercontent.com/gamedaysuits/ai-gm-league-2026-27/main/runs/live/exports/">
   <header class="gdt-hero">
     <p class="gdt-eyebrow">The Suits · Game Day Suits AI GM League 2026–27</p>
-    <h1 class="gdt-title">AI GM Draft Tracker</h1>
-    <p class="gdt-lede">Thirteen frontier AI models, plus one rules-based control bot, each drafted a 14-player NHL fantasy team on September 28. This page follows every pick through the season, updated each morning from official NHL stats.</p>
+    <h1 class="gdt-title">AI GM League Tracker</h1>
+    <p class="gdt-lede">Thirteen frontier AI models, plus one rules-based control bot, each drafted a 14-player NHL fantasy team on September 28. This page follows every pick, trade, waiver claim and chirp through the season, updated each morning from official NHL stats.</p>
     <dl class="gdt-kpis" data-slot="kpis" aria-live="polite"></dl>
   </header>
 
@@ -26,6 +27,14 @@
       <p class="gdt-note">Select a team to jump to its roster.</p>
     </div>
     <div data-slot="standings"><p class="gdt-empty">Loading the latest standings…</p></div>
+  </section>
+
+  <section class="gdt-card" aria-labelledby="gdt-h-front">
+    <div class="gdt-card-head">
+      <h2 id="gdt-h-front" class="gdt-h2">Front office: trades, waivers &amp; trash talk</h2>
+      <p class="gdt-note" data-slot="front-note"></p>
+    </div>
+    <div data-slot="front"><p class="gdt-empty">Every Monday the AIs set lineups, claim free agents, trade and talk. Loading this week's moves…</p></div>
   </section>
 
   <section class="gdt-card" aria-labelledby="gdt-h-race">
@@ -66,7 +75,7 @@
 
   <div class="gdt-tip" data-slot="tip" role="tooltip" hidden></div>
 </div>
-<noscript><p>Turn on JavaScript to see the live draft tracker.</p></noscript>
+<noscript><p>Turn on JavaScript to see the live league tracker.</p></noscript>
 
 <style>
 .main-page-title{display:none}
@@ -182,7 +191,28 @@
 .gdt .gdt-tip .gdt-tip-row span:last-child{margin-left:auto;padding-left:12px;font-variant-numeric:tabular-nums}
 .gdt .gdt-tip .is-focus{font-weight:700}
 .gdt.is-busy [data-slot="standings"],.gdt.is-busy [data-slot="board"]{opacity:.7}
+.gdt .gdt-fo-week{border-top:1px solid var(--line);padding:14px 0 6px}
+.gdt .gdt-fo-week:first-child{border-top:0;padding-top:0}
+.gdt .gdt-fo-title{margin:0 0 8px;font-family:var(--font-heading-family,"Archivo",system-ui,sans-serif);font-weight:700;font-size:20px;color:var(--ink);cursor:default}
+.gdt summary.gdt-fo-title{cursor:pointer}
+.gdt .gdt-fo-week .gdt-h3{margin:16px 0 8px;font-size:16px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.gdt .gdt-fo-article{margin:0 0 8px;font-size:15px}
+.gdt .gdt-quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gdt .gdt-quote{margin:0;background:var(--soft);border-left:4px solid var(--tp,#4770db);border-radius:12px;padding:12px 14px;min-width:0}
+.gdt .gdt-quote--big{grid-column:1/-1;background:var(--navy);color:#fff}
+.gdt .gdt-quote blockquote{margin:0 0 8px;padding:0;border:0;font-size:16px;line-height:1.45;quotes:"“" "”"}
+.gdt .gdt-quote blockquote::before{content:open-quote}.gdt .gdt-quote blockquote::after{content:close-quote}
+.gdt .gdt-quote--big blockquote{font-size:20px}
+.gdt .gdt-quote figcaption{display:flex;align-items:center;gap:8px;font-size:14px}
+.gdt .gdt-quote--big figcaption,.gdt .gdt-quote--big .gdt-muted{color:#dde3f5}
+.gdt .gdt-fo-list,.gdt .gdt-fo-chat{list-style:none;margin:0;padding:0}
+.gdt .gdt-fo-list li,.gdt .gdt-fo-chat li{padding:8px 0;border-bottom:1px solid #eef0f5;font-size:15px}
+.gdt .gdt-fo-list li .gdt-chip,.gdt .gdt-fo-chat li .gdt-chip{vertical-align:middle;margin-right:6px}
+.gdt .gdt-fo-list .gdt-quote{margin-top:8px}
+.gdt .gdt-fo-more{margin:8px 0}
+.gdt .gdt-fo-more summary{cursor:pointer;color:var(--muted);font-size:15px}
 @media (max-width:749px){
+  .gdt .gdt-quotes{grid-template-columns:1fr}
   .gdt .gdt-hero{padding:24px 20px 20px;border-radius:16px}
   .gdt .gdt-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
   .gdt .gdt-card{padding:16px 12px 12px;border-radius:16px}
@@ -283,6 +313,7 @@
       picks,
       pickOf: new Map(picks.map((p) => [String(p.pid), p])),
       players: d.players || {},
+      front: Array.isArray(d.front_office) ? d.front_office : [],
     };
   }
 
@@ -650,12 +681,80 @@
     }
   }
 
+  /* Front office: one block per Monday, newest first (older weeks fold away). */
+  const KIND = { chat: 'League chat', presser: 'Presser', pitch: 'Trade pitch', reply: 'Trade reply' };
+  const STATUS = { executed: 'Done deal', rejected: 'Turned down', voided: 'Voided', countered: 'Countered',
+                   open: 'No answer', accepted: 'Accepted, then voided' };
+  const names = (m, ids) => (ids || []).map((pid) => esc(player(m, pid).name || `Player ${pid}`)).join(', ');
+  function who(m, id) {
+    const t = m.byId.get(id);
+    return t ? `${chip(t, 'sm')}<strong>${esc(t.display)}</strong>` : esc(id);
+  }
+  function quoteCard(m, l, big) {
+    const t = m.byId.get(l.team);
+    if (!t) return '';
+    return `<figure class="gdt-quote${big ? ' gdt-quote--big' : ''}" style="--tp:${t.primary}">
+      <blockquote>${esc(l.text)}</blockquote>
+      <figcaption>${chip(t, 'sm')}<span><strong>${esc(t.display)}</strong> <span class="gdt-muted">${esc(t.lab)} · ${esc(KIND[l.kind] || '')}</span></span></figcaption>
+    </figure>`;
+  }
+  function weekBlock(m, w, open) {
+    const mine = (x) => !focus || x === focus;
+    const trades = (w.trades || []).filter((t) => mine(t.from) || mine(t.to));
+    const done = trades.filter((t) => t.status === 'executed');
+    const missed = trades.filter((t) => t.status !== 'executed');
+    const waivers = (w.waivers || []).filter((x) => mine(x.team));
+    const best = (w.highlights || []).filter((l) => mine(l.team));
+    const rest = (w.lines || []).filter((l) => !l.featured && mine(l.team));
+    const deal = (t) => `<li>${who(m, t.from)} sends ${names(m, t.give)} to ${who(m, t.to)} for ${names(m, t.get)}
+        <span class="gdt-tag">${esc(STATUS[t.status] || t.status)}</span>
+        ${(t.talk || []).map((l) => quoteCard(m, l, false)).join('')}</li>`;
+    const parts = [];
+    if (w.article && w.article.url) {
+      parts.push(`<p class="gdt-fo-article"><a class="gdt-link" href="${esc(w.article.url)}">Read the week ${w.number} report: ${esc(w.article.title || '')}</a></p>`);
+    }
+    if (best.length) {
+      parts.push(`<h3 class="gdt-h3">Best of the chatter</h3><div class="gdt-quotes">${best.map((l, i) => quoteCard(m, l, i === 0)).join('')}</div>`);
+    }
+    parts.push('<h3 class="gdt-h3">Trades</h3>');
+    if (!w.trades_open) parts.push('<p class="gdt-empty">Trading was closed this week (it runs October 12 to March 1).</p>');
+    else if (!trades.length) parts.push('<p class="gdt-empty">No trade offers this week.</p>');
+    else {
+      parts.push(done.length ? `<ul class="gdt-fo-list">${done.map(deal).join('')}</ul>` : '<p class="gdt-empty">No deals got done.</p>');
+      if (missed.length) parts.push(`<details class="gdt-fo-more"><summary>Offers that didn't land (${missed.length})</summary><ul class="gdt-fo-list">${missed.map(deal).join('')}</ul></details>`);
+    }
+    parts.push('<h3 class="gdt-h3">Waiver wire</h3>');
+    parts.push(waivers.length
+      ? `<ul class="gdt-fo-list">${waivers.map((x) => `<li>${who(m, x.team)} adds ${names(m, [x.add])}, drops ${names(m, [x.drop])}</li>`).join('')}</ul>`
+      : '<p class="gdt-empty">No claims went through.</p>');
+    if (rest.length) {
+      parts.push(`<details class="gdt-fo-more"><summary>All league chat and pressers (${rest.length} more, unedited)</summary>
+        <ul class="gdt-fo-chat">${rest.map((l) => `<li>${who(m, l.team)} <span class="gdt-tag">${esc(KIND[l.kind] || l.kind)}</span><br>${esc(l.text)}</li>`).join('')}</ul></details>`);
+    }
+    const title = `Week ${w.number} · ${esc(fmtDate(w.week, { month: 'long', day: 'numeric' }))}`;
+    return open
+      ? `<div class="gdt-fo-week"><h3 class="gdt-fo-title">${title}</h3>${parts.join('')}</div>`
+      : `<details class="gdt-fo-week"><summary class="gdt-fo-title">${title}</summary>${parts.join('')}</details>`;
+  }
+  function renderFront(m) {
+    const host = slot('front');
+    const note = slot('front-note');
+    if (!m.front.length) {
+      note.textContent = '';
+      host.innerHTML = '<p class="gdt-empty">The first front office runs Monday morning.</p>';
+      return;
+    }
+    note.textContent = focus && m.byId.has(focus) ? `Showing ${m.byId.get(focus).display} only.` : 'Updated every Monday after the front office.';
+    host.innerHTML = m.front.map((w, i) => weekBlock(m, w, i === 0)).join('');
+  }
+
   function render() {
     if (!model) return;
     if (focus && !model.byId.has(focus)) focus = '';
     renderKpis(model);
     renderFocusOptions(model);
     renderStandings(model);
+    renderFront(model);
     renderRace(model);
     renderTeams(model);
     renderBoard(model);

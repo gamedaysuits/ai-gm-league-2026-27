@@ -3,7 +3,8 @@
 ``tracker.json`` joins every draft pick, each model's standing (points, last 7
 scored dates, running total per date), current rosters with the points each
 player has counted for his team, and season-to-date fantasy points per player.
-It is rebuilt from the ledger plus the committed per-game lines in
+``front_office`` is every weekly front office, newest first: trades with their (judged) talk, waiver wins, the
+week's featured lines and the rest of the chat, and the week's article once it's published. It is rebuilt from the ledger plus the committed per-game lines in
 ``runs/<run>/data/games``, so the daily scorer can refresh it without a data
 snapshot. Player names come from the draft picks, then the current snapshot
 when it is on disk (waiver adds, on the weekly runner), then the previous
@@ -17,6 +18,7 @@ from pathlib import Path
 from typing import Any
 
 from gmbench.config import LeagueConfig
+from gmbench.coverage.run import feed_player_ids, front_office_feed
 from gmbench.data.models import Snapshot
 from gmbench.export.site import SCHEMA_VERSION, _write, standings_series
 from gmbench.ledger import utc_now
@@ -56,7 +58,7 @@ def _previous_players(path: Path) -> dict[int, dict[str, Any]]:
 
 
 def write_tracker_export(state: LeagueState, cfg: LeagueConfig, out_dir: Path, *, games_dir: Path, today: str,
-                         snapshot: Snapshot | None = None) -> Path:
+                         snapshot: Snapshot | None = None, events: list[dict[str, Any]] | None = None) -> Path:
     path = out_dir / "tracker.json"
     since = cfg.raw["league"]["first_puck_drop_utc"][:10]
     days, recent, series = standings_series(state)
@@ -71,7 +73,8 @@ def write_tracker_export(state: LeagueState, cfg: LeagueConfig, out_dir: Path, *
         int(pk["player_id"]): {"name": pk["player_name"], "pos": pk["position"], "group": pk["group"], "nhl": pk["nhl_team"]}
         for pk in state.picks
     }
-    wanted = {pid for t in state.teams.values() for pid in t.roster} | {pid for _, pid in counted}
+    feed = front_office_feed(events, cfg, out_dir.parent) if events is not None else []
+    wanted = {pid for t in state.teams.values() for pid in t.roster} | {pid for _, pid in counted} | feed_player_ids(feed)
     previous = _previous_players(path)
     for pid in sorted(wanted - players.keys()):
         if snapshot and pid in snapshot.players:
@@ -111,6 +114,7 @@ def write_tracker_export(state: LeagueState, cfg: LeagueConfig, out_dir: Path, *
                    "proj": pk.get("projected_points"), "auto": bool(pk.get("auto")),
                    "owner": state.owner.get(int(pk["player_id"]))} for pk in state.picks],
         "players": {str(pid): players[pid] for pid in sorted(players)},
+        "front_office": feed,
     }
     _write(path, doc, compact=True)
     return path

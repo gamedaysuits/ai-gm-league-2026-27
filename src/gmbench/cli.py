@@ -65,6 +65,15 @@ def main(argv: list[str] | None = None) -> None:
     wk.add_argument("--snapshot", help="snapshot ref for this week (default: the run's latest SNAPSHOT_TAKEN)")
     wk.add_argument("--fake", action="store_true")
     wk.add_argument("--today", default=date.today().isoformat())
+    wk.add_argument("--status", action="store_true",
+                    help="print this week's state (none | open | locked) as state=<x> and exit; runs nothing")
+
+    cov = sub.add_parser("coverage", help="build a front-office week's article + images (and publish to gamedaysuits.ca)")
+    cov.add_argument("--run", required=True)
+    cov.add_argument("--week-start", help="Monday of the week (default: the latest locked front office)")
+    cov.add_argument("--publish", action="store_true", help="upload images, create/update the article, refresh the tracker page")
+    cov.add_argument("--no-judge", action="store_true", help="use cached verdicts only (no OpenRouter calls)")
+    cov.add_argument("--page-only", action="store_true", help="only refresh the tracker page on Shopify (with --publish)")
 
     pl = sub.add_parser("pool", help="score an auction pool from the committed NHL game lines")
     pl.add_argument("--pool", required=True, help="pool file, e.g. pools/auction-pool-2026-27.yaml")
@@ -195,7 +204,7 @@ def main(argv: list[str] | None = None) -> None:
         out = run_dir(args.run) / "exports"
         path = write_standings_export(state, cfg, out, today=date.today().isoformat())
         tracker = write_tracker_export(state, cfg, out, games_dir=games_dir, today=date.today().isoformat(),
-                                       snapshot=_snapshot_on_disk(state))
+                                       snapshot=_snapshot_on_disk(state), events=list(ledger.events()))
         print(f"standings → {path} | tracker → {tracker}")
 
     elif args.command == "week":
@@ -211,6 +220,17 @@ def main(argv: list[str] | None = None) -> None:
         ledger.verify()
         today_et = datetime.now(ZoneInfo("America/New_York")).date()
         week_start = date.fromisoformat(args.week_start) if args.week_start else today_et - timedelta(days=today_et.weekday())
+        weeks = {(e["type"], e["payload"].get("week")) for e in ledger.events({"WEEK_OPENED", "WEEK_LOCKED"})}
+        status = ("locked" if ("WEEK_LOCKED", week_start.isoformat()) in weeks
+                  else "open" if ("WEEK_OPENED", week_start.isoformat()) in weeks else "none")
+        if args.status:
+            print(f"state={status}")
+            return
+        if status == "locked":
+            print(f"week {week_start} is already locked; nothing to do")
+            return
+        if status == "open":  # a run died mid-week: a blind re-run would repeat its sessions and trade ids
+            raise SystemExit(f"week {week_start} was opened but never locked; finish it by hand (see RUNBOOK)")
         ref = args.snapshot or replay(ledger.events()).snapshot["ref"]
         if args.snapshot:
             ledger.append("SNAPSHOT_TAKEN", "league", {"kind": f"week-{week_start}", "ref": ref, "sha256": None,
@@ -219,6 +239,35 @@ def main(argv: list[str] | None = None) -> None:
         deps = DraftDeps(cfg=cfg, ledger=ledger, snapshot=snapshot, client=_client(cfg, args.fake), root=run_dir(args.run),
                          today=args.today, as_of=snapshot.as_of_date)
         run_week(deps, week_start=week_start, games_dir=run_dir(args.run) / "data" / "games")
+
+    elif args.command == "coverage":
+        from gmbench.coverage.facts import weeks_with_front_office
+        from gmbench.coverage.run import build_week, publish_tracker_page, publish_week
+        from gmbench.coverage.shopify import configured
+        from gmbench.league import ledger_for, run_dir
+
+        if args.page_only:
+            if args.publish and configured():
+                publish_tracker_page(run_dir(args.run))
+            else:
+                print("coverage: --page-only needs --publish and the Shopify secrets; nothing to do")
+            return
+        ledger = ledger_for(args.run)
+        ledger.verify()
+        events = list(ledger.events())
+        weeks = weeks_with_front_office(events)
+        week = date.fromisoformat(args.week_start) if args.week_start else (weeks[-1] if weeks else None)
+        if week is None:
+            print("no locked front office yet; nothing to cover")
+            return
+        _, art, out = build_week(events, cfg, run_dir(args.run), week, judge=not args.no_judge)
+        if args.publish:
+            if not configured():
+                print("coverage: Shopify isn't configured (SHOPIFY_STORE + SHOPIFY_CLIENT_ID/SECRET or SHOPIFY_ADMIN_TOKEN); "
+                      "built, not published")
+                return
+            publish_week(art, out)
+            publish_tracker_page(run_dir(args.run))
 
     elif args.command == "export":
         from gmbench.export.scorecard import write_scorecard
@@ -235,7 +284,7 @@ def main(argv: list[str] | None = None) -> None:
         write_draft_export(state, load_run_snapshot(state.snapshot["ref"]), cfg, out)
         write_standings_export(state, cfg, out, today=date.today().isoformat())
         write_tracker_export(state, cfg, out, games_dir=run_dir(args.run) / "data" / "games",
-                             today=date.today().isoformat(), snapshot=_snapshot_on_disk(state))
+                             today=date.today().isoformat(), snapshot=_snapshot_on_disk(state), events=list(ledger.events()))
         write_scorecard(ledger, cfg, out)
         write_grades_export(state, cfg, out)
         print("exports →", out, "| public transcripts →", export_public_transcripts(run_dir(args.run)))
