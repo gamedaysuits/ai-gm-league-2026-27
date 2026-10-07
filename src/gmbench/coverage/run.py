@@ -119,10 +119,14 @@ def tracker_page_body(run_dir: Path) -> str:
     except (OSError, ValueError):
         return page
     teams = sorted(d.get("teams", []), key=lambda t: (-int(t.get("points") or 0), t.get("display") or ""))
+    pts = [int(t.get("points") or 0) for t in teams]
+
+    def name(t: dict[str, Any]) -> str:
+        return "Autodraft (control bot)" if t.get("bot") else f"{t.get('display') or t['id']} ({t.get('lab') or ''})"
     rows = "".join(
-        f"<tr><td>{i + 1}</td><td>{html.escape(t.get('display') or t['id'])} ({html.escape(t.get('lab') or '')})</td>"
-        f"<td>{html.escape(t.get('franchise') or 'Control bot')}</td><td class=\"gdt-num\">{int(t.get('points') or 0)}</td></tr>"
-        for i, t in enumerate(teams))
+        f"<tr><td>{1 + sum(p > int(t.get('points') or 0) for p in pts)}</td><td>{html.escape(name(t))}</td>"
+        f"<td>{html.escape(t.get('franchise') or '—')}</td><td class=\"gdt-num\">{int(t.get('points') or 0)}</td></tr>"
+        for t in teams)
     as_of = d.get("last_game_date") or ""
     static = (f'<table class="gdt-table"><caption class="gdt-note">Standings through {html.escape(as_of)} '
               f'(loading live data…)</caption><thead><tr><th>Rank</th><th>Model</th><th>Team</th>'
