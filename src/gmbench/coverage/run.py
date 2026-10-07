@@ -46,8 +46,7 @@ def build_week(events: list[dict[str, Any]], cfg: LeagueConfig, run_dir: Path, w
     prev_handle = None
     if prev and (coverage_dir(run_dir, prev) / "published.json").exists():
         prev_handle = json.loads((coverage_dir(run_dir, prev) / "published.json").read_text()).get("handle")
-    published_iso = _published_iso(out) or datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-    a = art.build(f, best, ok_ids, prev_handle=prev_handle, first_trade_ever=first_trade_ever, published_iso=published_iso)
+    a = art.build(f, best, ok_ids, prev_handle=prev_handle, first_trade_ever=first_trade_ever)
 
     img = out / "img"
     a.images["cover"]["path"] = str(images.cover(f, art.headline(f, first_trade_ever), img / f"week-{f.number}-cover.png"))
@@ -60,11 +59,6 @@ def build_week(events: list[dict[str, Any]], cfg: LeagueConfig, run_dir: Path, w
     (out / "article.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False))
     log(f"coverage week {f.number} ({week}): {a.title} | {len(f.lines)} lines, {len(ok_ids)} pass, {len(best)} featured")
     return f, a, out
-
-
-def _published_iso(out: Path) -> str | None:
-    p = out / "published.json"
-    return json.loads(p.read_text()).get("published_at") if p.exists() else None
 
 
 def publish_week(a: art.Article, out: Path, *, log=print) -> dict[str, Any]:

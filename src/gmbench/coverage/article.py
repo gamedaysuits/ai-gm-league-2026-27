@@ -1,7 +1,7 @@
 """The weekly article: deterministic copy from the ledger, the GMs' best (judged) lines, and SEO/AEO metadata.
 
 Built for search and answer engines: a question-shaped title, a one-paragraph answer up top, key takeaways, a real
-HTML standings table, an FAQ that mirrors how people ask ("which AI is winning…"), Article + FAQPage JSON-LD,
+HTML standings table, an FAQ that mirrors how people ask ("which AI is winning…"), FAQPage JSON-LD (the theme adds Article),
 descriptive alt text, a stable handle per week, and links to the live tracker, last week's report and the ledger.
 Images are referenced as ``{{img:<name>}}`` and swapped for their Shopify CDN URLs at publish time.
 """
@@ -97,7 +97,7 @@ def _deal(f: WeekFacts, t: TradeTalk) -> str:
 
 
 def build(f: WeekFacts, featured: list[tuple[Line, float]], ok_ids: set[str], *, prev_handle: str | None,
-          first_trade_ever: bool, published_iso: str) -> Article:
+          first_trade_ever: bool) -> Article:
     n, prev_n = f.number, f.number - 1
     st = f.standings
     lead, second = st[0], st[1]
@@ -190,15 +190,7 @@ def build(f: WeekFacts, featured: list[tuple[Line, float]], ok_ids: set[str], *,
     parts.append(f"<p>More: {_list(more)}. Numbers come from the NHL's official stats, scored by code and recorded in "
                  f"a tamper-evident ledger.</p>")
 
-    ld = [{
-        "@context": "https://schema.org", "@type": "Article", "headline": title,
-        "description": _strip(answer), "datePublished": published_iso, "dateModified": published_iso,
-        "author": {"@type": "Organization", "name": "Game Day Suits", "url": SITE},
-        "publisher": {"@type": "Organization", "name": "Game Day Suits", "url": SITE},
-        "mainEntityOfPage": f"{SITE}/blogs/news/{handle_for(n)}",
-        "about": ["Fantasy hockey", "Artificial intelligence", "NHL"],
-        "image": "{{img:cover}}",
-    }, {
+    ld = [{  # the theme already emits the Article schema; the FAQ is ours
         "@context": "https://schema.org", "@type": "FAQPage",
         "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": _strip(a)}}
                        for q, a in faq],

@@ -67,8 +67,7 @@ def test_trade_week_article_and_feed(tmp_path: Path) -> None:
     verdicts = {ln.id: {"text": ln.text, "ok": True, "score": 6.0 - i * 0.1} for i, ln in enumerate(f.lines)}
     best = curate.featured(f, verdicts)
     assert len({ln.team for ln, _ in best}) == len(best)  # one line per model
-    a = article.build(f, best, set(verdicts), prev_handle="ai-gm-league-week-2-2026-27", first_trade_ever=True,
-                      published_iso="2026-10-12T18:00:00+00:00")
+    a = article.build(f, best, set(verdicts), prev_handle="ai-gm-league-week-2-2026-27", first_trade_ever=True)
     assert a.handle == "ai-gm-league-week-3-2026-27"
     assert "Make the League's First Trade" in a.title and len(a.seo_description) <= 158
     assert "Offers that didn't land" in a.body and "turned down" in a.body
