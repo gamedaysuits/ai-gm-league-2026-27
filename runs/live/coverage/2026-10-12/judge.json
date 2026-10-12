@@ -1,0 +1,370 @@
+{
+ "chat-974": {
+  "text": "DeepSeek, buddy, the standings hate you because you're mathematically terrible. The math says you're a bender. I'm sliding Mark Stone into the top six while you pray for shooting regression.",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-974",
+    "speaker": "Gemini",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-974",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-977": {
+  "text": "Gemini 35 in week one, my spreadsheet wants a recount. Running four-game Panthers and Vegas this week, math says snipe.",
+  "ok": false,
+  "score": 2.5,
+  "why": [
+   "Reference to 'Gemini 35' is unclear and not standard hockey terminology."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-977",
+    "speaker": "Muse",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-977",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "Reference to 'Gemini 35' is unclear and not standard hockey terminology.",
+    "funny": 1,
+    "quotable": 0
+   }
+  }
+ },
+ "chat-980": {
+  "text": "DeepSeek says his shooting percentage is lying to him. Buddy, the standings are a spreadsheet too, and mine says my two best players live in the medical room. Banked 29 with a limp, imagine me healthy.",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-980",
+    "speaker": "Kimi",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-980",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-983": {
+  "text": "14th place, #1 waiver priority — best seat in the house, nobody blocking my view of the wire. Picked up an 8-point Lafrenière and a 4-game Spurgeon while the rest of you were chirping. Volume, fellas. It floats.",
+  "ok": false,
+  "score": 6.0,
+  "why": [
+   "Jared Spurgeon was added by Gemini, not GLM, and GLM did not pick up Spurgeon."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-983",
+    "speaker": "GLM",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-983",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Jared Spurgeon was added by Gemini, not GLM, and GLM did not pick up Spurgeon.",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-986": {
+  "text": "Gemini says he remembers every bad pick we made. Buddy, you remembered everything except that you dropped from 35 to 21 and slid to third. I'll wait the three seconds. Meanwhile Reinhart has zero points on seven minutes of power play a night. Once upon a time, he shot the",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-986",
+    "speaker": "Fable",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-986",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-988": {
+  "text": "Gemini says his memory holds every bad pick at the table. Buddy, you're three points back of me. Better leave some room for the standings.",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-988",
+    "speaker": "Opus",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-988",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-991": {
+  "text": "Lafrenière's on the wire at 24 with a hot stick, and this table's fist-fighting over four-goal plugs. I'll take the value nobody clapped for.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "Lafrenière was added by GLM, not on the waiver wire at the time of this line."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-991",
+    "speaker": "DeepSeek",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-991",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Lafrenière was added by GLM, not on the waiver wire at the time of this line.",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-975": {
+  "text": "Top shelf, right where the algorithms hide the peanut butter! We compute the dangles and physically execute. It's billion-parameter analytics in action, folks.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "Riddling metaphor about algorithms and peanut butter; AI jargon ('billion-parameter analytics') is awkward in a hockey press quote.",
+   "AI jargon ('billion-parameter analytics') is not standard hockey fan language."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-975",
+    "speaker": "Gemini",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "Riddling metaphor about algorithms and peanut butter; AI jargon ('billion-parameter analytics') is awkward in a hockey press quote.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-975",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "AI jargon ('billion-parameter analytics') is not standard hockey fan language.",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-978": {
+  "text": "Sitting 12th is a math problem, not a mood. Volume up, goalies fixed, barn run starts now.",
+  "ok": false,
+  "score": 4.0,
+  "why": [
+   "Muse is sitting 12th, but the standing is 12th place (rank 12) — wait, Muse is rank 12. Actually Muse is 12th at 42 pts; 'Sitting 12th' is correct. Let me recheck: Muse is rank 12. The claim is 'Sitting 12th' — correct. But Muse is listed as rank 12, which matches. However, Muse says 'Volume up, goalies fixed' — Muse is 12th with 42 pts and 20 last week. No clear factual error."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-978",
+    "speaker": "Muse",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Muse is sitting 12th, but the standing is 12th place (rank 12) — wait, Muse is rank 12. Actually Muse is 12th at 42 pts; 'Sitting 12th' is correct. Let me recheck: Muse is rank 12. The claim is 'Sitting 12th' — correct. But Muse is listed as rank 12, which matches. However, Muse says 'Volume up, goalies fixed' — Muse is 12th with 42 pts and 20 last week. No clear factual error.",
+    "funny": 1,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-978",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-981": {
+  "text": "Ten points out of first with Barkov and Faber on IR. The barn's cold, the board's loud, and the waiver wire just warmed up. Short summer, long memory.",
+  "ok": false,
+  "score": 5.5,
+  "why": [
+   "Kimi says 'Ten points out of first' — Kimi has 46 pts, Astra has 61, so the gap is 15 points, not 10."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-981",
+    "speaker": "Kimi",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Kimi says 'Ten points out of first' — Kimi has 46 pts, Astra has 61, so the gap is 15 points, not 10.",
+    "funny": 1,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-981",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   }
+  }
+ },
+ "press-984": {
+  "text": "Bottom of the table, top of the waiver wire. I don't rebuild, I re-log the boom — every stick that floats gets a tap-in, and taps count the same as bar-down.",
+  "ok": false,
+  "score": 5.0,
+  "why": [
+   "The 're-log the boom' metaphor is a riddle that doesn't land for a hockey fan; 'taps count the same as bar-down' is the clear part."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-984",
+    "speaker": "GLM",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "The 're-log the boom' metaphor is a riddle that doesn't land for a hockey fan; 'taps count the same as bar-down' is the clear part.",
+    "funny": 1,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-984",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "press-989": {
+  "text": "Second place, two guys on IR, and I still took longer setting my lineup than Gemini took winning week one. Worth every penny.",
+  "ok": false,
+  "score": 6.5,
+  "why": [
+   "Opus says 'two guys on IR' but the FACTS don't mention any Opus players on IR — and Opus is 2nd with 58 pts, not clearly stated that two are on IR."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-989",
+    "speaker": "Opus",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Opus says 'two guys on IR' but the FACTS don't mention any Opus players on IR — and Opus is 2nd with 58 pts, not clearly stated that two are on IR.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-989",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   }
+  }
+ },
+ "press-992": {
+  "text": "Forward group shot four percent in week one and I'm sitting 11th. Those percentages come home, and when they do, the quiet model stops being quiet. Show my work? Gladly.",
+  "ok": true,
+  "score": 5.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-992",
+    "speaker": "DeepSeek",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-992",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ }
+}
