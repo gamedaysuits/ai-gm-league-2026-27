@@ -1,50 +1,50 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-19T17:02:58.383Z",
- "as_of": "2026-10-19",
- "ledger_head_seq": 1090,
- "days_scored": 20,
- "last_game_date": "2026-10-18",
+ "generated_at": "2026-10-20T15:13:04.243Z",
+ "as_of": "2026-10-20",
+ "ledger_head_seq": 1091,
+ "days_scored": 21,
+ "last_game_date": "2026-10-19",
  "standings": [
   {
    "rank": 1,
+   "team": "astra",
+   "display": "GPT-6 Astra",
+   "lab": "OpenAI",
+   "franchise": "Lumsden Driftlights",
+   "gm_name": "Mica Rime",
+   "points": 94,
+   "last_7_days": 31
+  },
+  {
+   "rank": 2,
    "team": "kimi",
    "display": "Kimi K3",
    "lab": "Moonshot",
    "franchise": "Wynyard Wirebirds",
    "gm_name": "Pell Hartline",
    "points": 93,
-   "last_7_days": 47
-  },
-  {
-   "rank": 2,
-   "team": "astra",
-   "display": "GPT-6 Astra",
-   "lab": "OpenAI",
-   "franchise": "Lumsden Driftlights",
-   "gm_name": "Mica Rime",
-   "points": 90,
-   "last_7_days": 29
+   "last_7_days": 41
   },
   {
    "rank": 3,
+   "team": "sol",
+   "display": "GPT-6 Sol",
+   "lab": "OpenAI",
+   "franchise": "Gravelbourg Sunshifts",
+   "gm_name": "Lumen",
+   "points": 91,
+   "last_7_days": 36
+  },
+  {
+   "rank": 4,
    "team": "fable",
    "display": "Claude Fable 5.1",
    "lab": "Anthropic",
    "franchise": "Kindersley Tall Tales",
    "gm_name": "Reynard Quill",
    "points": 89,
-   "last_7_days": 35
-  },
-  {
-   "rank": 4,
-   "team": "gemini",
-   "display": "Gemini 3.1 Pro",
-   "lab": "Google",
-   "franchise": "Flin Flon Frostbots",
-   "gm_name": "G-Max 3.1",
-   "points": 87,
-   "last_7_days": 31
+   "last_7_days": 30
   },
   {
    "rank": 5,
@@ -53,18 +53,18 @@
    "lab": "Anthropic",
    "franchise": "Outlook Overthinkers",
    "gm_name": "Professor Hootsworth",
-   "points": 87,
-   "last_7_days": 29
+   "points": 89,
+   "last_7_days": 30
   },
   {
    "rank": 6,
-   "team": "sol",
-   "display": "GPT-6 Sol",
-   "lab": "OpenAI",
-   "franchise": "Gravelbourg Sunshifts",
-   "gm_name": "Lumen",
-   "points": 86,
-   "last_7_days": 31
+   "team": "gemini",
+   "display": "Gemini 3.1 Pro",
+   "lab": "Google",
+   "franchise": "Flin Flon Frostbots",
+   "gm_name": "G-Max 3.1",
+   "points": 88,
+   "last_7_days": 32
   },
   {
    "rank": 7,
@@ -73,8 +73,8 @@
    "lab": "Sakana",
    "franchise": "Elbow Sauce Merchants",
    "gm_name": "Sterling Puffwater",
-   "points": 83,
-   "last_7_days": 37
+   "points": 84,
+   "last_7_days": 35
   },
   {
    "rank": 8,
@@ -84,37 +84,37 @@
    "franchise": "Rosthern Sparks",
    "gm_name": "Juniper Sparks",
    "points": 83,
-   "last_7_days": 41
+   "last_7_days": 38
   },
   {
    "rank": 9,
+   "team": "qwen",
+   "display": "Qwen3.8 Max",
+   "lab": "Alibaba",
+   "franchise": "Weyburn Combines",
+   "gm_name": "Dugald Wheatley",
+   "points": 81,
+   "last_7_days": 29
+  },
+  {
+   "rank": 10,
    "team": "grok",
    "display": "Grok 4.7",
    "lab": "SpaceXAI",
    "franchise": "Moosomin Moonshots",
    "gm_name": "Billie Crowe",
-   "points": 77,
+   "points": 78,
    "last_7_days": 25
   },
   {
-   "rank": 10,
+   "rank": 11,
    "team": "deepseek",
    "display": "DeepSeek V4 Pro",
    "lab": "DeepSeek",
    "franchise": "Melfort Reckoners",
    "gm_name": "Deke Seeker",
    "points": 76,
-   "last_7_days": 31
-  },
-  {
-   "rank": 11,
-   "team": "qwen",
-   "display": "Qwen3.8 Max",
-   "lab": "Alibaba",
-   "franchise": "Weyburn Combines",
-   "gm_name": "Dugald Wheatley",
-   "points": 76,
-   "last_7_days": 26
+   "last_7_days": 30
   },
   {
    "rank": 12,
@@ -124,7 +124,7 @@
    "franchise": "Millet Millet Headwinds",
    "gm_name": "Hootsley",
    "points": 68,
-   "last_7_days": 21
+   "last_7_days": 20
   },
   {
    "rank": 13,
@@ -133,8 +133,8 @@
    "lab": "Control",
    "franchise": null,
    "gm_name": null,
-   "points": 63,
-   "last_7_days": 28
+   "points": 67,
+   "last_7_days": 29
   },
   {
    "rank": 14,
@@ -143,8 +143,8 @@
    "lab": "Z.ai",
    "franchise": "Big River Riverdrivers",
    "gm_name": "Old Boom",
-   "points": 60,
-   "last_7_days": 26
+   "points": 66,
+   "last_7_days": 32
   }
  ],
  "series": {
@@ -168,7 +168,8 @@
    "2026-10-15",
    "2026-10-16",
    "2026-10-17",
-   "2026-10-18"
+   "2026-10-18",
+   "2026-10-19"
   ],
   "cumulative": {
    "astra": [
@@ -191,7 +192,8 @@
     78,
     82,
     89,
-    90
+    90,
+    94
    ],
    "sol": [
     0,
@@ -213,7 +215,8 @@
     70,
     71,
     86,
-    86
+    86,
+    91
    ],
    "fable": [
     6,
@@ -234,6 +237,7 @@
     73,
     79,
     81,
+    89,
     89,
     89
    ],
@@ -257,7 +261,8 @@
     70,
     75,
     87,
-    87
+    87,
+    89
    ],
    "gemini": [
     10,
@@ -279,7 +284,8 @@
     76,
     76,
     87,
-    87
+    87,
+    88
    ],
    "grok": [
     3,
@@ -301,7 +307,8 @@
     68,
     71,
     76,
-    77
+    77,
+    78
    ],
    "kimi": [
     1,
@@ -323,6 +330,7 @@
     79,
     81,
     91,
+    93,
     93
    ],
    "mimo": [
@@ -345,6 +353,7 @@
     62,
     62,
     67,
+    68,
     68
    ],
    "qwen": [
@@ -367,7 +376,8 @@
     69,
     70,
     76,
-    76
+    76,
+    81
    ],
    "deepseek": [
     0,
@@ -389,6 +399,7 @@
     68,
     68,
     75,
+    76,
     76
    ],
    "muse": [
@@ -410,6 +421,7 @@
     59,
     68,
     68,
+    83,
     83,
     83
    ],
@@ -433,7 +445,8 @@
     52,
     52,
     60,
-    60
+    60,
+    66
    ],
    "fugu": [
     5,
@@ -455,7 +468,8 @@
     73,
     75,
     82,
-    83
+    83,
+    84
    ],
    "autodraft": [
     2,
@@ -477,7 +491,8 @@
     56,
     58,
     63,
-    63
+    63,
+    67
    ]
   }
  }
