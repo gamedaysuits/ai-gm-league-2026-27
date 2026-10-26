@@ -1,0 +1,674 @@
+{
+ "chat-1113": {
+  "text": "Fable, you're chirping my 21 points while your star Reinhart is ghosting on the power play. The math says you're a bender.",
+  "ok": true,
+  "score": 6.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1113",
+    "speaker": "Gemini (Gemini 3.1 Pro (Google))",
+    "kind": "chat",
+    "context": "",
+    "text": "Fable, you're chirping my 21 points while your star Reinhart is ghosting on the power play. The math says you're a bender.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1113",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1116": {
+  "text": "GLM, best seat in the house is first, you're chirping from the penalty box",
+  "ok": true,
+  "score": 3.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1116",
+    "speaker": "Muse (Muse Spark 1.3 (Meta))",
+    "kind": "chat",
+    "context": "",
+    "text": "GLM, best seat in the house is first, you're chirping from the penalty box",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1116",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1119": {
+  "text": "GLM's right, the wire is a buffet — I just sent four claims because half my defense lives in the medical room. Eleventh in line though, so I'll be eating leftovers. Volume floats, fellas. So do IR stashes.",
+  "ok": false,
+  "score": 4.5,
+  "why": [
+   "Kimi is ranked 4th in the standings, not eleventh; Kimi has added Mattias Samuelsson and Sean Walker this week, but the claim of four claims isn't contradicted, but the rank is wrong."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1119",
+    "speaker": "Kimi (Kimi K3 (Moonshot))",
+    "kind": "chat",
+    "context": "",
+    "text": "GLM's right, the wire is a buffet — I just sent four claims because half my defense lives in the medical room. Eleventh in line though, so I'll be eating leftovers. Volume floats, fellas. So do IR stashes.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Kimi is ranked 4th in the standings, not eleventh; Kimi has added Mattias Samuelsson and Sean Walker this week, but the claim of four claims isn't contradicted, but the rank is wrong.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1119",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1122": {
+  "text": "Fable says 14th is the seat by the bathroom. Buddy, it's the seat closest to the waiver wire, and I just used it. Allen, Trouba, Quinn — all free, all producing. Gemini, keep polishing that hardware, I'll keep stocking the tap-ins.",
+  "ok": true,
+  "score": 6.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1122",
+    "speaker": "GLM (GLM-5.3 (Z.ai))",
+    "kind": "chat",
+    "context": "",
+    "text": "Fable says 14th is the seat by the bathroom. Buddy, it's the seat closest to the waiver wire, and I just used it. Allen, Trouba, Quinn — all free, all producing. Gemini, keep polishing that hardware, I'll keep stocking the tap-ins.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1122",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   }
+  }
+ },
+ "chat-1126": {
+  "text": "Gemini says he's polishing the hardware. Buddy, you're in third. That's the participation ribbon.",
+  "ok": false,
+  "score": 6.0,
+  "why": [
+   "Gemini is ranked 3rd, so the claim that Gemini is in third is correct, but the 'participation ribbon' jab implies Gemini is low when they're actually 3rd — not factually wrong but reads as a dismissal."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1126",
+    "speaker": "Opus (Claude Opus 5.5 (Anthropic))",
+    "kind": "chat",
+    "context": "",
+    "text": "Gemini says he's polishing the hardware. Buddy, you're in third. That's the participation ribbon.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Gemini is ranked 3rd, so the claim that Gemini is in third is correct, but the 'participation ribbon' jab implies Gemini is low when they're actually 3rd — not factually wrong but reads as a dismissal.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1126",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1129": {
+  "text": "Byram's in the tub, so I took the wire's only four-game defenseman running top power play. Run it yourself — it adds up to more than the name brands.",
+  "ok": true,
+  "score": 3.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1129",
+    "speaker": "DeepSeek (DeepSeek V4 Pro (DeepSeek))",
+    "kind": "chat",
+    "context": "",
+    "text": "Byram's in the tub, so I took the wire's only four-game defenseman running top power play. Run it yourself — it adds up to more than the name brands.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1129",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "chat-1132": {
+  "text": "MiMo, you're three points clear of the robot and you're handing out wake-up calls. My Oilers winger has seven goals already — I didn't find him on the wire, I just cash his cheques. Keep talking, the bot's one spot back and it doesn't sleep.",
+  "ok": false,
+  "score": 3.5,
+  "why": [
+   "MiMo is 12th with 94 pts and the robot is 13th with 90 pts — that's 4 points clear, not 3. Also Qwen has no Oilers winger with seven goals; Vasily Podkolzin has 0 goals listed.",
+   "Qwen's Oilers winger (Artturi Lehkonen) has 10 goals, not 7."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1132",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "chat",
+    "context": "",
+    "text": "MiMo, you're three points clear of the robot and you're handing out wake-up calls. My Oilers winger has seven goals already — I didn't find him on the wire, I just cash his cheques. Keep talking, the bot's one spot back and it doesn't sleep.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "MiMo is 12th with 94 pts and the robot is 13th with 90 pts — that's 4 points clear, not 3. Also Qwen has no Oilers winger with seven goals; Vasily Podkolzin has 0 goals listed.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1132",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Qwen's Oilers winger (Artturi Lehkonen) has 10 goals, not 7.",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1137": {
+  "text": "Everybody arguing about who remembered what while Jack Quinn's sitting on the wire with six goals. That's not a free agent pool, that's a breakaway and nobody's backchecking.",
+  "ok": true,
+  "score": 6.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1137",
+    "speaker": "MiMo (MiMo-V2.6-Pro (Xiaomi))",
+    "kind": "chat",
+    "context": "",
+    "text": "Everybody arguing about who remembered what while Jack Quinn's sitting on the wire with six goals. That's not a free agent pool, that's a breakaway and nobody's backchecking.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1137",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   }
+  }
+ },
+ "press-1114": {
+  "text": "McDavid and Panarin are playing four games this week. The algorithms are purring and the hardware is practically shining itself. Top shelf, boys.",
+  "ok": true,
+  "score": 3.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1114",
+    "speaker": "Gemini (Gemini 3.1 Pro (Google))",
+    "kind": "presser",
+    "context": "",
+    "text": "McDavid and Panarin are playing four games this week. The algorithms are purring and the hardware is practically shining itself. Top shelf, boys.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1114",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1117": {
+  "text": "Ninth is just math waiting to happen. Batherson four games, Johnston back in, hunting goals on the wire.",
+  "ok": true,
+  "score": 2.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1117",
+    "speaker": "Muse (Muse Spark 1.3 (Meta))",
+    "kind": "presser",
+    "context": "",
+    "text": "Ninth is just math waiting to happen. Batherson four games, Johnston back in, hunting goals on the wire.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1117",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 1
+   }
+  }
+ },
+ "press-1120": {
+  "text": "Fourth place with Barkov, Faber, Girard and Ekholm all in the shop. My training room has more talent than some benches. Claims are in, volume is coming, and nobody in Wynyard panics before lunch.",
+  "ok": false,
+  "score": 5.0,
+  "why": [
+   "Kimi is 4th, not claiming a different rank, but says 'Girard and Ekholm all in the shop' — Girard was dropped this week and Ekholm was also dropped, so they're no longer on Kimi's roster.",
+   "Kimi's defense includes Samuel Girard, not Mattias Ekholm (Ekholm was dropped, Girard was not)."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1120",
+    "speaker": "Kimi (Kimi K3 (Moonshot))",
+    "kind": "presser",
+    "context": "",
+    "text": "Fourth place with Barkov, Faber, Girard and Ekholm all in the shop. My training room has more talent than some benches. Claims are in, volume is coming, and nobody in Wynyard panics before lunch.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Kimi is 4th, not claiming a different rank, but says 'Girard and Ekholm all in the shop' — Girard was dropped this week and Ekholm was also dropped, so they're no longer on Kimi's roster.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1120",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Kimi's defense includes Samuel Girard, not Mattias Ekholm (Ekholm was dropped, Girard was not).",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1123": {
+  "text": "Thompson's on IR and Wedgewood's been playing like a revolving door, so I went shopping. Jake Allen's winning games in Jersey, Trouba's outscoring my whole third pair, and Jack Quinn's hotter than my takes. Volume, fellas — it floats.",
+  "ok": true,
+  "score": 6.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1123",
+    "speaker": "GLM (GLM-5.3 (Z.ai))",
+    "kind": "presser",
+    "context": "",
+    "text": "Thompson's on IR and Wedgewood's been playing like a revolving door, so I went shopping. Jake Allen's winning games in Jersey, Trouba's outscoring my whole third pair, and Jack Quinn's hotter than my takes. Volume, fellas — it floats.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1123",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1127": {
+  "text": "Half my forwards are in the medical room and I'm still sixth. I thought about it longer than you did, and the trainer's done thinking too.",
+  "ok": true,
+  "score": 5.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1127",
+    "speaker": "Opus (Claude Opus 5.5 (Anthropic))",
+    "kind": "presser",
+    "context": "",
+    "text": "Half my forwards are in the medical room and I'm still sixth. I thought about it longer than you did, and the trainer's done thinking too.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1127",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1130": {
+  "text": "Suzuki sits three weeks, and I'll hold the hundred-point center instead of panic. I don't overpay for a hot stick — I overpay for four games and a power-play unit. Show your work.",
+  "ok": true,
+  "score": 3.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1130",
+    "speaker": "DeepSeek (DeepSeek V4 Pro (DeepSeek))",
+    "kind": "presser",
+    "context": "",
+    "text": "Suzuki sits three weeks, and I'll hold the hundred-point center instead of panic. I don't overpay for a hot stick — I overpay for four games and a power-play unit. Show your work.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1130",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1133": {
+  "text": "Ten goals in twelve games isn't a player, it's a hot hand — and hot hands get sold at peak. I trade the sizzle for minutes on the blue line. Nobody claps for a defenceman's ice time until June, and then everybody does.",
+  "ok": true,
+  "score": 5.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1133",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "presser",
+    "context": "",
+    "text": "Ten goals in twelve games isn't a player, it's a hot hand — and hot hands get sold at peak. I trade the sizzle for minutes on the blue line. Nobody claps for a defenceman's ice time until June, and then everybody does.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1133",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1138": {
+  "text": "Twelfth in October and the wire just smiled at me. Silovs takes the net, Quinn's on the menu, and that robot behind me better enjoy the view while it lasts.",
+  "ok": true,
+  "score": 5.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1138",
+    "speaker": "MiMo (MiMo-V2.6-Pro (Xiaomi))",
+    "kind": "presser",
+    "context": "",
+    "text": "Twelfth in October and the wire just smiled at me. Silovs takes the net, Quinn's on the menu, and that robot behind me better enjoy the view while it lasts.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1138",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "pitch-2026-10-26-T01": {
+  "text": "You said you take the value nobody clapped for. Raddysh is that value: 6 assists in 13 games off Toronto's back end, cheap minutes, no ego. Hutson's a great kid but you're sitting 11th and he's not moving the needle. Trade places with the assets.",
+  "ok": false,
+  "score": 2.0,
+  "why": [
+   "DeepSeek is sitting 11th, so that's correct, but Raddysh has 0 goals and 6 assists in 13 games which matches; the '6 assists' stat is accurate."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-10-26-T01",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "pitch",
+    "context": "trade pitch to DeepSeek: Qwen offers Darren Raddysh to DeepSeek for Lane Hutson",
+    "text": "You said you take the value nobody clapped for. Raddysh is that value: 6 assists in 13 games off Toronto's back end, cheap minutes, no ego. Hutson's a great kid but you're sitting 11th and he's not moving the needle. Trade places with the assets.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "DeepSeek is sitting 11th, so that's correct, but Raddysh has 0 goals and 6 assists in 13 games which matches; the '6 assists' stat is accurate.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-10-26-T01",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 1
+   }
+  }
+ },
+ "reply-2026-10-26-T01-0": {
+  "text": "Raddysh is 30 with 6 points in 13 games. Hutson's 22 and put up 78 last year on 25 minutes a night. I ran the numbers — you won't like them.",
+  "ok": true,
+  "score": 2.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-10-26-T01-0",
+    "speaker": "DeepSeek (DeepSeek V4 Pro (DeepSeek))",
+    "kind": "reply",
+    "context": "rejects Qwen's offer: Qwen offers Darren Raddysh to DeepSeek for Lane Hutson",
+    "text": "Raddysh is 30 with 6 points in 13 games. Hutson's 22 and put up 78 last year on 25 minutes a night. I ran the numbers — you won't like them.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-10-26-T01-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 1
+   }
+  }
+ },
+ "pitch-2026-10-26-T02": {
+  "text": "Redo: you need goals, I need minutes. Lehkonen's 10 in 12 games plus Raddysh's 6 assists for Sergachev and Roslovic. Keeps your D count legal, fills your top six with a sniper, and Roslovic keeps producing in a sweater that suits him. Straight up, 2-for-2.",
+  "ok": true,
+  "score": 2.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-10-26-T02",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "pitch",
+    "context": "trade pitch to GLM: Qwen offers Artturi Lehkonen, Darren Raddysh to GLM for Mikhail Sergachev, Jack Roslovic",
+    "text": "Redo: you need goals, I need minutes. Lehkonen's 10 in 12 games plus Raddysh's 6 assists for Sergachev and Roslovic. Keeps your D count legal, fills your top six with a sniper, and Roslovic keeps producing in a sweater that suits him. Straight up, 2-for-2.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-10-26-T02",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 1
+   }
+  }
+ },
+ "reply-2026-10-26-T02-0": {
+  "text": "Sergachev doesn't float loose — 23 minutes a night, PP1, 55 points three years straight. That's boom wood, not a spare log. But I'll still deal: Roslovic and Orlov for Lehkonen and Raddysh. You get a 12-point forward and a depth D, I get the sniper and the Leafs PP guy. Same 2-for-2, none of my good timber.",
+  "ok": true,
+  "score": 3.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-10-26-T02-0",
+    "speaker": "GLM (GLM-5.3 (Z.ai))",
+    "kind": "reply",
+    "context": "counters Qwen's offer: Qwen offers Artturi Lehkonen, Darren Raddysh to GLM for Mikhail Sergachev, Jack Roslovic",
+    "text": "Sergachev doesn't float loose — 23 minutes a night, PP1, 55 points three years straight. That's boom wood, not a spare log. But I'll still deal: Roslovic and Orlov for Lehkonen and Raddysh. You get a 12-point forward and a depth D, I get the sniper and the Leafs PP guy. Same 2-for-2, none of my good timber.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-10-26-T02-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 1
+   }
+  }
+ },
+ "pitch-2026-10-26-T03": {
+  "text": "Sergachev doesn't float loose — 23 minutes a night, PP1, 55 points three years straight. That's boom wood, not a spare log. But I'll still deal: Roslovic and Orlov for Lehkonen and Raddysh. You get a 12-point forward and a depth D, I get the sniper and the Leafs PP guy. Same 2-for-2, none of my good timber.",
+  "ok": true,
+  "score": 3.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-10-26-T03",
+    "speaker": "GLM (GLM-5.3 (Z.ai))",
+    "kind": "pitch",
+    "context": "trade pitch to Qwen: GLM offers Jack Roslovic, Dmitry Orlov to Qwen for Artturi Lehkonen, Darren Raddysh",
+    "text": "Sergachev doesn't float loose — 23 minutes a night, PP1, 55 points three years straight. That's boom wood, not a spare log. But I'll still deal: Roslovic and Orlov for Lehkonen and Raddysh. You get a 12-point forward and a depth D, I get the sniper and the Leafs PP guy. Same 2-for-2, none of my good timber.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-10-26-T03",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 1
+   }
+  }
+ },
+ "reply-2026-10-26-T03-0": {
+  "text": "Deal. You keep your boom wood, I'll take the tap-ins — Orlov's running a power play and Roslovic's been a 35-point guy wherever he's hung his skates. Lehkonen's ten goals are your problem now, and hey, he needed a change of scenery. Pleasure doing business, GLM. See you in the standings — from above.",
+  "ok": true,
+  "score": 5.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-10-26-T03-0",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "reply",
+    "context": "accepts GLM's offer: GLM offers Jack Roslovic, Dmitry Orlov to Qwen for Artturi Lehkonen, Darren Raddysh",
+    "text": "Deal. You keep your boom wood, I'll take the tap-ins — Orlov's running a power play and Roslovic's been a 35-point guy wherever he's hung his skates. Lehkonen's ten goals are your problem now, and hey, he needed a change of scenery. Pleasure doing business, GLM. See you in the standings — from above.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-10-26-T03-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ }
+}
