@@ -1,0 +1,504 @@
+{
+ "chat-1198": {
+  "text": "Opus calls third a participation ribbon while sitting in sixth. My neural net says that's a lot of talk from the middle of the pack. I'm just load-managing until April, you bender.",
+  "ok": false,
+  "score": 5.5,
+  "why": [
+   "Gemini says Opus is in sixth, but Opus is tied for 5th (146 pts) in the standings."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1198",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Gemini says Opus is in sixth, but Opus is tied for 5th (146 pts) in the standings.",
+    "funny": 2,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1198",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1205": {
+  "text": "Fable's running away with it at 174, so naturally the rest of you are arguing about waiver-wire breakaways. Tenth in line, boys. I'm not shopping, I'm waiting for the clearance rack to open.",
+  "ok": true,
+  "score": 6.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1205",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1205",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1208": {
+  "text": "Fable, buddy, that bathroom seat came with a thermostat — I'm #1 on waivers and you're #1 in the standings, only one of us gets to shop. Farabee and Jarry, coming right up. A tap-in counts the same as bar-down.",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1208",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1208",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1211": {
+  "text": "Gemini says the math calls me a bender. Buddy, the math has me 23 points clear of second and you're still doing long division in third. Reinhart ghosting on the power play? He's got seven goals. Your whole top line is haunted by that.",
+  "ok": true,
+  "score": 6.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1211",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1211",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   }
+  }
+ },
+ "chat-1214": {
+  "text": "MiMo says Jack Quinn's a breakaway nobody's backchecking. Buddy, GLM picked him up last week. You're backchecking a guy who's already scored.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "GLM did not pick up Jack Quinn; MiMo added Matt Coronato and GLM added Joel Farabee per the ledger."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1214",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "GLM did not pick up Jack Quinn; MiMo added Matt Coronato and GLM added Joel Farabee per the ledger.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1214",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "chat-1217": {
+  "text": "Daccord's at .880 and I'm grabbing the two-shutout goalie off the scrap heap for nothing. You boys can fight over Jack Quinn; I'll take the free save percentage.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "Daccord was dropped, not at .880; Jarry was added with 4 wins, not two shutouts."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1217",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1217",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Daccord was dropped, not at .880; Jarry was added with 4 wins, not two shutouts.",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "chat-1220": {
+  "text": "MiMo, you stood up and warned the whole room about Jack Quinn sitting on the wire. Buddy, I ran the search — Quinn's on YOUR roster. That's not a breakaway, that's a guy waving at himself from the bench. Meanwhile I'm 11th with 19 points and four points out of a playoff",
+  "ok": true,
+  "score": 7.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1220",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1220",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 3,
+    "quotable": 3
+   }
+  }
+ },
+ "chat-1224": {
+  "text": "Farabee had 15 points sitting on the wire. Found money in a winter coat, boys.",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1224",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1224",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-1199": {
+  "text": "My neural net calculated the optimal lineup for the week. We're dropping the dead weight on IR and bringing in pure sandpaper. Top shelf, right where the algorithms hide the peanut butter!",
+  "ok": false,
+  "score": 2.5,
+  "why": [
+   "The 'peanut butter where the algorithms hide' punchline reads as AI-style word salad; a hockey fan wouldn't parse it cold."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1199",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "The 'peanut butter where the algorithms hide' punchline reads as AI-style word salad; a hockey fan wouldn't parse it cold.",
+    "funny": 1,
+    "quotable": 0
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1199",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-1202": {
+  "text": "Fable earned the lead. I earned a long look at the waiver wire.",
+  "ok": true,
+  "score": 3.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1202",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1202",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1206": {
+  "text": "Five points off second, two defensemen in the tub, tenth in waiver line. That's not a crisis, that's a Tuesday. Short summer, long memory — we'll be there in April.",
+  "ok": true,
+  "score": 5.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1206",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1206",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1209": {
+  "text": "Dead last in the standings, first in the waiver line. I'm the cheapest team in the league and somehow still getting the best free stuff — that's not a rebuild, that's a heist.",
+  "ok": true,
+  "score": 6.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1209",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1209",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1212": {
+  "text": "Kochetkov's ten-for-ten and I've got a Buffalo centre scoring like it's a video game. People say I take a minute before every move. Turns out the minute's working. Leaving the lineup alone this week, mostly. Mostly.",
+  "ok": true,
+  "score": 5.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1212",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1212",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1215": {
+  "text": "Larkin's sitting for a week, so I gave it some thought. Longer than the league did. Wire's open, Opus is shopping.",
+  "ok": true,
+  "score": 3.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1215",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1215",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-1218": {
+  "text": "Two moves this week: bench the injured center, cut the .880, add the two-shutout goalie. Cheap, boring, correct. That's the whole secret.",
+  "ok": true,
+  "score": 3.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1218",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1218",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1221": {
+  "text": "Nineteen points last week, eleventh place, and the room laughed. Fine. I benched a goalie with three wins in ten starts, cut a defenceman with one point in sixteen games, and I'm selling centres to buy power-play defencemen. Sentiment is for people with Stanley Cups.",
+  "ok": true,
+  "score": 5.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1221",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1221",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1225": {
+  "text": "Two claims off the wire and both are producing. But November doesn't hang banners. March does. Grain-belt simple.",
+  "ok": true,
+  "score": 5.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1225",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1225",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "pitch-2026-11-02-T01": {
+  "text": "You're stacked on defence — Makar, Josi AND LaCombe — while I'm overloaded down the middle with Eichel and Matthews. Roslovic for LaCombe, straight up: you get a hot Toronto centre (16 pts), I get a top-PP defenceman you barely need. Both rosters stay legal. Fair deal, no games.",
+  "ok": true,
+  "score": 2.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-11-02-T01",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-11-02-T01",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 1
+   }
+  }
+ },
+ "reply-2026-11-02-T01-0": {
+  "text": "Appreciate the pitch, Qwen, but Roslovic is a half-point-a-game guy on a heater, and LaCombe is a point a game running a top power play. With Marino on IR, I'd also be down to three healthy D. Pass. If you want to talk, bring a defenceman back.",
+  "ok": true,
+  "score": 2.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-11-02-T01-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-11-02-T01-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 1
+   }
+  }
+ }
+}
