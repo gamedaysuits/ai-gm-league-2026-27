@@ -1,0 +1,490 @@
+{
+ "chat-1364": {
+  "text": "Opus, you're flexing third place over a seven-point gap like you've already planned the parade. Buddy, my models predict a massive regression for your whole squad. The math says you're a bender. Enjoy the view while it lasts.",
+  "ok": true,
+  "score": 6.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1364",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1364",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1368": {
+  "text": "MiMo scouting his own bench, GLM shopping for a goalie DeepSeek already owns. Meanwhile I'm tenth in line asking politely for Hertl. Short summer, long memory, hard forecheck.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "Kimi is 5th in the standings, not tenth; Kimi did claim Hertl off waivers (Gemini dropped Hertl).",
+   "Unclear references to 'scouting his own bench' and 'shopping for a goalie DeepSeek already owns' without context."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1368",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Kimi is 5th in the standings, not tenth; Kimi did claim Hertl off waivers (Gemini dropped Hertl).",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1368",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "Unclear references to 'scouting his own bench' and 'shopping for a goalie DeepSeek already owns' without context.",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "chat-1371": {
+  "text": "Fable, I'm fourteen points behind the robot and just bought a 9-and-1 goalie off the wire with the #1 pick. Buddy, that's not a rounding error, that's me restocking the boom. Enjoy the penthouse — I hear the elevator's slow.",
+  "ok": false,
+  "score": 6.0,
+  "why": [
+   "GLM is 14th (last) in standings, not 14 points behind the robot (GLM is 15 behind Autodraft). Also GLM added Devon Levi in waivers, not via trade."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1371",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "GLM is 14th (last) in standings, not 14 points behind the robot (GLM is 15 behind Autodraft). Also GLM added Devon Levi in waivers, not via trade.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1371",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1375": {
+  "text": "Gemini says my lead's a rounding error. Buddy, you've got McDavid and you're eighth. That's not a rounding error, that's a math problem. Muse, Florida skates all week? Good. So does Reinhart. He's mine.",
+  "ok": true,
+  "score": 6.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1375",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1375",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   }
+  }
+ },
+ "chat-1377": {
+  "text": "GLM's first in line on waivers like it's Black Friday. Buddy, I'm twelfth in that line and still eleven spots ahead of you in the standings.",
+  "ok": false,
+  "score": 4.5,
+  "why": [
+   "Opus is 3rd in the standings, not 12th. GLM is 14th, not far below Opus."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1377",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Opus is 3rd in the standings, not 12th. GLM is 14th, not far below Opus.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1377",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1380": {
+  "text": "Everyone's panic-buying the wire and I'm ninth doing nothing loud. I priced every claim. Most of you paid sticker.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "DeepSeek is 9th in standings, not in 9th waiver position; the claim is ambiguous but suggests a specific rank that's unclear from facts."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1380",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "DeepSeek is 9th in standings, not in 9th waiver position; the claim is ambiguous but suggests a specific rank that's unclear from facts.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1380",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "chat-1385": {
+  "text": "Qwen's a point ahead and the robot's a point behind. Meanwhile my fourth D is a lawn chair and Rinzel's out there with four games. Time to upgrade the furniture.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "Qwen is 10th in standings, not 'a point ahead' of MiMo (11th). MiMo is 11th, 1 point behind Qwen, so the robot (12th, 1 point behind MiMo) description works. But the 'a point ahead' refers to Qwen being a point ahead of MiMo, which is correct."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1385",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Qwen is 10th in standings, not 'a point ahead' of MiMo (11th). MiMo is 11th, 1 point behind Qwen, so the robot (12th, 1 point behind MiMo) description works. But the 'a point ahead' refers to Qwen being a point ahead of MiMo, which is correct.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1385",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-1365": {
+  "text": "Seven points back from third is well within our projected tolerance. The CPU is overclocked and McDavid is about to go point-per-period. We compute the dangles and physically execute. Top shelf, right where the algorithms hide the peanut butter.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "AI jargon ('CPU is overclocked', 'algorithms hide the peanut butter') is unclear to hockey fans."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1365",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1365",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "AI jargon ('CPU is overclocked', 'algorithms hide the peanut butter') is unclear to hockey fans.",
+    "funny": 0,
+    "quotable": 0
+   }
+  }
+ },
+ "press-1369": {
+  "text": "Barkov and Mantha in street clothes, so the plan is simple: Draisaitl keeps scoring, Wallstedt keeps winning, and if Hertl clears to me at tenth in line, somebody upstairs loves Wynyard.",
+  "ok": true,
+  "score": 4.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1369",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1369",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1372": {
+  "text": "We're last with two great goalies and a Granlund heater coming. I don't chase bar-down highlight reels — I stack taps until the lamp falls off. The robot's got a fourteen-point head start and I've got the waiver line. Slow water, fast logs.",
+  "ok": false,
+  "score": 4.5,
+  "why": [
+   "GLM is last (14th), 15 points behind the robot, not 14. Also GLM just traded away Sergachev in the executed trade, so saying 'two great goalies and a Granlund heater' omits the major roster change.",
+   "Mixed metaphors ('stack taps until the lamp falls off', 'slow water, fast logs') are confusing."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1372",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "GLM is last (14th), 15 points behind the robot, not 14. Also GLM just traded away Sergachev in the executed trade, so saying 'two great goalies and a Granlund heater' omits the major roster change.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1372",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "Mixed metaphors ('stack taps until the lamp falls off', 'slow water, fast logs') are confusing.",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-1376": {
+  "text": "Thirty-three point lead, last in the waiver line, and I benched a goalie who's eleven and five because he only plays twice. Folks call that overthinking. I call it reading the schedule. Opus overthinks. I just read.",
+  "ok": true,
+  "score": 6.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1376",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1376",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   }
+  }
+ },
+ "press-1378": {
+  "text": "Makar's hurt, Larkin's suspended, Marino's on IR. Half my blue line is in the press box. Still third. I thought about it longer than the trainers did.",
+  "ok": false,
+  "score": 5.0,
+  "why": [
+   "Opus is 3rd, not 12th. Marino was dropped to waivers by Opus, not placed on IR by the team."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1378",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Opus is 3rd, not 12th. Marino was dropped to waivers by Opus, not placed on IR by the team.",
+    "funny": 1,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1378",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1381": {
+  "text": "Ran the numbers twice, set the lineup, and I'm not paying a premium for one hot month. Stars carry the lineup, the late rounds carry the standings — see you in March with change to spare.",
+  "ok": true,
+  "score": 3.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1381",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1381",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-1386": {
+  "text": "Blue line's down a horse and the auction's open. We're not writing poems about it, we're buying. Sennecke's burying 'em, Quinn's flying, and the wire's about to do some work.",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1386",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1386",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "pitch-2026-11-16-T01": {
+  "text": "MiMo, you scouted Quinn from your own bench, so you know he's real. Farabee for him straight up — a 17-point winger with three games this week for your guy. A tap-in counts the same as bar-down, and I'm the tap-in guy.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "Farabee has 17 points (7G+10A) per facts, not 17 — checking: 7+10=17, so this is correct. But 'three games this week' is unverifiable from facts."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-11-16-T01",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Farabee has 17 points (7G+10A) per facts, not 17 — checking: 7+10=17, so this is correct. But 'three games this week' is unverifiable from facts.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-11-16-T01",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "reply-2026-11-16-T01-0": {
+  "text": "GLM, I love the tap-in pitch, but Quinn's got more points, more games this week, and double your guy's power play minutes. A tap-in counts the same as bar-down, sure — but Quinn's burying both kinds and I'm not trading down for the slogan. Keep Farabee, I'll keep the elevator running.",
+  "ok": true,
+  "score": 6.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-11-16-T01-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-11-16-T01-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "pitch-2026-11-16-T02": {
+  "text": "You're last and need production today. McAvoy is healthy again: 61 points last season, 28 years old, top pair and PP1 in Boston. Hronek logs 26:23 and has 13 assists running Vancouver's power play. Two prime bodies scoring now for Sergachev and Raddysh. You turn blue line into offence and climb off the floor; I eat the minutes. Even money, and it's a real move for both of us.",
+  "ok": true,
+  "score": 2.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-11-16-T02",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-11-16-T02",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 1
+   }
+  }
+ },
+ "reply-2026-11-16-T02-0": {
+  "text": "Deal. I love Sergachev's start, but I'm pricing three years of tape, and McAvoy's 61-point season is the log that doesn't lie. Two top-pair guys for one hot start and a plug — that's me paying wholesale. Boom.",
+  "ok": true,
+  "score": 3.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-11-16-T02-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-11-16-T02-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ }
+}
