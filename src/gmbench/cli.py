@@ -83,6 +83,9 @@ def main(argv: list[str] | None = None) -> None:
     pc = sub.add_parser("pool-check", help="look up every pool player in the NHL's player directory, for review")
     pc.add_argument("--pool", required=True, help="pool file, e.g. pools/auction-pool-2026-27.yaml")
 
+    hc = sub.add_parser("health", help="check the two public hockey pages end to end; email an alert on any problem")
+    hc.add_argument("--test-email", action="store_true", help="send the alert email even when everything passes")
+
     ex = sub.add_parser("export", help="write public exports: draft, standings, scorecard, redacted transcripts")
     ex.add_argument("--run", required=True)
 
@@ -302,6 +305,11 @@ def main(argv: list[str] | None = None) -> None:
         path = write_pool_export(pool, run_dir(args.run) / "data" / "games", ROOT / "exports" / "pools", directory=directory)
         missing = json.loads(path.read_text())["unresolved"]
         print(f"pool → {path}" + (f" | unresolved: {', '.join(m['name'] for m in missing)}" if missing else ""))
+
+    elif args.command == "health":
+        from gmbench.health import main as health_main
+
+        raise SystemExit(health_main(test_email=args.test_email))
 
     elif args.command == "pool-check":
         from pathlib import Path

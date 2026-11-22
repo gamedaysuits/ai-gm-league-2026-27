@@ -188,10 +188,23 @@ builds and commits but prints "built, not published".
 - Rosters: `pools/auction-pool-2026-27.yaml`, transcribed from the pool's Google Sheet. When the sheet
   changes (a filled slot, a correction), edit the YAML; players without an `id` are matched by name and club.
 - The daily workflow runs `gmbench pool --pool pools/auction-pool-2026-27.yaml` after scoring and commits
-  `exports/pools/auction-pool-2026-27.json`; a pool failure never blocks league scoring. Points are goals +
+  `exports/pools/auction-pool-2026-27.json`; a pool failure never blocks league scoring, but it turns the run
+  red at the end so GitHub emails a failure notice. Points are goals +
   assists from the committed game lines on or after `count_from`.
 - The command prints any names it could not match; they show as "No NHL games yet" on the page.
 - Page body: `site/shopify/auction-pool.html` (same rules as the draft tracker page).
+
+## Alerts (health check)
+
+- `.github/workflows/health.yml` runs `gmbench health` every evening (01:17 UTC). It tests what visitors see:
+  both pages load and carry their `data-src`, the feeds load from GitHub, the feeds were rebuilt in the last
+  26 hours and include every NHL game night that is due, every pool player matches an NHL player, the
+  Monday front office ran, and its article reached the blog (checked for two days after each Monday).
+- Any problem turns the run red (GitHub's "Run failed" email) and sends a plain-English email from Gmail when
+  the repository secrets `GMAIL_ADDRESS` and `GMAIL_APP_PASSWORD` (a Google app password) are set.
+  Optional `ALERT_TO` sends it somewhere else.
+- Test the email any time: `gh workflow run health.yml -f test_email=true`.
+- Run it locally: `uv run gmbench health` (no email without the two variables).
 
 ## If something goes wrong
 

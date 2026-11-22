@@ -90,8 +90,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh issue create --title "Weekly coverage failed $(date -u +%F)" --body "The league week is done and committed; only the article/publish step failed. Re-run with: gh workflow run coverage.yml. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      - name: Fail the run if coverage failed (the league week itself is committed)
+        if: steps.cov.outcome == 'failure'
+        run: |
+          echo "::error title=Weekly coverage::The article/publish step failed. The league week was committed."
+          exit 1
       - name: Alert on failure
-        if: failure()
+        if: failure() && steps.cov.outcome != 'failure'  # coverage already opened its own issue
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

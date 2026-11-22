@@ -1,0 +1,29 @@
+name: health
+# Check the two public hockey pages end to end (pages, feeds, freshness, game nights, pool names, weekly front office)
+# and email an alert on any problem. A failure also turns this run red, so GitHub sends its own "Run failed" email.
+# 01:17 UTC is the evening in Alberta, after the daily scorer has finished even on its latest days.
+on:
+  schedule:
+    - cron: "17 1 * * *"
+  workflow_dispatch:
+    inputs:
+      test_email:
+        description: "Send the alert email even if everything passes"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - name: Check the hockey pages
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
+        run: uv run gmbench health ${{ inputs.test_email && '--test-email' || '' }}

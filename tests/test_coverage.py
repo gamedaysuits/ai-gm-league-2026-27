@@ -21,7 +21,11 @@ def _events() -> list[dict]:
     if not LIVE.exists():
         pytest.skip("no live ledger")
     evs = [json.loads(x) for x in LIVE.read_text().splitlines() if x.strip()]
-    evs = [e for e in evs if not (e["type"] in ("WEEK_OPENED", "WEEK_LOCKED") and e["payload"]["week"] >= WEEK.isoformat())]
+    # The ledger as it stood before WEEK opened: once the real week happened, its chat would
+    # otherwise mix with the simulated week below (written Oct 6, before week 3 was played).
+    cut = next((i for i, e in enumerate(evs)
+                if e["type"] == "WEEK_OPENED" and e["payload"]["week"] >= WEEK.isoformat()), len(evs))
+    evs = evs[:cut]
     state = replay(evs)
     a, b = "gemini", "grok"
     give, get = state.teams[a].roster[-1], state.teams[b].roster[-1]
