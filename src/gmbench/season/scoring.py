@@ -176,10 +176,19 @@ def fetch_season_totals(
     totals: dict[int, PlayerTotal] = {}
     with _http(client) as http:
         for report in ("skater", "goalie"):
-            payload = _get_json(http, f"{STATS_BASE}/{report}/summary", params)
-            rows = payload["data"]
-            if len(rows) >= RESULT_WINDOW or len(rows) < int(payload.get("total") or 0):
-                raise RuntimeError(f"{report} season totals exceed the {RESULT_WINDOW}-row window")
+            # Since Nov 2026 the API caps every page at 100 rows, even with limit=-1,
+            # so walk the offset until we have `total` rows (one season is < 1,000 players).
+            rows: list[dict[str, Any]] = []
+            while True:
+                payload = _get_json(http, f"{STATS_BASE}/{report}/summary", {**params, "start": len(rows)})
+                page, total = payload["data"], int(payload.get("total") or 0)
+                rows.extend(page)
+                if not page or len(rows) >= total:
+                    break
+                if len(rows) >= RESULT_WINDOW:
+                    raise RuntimeError(f"{report} season totals exceed the {RESULT_WINDOW}-row window")
+            if len(rows) < total or len({r["playerId"] for r in rows}) != len(rows):
+                raise RuntimeError(f"{report} season totals incomplete: {len(rows)} rows of {total}")
             for r in rows:
                 stat = {k: r.get(k) or 0 for k in ("gamesPlayed", "goals", "assists")}
                 if report == "goalie":

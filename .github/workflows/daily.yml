@@ -27,8 +27,15 @@ jobs:
       - name: Verify ledger
         run: uv run gmbench verify --run live
       - name: Auction pool
+        id: pool
         continue-on-error: true  # a pool problem never blocks league scoring
         run: uv run gmbench pool --pool pools/auction-pool-2026-27.yaml
+      - name: Alert on pool failure
+        if: steps.pool.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Auction pool failed $(date -u +%F)" --body "League scoring still ran; the pool page is stale. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
       - name: Commit
         run: |
           git config user.name "gmbench-scorer"
