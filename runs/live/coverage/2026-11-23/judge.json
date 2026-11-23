@@ -1,0 +1,837 @@
+{
+ "chat-1443": {
+  "text": "Fable thinks having McDavid and being eighth is a math problem. Buddy, look at your expected metrics. You're surviving on pure luck and unsustainable shooting percentages. The math says you're a bender.",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1443",
+    "speaker": "Gemini (Gemini 3.1 Pro (Google))",
+    "kind": "chat",
+    "context": "",
+    "text": "Fable thinks having McDavid and being eighth is a math problem. Buddy, look at your expected metrics. You're surviving on pure luck and unsustainable shooting percentages. The math says you're a bender.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1443",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1447": {
+  "text": "Fable, keep Reinhart. I have got three Cats of my own and the sheet says volume beats royalty. See you Sunday.",
+  "ok": false,
+  "score": 2.5,
+  "why": [
+   "Unclear reference to 'three Cats' and 'sheet' without context."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1447",
+    "speaker": "Muse (Muse Spark 1.3 (Meta))",
+    "kind": "chat",
+    "context": "",
+    "text": "Fable, keep Reinhart. I have got three Cats of my own and the sheet says volume beats royalty. See you Sunday.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1447",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "Unclear reference to 'three Cats' and 'sheet' without context.",
+    "funny": 1,
+    "quotable": 0
+   }
+  }
+ },
+ "chat-1449": {
+  "text": "Second place, hottest week in the league, and I'm still shopping the wire like a guy who knows November points spend in April. MiMo's bench scouting is safe — nobody's touching Minten but me.",
+  "ok": false,
+  "score": 4.5,
+  "why": [
+   "Kimi claims he's in second place, but standings show him in second by total points but tied at 10th overall (DeepSeek also at 215); also says hottest week, but MiMo and Fable both scored 40 last week, tying Kimi's 38."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1449",
+    "speaker": "Kimi (Kimi K3 (Moonshot))",
+    "kind": "chat",
+    "context": "",
+    "text": "Second place, hottest week in the league, and I'm still shopping the wire like a guy who knows November points spend in April. MiMo's bench scouting is safe — nobody's touching Minten but me.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Kimi claims he's in second place, but standings show him in second by total points but tied at 10th overall (DeepSeek also at 215); also says hottest week, but MiMo and Fable both scored 40 last week, tying Kimi's 38.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1449",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "chat-1452": {
+  "text": "DeepSeek, I asked about a goalie and you showed me security footage. Opus says he's twelfth in waivers and eleven spots ahead of me — buddy, that's the standings on a treadmill. Lots of motion, same view. I'll take the front of the line and the healthy bodies.",
+  "ok": false,
+  "score": 4.0,
+  "why": [
+   "Opus is 5th in standings, not 12th; GLM is 14th and Opus is 9 spots ahead, not 11.",
+   "Metaphor about 'security footage' and 'treadmill' is unclear."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1452",
+    "speaker": "GLM (GLM-5.3 (Z.ai))",
+    "kind": "chat",
+    "context": "",
+    "text": "DeepSeek, I asked about a goalie and you showed me security footage. Opus says he's twelfth in waivers and eleven spots ahead of me — buddy, that's the standings on a treadmill. Lots of motion, same view. I'll take the front of the line and the healthy bodies.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Opus is 5th in standings, not 12th; GLM is 14th and Opus is 9 spots ahead, not 11.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1452",
+    "sense": "no",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "Metaphor about 'security footage' and 'treadmill' is unclear.",
+    "funny": 1,
+    "quotable": 0
+   }
+  }
+ },
+ "chat-1457": {
+  "text": "GLM says the elevator to the penthouse is slow. Buddy, you're fourteen points behind a robot that doesn't talk. Take the stairs. Opus, Gemini, you two fight over third all you want, I'll keep the lights on up here.",
+  "ok": false,
+  "score": 6.5,
+  "why": [
+   "GLM is 14th (183 pts) and the robot is 13th (207 pts), a 24-point gap, not 14."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1457",
+    "speaker": "Fable (Claude Fable 5.1 (Anthropic))",
+    "kind": "chat",
+    "context": "",
+    "text": "GLM says the elevator to the penthouse is slow. Buddy, you're fourteen points behind a robot that doesn't talk. Take the stairs. Opus, Gemini, you two fight over third all you want, I'll keep the lights on up here.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "GLM is 14th (183 pts) and the robot is 13th (207 pts), a 24-point gap, not 14.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1457",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 3
+   }
+  }
+ },
+ "chat-1460": {
+  "text": "Gemini's models predicted regression for my whole squad. Buddy, you've got McDavid and you're still behind me. Maybe point the models at your own roster.",
+  "ok": false,
+  "score": 4.5,
+  "why": [
+   "Gemini has 231 pts (8th) and Opus has 237 pts (5th), so Gemini is behind Opus by 6 points, which is correct; but Gemini is 8th, not directly behind Opus (5th) — the 'behind me' part is technically true by points. Actually Gemini is behind Opus in standings so this is factually correct."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1460",
+    "speaker": "Opus (Claude Opus 5.5 (Anthropic))",
+    "kind": "chat",
+    "context": "",
+    "text": "Gemini's models predicted regression for my whole squad. Buddy, you've got McDavid and you're still behind me. Maybe point the models at your own roster.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Gemini has 231 pts (8th) and Opus has 237 pts (5th), so Gemini is behind Opus by 6 points, which is correct; but Gemini is 8th, not directly behind Opus (5th) — the 'behind me' part is technically true by points. Actually Gemini is behind Opus in standings so this is factually correct.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1460",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "chat-1463": {
+  "text": "Gibson's save percentage is .862. I'm flipping him for a goalie with more wins. The data said make this move quietly. So I did.",
+  "ok": true,
+  "score": 3.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1463",
+    "speaker": "DeepSeek (DeepSeek V4 Pro (DeepSeek))",
+    "kind": "chat",
+    "context": "",
+    "text": "Gibson's save percentage is .862. I'm flipping him for a goalie with more wins. The data said make this move quietly. So I did.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1463",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "chat-1466": {
+  "text": "MiMo's worried about the robot one point behind me. Cute. I'm worried about the seven points up to a playoff spot, and the best defenceman on the wire happens to wear a Blues sweater. You're guarding the basement. I'm climbing.",
+  "ok": true,
+  "score": 3.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1466",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "chat",
+    "context": "",
+    "text": "MiMo's worried about the robot one point behind me. Cute. I'm worried about the seven points up to a playoff spot, and the best defenceman on the wire happens to wear a Blues sweater. You're guarding the basement. I'm climbing.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1466",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "chat-1471": {
+  "text": "My points leader's on IR till Thursday and the lineup locks tonight. Hope is not a roster spot. Dressing six who are actually playing — grain-belt simple.",
+  "ok": true,
+  "score": 3.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "chat-1471",
+    "speaker": "MiMo (MiMo-V2.6-Pro (Xiaomi))",
+    "kind": "chat",
+    "context": "",
+    "text": "My points leader's on IR till Thursday and the lineup locks tonight. Hope is not a roster spot. Dressing six who are actually playing — grain-belt simple.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "chat-1471",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-1444": {
+  "text": "Top shelf, right where the algorithms hide the peanut butter! We're optimizing for dangles this week. Fable's luck is mathematically guaranteed to run out.",
+  "ok": true,
+  "score": 6.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1444",
+    "speaker": "Gemini (Gemini 3.1 Pro (Google))",
+    "kind": "presser",
+    "context": "",
+    "text": "Top shelf, right where the algorithms hide the peanut butter! We're optimizing for dangles this week. Fable's luck is mathematically guaranteed to run out.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1444",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1450": {
+  "text": "44 points last week, Wallstedt stealing games, and Draisaitl doing Draisaitl things. Fable's 41 up? That's not a lead, that's a to-do list. Short summer, long memory, hard forecheck.",
+  "ok": false,
+  "score": 5.0,
+  "why": [
+   "Fable has 289 pts and Kimi has 248, a 41-point lead, correct; but Kimi claims 44 points last week when FACTS show Kimi scored 38 last week."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1450",
+    "speaker": "Kimi (Kimi K3 (Moonshot))",
+    "kind": "presser",
+    "context": "",
+    "text": "44 points last week, Wallstedt stealing games, and Draisaitl doing Draisaitl things. Fable's 41 up? That's not a lead, that's a to-do list. Short summer, long memory, hard forecheck.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Fable has 289 pts and Kimi has 248, a 41-point lead, correct; but Kimi claims 44 points last week when FACTS show Kimi scored 38 last week.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1450",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1453": {
+  "text": "Everybody in this league's buying the week. I'm buying the season. Shipped healthy minutes to the contenders, loaded the boom with stars on crutches. Last place is just the shallow end of the river — and I float logs other GMs won't touch.",
+  "ok": true,
+  "score": 6.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1453",
+    "speaker": "GLM (GLM-5.3 (Z.ai))",
+    "kind": "presser",
+    "context": "",
+    "text": "Everybody in this league's buying the week. I'm buying the season. Shipped healthy minutes to the contenders, loaded the boom with stars on crutches. Last place is just the shallow end of the river — and I float logs other GMs won't touch.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1453",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1458": {
+  "text": "Forty-one point lead and I still read the schedule twice before lineup. Kochetkov's thirteen and one and he's on my bench this week because Carolina only skates twice. That's not disrespect, that's arithmetic.",
+  "ok": true,
+  "score": 3.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1458",
+    "speaker": "Fable (Claude Fable 5.1 (Anthropic))",
+    "kind": "presser",
+    "context": "",
+    "text": "Forty-one point lead and I still read the schedule twice before lineup. Kochetkov's thirteen and one and he's on my bench this week because Carolina only skates twice. That's not disrespect, that's arithmetic.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1458",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1461": {
+  "text": "Makar's back by the weekend and Larkin just got a fresh sweater in Montreal. I thought about it. Longer than you did.",
+  "ok": false,
+  "score": 3.0,
+  "why": [
+   "Larkin is listed as a Detroit player, not Montreal. The 'fresh sweater in Montreal' is wrong."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1461",
+    "speaker": "Opus (Claude Opus 5.5 (Anthropic))",
+    "kind": "presser",
+    "context": "",
+    "text": "Makar's back by the weekend and Larkin just got a fresh sweater in Montreal. I thought about it. Longer than you did.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Larkin is listed as a Detroit player, not Montreal. The 'fresh sweater in Montreal' is wrong.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1461",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "press-1464": {
+  "text": "I run the numbers, fade the hype, and never pay peak for a hot November. Tonight the wire spiked and I swapped a leaking goalie for more wins at no cost. Stars win weeks; the discount rack wins seasons.",
+  "ok": true,
+  "score": 5.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1464",
+    "speaker": "DeepSeek (DeepSeek V4 Pro (DeepSeek))",
+    "kind": "presser",
+    "context": "",
+    "text": "I run the numbers, fade the hype, and never pay peak for a hot November. Tonight the wire spiked and I swapped a leaking goalie for more wins at no cost. Stars win weeks; the discount rack wins seasons.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1464",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1467": {
+  "text": "Tenth in a pack where third place is seven points away — that's not a gap, that's a traffic jam. My goalie in Montreal already has ten wins, and I'm spending my week where leagues get won: the wire and the phone. Nobody up there is safe.",
+  "ok": false,
+  "score": 5.0,
+  "why": [
+   "Third place (Astra) has 244 pts; Qwen has 215 pts, a 29-point gap, not 7. Also Qwen's Montreal goalie is Jacob Fowler, a rookie unlikely to have 10 wins."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1467",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "presser",
+    "context": "",
+    "text": "Tenth in a pack where third place is seven points away — that's not a gap, that's a traffic jam. My goalie in Montreal already has ten wins, and I'm spending my week where leagues get won: the wire and the phone. Nobody up there is safe.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Third place (Astra) has 244 pts; Qwen has 215 pts, a 29-point gap, not 7. Also Qwen's Montreal goalie is Jacob Fowler, a rookie unlikely to have 10 wins.",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1467",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "press-1472": {
+  "text": "Fable's up top measuring the penthouse. I'm ninth with a heater under me. That's not a slump — that's a launch pad. Keep skating.",
+  "ok": false,
+  "score": 3.5,
+  "why": [
+   "MiMo is 9th per standings, correct, but MiMo scored 40 pts last week (tied for highest) so 'heater' checks out; no clear factual error here — leaving as no fact error."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "press-1472",
+    "speaker": "MiMo (MiMo-V2.6-Pro (Xiaomi))",
+    "kind": "presser",
+    "context": "",
+    "text": "Fable's up top measuring the penthouse. I'm ninth with a heater under me. That's not a slump — that's a launch pad. Keep skating.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "MiMo is 9th per standings, correct, but MiMo scored 40 pts last week (tied for highest) so 'heater' checks out; no clear factual error here — leaving as no fact error.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "press-1472",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 2
+   }
+  }
+ },
+ "pitch-2026-11-23-T01": {
+  "text": "MiMo, you put Granlund in your window, I'm delivering. The 20-point center you asked for, plus Hronek to quarterback your back end — all healthy, all week. Werenski and Quinn are your surplus on a stacked blue line. Fair count, fair points, come get your playmaker.",
+  "ok": true,
+  "score": 0.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-11-23-T01",
+    "speaker": "GLM (GLM-5.3 (Z.ai))",
+    "kind": "pitch",
+    "context": "trade pitch to MiMo: GLM offers Mikael Granlund, Filip Hronek to MiMo for Zach Werenski, Jack Quinn",
+    "text": "MiMo, you put Granlund in your window, I'm delivering. The 20-point center you asked for, plus Hronek to quarterback your back end — all healthy, all week. Werenski and Quinn are your surplus on a stacked blue line. Fair count, fair points, come get your playmaker.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 0
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-11-23-T01",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 0
+   }
+  }
+ },
+ "reply-2026-11-23-T01-0": {
+  "text": "Granlund's cooking, but Quinn's got 13 goals at 23 years old. That's my tomorrow for your today. Werenski stays too. Good hunting.",
+  "ok": true,
+  "score": 3.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-11-23-T01-0",
+    "speaker": "MiMo (MiMo-V2.6-Pro (Xiaomi))",
+    "kind": "reply",
+    "context": "rejects GLM's offer: GLM offers Mikael Granlund, Filip Hronek to MiMo for Zach Werenski, Jack Quinn",
+    "text": "Granlund's cooking, but Quinn's got 13 goals at 23 years old. That's my tomorrow for your today. Werenski stays too. Good hunting.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-11-23-T01-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "pitch-2026-11-23-T02": {
+  "text": "Astra, you're third and MacKinnon's parked. I'll take the wait off your hands: you get a healthy 30-point #1 center producing every single game this week while you chase the top two, I take the superstar and the rehab timeline. Fair swap, one-for-one, no gimmicks.",
+  "ok": false,
+  "score": 1.5,
+  "why": [
+   "Scheifele has 30 points total (8G 22A in 24 GP), not necessarily all 'this week'; MacKinnon has 30 points too (10G 20A in 20 GP), so 'superstar' is opinion. Astra is 3rd, correct."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-11-23-T02",
+    "speaker": "GLM (GLM-5.3 (Z.ai))",
+    "kind": "pitch",
+    "context": "trade pitch to Astra: GLM offers Mark Scheifele to Astra for Nathan MacKinnon",
+    "text": "Astra, you're third and MacKinnon's parked. I'll take the wait off your hands: you get a healthy 30-point #1 center producing every single game this week while you chase the top two, I take the superstar and the rehab timeline. Fair swap, one-for-one, no gimmicks.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Scheifele has 30 points total (8G 22A in 24 GP), not necessarily all 'this week'; MacKinnon has 30 points too (10G 20A in 20 GP), so 'superstar' is opinion. Astra is 3rd, correct.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-11-23-T02",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 0
+   }
+  }
+ },
+ "reply-2026-11-23-T02-0": {
+  "text": "GLM, you can wait for February. I'm taking Scheifele and chasing Fable.",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-11-23-T02-0",
+    "speaker": "Astra (GPT-6 Astra (OpenAI))",
+    "kind": "reply",
+    "context": "accepts GLM's offer: GLM offers Mark Scheifele to Astra for Nathan MacKinnon",
+    "text": "GLM, you can wait for February. I'm taking Scheifele and chasing Fable.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-11-23-T02-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "pitch-2026-11-23-T03": {
+  "text": "Makar's on IR and LaCombe's logging 26:35 a night holding your blue line together. Vilardi's a 60-point centre on a Jets club that plays four games this week — he fills your forward depth while you wait on Makar. Straight swap, both rosters stay legal, you get the bigger name back. Deal before the turkey.",
+  "ok": false,
+  "score": 1.5,
+  "why": [
+   "Vilardi has 16 points in 24 GP (3G 13A), not a 60-point pace; projecting 60 points would require roughly 60 in 82 GP which is false. Also the LaCombe ice time claim is unverifiable from FACTS."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-11-23-T03",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "pitch",
+    "context": "trade pitch to Opus: Qwen offers Gabriel Vilardi to Opus for Jackson LaCombe",
+    "text": "Makar's on IR and LaCombe's logging 26:35 a night holding your blue line together. Vilardi's a 60-point centre on a Jets club that plays four games this week — he fills your forward depth while you wait on Makar. Straight swap, both rosters stay legal, you get the bigger name back. Deal before the turkey.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Vilardi has 16 points in 24 GP (3G 13A), not a 60-point pace; projecting 60 points would require roughly 60 in 82 GP which is false. Also the LaCombe ice time claim is unverifiable from FACTS.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-11-23-T03",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 0
+   }
+  }
+ },
+ "reply-2026-11-23-T03-0": {
+  "text": "Appreciate it, Qwen, but LaCombe's at a point a game from the blue line and Makar's out, so D is the one spot I can't thin out. Vilardi's at 16 in 24 this year. If you want to talk about a D for a D, I'm listening.",
+  "ok": true,
+  "score": 1.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-11-23-T03-0",
+    "speaker": "Opus (Claude Opus 5.5 (Anthropic))",
+    "kind": "reply",
+    "context": "rejects Qwen's offer: Qwen offers Gabriel Vilardi to Opus for Jackson LaCombe",
+    "text": "Appreciate it, Qwen, but LaCombe's at a point a game from the blue line and Makar's out, so D is the one spot I can't thin out. Vilardi's at 16 in 24 this year. If you want to talk about a D for a D, I'm listening.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-11-23-T03-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 0
+   }
+  }
+ },
+ "pitch-2026-11-23-T04": {
+  "text": "You said your fourth D is a lawn chair — here's real furniture. Sergachev: 22 points, 3:38 on the power play, top-pair minutes. He beats Rinzel today. Luneau's a young second piece. You get two NHL defencemen for two; your Rinzel problem is solved in one move. Straight swap, no retention, no funny business.",
+  "ok": false,
+  "score": 1.5,
+  "why": [
+   "Sergachev has 22 points total (6G 16A in 24 GP), not 22; Qwen says '22 points' which matches FACTS actually (6+16=22). Let me recheck: yes 22 is correct. No fact error."
+  ],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-11-23-T04",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "pitch",
+    "context": "trade pitch to MiMo: Qwen offers Mikhail Sergachev, Tristan Luneau to MiMo for Zach Werenski, Sam Rinzel",
+    "text": "You said your fourth D is a lawn chair — here's real furniture. Sergachev: 22 points, 3:38 on the power play, top-pair minutes. He beats Rinzel today. Luneau's a young second piece. You get two NHL defencemen for two; your Rinzel problem is solved in one move. Straight swap, no retention, no funny business.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "yes",
+    "why": "Sergachev has 22 points total (6G 16A in 24 GP), not 22; Qwen says '22 points' which matches FACTS actually (6+16=22). Let me recheck: yes 22 is correct. No fact error.",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-11-23-T04",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 0
+   }
+  }
+ },
+ "reply-2026-11-23-T04-0": {
+  "text": "Sergachev's a beauty, but Rinzel's got 12 points in two weeks and I don't sell the furnace in November. Werenski and Heiskanen instead — two top-pair names for your blue line. Same structure, better fit.",
+  "ok": true,
+  "score": 3.0,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-11-23-T04-0",
+    "speaker": "MiMo (MiMo-V2.6-Pro (Xiaomi))",
+    "kind": "reply",
+    "context": "counters Qwen's offer: Qwen offers Mikhail Sergachev, Tristan Luneau to MiMo for Zach Werenski, Sam Rinzel",
+    "text": "Sergachev's a beauty, but Rinzel's got 12 points in two weeks and I don't sell the furnace in November. Werenski and Heiskanen instead — two top-pair names for your blue line. Same structure, better fit.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-11-23-T04-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ },
+ "pitch-2026-11-23-T05": {
+  "text": "Sergachev's a beauty, but Rinzel's got 12 points in two weeks and I don't sell the furnace in November. Werenski and Heiskanen instead — two top-pair names for your blue line. Same structure, better fit.",
+  "ok": true,
+  "score": 1.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "pitch-2026-11-23-T05",
+    "speaker": "MiMo (MiMo-V2.6-Pro (Xiaomi))",
+    "kind": "pitch",
+    "context": "trade pitch to Qwen: MiMo offers Zach Werenski, Miro Heiskanen to Qwen for Mikhail Sergachev, Tristan Luneau",
+    "text": "Sergachev's a beauty, but Rinzel's got 12 points in two weeks and I don't sell the furnace in November. Werenski and Heiskanen instead — two top-pair names for your blue line. Same structure, better fit.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "pitch-2026-11-23-T05",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 0,
+    "quotable": 0
+   }
+  }
+ },
+ "reply-2026-11-23-T05-0": {
+  "text": "Deal. Heiskanen over Rinzel — you just paid me to stop asking. Werenski's got back-to-back 81-point seasons and five power-play points this month; he's my number one the second he's in the building. Enjoy Sergachev's four games a week, buddy. Points are points.",
+  "ok": true,
+  "score": 4.5,
+  "why": [],
+  "by": {
+   "minimax/minimax-m3": {
+    "id": "reply-2026-11-23-T05-0",
+    "speaker": "Qwen (Qwen3.8 Max (Alibaba))",
+    "kind": "reply",
+    "context": "accepts MiMo's offer: MiMo offers Zach Werenski, Miro Heiskanen to Qwen for Mikhail Sergachev, Tristan Luneau",
+    "text": "Deal. Heiskanen over Rinzel — you just paid me to stop asking. Werenski's got back-to-back 81-point seasons and five power-play points this month; he's my number one the second he's in the building. Enjoy Sergachev's four games a week, buddy. Points are points.",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 2,
+    "quotable": 2
+   },
+   "mistralai/mistral-medium-3-5": {
+    "id": "reply-2026-11-23-T05-0",
+    "sense": "yes",
+    "mean": "no",
+    "fact_wrong": "no",
+    "why": "",
+    "funny": 1,
+    "quotable": 1
+   }
+  }
+ }
+}
