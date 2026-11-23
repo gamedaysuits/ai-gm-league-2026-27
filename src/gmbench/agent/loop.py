@@ -140,7 +140,17 @@ def run_session(
                     else:
                         if counted:
                             research_used += 1
-                        outcome = dispatch(name, args, ctx)
+                        try:
+                            outcome = dispatch(name, args, ctx)
+                        except (KeyError, TypeError, ValueError, IndexError) as exc:
+                            # Valid JSON in the wrong shape (a missing field, a name where an ID goes). Providers
+                            # don't all enforce tool schemas, so tell this GM and let it retry rather than let one
+                            # model's bad call crash every session in the round (week 9, Nov 23 2026).
+                            outcome = ToolOutcome(f"ERROR: {name} arguments don't match its parameters "
+                                                  f"({_arg_problem(exc)}). Check the parameters and call it again.",
+                                                  ok=False)
+                            print(f"::warning title=Malformed tool call::{session_id}: {name}: {_arg_problem(exc)}",
+                                  flush=True)
                         if not outcome.ok:
                             result.invalid_tool_calls += 1
             if outcome.action is not None and outcome.ok:
@@ -156,6 +166,12 @@ def run_session(
     result.wall_s = round(time.monotonic() - started, 2)
     _save_transcript(result, spec, messages, telemetry, transcript_dir)
     return result
+
+
+def _arg_problem(exc: Exception) -> str:
+    if isinstance(exc, KeyError):
+        return f"missing {exc.args[0]!r}" if exc.args else "a required field is missing"
+    return f"{type(exc).__name__}: {str(exc)[:160]}"
 
 
 def _account(result: SessionResult, res: LLMResult) -> None:

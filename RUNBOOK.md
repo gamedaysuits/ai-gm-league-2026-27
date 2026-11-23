@@ -196,7 +196,8 @@ builds and commits but prints "built, not published".
 
 ## Alerts (health check)
 
-- `.github/workflows/health.yml` runs `gmbench health` every evening (01:17 UTC). It tests what visitors see:
+- `.github/workflows/health.yml` runs `gmbench health` once a day (scheduled 01:17 UTC; GitHub often starts it
+  hours late, which the timing allowances in `src/gmbench/health.py` absorb). It tests what visitors see:
   both pages load and carry their `data-src`, the feeds load from GitHub, the feeds were rebuilt in the last
   26 hours and include every NHL game night that is due, every pool player matches an NHL player, the
   Monday front office ran, and its article reached the blog (checked for two days after each Monday).
@@ -207,6 +208,9 @@ builds and commits but prints "built, not published".
 - Run it locally: `uv run gmbench health` (no email without the two variables).
 
 ## If something goes wrong
+
+- A GM's malformed tool call (valid JSON, wrong shape) is returned to that GM as an ERROR and logged as a
+  "Malformed tool call" warning on the run; it no longer crashes the round for everyone.
 
 - `uv run gmbench verify --run live` pinpoints any ledger corruption by sequence number.
 - A torn last line after a crash is repaired automatically on the next `draft` run.

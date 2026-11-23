@@ -214,7 +214,7 @@ def render(problems: list[Problem], *, run_url: str | None = None, test: bool = 
             lines.append("")
     if run_url:
         lines.append(f"Run log: {run_url}")
-    lines.append("This check runs every evening. Until a problem is fixed, you'll get this email once a day.")
+    lines.append("This check runs once a day. Until a problem is fixed, you'll get this email daily.")
     return subject, "\n".join(lines) + "\n"
 
 

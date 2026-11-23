@@ -80,6 +80,55 @@ def test_scripted_trading_week(tmp_path: Path) -> None:
     assert ledger.verify()[0] == len(kinds)
 
 
+class MalformedClaimWeek(ScriptedWeek):
+    """As ScriptedWeek, but kimi first sends a waiver claim with no "add" (what crashed week 9 twice, Nov 23 2026)."""
+
+    def __init__(self, state_fn: Callable[[], LeagueState], snapshot) -> None:
+        super().__init__(state_fn, snapshot)
+        self.kimi_saw: list[str] = []
+
+    def chat(self, spec: TeamSpec, messages, tools=None, **kw: Any) -> LLMResult:
+        names = {t["function"]["name"] for t in tools or []}
+        if spec.id != "kimi" or "submit_waiver_claims" not in names:
+            return super().chat(spec, messages, tools, **kw)
+        replies = [m["content"] for m in messages if m["role"] == "tool"]
+        if replies:
+            self.kimi_saw.append(replies[-1])
+            calls = [("end_turn", {})]
+        else:
+            drop = self.state_fn().teams["kimi"].roster[-1]
+            calls = [("submit_waiver_claims", {"claims": [{"drop": drop}]})]
+        self.n += 1
+        tcs = [{"id": f"k{self.n}_{i}", "type": "function", "function": {"name": n, "arguments": json.dumps(a)}}
+               for i, (n, a) in enumerate(calls)]
+        return LLMResult(message={"role": "assistant", "content": "", "tool_calls": tcs}, finish_reason="tool_calls",
+                         model=spec.model, provider="Scripted", usage={}, cost_usd=0.0, latency_s=0.0, gen_id=str(self.n))
+
+
+def test_malformed_tool_call_is_an_error_for_that_gm_not_a_crash(tmp_path: Path) -> None:
+    cfg = load_config()
+    ledger = Ledger(tmp_path / "ledger" / "league.jsonl")
+    init_league(ledger, cfg, "synthetic:7")
+    set_draft_order(ledger, cfg, {"round": None, "randomness": "22" * 32}, method="test-seed")
+    snap = load_run_snapshot("synthetic:7")
+    deps = DraftDeps(cfg=cfg, ledger=ledger, snapshot=snap, client=FakeClient(), root=tmp_path,
+                     today="2026-09-28", as_of="2026-09-28", log=lambda _: None)
+    run_draft(deps, reactions=False)
+    run_post_draft(deps, week_start=date(2026, 9, 29))
+
+    client = MalformedClaimWeek(lambda: replay(ledger.events()), snap)
+    deps.client = client
+    run_week(deps, week_start=date(2026, 10, 12), games_dir=tmp_path / "games",
+             now=datetime(2026, 10, 12, 8, 0, tzinfo=timezone.utc))
+
+    kinds = [e["type"] for e in ledger.events()]
+    assert kinds[-1] == "WEEK_LOCKED" and "TRADE_EXECUTED" in kinds  # everyone else's week went ahead
+    assert client.kimi_saw and client.kimi_saw[0].startswith("ERROR: submit_waiver_claims") and "'add'" in client.kimi_saw[0]
+    kimi = [e["payload"] for e in ledger.events({"SESSION_COMPLETED"}) if e["payload"].get("team_id") == "kimi"
+            and e["payload"]["kind"].startswith("week_")]
+    assert kimi and kimi[0]["invalid_tool_calls"] >= 1
+
+
 def test_week_after_lock_only_carries_over(tmp_path: Path) -> None:
     cfg = load_config()
     ledger = Ledger(tmp_path / "ledger" / "league.jsonl")
